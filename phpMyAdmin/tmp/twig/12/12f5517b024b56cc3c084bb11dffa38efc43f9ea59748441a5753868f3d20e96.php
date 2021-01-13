@@ -126,6 +126,6 @@ class __TwigTemplate_226b228b4dc06e6698a9665ba78e352b7b601bbc6db3b31888fd7e1cb86
 
     public function getSourceContext()
     {
-        return new Source("", "select_lang.twig", "/var/www/html/phpMyAdmin/templates/select_lang.twig");
+        return new Source("", "select_lang.twig", "/var/www/html/portforio/phpMyAdmin/templates/select_lang.twig");
     }
 }

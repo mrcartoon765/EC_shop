@@ -1,6 +1,5 @@
 <?php
 /* vim: set expandtab sw=4 ts=4 sts=4: */
-
 /**
  * phpMyAdmin sample configuration, you can use it as base for
  * manual configuration. For easier setup you can use setup/
@@ -17,6 +16,7 @@ declare(strict_types=1);
  * cookie. Needs to be 32 chars long.
  */
 $cfg['blowfish_secret'] = 'kcBuC08452nW0qTCVFXEQV0HO7KhrCYAAACCCCV'; /* YOU MUST FILL IN THIS FOR COOKIE AUTH! */
+
 /**
  * Servers configuration
  */
@@ -29,7 +29,8 @@ $i++;
 /* Authentication type */
 $cfg['Servers'][$i]['auth_type'] = 'cookie';
 /* Server parameters */
-$cfg['Servers'][$i]['host'] = 'portforio-web-db.cvwcuk2bluvj.ap-northeast-1.rds.amazonaws.com';
+
+$cfg['Servers'][$i]['host'] = 'portforio.cvwcuk2bluvj.ap-northeast-1.rds.amazonaws.com';
 $cfg['Servers'][$i]['compress'] = false;
 $cfg['Servers'][$i]['AllowNoPassword'] = false;
 

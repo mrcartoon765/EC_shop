@@ -108,6 +108,6 @@ class __TwigTemplate_65eec0101bd7f5bb49fa322c7106989840d9694d38768aa5328b842bbb7
 
     public function getSourceContext()
     {
-        return new Source("", "config/form_display/fieldset_top.twig", "/var/www/html/phpMyAdmin/templates/config/form_display/fieldset_top.twig");
+        return new Source("", "config/form_display/fieldset_top.twig", "/var/www/html/portforio/phpMyAdmin/templates/config/form_display/fieldset_top.twig");
     }
 }

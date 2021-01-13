@@ -104,6 +104,6 @@ class __TwigTemplate_8049ad6ef355e34ea49b1a0db8f8f42eb6e7f6b2307d2d0aba3e3d06d7e
 
     public function getSourceContext()
     {
-        return new Source("", "footer.twig", "/var/www/html/phpMyAdmin/templates/footer.twig");
+        return new Source("", "footer.twig", "/var/www/html/portforio/phpMyAdmin/templates/footer.twig");
     }
 }

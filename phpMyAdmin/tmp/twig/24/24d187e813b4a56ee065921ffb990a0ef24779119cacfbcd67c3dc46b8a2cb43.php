@@ -125,6 +125,6 @@ class __TwigTemplate_9eca6f13518e02ce72d47f1740b43e78e3af4734bdaf7b1f1098604d4d1
 
     public function getSourceContext()
     {
-        return new Source("", "scripts.twig", "/var/www/html/phpMyAdmin/templates/scripts.twig");
+        return new Source("", "scripts.twig", "/var/www/html/portforio/phpMyAdmin/templates/scripts.twig");
     }
 }

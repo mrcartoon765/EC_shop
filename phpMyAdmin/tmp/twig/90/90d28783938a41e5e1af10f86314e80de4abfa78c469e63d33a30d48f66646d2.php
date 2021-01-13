@@ -232,6 +232,6 @@ class __TwigTemplate_5616e8193c52785beb43a85c118ed7f34a08ba89f0a4a380f0ef9ad3327
 
     public function getSourceContext()
     {
-        return new Source("", "header.twig", "/var/www/html/phpMyAdmin/templates/header.twig");
+        return new Source("", "header.twig", "/var/www/html/portforio/phpMyAdmin/templates/header.twig");
     }
 }

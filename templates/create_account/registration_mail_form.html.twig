@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>メール確認画面</title>
+<meta charset="utf-8">
+</head>
+<body>
+<h1>メール確認画面</h1>
+{% if count($errors) === 0 %}
+<p><?=$message?></p>
+<p>↓このURLが記載されたメールが届きます。</p>
+<a href="<?=$url?>"><?=$url?></a>
+{% elseif (count($errors) > 0 ) %}
+{% for $value in $errors %}
+echo "<p>" .{{ attribute( $value,'text' ) }}. "</p>"
+{% endfor %}
+{% endif %}
+ 
+<input type="button" value="戻る" onClick="history.back()">
+ 
+ 
+</body>
+</html>

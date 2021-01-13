@@ -274,6 +274,6 @@ class __TwigTemplate_4d3f4dd0069004f79dc44aa37da3cda0e05914ba9fb8147a5bf36d7f1d2
 
     public function getSourceContext()
     {
-        return new Source("", "navigation/main.twig", "/var/www/html/phpMyAdmin/templates/navigation/main.twig");
+        return new Source("", "navigation/main.twig", "/var/www/html/portforio/phpMyAdmin/templates/navigation/main.twig");
     }
 }
