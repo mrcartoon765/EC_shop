@@ -8,9 +8,13 @@ use create_account\Bootstrap;
 $loader = new \Twig_Loader_Filesystem(Bootstrap::TEMPLATE_DIR);
 $twig = new \Twig_Environment($loader,['cache' => Bootstrap::CACHE_DIR]);
 
+
+ini_set("display_errors", 1);
+error_reporting(E_ALL);
+
+
+
 $dataArr = [
-  'user_id' => '',
-  'user_pass' => '',
   'family_name' => '',
   'first_name' => '',
   'family_name_kana' => '',
@@ -36,19 +40,12 @@ foreach ($dataArr as $key => $value) {
 list($yearArr, $monthArr, $dayArr) = initMaster::getDate();
 
 $sexArr = initMaster::getSex();
-
 $context = [];
-
 $context['yearArr'] = $yearArr;
 $context['monthArr'] = $monthArr;
 $context['dayArr'] = $dayArr;
 $context['sexArr'] = $sexArr;
-
 $context['dataArr'] = $dataArr;
 $context['errArr'] = $errArr;
-
 $template = $twig->loadTemplate('regist.html.twig');
-
 $template->display($context);
-
-$template = $twig->loadTemplate('.html.twig');

@@ -9,11 +9,11 @@ class Bootstrap
   const DB_NAME = 'account_db';
   const DB_USER = 'carcecaotuent';
   const DB_PASS = 'cpraesastweord';
-  const APP_DIR = '/var/www/html/portforio';
-  const TEMPLATE_DIR = self::APP_DIR . '/templates/create_account/';
-  const CACHE_DIR = self::APP_DIR . '/templates_c/create_account/';
-  const APP_URL = 'http://mrcartoon.work';
-  const ENTRY_URL = self::APP_URL . '/create_account/';
+  const APP_DIR = '/var/www/html/portforio/';
+  const TEMPLATE_DIR = self::APP_DIR . 'templates/create_account/';
+  const CACHE_DIR = self::APP_DIR . 'templates_c/create_account/';
+  const APP_URL = 'http://mrcartoon.work/portforio/';
+  const ENTRY_URL = self::APP_URL . 'create_account/';
   public static function loadClass($class)
   {
     $path = str_replace('\\', '/', self::APP_DIR . $class . '.class.php');
