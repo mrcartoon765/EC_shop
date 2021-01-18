@@ -41,9 +41,6 @@ switch ($mode) {
     if (isset($_POST['sex']) === false) {
       $dataArr['sex'] = "";
     }
-    if (isset($_POST['traffic']) === false) {
-      $dataArr['traffic'] = [];
-    }
 
     $errArr = $common->errorCheck($dataArr);
 
@@ -69,13 +66,10 @@ switch ($mode) {
 
         foreach ($dataArr as $key => $value) {
           $column .= $key . ', ';
-          if ($key === 'traffic') {
-              $value = implode('_', $value);
-          }
           $insData .= ($key === 'sex') ? $db->quote($value) . ',' : $db->str_quote($value) . ', ';
           }
 
-          $query = " INSERT INTO create_account ( "
+          $query = " INSERT INTO account ( "
           . $column
           . " regist_date "
           . " ) VALUES ( "
@@ -97,9 +91,7 @@ switch ($mode) {
             break;
           }
           $sexArr = initMaster::getSex();
-          $trafficArr = initMaster::getTrafficWay();
           $context['sexArr'] =  $sexArr;
-          $context['trafficArr'] =  $trafficArr;
           list($yearArr, $monthArr, $dayArr) = initMaster::getDate();
           $context['yearArr'] = $yearArr;
           $context['monthArr'] = $monthArr;

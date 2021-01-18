@@ -1,9 +1,5 @@
 <?php 
-/*
- * ファイルパス：/Applications/htdocs/DT/member/lib/Database.class.php
- * ファイル名:Database.class.php
-*/
-namespace member\lib;
+namespace create_account\lib;
 
 class Database
 {

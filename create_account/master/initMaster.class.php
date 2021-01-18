@@ -1,6 +1,6 @@
 <?php 
 
-namespace create_account\master;;
+namespace create_account\master;
 class initMaster
 {
     public static function getDate()

@@ -17,6 +17,10 @@ $twig = new \Twig_Environment($loader, array(
 
 $db = new Database(Bootstrap::DB_HOST, Bootstrap::DB_USER, Bootstrap::DB_PASS, Bootstrap::DB_NAME);
 $initMaster = new initMaster();
+
+ini_set("display_errors", 1);
+error_reporting(E_ALL);
+
 if (isset($_GET['account_id']) === true && $_GET['account_id'] !== '') {
     $account_id = $_GET['account_id'];
     $query = " SELECT "
@@ -39,7 +43,7 @@ if (isset($_GET['account_id']) === true && $_GET['account_id'] !== '') {
     . "   contents, "
     . "   regist_date "
     . " FROM "
-    . "   create_account "
+    . "   account "
     . " WHERE "
     . "   account_id = " . $db->quote($account_id);
     //idが該当する人だけデータの取得をするように絞る
@@ -48,10 +52,8 @@ if (isset($_GET['account_id']) === true && $_GET['account_id'] !== '') {
     $db->close();
     $dataArr = ($data !== "" && $data !== []) ? $data[0] : '';
     //データがどちらも空でない場合はdata[0]をdataArrに代入、どちらかがからの場合は空を代入
-    $dataArr['traffic'] = explode('_', $dataArr['traffic']);
     // _区切りで配列にする
     $context = [];
-    $context['trafficArr'] = $initMaster->getTrafficWay();
     $context['dataArr'] = $dataArr;
     $template = $twig->loadTemplate('detail.html.twig');
     $template->display($context);
@@ -60,3 +62,4 @@ if (isset($_GET['account_id']) === true && $_GET['account_id'] !== '') {
 
       exit();
   }
+
