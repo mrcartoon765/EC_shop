@@ -91,7 +91,7 @@
 <input type="text" name="tel1" value="{{dataArr.tel1}}" size="6" maxlength="6"> -
 <input type="text" name="tel2" value="{{dataArr.tel2}}" size="6" maxlength="6"> -
 <input type="text" name="tel3" value="{{dataArr.tel3}}" size="6" maxlength="6">
-{% if errAr.tel1 | length > 0 %}<br><span class="red">{{errArr.tel1}}</span>{% endif %}
+{% if errArr.tel1 | length > 0 %}<br><span class="red">{{errArr.tel1}}</span>{% endif %}
 {% if errArr.tel2 | length > 0 %}<br><span class="red">{{errArr.tel2}}</span>{% endif %}
 {% if errArr.tel3 | length > 0 %}<br><span class="red">{{errArr.tel3}}</span>{% endif %}
 </td>

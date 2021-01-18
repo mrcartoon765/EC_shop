@@ -27,6 +27,10 @@ if (isset($_POST['complete']) === true) {
   $mode = 'complete';
 }
 
+ini_set("display_errors", 1);
+error_reporting(E_ALL);
+
+
 switch ($mode) {
   case 'confirm':
 
@@ -61,7 +65,7 @@ switch ($mode) {
         $column = '';
         $insData = '';
 
-        $dataArr['user_pass'] = hash("sha256", $dataArr['user_pass']);
+        // $dataArr['user_pass'] = hash("sha256", $dataArr['user_pass']);
 
         foreach ($dataArr as $key => $value) {
           $column .= $key . ', ';

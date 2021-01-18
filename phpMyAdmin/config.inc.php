@@ -30,7 +30,7 @@ $i++;
 $cfg['Servers'][$i]['auth_type'] = 'cookie';
 /* Server parameters */
 
-$cfg['Servers'][$i]['host'] = 'portforio.cvwcuk2bluvj.ap-northeast-1.rds.amazonaws.com';
+$cfg['Servers'][$i]['host'] = 'database-1.cvwcuk2bluvj.ap-northeast-1.rds.amazonaws.com';
 $cfg['Servers'][$i]['compress'] = false;
 $cfg['Servers'][$i]['AllowNoPassword'] = false;
 

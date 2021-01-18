@@ -9,11 +9,6 @@ $loader = new \Twig_Loader_Filesystem(Bootstrap::TEMPLATE_DIR);
 $twig = new \Twig_Environment($loader,['cache' => Bootstrap::CACHE_DIR]);
 
 
-ini_set("display_errors", 1);
-error_reporting(E_ALL);
-
-
-
 $dataArr = [
   'family_name' => '',
   'first_name' => '',

@@ -17,6 +17,10 @@ class initMaster
         $month = sprintf("%02d", $i);
         $monthArr[$month] = $month . '月';
       }
+      for ($i = 1; $i < 31; $i ++) {
+          $day = sprintf("%02d", $i);
+          $dayArr[$day] = $day . '日';
+      }
       return [$yearArr, $monthArr, $dayArr];
     }
     public static function getSex()
