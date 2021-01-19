@@ -44,3 +44,4 @@ $context['dataArr'] = $dataArr;
 $context['errArr'] = $errArr;
 $template = $twig->loadTemplate('regist.html.twig');
 $template->display($context);
+
