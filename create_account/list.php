@@ -7,11 +7,11 @@ use create_account\master\initMaster;
 use create_account\lib\Database;
 use create_account\lib\Common;
 
-// テンプレート指定
 $loader = new \Twig_Loader_Filesystem(Bootstrap::TEMPLATE_DIR);
 $twig = new \Twig_Environment($loader, [
- 'cache' => Bootstrap::CACHE_DIR
+ 'cache' => Bootstrap
 ]);
+
 $db = new Database(Bootstrap::DB_HOST, Bootstrap::DB_USER, Bootstrap::DB_PASS, Bootstrap::DB_NAME);
 $query = " SELECT "
 . "    account_id, "

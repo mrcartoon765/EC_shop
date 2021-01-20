@@ -8,10 +8,8 @@ use create_account\master\initMaster;
 use create_account\lib\Database;
 use create_account\lib\Common;
 
-//テンプレート指定
 $loader = new \Twig_Loader_Filesystem(Bootstrap::TEMPLATE_DIR);
 $twig = new \Twig_Environment($loader, array(
-
   'cache' => Bootstrap::CACHE_DIR
 ));
 
@@ -46,13 +44,9 @@ if (isset($_GET['account_id']) === true && $_GET['account_id'] !== '') {
     . "   account "
     . " WHERE "
     . "   account_id = " . $db->quote($account_id);
-    //idが該当する人だけデータの取得をするように絞る
     $data = $db->select($query);
-    //SQL文で多次元連想配列が入ってる
     $db->close();
     $dataArr = ($data !== "" && $data !== []) ? $data[0] : '';
-    //データがどちらも空でない場合はdata[0]をdataArrに代入、どちらかがからの場合は空を代入
-    // _区切りで配列にする
     $context = [];
     $context['dataArr'] = $dataArr;
     $template = $twig->loadTemplate('detail.html.twig');
