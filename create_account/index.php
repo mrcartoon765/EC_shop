@@ -1,6 +1,6 @@
 <?php
 
-require_once '../Bootstrap.class.php';
+require_once '/Applications/MAMP/htdocs/Bootstrap.class.php';
 
 $loader = new \Twig_Loader_Filesystem(Bootstrap::TEMPLATE_DIR);
 $twig = new \Twig_Environment($loader,['cahce' => Bootstrap]);
