@@ -25,6 +25,3 @@ $twig = new \Twig_Environment($loader, [
   $context['dataArr'] = $dataArr;
   $template = $twig->loadTemplate('list.html.twig');
   $template->display($context);
-
-  ini_set("display_errors", 1);
-error_reporting(E_ALL);

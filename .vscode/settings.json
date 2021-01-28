@@ -1,5 +1,9 @@
 {
-  "cSpell.words": [
-    "sotugyou"
-  ]
+  "liveServer.settings.useWebExt": true,
+
+  "liveServer.settings.proxy": {
+    "enable": true,
+    "baseUri": "/",
+    "proxyUri": "http://localhost:8888/"
+},
 }

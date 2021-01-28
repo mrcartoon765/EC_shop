@@ -62,7 +62,7 @@ class PDODatabase
     $res = $stmt->execute($arrVal);
     if ($res === false) {
       $this->catchError($stmt->errorInfo());
-      $this->catchError($stmt->でエラー情報を取得する)
+      $this->catchError($stmt->でエラー情報を取得する);
     }
     $data = [];
     while ($result = $stmt->fetch(\PDO::FETCH_ASSOC)) {

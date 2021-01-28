@@ -1,23 +1,19 @@
 <!DOCTYPE html>
-<html>
+<html lang="jp">
 <head>
-<title>メール確認画面</title>
-<meta charset="utf-8">
+  <meta charset="UTF-8">
+  <title>仮アカウント登録画面</title>
+
 </head>
 <body>
-<h1>メール確認画面</h1>
-{% if count($errors) === 0 %}
-<p><?=$message?></p>
-<p>↓このURLが記載されたメールが届きます。</p>
-<a href="<?=$url?>"><?=$url?></a>
-{% elseif (count($errors) > 0 ) %}
-{% for $value in $errors %}
-echo "<p>" .{{ attribute( $value,'text' ) }}. "</p>"
-{% endfor %}
-{% endif %}
- 
-<input type="button" value="戻る" onClick="history.back()">
- 
- 
+<h1> {{Registration}} </h1>
+<form action="../../create_account/registration_mail_check.php" method="post">
+<p>メールアドレス:<input type="text" name="mail" size="50"></p>
+
+<input type="hidden" name="token" value={{token}}>
+<input type="submit" value="登録する">
+
+</form>
+
 </body>
 </html>
