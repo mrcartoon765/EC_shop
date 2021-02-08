@@ -23,8 +23,6 @@ header('X-FRAME-OPTIONS: SAMEORIGIN');
 
 // DB接続
 require_once '../../db.php';
-var_dump($db);
-
 $dbh = $db;
 
 // エラーメッセージの初期化
@@ -70,3 +68,8 @@ if(empty($_GET)) {
     }
   }
 }
+
+$context = [];
+
+$template = $twig->loadTemplate((pathinfo(__FILE__)["filename"]).'.html.twig');
+$template->display($context);

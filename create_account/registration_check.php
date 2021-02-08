@@ -1,6 +1,7 @@
 <?php 
 
 namespace Boost;
+use Boost\db;
 (preg_match('/portforio$/',dirname(__FILE__)))?
 require_once dirname(__FILE__) . '/../Bootstrap.class.php':
 require_once dirname(__FILE__) . '/../../Bootstrap.class.php';
@@ -62,8 +63,17 @@ if(empty($_POST)) {
 
   // エラーが無ければセッションに登録
   if(count($errors) === 0){
-    $_SESSION['account'] = $account;
-    $_SESSION['password'] = $password;
+    $_SESSION['account'] = account;
+    $_SESSION['password'] = password;
   }
 
-context::loadtemplate;
+  $context = [];
+  $context['errors'] = count($errors);
+  $context['mail'] = $_SESSION['mail'];
+  $context['account'] = account;
+  $context['pass'] = $password_hide;
+  $context['token'] = $_POST['token'];
+
+
+  $template = $twig->loadTemplate((pathinfo(__FILE__)["filename"]).'.html.twig');
+  $template->display($context);

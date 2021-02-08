@@ -116,3 +116,7 @@ EOM;
     }
 }
 
+$context = [];
+
+$template = $twig->loadTemplate((pathinfo(__FILE__)["filename"]).'.html.twig');
+$template->display($context);

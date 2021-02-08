@@ -11,9 +11,7 @@ $loader = new \Twig_Loader_Filesystem(Bootstrap::TEMPLATE_DIR);
 $twig = new \Twig_Environment($loader);
 
 $context['greeting'] = 'ようこそHealthKnowledgeへ！';
-$context['titlesub2'] = 'ここでは健康に関する知識を網羅できる本の購入が出来ます';
-$context['kigo'] = '寒いのでこのような知識は如何ですか？';
-
+$context['titlesub2'] = 'パレオな男の本のご紹介と関連した商品の購入が出来ます';
 
 
 $template = $twig->loadTemplate((pathinfo(__FILE__)["filename"]).'.html.twig');

@@ -1,7 +1,8 @@
 <?php
 
 namespace Boost;
-
+use Boost\db;
+use Boost\regist;
 (preg_match('/portforio$/',dirname(__FILE__)))?
 require_once dirname(__FILE__) . '/../Bootstrap.class.php':
 require_once dirname(__FILE__) . '/../../Bootstrap.class.php';
