@@ -1,18 +1,6 @@
-<?php
 
-namespace Boost;
-use Boost\db;
+<?php 
 
-(preg_match('/portforio$/',dirname(__FILE__)))?
-require_once dirname(__FILE__) . '/../Bootstrap.class.php':
-require_once dirname(__FILE__) . '/../../Bootstrap.class.php';
+echo "とりあえずトップ画面";
 
-$loader = new \Twig_Loader_Filesystem(Bootstrap::TEMPLATE_DIR);
-$twig = new \Twig_Environment($loader);
-
-$context['greeting'] = 'ようこそHealthKnowledgeへ！';
-$context['titlesub2'] = 'パレオな男の本のご紹介と関連した商品の購入が出来ます';
-
-
-$template = $twig->loadTemplate((pathinfo(__FILE__)["filename"]).'.html.twig');
-$template->display($context);
+// <a href="./shopping/Booklist.php">"商品一覧リンク"</a>;

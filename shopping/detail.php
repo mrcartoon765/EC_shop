@@ -1,31 +1,33 @@
 <?php
 
-use Boost;
-use Boost\db;
-use shopping\lib;
-use shopping\lib\Book;
+namespace shopping;
+require_once dirname(__FILE__) . '/Bootstrap.class.php';
+use shopping\Bootstrap;
+use shopping\lib\PDODatabase;
 use shopping\lib\Session;
-(preg_match('/portforio$/',dirname(__FILE__)))?
-require_once dirname(__FILE__) . '/../Bootstrap.class.php':
-require_once dirname(__FILE__) . '/../../Bootstrap.class.php';
+use shopping\lib\Book;
+$db = new PDODatabase(Bootstrap::DB_HOST, Bootstrap::DB_USER, Bootstrap::DB_PASS, Bootstrap::DB_NAME, Bootstrap::DB_TYPE);
 
-$ses = new \shopping\lib\Session($db);
-$item = new \shopping\lib\Book($db);
+$ses = new Session($db);
+$Book = new Book($db);
 
 $loader = new \Twig_Loader_Filesystem(Bootstrap::TEMPLATE_DIR);
-$twig = new \Twig_Environment($loader);
+$twig = new \Twig_Environment($loader, ['cache' => Bootstrap::CACHE_DIR]);
 
 $ses->checkSession();
 
-$id = (isset($_GET['id']) === true && preg_match('/^\d+/', $_GET['id']) === 1) ? $_GET['id'] : '';
+$Book_id = (isset($_GET['Book_id']) === true && preg_match('/^\d+$/', $_GET['Book_id']) === 1)? $_GET['Book_id']: '';
 
-if ($id === '') {
+if($Book_id == '') {
   header('Location: ' . Bootstrap::ENTRY_URL. 'list.php');
 }
 
-$cateArr = $item->getCategoryList();
-$itemData = $item->getItemDetailData($item_id);
+$cateArr = $Book->getCategoryList();
+
+$BookData = $Book->getDetailData($Book_id);
 
 $context = [];
-$template = $twig->loadTemplate((pathinfo(__FILE__)["filename"]).'.html.twig');
+$context['cateArr'] = $cateArr;
+$context['BookData'] = $BookData[0];
+$template = $twig->loadTemplate('detail.html.twig');
 $template->display($context);

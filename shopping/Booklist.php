@@ -1,34 +1,43 @@
 <?php
 
-use Boost\db;
-use shopping\lib;
+namespace shopping;
+require_once dirname(__FILE__) . '/Bootstrap.class.php';
 
-(preg_match('/portforio$/',dirname(__FILE__)))?
-require_once dirname(__FILE__) . '/../Bootstrap.class.php':
-require_once dirname(__FILE__) . '/../../Bootstrap.class.php';
+use shopping\Bootstrap;
+use shopping\lib\PDODatabase;
+use shopping\lib\Session;
+use shopping\lib\Book;
+$db = new PDODatabase(Bootstrap::DB_HOST, Bootstrap::DB_USER, Bootstrap::DB_PASS, Bootstrap::DB_NAME, Bootstrap::DB_TYPE);
+$ses = new Session($db);
+$book = new Book($db);
 
-$loader = new \Twig_Loader_Filesystem(Boost\Bootstrap::TEMPLATE_DIR);
-$twig = new \Twig_Environment($loader);
-
-
-require_once dirname(__FILE__) . "/lib/Session.class.php";
-$ses = new shopping\lib\Session($db);
-require_once dirname(__FILE__) . "/lib/Book.class.php";
-$itm = new shopping\lib\Book($db);
+$loader = new \Twig_Loader_Filesystem((Bootstrap::TEMPLATE_DIR));
+$twig = new \Twig_Environment($loader, ['cache' => Bootstrap::CACHE_DIR]);
 
 $ses->checkSession();
+$ctg_id = (isset($_GET['ctg_id']) === true && preg_match('/^[0-9]+$/', $_GET['ctg_id']) === 1)? $_GET['ctg_id'] : '';
 
+$cateArr = $book->getCategoryList();
 
-$ctg_id = (isset($_GET['ctg_id']) === true && preg_match('/^[0-9]+$/', $_GET['ctg_id']) === 1) ? $_GET['ctg_id'] : '';
+echo "DBからデータ取り出し表示";
+echo "\n\n";
+echo "カートに入れる";
+echo "\n\n";
+echo "イイネ！";
+echo "\n\n";
+echo "レビュー";
+echo "\n\n";
+echo "画像表示";
+echo "\n\n";
+echo "商品説明";
+echo "\n\n";
+echo "価格";
+echo "\n\n";
 
-ini_set("display_errors", 1);
-error_reporting(E_ALL);
-
-$cateArr = $item->getCategoryList();
-$dataArr = $item->getCategoryList();
-$dataArr = $item->getItemList($ctg_id);
+$dataArr = $book->getBookList($ctg_id);
 $context = [];
 $context['cateArr'] = $cateArr;
 $context['dataArr'] = $dataArr;
-$template = $twig->loadTemplate((pathinfo(__FILE__)["filename"]).'.html.twig');
+$filename = basename(__FILE__,'.php');
+$template = $twig->loadTemplate($filename . '.html.twig');
 $template->display($context);

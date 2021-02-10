@@ -12,14 +12,19 @@
 {% for value in dataArr %}
 <div class="Book"></div>
 <ul>
-<li class="name"><a href="{{ constant('Boost::ENTRY_URL') }}detail.php?id={{ value.id }}">{{ value.title }}</a></li>
 
-<li class="price">&yen;{{value.price|number_format(0,'.', ',')}}</li>
+<li class="title"><a href="{{ constant('shopping\\Bootstrap::ENTRY_URL')}}detail.php?Book_id={{value.Book_id}}">{{ value.title }}</a></a></li>
 
-<li class="image"><a href="{{ constant('Boost::ENTRY_URL') }}detail.php?id={{ value.id }}"><img src="{{ constant('Boost::ENTRY_URL') }}" alt="{{ value.title }}"></a></li>
+<li class="price">&yen;{{ value.price|number_format(0, '.', ',') }}</li>
 
-<li class="detail"><a href="{{ constant('Boost::ENTRY_URL') }}detail.php?id={{ value.id }}">詳細</a>
-</li>
+<li class="image">
+<a href="{{ constant('shopping\\Bootstrap::ENTRY_URL') }}detail.php?Book_id={{ value.Book_id }}">
+
+{# <img src="{{ constant('shopping\\Bootstrap::ENTRY_URL') }}image/{{ value.image }}" alt="{{ value.title }}"></a></li> #}
+
+<img src =>
+
+<li class="detail"><a href="{{ constant('shopping\\Bootstrap::ENTRY_URL') }}detail.php?Book_id={{ value.Book_id }}"></a>詳細</li>
 
 </ul>
 </div>

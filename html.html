@@ -1,30 +1,8 @@
-<!DOCTYPE html>
-<html lang="jp">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>BookList</title>
-</head>
-<body>
-<div id="wrapper">
-{% include 'category_menu.html.twig' %}
-<div id="Book_list">
-{% for value in dataArr %}
-<div class="Book"></div>
+<div id="category">
 <ul>
-<li class="name"><a href="{{ constant('Boost::ENTRY_URL') }}detail.php?id={{ value.id }}">{{ value.title }}</a></li>
-
-<li class="price">&yen;{{value.price|number_format(0,'.', ',')}}</li>
-
-<li class="image"><a href="{{ constant('Boost::ENTRY_URL') }}detail.php?id={{ value.id }}"><img src="{{ constant('Boost::ENTRY_URL') }}" alt="{{ value.title }}"></a></li>
-
-<li class="detail"><a href="{{ constant('Boost::ENTRY_URL') }}detail.php?id={{ value.id }}">詳細</a>
-</li>
-
+<li><a href="{{contant('shopping\\Bootstrap::ENTRY_URL')}}list.php">全て</a></li>
+{% for value in cateArr %}
+<li><a href="{{ constant('shopping\\Bootstrap::ENTRY_URL') list.php?Book_i={{ value.ctg_id }}">{{ value.category_name }}</a></li>  
+{% endfor %}
 </ul>
 </div>
-{% endfor %}
-</div>
-</div>
-</body>
-</html>
