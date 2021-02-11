@@ -75,7 +75,7 @@ class __TwigTemplate_405fd29f0e05a83e9d3bcd4b7617ca3f548850e0feb6196c9467898833a
 <img src=\"";
             // line 23
             echo twig_escape_filter($this->env, twig_constant("shopping\\Bootstrap::ENTRY_URL"), "html", null, true);
-            echo "image/Book/";
+            echo "image/";
             echo twig_escape_filter($this->env, $this->getAttribute($context["value"], "image", []), "html", null, true);
             echo "\" alt=\"";
             echo twig_escape_filter($this->env, $this->getAttribute($context["value"], "title", []), "html", null, true);
