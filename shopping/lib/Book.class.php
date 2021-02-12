@@ -24,7 +24,7 @@ class Book{
     $res = $this->db->select($table, $col, $where, $arrVal);
     return ($res !== false && count($res) !== 0)? $res : false;
   }
-  public function getItemData($Book_id)
+  public function getDetailData($Book_id)
   {
   $table = ' Book ';
   $col = ' book_id, title, detail, price, image, ctg_id ';

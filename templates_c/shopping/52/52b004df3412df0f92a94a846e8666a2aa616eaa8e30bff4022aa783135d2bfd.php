@@ -32,7 +32,7 @@ class __TwigTemplate_9ef6ee0c323724082c29d6206a5ead8bc0f290479da17ca4ec9a87d6fb0
 <li><a href=\"";
         // line 3
         echo twig_escape_filter($this->env, twig_constant("shopping\\Bootstrap::ENTRY_URL"), "html", null, true);
-        echo "list.php\">全て</a></li>
+        echo "Booklist.php\">全て</a></li>
 ";
         // line 4
         $context['_parent'] = $context;

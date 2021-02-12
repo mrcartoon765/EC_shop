@@ -29,5 +29,6 @@ $BookData = $Book->getDetailData($Book_id);
 $context = [];
 $context['cateArr'] = $cateArr;
 $context['BookData'] = $BookData[0];
-$template = $twig->loadTemplate('detail.html.twig');
+$filename = basename(__FILE__,'.php');
+$template = $twig->loadTemplate($filename . '.html.twig');
 $template->display($context);

@@ -1,6 +1,13 @@
+<?php
 
-<?php 
+namespace shopping;
+require_once dirname(__FILE__) . '/shopping//Bootstrap.class.php';
 
-echo "とりあえずトップ画面";
+$loader = new \Twig_Loader_Filesystem('Bootstrap::TEMPLATE_DIR');
+$twig = new \Twig_Environment($loader, ['cache' => Bootstrap::CACHE_DIR]);
 
-// <a href="./shopping/Booklist.php">"商品一覧リンク"</a>;
+
+$context = [];
+$filename = basename(__FILE__,'.php');
+$template = $twig->loadTemplate($filename . '.html.twig');
+$template->display($context);
