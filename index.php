@@ -1,13 +1,21 @@
-<?php
+<?php 
 
-namespace shopping;
-require_once dirname(__FILE__) . '/shopping//Bootstrap.class.php';
+echo 'トップページ';
+echo "<br>";
+print '<a href="./create_account/Login.php">ログイン</a>';
+echo "<br>";
+print '<a href="./shopping/Booklist.php">本一覧</a>';
 
-$loader = new \Twig_Loader_Filesystem('Bootstrap::TEMPLATE_DIR');
-$twig = new \Twig_Environment($loader, ['cache' => Bootstrap::CACHE_DIR]);
+function h($s){
+  return htmlspecialchars($s, ENT_QUOTES, 'utf-8');
+}
 
+session_start();
 
-$context = [];
-$filename = basename(__FILE__,'.php');
-$template = $twig->loadTemplate($filename . '.html.twig');
-$template->display($context);
+if (isset($_SESSION['EMAIL'])) {
+  echo 'ようこそ' . h($_SESSION['EMAIL']) . "さん<br>";
+  echo "<a href='/logout.php'>ログアウト</a>";
+  exit;
+}
+
+?>

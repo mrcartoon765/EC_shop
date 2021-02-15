@@ -1,6 +1,7 @@
-<?php 
+<?php
 namespace shopping;
-require_once dirname(__FILE__) . '/Bootstrap.class.php';
+$this_dir = basename(__DIR__);
+require_once dirname(__FILE__) . './../config/Bootstrap.class.php';
 use shopping\Bootstrap;
 use shopping\lib\PDODatabase;
 use shopping\lib\Session;
@@ -31,6 +32,6 @@ $context = [];
 $context['sumNum'] = $sumNum;
 $context['sumPrice'] = $sumPrice;
 $context['dataArr'] = $dataArr;
-a$filename = basename(__FILE__,'.php');
+$filename = basename(__FILE__,'.php');
 $template = $twig->loadTemplate( $filename . 'html.twig' );
 $template->display($context);

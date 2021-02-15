@@ -1,6 +1,9 @@
 <?php 
 
 namespace shopping\lib;
+$this_dir = basename(__DIR__);
+require_once dirname(__FILE__) . './../config/Bootstrap.class.php';
+use config;
 class Cart
 {
   private $db = null;

@@ -1,7 +1,8 @@
 <?php
 
 namespace shopping;
-require_once dirname(__FILE__) . '/Bootstrap.class.php';
+$this_dir = basename(__DIR__);
+require_once dirname(__FILE__) . './../config/Bootstrap.class.php';
 use shopping\Bootstrap;
 use shopping\lib\PDODatabase;
 use shopping\lib\Session;

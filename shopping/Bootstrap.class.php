@@ -4,7 +4,7 @@ namespace shopping;
 date_default_timezone_set('Asia/Tokyo');
 require_once dirname(__FILE__) . '/../vendor/autoload.php';
 
-define(Now_Dir,basename(__DIR__));
+define('Now_Dir',basename(__DIR__));
 class Bootstrap
 {
   const DB_HOST = 'localhost';

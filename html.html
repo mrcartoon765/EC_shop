@@ -1,1 +1,27 @@
-<div id=""></div>
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ログイン</title>
+</head>
+<body>
+  <h1>ようこそ、ログインしてください</h1>
+  <form action="login.php" method="post">
+  <label for="email">email</label>
+  <input type="email" name="email">
+  <label for="password">password</label>
+  <input type="password" name="password">
+  <button type="submit">Sign In!</button>
+  <h1>初めての方はこちら</h1>
+  <form action="signUp.php" method="post">
+    <label for="email">email</label>
+    <input type="email" name="email">email
+    <label for="password">password</label>
+    <input type="password" name="password">
+    <button type="submit">Sign Up!</button>
+    <p>パスワードは半角英数字をそれぞれ1文字以上含んだ、8文字以上で設定してください。</p>
+  </form>
+ </body>
+</html>
