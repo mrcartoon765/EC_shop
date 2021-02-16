@@ -2,6 +2,9 @@
 
 namespace config;
 
+use PDO;
+use shopping\lib\Book;
+
 $this_dir = basename(__DIR__);
 require_once dirname(__DIR__) . '/config/Bootstrap.class.php';
 
@@ -11,7 +14,7 @@ $twig = new \Twig_Environment($loader, ['cache' => Bootstrap::CACHE_DIR]);
 try {
   $pdo = new PDO(Bootstrap::DB_HOST, Bootstrap::DB_USER, Bootstrap::DB_PASS);
   $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-  $pdo->exec("create table if not exists")
+  $pdo->exec()""
 }
 
 

@@ -1,6 +1,7 @@
 <?php 
 
-namespace create_account\lib;
+// namespace create_account\lib;
+namespace config;
 
 class Common
 {
@@ -29,6 +30,12 @@ class Common
     {
         foreach ($this->dataArr as $key => $val) {
             $this->errArr[$key] = '';
+        }
+    }
+    private function mailCheck()
+    {
+        if (preg_match('/^([a-zA-Z0-9])+([a-zA-Z0-9\._-])*@([a-zA-Z0-9_-])+[a-zA-Z0-9\._-]+$/', $this->dataArr['mail']) === 0) {
+            $this->errArr['mail'] = 'メールアドレスを正しい形式で入力してください';
         }
     }
     private function familyNameCheck()
@@ -81,12 +88,6 @@ class Common
     {
         if ($this->dataArr['address'] === '') {
             $this->errArr['address'] = '住所を入力してください';
-        }
-    }
-    private function mailCheck()
-    {
-        if (preg_match('/^([a-zA-Z0-9])+([a-zA-Z0-9\._-])*@([a-zA-Z0-9_-])+[a-zA-Z0-9\._-]+$/', $this->dataArr['email']) === 0) {
-            $this->errArr['email'] = 'メールアドレスを正しい形式で入力してください';
         }
     }
     private function telCheck()

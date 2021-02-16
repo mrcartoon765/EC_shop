@@ -1,9 +1,9 @@
 <?php
 
-namespace create_account;
-require_once dirname(__FILE__) . '/Bootstrap.class.php';
-use create_account\lib\Database;
-use create_account\Bootstrap;
+namespace create_account\lib;
+$this_dir = basename(__DIR__);
+require_once dirname(__FILE__) . '/../config/Bootstrap.class.php';
+use config\Bootstrap;
 
 $db = new Database(Bootstrap::DB_HOST, Bootstrap::DB_USER, Bootstrap::DB_PASS, Bootstrap::DB_NAME);
 

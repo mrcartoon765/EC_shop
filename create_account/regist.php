@@ -1,15 +1,21 @@
 <?php 
 
-namespace create_account;
+namespace config;
+$this_dir = basename(__DIR__);
 require_once dirname(__FILE__) . '/../config/Bootstrap.class.php';
 use create_account\master\initMaster;
-use create_account\Bootstrap;
 
 $loader = new \Twig_Loader_Filesystem(Bootstrap::TEMPLATE_DIR);
 $twig = new \Twig_Environment($loader,['cache' => Bootstrap::CACHE_DIR]);
 
+var_dump(Bootstrap::APP_DIR);
+
 
 $dataArr = [
+  'id' => '',
+  'mail' => '',
+  'password' => '',
+  'flag' => '',
   'family_name' => '',
   'first_name' => '',
   'family_name_kana' => '',
@@ -25,7 +31,11 @@ $dataArr = [
   'tel1' => '',
   'tel2' => '',
   'tel3' => '',
-  'contents' => ''
+  'contents' => '',
+  'regist_date' => '',
+  'update_date' => '',
+  'delete_date' => '',
+  'delete_flg' => '',
 ];
 $errArr = [];
 foreach ($dataArr as $key => $value) {
@@ -36,12 +46,13 @@ list($yearArr, $monthArr, $dayArr) = initMaster::getDate();
 
 $sexArr = initMaster::getSex();
 $context = [];
+// $context[]
 $context['yearArr'] = $yearArr;
 $context['monthArr'] = $monthArr;
 $context['dayArr'] = $dayArr;
 $context['sexArr'] = $sexArr;
 $context['dataArr'] = $dataArr;
 $context['errArr'] = $errArr;
-$template = $twig->loadTemplate('regist.html.twig');
+$filename = basename(__FILE__,'.php');
+$template = $twig->loadTemplate($filename . '.html.twig');
 $template->display($context);
-

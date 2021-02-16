@@ -1,5 +1,7 @@
 <?php 
+
 namespace create_account\lib;
+use config;
 
 class Database
 {

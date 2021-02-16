@@ -1,6 +1,7 @@
-<?php 
+<?php
 
 namespace create_account;
+
 require_once dirname(__FILE__).
 './../vendor/autoload.php';
 class Bootstrap

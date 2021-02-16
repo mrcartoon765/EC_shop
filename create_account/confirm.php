@@ -1,14 +1,18 @@
 <?php
 
-namespace create_account;
-
-require_once dirname(__FILE__) . '/Bootstrap.class.php';
-
+namespace config;
+$this_dir = basename(__DIR__);
+require_once dirname(__FILE__) . '/../config/Bootstrap.class.php';
 use create_account\master\initMaster;
-
 use create_account\lib\Database;
-
 use create_account\lib\Common;
+
+
+// namespace create_account;
+// require_once dirname(__FILE__) . '/Bootstrap.class.php';
+// use create_account\master\initMaster;
+// use create_account\lib\Database;
+// use create_account\lib\Common;
 
 $loader = new \Twig_Loader_Filesystem(Bootstrap::TEMPLATE_DIR);
 $twig = new \Twig_Environment($loader, [
@@ -26,10 +30,6 @@ if (isset($_POST['back']) === true) {
 if (isset($_POST['complete']) === true) {
   $mode = 'complete';
 }
-
-ini_set("display_errors", 1);
-error_reporting(E_ALL);
-
 
 switch ($mode) {
   case 'confirm':
@@ -98,5 +98,8 @@ switch ($mode) {
           $context['dayArr'] = $dayArr;
           $context['dataArr'] =  $dataArr;
           $context['errArr'] =  $errArr;
-          $template = $twig->loadTemplate($template);
+          // $template = $twig->loadTemplate($template);
+          // $template->display($context);
+          $filename = basename(__FILE__,'.php');
+          $template = $twig->loadTemplate($filename . '.html.twig');
           $template->display($context);
