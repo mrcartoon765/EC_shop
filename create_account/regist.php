@@ -8,9 +8,6 @@ use create_account\master\initMaster;
 $loader = new \Twig_Loader_Filesystem(Bootstrap::TEMPLATE_DIR);
 $twig = new \Twig_Environment($loader,['cache' => Bootstrap::CACHE_DIR]);
 
-var_dump(Bootstrap::APP_DIR);
-
-
 $dataArr = [
   'id' => '',
   'mail' => '',
@@ -45,8 +42,6 @@ foreach ($dataArr as $key => $value) {
 list($yearArr, $monthArr, $dayArr) = initMaster::getDate();
 
 $sexArr = initMaster::getSex();
-$context = [];
-// $context[]
 $context['yearArr'] = $yearArr;
 $context['monthArr'] = $monthArr;
 $context['dayArr'] = $dayArr;

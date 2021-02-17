@@ -1,18 +1,12 @@
 <?php
 
 namespace config;
+// namespace create_account;
 $this_dir = basename(__DIR__);
 require_once dirname(__FILE__) . '/../config/Bootstrap.class.php';
 use create_account\master\initMaster;
 use create_account\lib\Database;
 use create_account\lib\Common;
-
-
-// namespace create_account;
-// require_once dirname(__FILE__) . '/Bootstrap.class.php';
-// use create_account\master\initMaster;
-// use create_account\lib\Database;
-// use create_account\lib\Common;
 
 $loader = new \Twig_Loader_Filesystem(Bootstrap::TEMPLATE_DIR);
 $twig = new \Twig_Environment($loader, [
@@ -20,6 +14,7 @@ $twig = new \Twig_Environment($loader, [
 ]);
 
 $db = new Database(Bootstrap::DB_HOST, Bootstrap::DB_USER, Bootstrap::DB_PASS, Bootstrap::DB_NAME);
+
 $common = new Common();
 if (isset($_POST['confirm']) === true) {
     $mode = 'confirm';
@@ -62,19 +57,19 @@ switch ($mode) {
         $column = '';
         $insData = '';
 
-        // $dataArr['user_pass'] = hash("sha256", $dataArr['user_pass']);
+        // $dataArr['password'] = hash("sha256", $dataArr['password']);
 
         foreach ($dataArr as $key => $value) {
           $column .= $key . ', ';
           $insData .= ($key === 'sex') ? $db->quote($value) . ',' : $db->str_quote($value) . ', ';
           }
 
-          $query = " INSERT INTO account ( "
+          $query = " INSERT INTO Customer ( "
           . $column
           . " regist_date "
           . " ) VALUES ( "
           . $insData
-          . "    NOW() "
+          . " NOW() "
           . " ) ";
 
           $res = $db->execute($query);
@@ -90,6 +85,7 @@ switch ($mode) {
             }
             break;
           }
+
           $sexArr = initMaster::getSex();
           $context['sexArr'] =  $sexArr;
           list($yearArr, $monthArr, $dayArr) = initMaster::getDate();
@@ -98,8 +94,7 @@ switch ($mode) {
           $context['dayArr'] = $dayArr;
           $context['dataArr'] =  $dataArr;
           $context['errArr'] =  $errArr;
-          // $template = $twig->loadTemplate($template);
-          // $template->display($context);
-          $filename = basename(__FILE__,'.php');
-          $template = $twig->loadTemplate($filename . '.html.twig');
+          $template = $twig->loadTemplate($template);
           $template->display($context);
+
+          var_dump($errArr['mail']);

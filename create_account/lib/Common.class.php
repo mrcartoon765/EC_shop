@@ -1,20 +1,20 @@
-<?php 
+<?php
 
-// namespace create_account\lib;
-namespace config;
-
+namespace create_account\lib;
 class Common
 {
     private $dataArr = [];
     private $errArr = [];
     // 初期化
-    public function __construct()
+        public function __construct()
     {
     }
     public function errorCheck($dataArr)
     {
         $this->dataArr = $dataArr;
         //クラス内のメソッドを読み込む
+        $this->mailCheck();
+        $this->passwordCheck();
         $this->createErrorMessage();
         $this->familyNameCheck();
         $this->firstNameCheck();
@@ -23,7 +23,6 @@ class Common
         $this->zipCheck();
         $this->addCheck();
         $this->telCheck();
-        $this->mailCheck();
         return $this->errArr;
     }
     private function createErrorMessage()
@@ -38,6 +37,12 @@ class Common
             $this->errArr['mail'] = 'メールアドレスを正しい形式で入力してください';
         }
     }
+    private function passwordCheck()
+    {
+        if (preg_match('/\A(?=.*?[a-z])(?=.*?\d)[a-z\d]{8,100}+\z/i', $this->dataArr['password']) === 0) {
+            $this->errArr['password'] = 'パスワードは半角英数字をそれぞれ１種類以上含む8文字以上100文字以内で入力してください';
+        }
+    }
     private function familyNameCheck()
     {
         if ($this->dataArr['family_name'] === '') {
@@ -46,7 +51,6 @@ class Common
     }
     private function firstNameCheck()
     {
-        // エラーチェックを入れる
         if ($this->dataArr['first_name'] === '') {
             $this->errArr['first_name'] = 'お名前(名)を入力してください';
         }

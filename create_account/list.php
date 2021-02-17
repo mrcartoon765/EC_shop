@@ -1,11 +1,14 @@
 <?php
 
 // namespace create_account;
-namespace config;
-$this_dir = basename(__DIR__);
-require_once dirname(__FILE__) . '/../config/Bootstrap.class.php';
 // use create_account\master;
 // use create_account\lib\Common;
+use config;
+$this_dir = basename(__DIR__);
+require_once dirname(__FILE__) . '/../config/Bootstrap.class.php';
+use config\Bootstrap;
+use create_account\lib\Database;
+
 
 $loader = new \Twig_Loader_Filesystem(Bootstrap::TEMPLATE_DIR);
 $twig = new \Twig_Environment($loader, [
@@ -33,10 +36,6 @@ $db->close();
 
 $context = [];
 $context['dataArr'] = $dataArr;
-
-// $template = $twig->loadTemplate('list.html.twig');
-// $template->display($context);
-
 $filename = basename(__FILE__,'.php');
 $template = $twig->loadTemplate($filename . '.html.twig');
 $template->display($context);
