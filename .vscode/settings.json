@@ -6,4 +6,8 @@
     "baseUri": "/",
     "proxyUri": "http://localhost:8888/"
 },
+"cSpell.words": [
+  "Booklist",
+  "portforio"
+],
 }

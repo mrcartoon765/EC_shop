@@ -3,14 +3,30 @@
 <head>
 <meta charset="utf-8">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script src="{{constant('create_account\\Bootstrap::APP_URL')}}js/common.js"></script>
-<link href="{{constant('create_account\\Bootstrap::APP_URL')}}css/style.css" rel="stylesheet">
+<script src="{{constant('config\\Bootstrap::APP_URL')}}js/common.js"></script>
+<link href="{{constant('config\\Bootstrap::APP_URL')}}css/style.css" rel="stylesheet">
 <title>会員登録</title>
 </head>
 <body>
-<input type="hidden" name="entry_url" id="entry_url" value="{{constant('create_account\\Bootstrap::ENTRY_URL')}}">
+<a href="{{ constant('shopping\\Bootstrap::APP_URL') }}" >トップページへ</a>
+<input type="hidden" name="entry_url" id="entry_url" value="{{constant('config\\Bootstrap::ENTRY_URL')}}">
 <form method="post" action="confirm.php">
 <table>
+<tr>
+<th>メールアドレス<span class="red">*</span></th>
+<td>
+<input type="text" name="mail" value="{{dataArr.mail}}" size="40">
+{% if errArr.mail | length > 0 %}<br><span class="red">{{errArr.mail}}</span>{% endif %}
+</td>
+</tr>
+<table>
+<tr>
+<th>パスワード<span class="red">*</span></th>
+<td>
+<input type="text" name="password" value="{{dataArr.password}}" size="40">
+{% if errArr.password | length > 0 %}<br><span class="red">{{errArr.password}}</span>{% endif %}
+</td>
+</tr>
 <tr>
 <th>お名前(氏名)<span class="red">*</span></th>
 {# *は赤文字で必須ポイント #}
@@ -76,13 +92,6 @@
 <td>
 <input type="text" name="address" value="{{dataArr.address}}" id="address" size="40">
 {% if errArr.address | length > 0 %}<br><span class="red">{{errArr.address}}</span>{% endif %}
-</td>
-</tr>
-<tr>
-<th>メールアドレス<span class="red">*</span></th>
-<td>
-<input type="text" name="email" value="{{dataArr.email}}" size="40">
-{% if errArr.email | length > 0 %}<br><span class="red">{{errArr.email}}</span>{% endif %}
 </td>
 </tr>
 <tr>

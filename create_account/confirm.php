@@ -1,7 +1,6 @@
 <?php
 
 namespace config;
-// namespace create_account;
 $this_dir = basename(__DIR__);
 require_once dirname(__FILE__) . '/../config/Bootstrap.class.php';
 use create_account\master\initMaster;
@@ -96,5 +95,3 @@ switch ($mode) {
           $context['errArr'] =  $errArr;
           $template = $twig->loadTemplate($template);
           $template->display($context);
-
-          var_dump($errArr['mail']);

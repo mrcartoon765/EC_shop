@@ -13,9 +13,9 @@ class Common
     {
         $this->dataArr = $dataArr;
         //クラス内のメソッドを読み込む
+        $this->createErrorMessage();
         $this->mailCheck();
         $this->passwordCheck();
-        $this->createErrorMessage();
         $this->familyNameCheck();
         $this->firstNameCheck();
         $this->sexCheck();

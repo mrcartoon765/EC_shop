@@ -6,8 +6,8 @@ date_default_timezone_set('Asia/Tokyo');
 require_once dirname(__FILE__) . '/../vendor/autoload.php';
 
 define('AppDir',dirname(__DIR__) . '/');
-define('DisDir',$this_dir);
-var_dump(AppDir);
+define('DisDir',$this_dir . '/');
+
 
 class Bootstrap
 {
@@ -19,8 +19,8 @@ class Bootstrap
   const APP_DIR = AppDir;
   const TEMPLATE_DIR = self::APP_DIR . 'templates/' . DisDir . '/';
   const CACHE_DIR = self::APP_DIR . 'templates_c/' . DisDir . '/';
-  const APP_URL = 'http://localhost:8888';
-  const ENTRY_URL = self::APP_URL . DisDir . '/';
+  const APP_URL = 'http://localhost:8888/';
+  const ENTRY_URL = self::APP_URL . DisDir;
 
   public static function loadClass($class)
   {
@@ -30,6 +30,6 @@ class Bootstrap
 }
 
 spl_autoload_register([
-  basename(__DIR__) . '\Bootstrap',
+  basename(__DIR__). '\Bootstrap',
   'loadClass'
 ]);
