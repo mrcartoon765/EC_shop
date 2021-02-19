@@ -13,6 +13,7 @@ $twig = new \Twig_Environment($loader, [
 ]);
 
 $db = new Database(Bootstrap::DB_HOST, Bootstrap::DB_USER, Bootstrap::DB_PASS, Bootstrap::DB_NAME);
+// new \PDO(Bootstrap::DB_TYPE.':dbname='. Bootstrap::DB_NAME .';host='. Bootstrap::DB_HOST, Bootstrap::DB_USER, Bootstrap::DB_PASS);
 
 $common = new Common();
 if (isset($_POST['confirm']) === true) {
@@ -56,7 +57,7 @@ switch ($mode) {
         $column = '';
         $insData = '';
 
-        // $dataArr['password'] = hash("sha256", $dataArr['password']);
+        $dataArr['password'] = hash("sha3-512", $dataArr['password']);
 
         foreach ($dataArr as $key => $value) {
           $column .= $key . ', ';

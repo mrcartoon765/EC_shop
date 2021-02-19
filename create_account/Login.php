@@ -1,27 +1,41 @@
 <?php
 
 namespace config;
-
 $this_dir = basename(__DIR__);
-require_once dirname(__DIR__) . '/config/Bootstrap.class.php';
+require_once dirname(__FILE__) . '/../config/Bootstrap.class.php';
+use create_account\lib\Common;
 
-$loader = new \Twig_Loader_Filesystem(Bootstrap::TEMPLATE_DIR);
-$twig = new \Twig_Environment($loader, ['cache' => Bootstrap::CACHE_DIR]);
+session_start();
 
-function h($s){
-  return htmlspecialchars($s, ENT_QUOTES, 'utf-8');
+// "Bootstrap::DB_TYPE.":dbname=".Bootstrap::DB_NAME";host=".Bootstrap::DB_HOST";
+
+try {
+  $pdo = new \PDO(Bootstrap::DB_TYPE.':dbname='. Bootstrap::DB_NAME .';host='. Bootstrap::DB_HOST, Bootstrap::DB_USER, Bootstrap::DB_PASS);
+  $stmt = $pdo->prepare('SELECT * FROM Customer where mail = ?');
+  $stmt->execute([$_POST['mail']]);
+  $row = $stmt->fetch(\PDO::FETCH_ASSOC);
+} catch (\Exception $e) {
+  echo $e->getMessage() . PHP_EOL;
+}
+echo "<pre>";
+var_dump($_POST);
+var_dump($stmt);
+var_dump($row['mail']);
+echo "</pre>";
+
+if (!isset($row['mail'])) {
+  echo 'メールアドレスまたはパスワードが間違っています。';
+  return false;
 }
 
-// session_start();
+// hash("sha3-512", $dataArr['password']);
 
-if (isset($_SESSION['EMAIL'])) {
-  echo 'ようこそ' . h($_SESSION['EMAIL']) . "さん<br>";
-  echo "<a href='/logout.php'>ログアウト</a>";
-  exit;
+if ($_POST['password'] === $row['password']) {
+// if (password_verify($_POST['password'], $row['password'])) {
+  session_regenerate_id(tru);
+  $_SESSION['MAIL'] = $row['mail'];
+  echo 'ログインしました';
+} else {
+  echo 'メールアドレスまたはパスワードが間違っています。';
+  return false;
 }
-
-$context = [];
-$filename = basename(__FILE__,'.php');
-$template = $twig->loadTemplate($filename . '.html.twig');
-$template->display($context);
-

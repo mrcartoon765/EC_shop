@@ -12,10 +12,10 @@ function h($s){
   return htmlspecialchars($s, ENT_QUOTES, 'utf-8');
 }
 
-// session_start();
+session_start();
 
-if (isset($_SESSION['EMAIL'])) {
-  echo 'ようこそ' . h($_SESSION['EMAIL']) . "さん<br>";
+if (isset($_SESSION['MAIL'])) {
+  echo 'ようこそ' . h($_SESSION['MAIL']) . "さん<br>";
   echo "<a href='/logout.php'>ログアウト</a>";
   exit;
 }
@@ -24,4 +24,3 @@ $context = [];
 $filename = basename(__FILE__,'.php');
 $template = $twig->loadTemplate($filename . '.html.twig');
 $template->display($context);
-

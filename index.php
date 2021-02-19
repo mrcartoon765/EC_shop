@@ -2,7 +2,7 @@
 
 echo 'トップページ';
 echo "<br>";
-print '<a href="./create_account/Login.php">ログイン</a>';
+print '<a href="./create_account/index.php">ログイン</a>';
 echo "<br>";
 print '<a href="./shopping/Booklist.php">本一覧</a>';
 echo "<br>";
