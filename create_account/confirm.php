@@ -57,7 +57,7 @@ switch ($mode) {
         $column = '';
         $insData = '';
 
-        $dataArr['password'] = hash("sha3-512", $dataArr['password']);
+        $dataArr['password'] = password_hash($dataArr['password'],PASSWORD_DEFAULT);
 
         foreach ($dataArr as $key => $value) {
           $column .= $key . ', ';

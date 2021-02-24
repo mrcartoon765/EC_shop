@@ -16,7 +16,7 @@ session_start();
 
 if (isset($_SESSION['MAIL'])) {
   echo 'ようこそ' . h($_SESSION['MAIL']) . "さん<br>";
-  echo "<a href='/logout.php'>ログアウト</a>";
+  echo "<a href= logout.php>ログアウト</a>";
   exit;
 }
 

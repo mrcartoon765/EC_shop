@@ -7,8 +7,6 @@ use create_account\lib\Common;
 
 session_start();
 
-// "Bootstrap::DB_TYPE.":dbname=".Bootstrap::DB_NAME";host=".Bootstrap::DB_HOST";
-
 try {
   $pdo = new \PDO(Bootstrap::DB_TYPE.':dbname='. Bootstrap::DB_NAME .';host='. Bootstrap::DB_HOST, Bootstrap::DB_USER, Bootstrap::DB_PASS);
   $stmt = $pdo->prepare('SELECT * FROM Customer where mail = ?');
@@ -17,25 +15,19 @@ try {
 } catch (\Exception $e) {
   echo $e->getMessage() . PHP_EOL;
 }
-echo "<pre>";
-var_dump($_POST);
-var_dump($stmt);
-var_dump($row['mail']);
-echo "</pre>";
 
 if (!isset($row['mail'])) {
-  echo 'メールアドレスまたはパスワードが間違っています。';
+  echo 'メールアドレスまたはパスワードが間違っています1。';
   return false;
 }
 
-// hash("sha3-512", $dataArr['password']);
-
-if ($_POST['password'] === $row['password']) {
-// if (password_verify($_POST['password'], $row['password'])) {
-  session_regenerate_id(tru);
+if (password_verify($_POST['password'], $row['password'])) {
+  session_regenerate_id(true);
   $_SESSION['MAIL'] = $row['mail'];
   echo 'ログインしました';
 } else {
-  echo 'メールアドレスまたはパスワードが間違っています。';
+  echo 'メールアドレスまたはパスワードが間違っています2。';
   return false;
 }
+echo "<a href= Bootstrap::APP_URL >トップへ戻る</a>";
+echo "<a href= logout.php>ログアウト</a>";

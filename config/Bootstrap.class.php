@@ -21,6 +21,7 @@ class Bootstrap
   const CACHE_DIR = self::APP_DIR . 'templates_c/' . DisDir . '/';
   const APP_URL = 'http://localhost:8888/';
   const ENTRY_URL = self::APP_URL . DisDir;
+  const CREATE_ACCOUNT = self::APP_URL . '/create_account/regist.php';
 
   public static function loadClass($class)
   {

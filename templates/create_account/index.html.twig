@@ -2,27 +2,23 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta http-equiv="X-UA-Compatible">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ログイン</title>
 </head>
 <body>
-  <h1>ようこそ、ログインしてください</h1>
+  <a href="{{ constant('config\\Bootstrap::APP_URL') }}">トップページへ</a>
+  <h1>ショッピングの利用をされる方はログインしてください</h1>
   <form action="login.php" method="post">
-  <label for="mail">mail</label>
-  <input type="mail" name="mail">
-  <label for="password">password</label>
-  <input type="password" name="password">
-  <button type="submit">Sign In!</button>
+  <label for="mail">メールアドレス：</label>
+  <input type="mail" name="mail"><br><br>
+  <label for="password">パスワード：</label>
+  <input type="password" name="password"><br><br>
+  <button type="submit">サインイン</button>
   </form>
-  <h1>初めての方はこちら</h1>
-  <form action="signUp.php" method="post">
-    <label for="mail">mail</label>
-    <input type="mail" name="mail">mail
-    <label for="password">password</label>
-    <input type="password" name="password">
-    <button type="submit">Sign Up!</button>
-    <p>パスワードは半角英数字をそれぞれ1文字以上含んだ、8文字以上で設定してください。</p>
+  <h1>初めての方は<a href="{{ constant('config\\Bootstrap::CREATE_ACCOUNT') }}" >こちら</a></h1>
+
+
   </form>
  </body>
 </html>
