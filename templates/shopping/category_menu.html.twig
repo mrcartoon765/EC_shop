@@ -1,8 +1,8 @@
 <div id="category">
 <ul>
-<li><a href="{{constant('shopping\\Bootstrap::ENTRY_URL')}}Booklist.php">全て</a></li>
+<li><a href="{{constant('config\\Bootstrap::ENTRY_URL')}}Booklist.php">全て</a></li>
 {% for value in cateArr %}
-<li><a href="{{ constant('shopping\\Bootstrap::ENTRY_URL')}} list.php?Book_id={{ value.ctg_id }}">{{ value.category_name }}</a></li>
+<li><a href="{{ constant('config\\Bootstrap::ENTRY_URL')}} list.php?Book_id={{ value.ctg_id }}">{{ value.category_name }}</a></li>
 {% endfor %}
 </ul>
 </div>

@@ -1,7 +1,8 @@
 <?php 
 
 namespace shopping\lib;
-class Session
+use config;
+class shopping_Session
 {
   public $session_key = '';
   public $db = NULL;

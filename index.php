@@ -1,5 +1,13 @@
 <?php
 
+namespace config;
+
+$this_dir = basename(__DIR__);
+require_once dirname(__FILE__) . '/config/Bootstrap.class.php';
+
+$loader = new \Twig_Loader_Filesystem($tempdir);
+$twig = new \Twig_Environment($loader, ['cache' => Bootstrap::CACHE_DIR]);
+
 echo 'トップページ';
 echo "<br>";
 print '<a href="./create_account/index.php">ログイン</a>';
@@ -19,3 +27,8 @@ function h($s){
    echo "<a href='/logout.php'>ログアウト</a>";
    exit;
  }
+
+$context = [];
+$filename = basename(__FILE__,'.php');
+$template = $twig->loadTemplate($filename . '.html.twig');
+$template->display($context);

@@ -5,7 +5,7 @@ namespace config;
 $this_dir = basename(__DIR__);
 require_once dirname(__DIR__) . '/config/Bootstrap.class.php';
 
-$loader = new \Twig_Loader_Filesystem(Bootstrap::TEMPLATE_DIR);
+$loader = new \Twig_Loader_Filesystem($tempdir);
 $twig = new \Twig_Environment($loader, ['cache' => Bootstrap::CACHE_DIR]);
 
 function h($s){

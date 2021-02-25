@@ -1,18 +1,17 @@
 <?php
 
 namespace config;
+
+use shopping\lib\Book;
+use shopping\lib\shopping_Session;
+
 $this_dir = basename(__DIR__);
 require_once dirname(__FILE__) . './../config/Bootstrap.class.php';
-use config;
-use shopping\Bootstrap;
-use shopping\lib\PDODatabase;
-use shopping\lib\Session;
-use shopping\lib\Book;
-$db = new PDODatabase(Bootstrap::DB_HOST, Bootstrap::DB_USER, Bootstrap::DB_PASS, Bootstrap::DB_NAME, Bootstrap::DB_TYPE);
-$ses = new Session($db);
+$db = new Book_Database(Bootstrap::DB_HOST, Bootstrap::DB_USER, Bootstrap::DB_PASS, Bootstrap::DB_NAME, Bootstrap::DB_TYPE);
+$ses = new shopping_Session($db);
 $book = new Book($db);
 
-$loader = new \Twig_Loader_Filesystem((Bootstrap::TEMPLATE_DIR));
+$loader = new \Twig_Loader_Filesystem($tempdir);
 $twig = new \Twig_Environment($loader, ['cache' => Bootstrap::CACHE_DIR]);
 
 $ses->checkSession();

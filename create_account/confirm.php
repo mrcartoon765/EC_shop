@@ -4,15 +4,13 @@ namespace config;
 $this_dir = basename(__DIR__);
 require_once dirname(__FILE__) . '/../config/Bootstrap.class.php';
 use create_account\master\initMaster;
-use create_account\lib\Database;
 use create_account\lib\Common;
 
-$loader = new \Twig_Loader_Filesystem(Bootstrap::TEMPLATE_DIR);
-$twig = new \Twig_Environment($loader, [
-  'cache' => Bootstrap::CACHE_DIR
-]);
+$loader = new \Twig_Loader_Filesystem(
+  $this_dir !== portforio ? Bootstrap::TEMPLATE_DIR : NULL);
+$twig = new \Twig_Environment($loader, ['cache' => Bootstrap::CACHE_DIR]);
 
-$db = new Database(Bootstrap::DB_HOST, Bootstrap::DB_USER, Bootstrap::DB_PASS, Bootstrap::DB_NAME);
+$db = new account_DB(Bootstrap::DB_HOST, Bootstrap::DB_USER, Bootstrap::DB_PASS, Bootstrap::DB_NAME);
 // new \PDO(Bootstrap::DB_TYPE.':dbname='. Bootstrap::DB_NAME .';host='. Bootstrap::DB_HOST, Bootstrap::DB_USER, Bootstrap::DB_PASS);
 
 $common = new Common();

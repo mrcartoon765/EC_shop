@@ -7,7 +7,7 @@
 </head>
 <body>
 
-<a href="{{ constant('shopping\\Bootstrap::APP_URL') }}" >トップページへ</a>
+<a href="{{ constant('config\\Bootstrap::APP_URL') }}" >トップページへ</a>
 
 <div id="wrapper">
 {% include 'category_menu.html.twig' %}
@@ -16,14 +16,14 @@
 <div class="Book"></div>
 <ul>
 
-<li class="title"><a href="{{ constant('shopping\\Bootstrap::ENTRY_URL')}}detail.php?Book_id= {{value.book_id}} ">{{ value.title }}</a></a></li>
+<li class="title"><a href="{{ constant('config\\Bootstrap::ENTRY_URL')}}detail.php?Book_id={{value.book_id}} ">{{ value.title }}</a></a></li>
 
 <li class="price">&yen;{{ value.price|number_format(0, '.', ',') }}</li>
 
 <li class="image">
-<a href="{{ constant('shopping\\Bootstrap::ENTRY_URL') }}detail.php?Book_id={{ value.book_id }}">
+<a href="{{ constant('config\\Bootstrap::ENTRY_URL') }}detail.php?Book_id={{ value.book_id }}">
 
-<img src="{{ constant('shopping\\Bootstrap::ENTRY_URL') }}image/{{ value.image }}" alt="{{ value.title }}"></a></li>
+<img src="{{ constant('config\\Bootstrap::ENTRY_URL') }}image/{{ value.image }}" alt="{{ value.title }}"></a></li>
 
 </ul>
 </div>
@@ -31,6 +31,6 @@
 </div>
 </div>
 
-<a href="{{ constant('shopping\\Bootstrap::APP_URL') }}" >トップページへ</a></li>
+<a href="{{ constant('config\\Bootstrap::APP_URL') }}" >トップページへ</a></li>
 </body>
 </html>

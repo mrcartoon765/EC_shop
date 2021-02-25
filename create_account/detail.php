@@ -3,17 +3,17 @@
 namespace create_account;
 
 require_once dirname(__FILE__) . '/Bootstrap.class.php';
-use create_account\Bootstrap;
+
+use config\account_DB;
+use config\Bootstrap;
 use create_account\master\initMaster;
 use create_account\lib\Database;
 use create_account\lib\Common;
 
-$loader = new \Twig_Loader_Filesystem(Bootstrap::TEMPLATE_DIR);
-$twig = new \Twig_Environment($loader, array(
-  'cache' => Bootstrap::CACHE_DIR
-));
+$loader = new \Twig_Loader_Filesystem($tempdir);
+$twig = new \Twig_Environment($loader, ['cache' => Bootstrap::CACHE_DIR]);
 
-$db = new Database(Bootstrap::DB_HOST, Bootstrap::DB_USER, Bootstrap::DB_PASS, Bootstrap::DB_NAME);
+$db = new account_DB(Bootstrap::DB_HOST, Bootstrap::DB_USER, Bootstrap::DB_PASS, Bootstrap::DB_NAME);
 $initMaster = new initMaster();
 
 ini_set("display_errors", 1);

@@ -1,21 +1,16 @@
 <?php
 
-// namespace create_account;
-// use create_account\master;
-// use create_account\lib\Common;
-use config;
+namespace config;
 $this_dir = basename(__DIR__);
 require_once dirname(__FILE__) . '/../config/Bootstrap.class.php';
 use config\Bootstrap;
 use create_account\lib\Database;
 
 
-$loader = new \Twig_Loader_Filesystem(Bootstrap::TEMPLATE_DIR);
-$twig = new \Twig_Environment($loader, [
- 'cache' => Bootstrap
-]);
+$loaader = new \Twig_Loader_Filesystem($tempdir);
+$twig = new \Twig_Environment($loader, ['cache' => Bootstrap::CACHE_DIR]);
 
-$db = new Database(Bootstrap::DB_HOST, Bootstrap::DB_USER, Bootstrap::DB_PASS, Bootstrap::DB_NAME);
+$db = new account_DB(Bootstrap::DB_HOST, Bootstrap::DB_USER, Bootstrap::DB_PASS, Bootstrap::DB_NAME);
 $query = " SELECT "
 . "    id, "
 . "    mail, "
