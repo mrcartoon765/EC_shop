@@ -2,7 +2,9 @@
 
 namespace config;
 $this_dir = basename(__DIR__);
-require_once dirname(__FILE__) . '/../config/Bootstrap.class.php';
+$this_dir !== "portforio" ?
+require_once strstr(__FILE__, $this_dir,true) . 'config/Bootstrap.class.php'
+: require_once dirname(__FILE__) . '/config/Bootstrap.class.php';
 
 $loader = new \Twig_Loader_Filesystem($tempdir);
 $twig = new \Twig_Environment($loader, ['cache' => Bootstrap::CACHE_DIR]);
@@ -20,12 +22,12 @@ try {
 $err_msg = [];
 
 if (!isset($row['mail'])) {
-  $err_msg[] = 'メールアドレスまたはパスワードが間違っています1。';
-  echo $err_msg[0];
+  echo 'メールアドレスまたはパスワードが間違っています1。';
   echo nl2br("<a href= index.php>再度ログイン</a>");
   return false;
   header('Location:'.Bootstrap::APP_URL.'/create_account/login.php');
-}
+  header('Location: login.php');
+  exit;
 }
 
 if (password_verify($_POST['password'], $row['password'])) {
@@ -33,15 +35,14 @@ if (password_verify($_POST['password'], $row['password'])) {
   $_SESSION['MAIL'] = $row['mail'];
   echo "ログインしました\n\n";
 } else {
-  $err_msg[]= 'メールアドレスまたはパスワードが間違っています2。';
-  header('Location: login.php');
-  echo $err_msg[2];
+  echo 'パスワードが間違っています。';
   echo "<a href= index.php>再度ログイン</a>";
   return false;
+  header('Location: login.php');
+  exit;
 }
 
 $context = [];
 $filename = basename(__FILE__,'.php');
 $template = $twig->loadTemplate($filename . '.html.twig');
 $template->display($context);
-

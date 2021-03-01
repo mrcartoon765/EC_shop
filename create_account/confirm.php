@@ -2,7 +2,9 @@
 
 namespace config;
 $this_dir = basename(__DIR__);
-require_once dirname(__FILE__) . '/../config/Bootstrap.class.php';
+$this_dir === "portforio" ?
+require_once dirname(__FILE__) .'/config/Bootstrap.class.php':
+require_once strstr(__FILE__, $this_dir,true) . 'config/Bootstrap.class.php';
 use create_account\master\initMaster;
 use create_account\lib\Common;
 

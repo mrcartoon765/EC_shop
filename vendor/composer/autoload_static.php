@@ -4,9 +4,10 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit6e0c803394987e1c671b42e3174c6775
+class ComposerStaticInit422a291d4c8c5b8e35c7ab74a4a9d992
 {
     public static $files = array (
+        '0e6d7bf4a5811bfa5cf40c5ccd6fae6a' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/bootstrap.php',
         '320cde22f66dd4f5d3fd621d3e88b98f' => __DIR__ . '/..' . '/symfony/polyfill-ctype/bootstrap.php',
     );
 
@@ -17,6 +18,7 @@ class ComposerStaticInit6e0c803394987e1c671b42e3174c6775
         ),
         'S' => 
         array (
+            'Symfony\\Polyfill\\Mbstring\\' => 26,
             'Symfony\\Polyfill\\Ctype\\' => 23,
         ),
     );
@@ -25,6 +27,10 @@ class ComposerStaticInit6e0c803394987e1c671b42e3174c6775
         'Twig\\' => 
         array (
             0 => __DIR__ . '/..' . '/twig/twig/src',
+        ),
+        'Symfony\\Polyfill\\Mbstring\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/symfony/polyfill-mbstring',
         ),
         'Symfony\\Polyfill\\Ctype\\' => 
         array (
@@ -49,10 +55,10 @@ class ComposerStaticInit6e0c803394987e1c671b42e3174c6775
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInit6e0c803394987e1c671b42e3174c6775::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInit6e0c803394987e1c671b42e3174c6775::$prefixDirsPsr4;
-            $loader->prefixesPsr0 = ComposerStaticInit6e0c803394987e1c671b42e3174c6775::$prefixesPsr0;
-            $loader->classMap = ComposerStaticInit6e0c803394987e1c671b42e3174c6775::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInit422a291d4c8c5b8e35c7ab74a4a9d992::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit422a291d4c8c5b8e35c7ab74a4a9d992::$prefixDirsPsr4;
+            $loader->prefixesPsr0 = ComposerStaticInit422a291d4c8c5b8e35c7ab74a4a9d992::$prefixesPsr0;
+            $loader->classMap = ComposerStaticInit422a291d4c8c5b8e35c7ab74a4a9d992::$classMap;
 
         }, null, ClassLoader::class);
     }

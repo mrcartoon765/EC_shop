@@ -1,9 +1,13 @@
 <?php
 namespace config;
 $this_dir = basename(__DIR__);
-require_once dirname(__FILE__) . './../config/Bootstrap.class.php';
-use shopping\lib\PDODatabase;
-use shopping\lib\Session;
+$this_dir === "portforio" ?
+require_once dirname(__FILE__) .'/config/Bootstrap.class.php'
+:
+require_once strstr(__FILE__, $this_dir,true) . 'config/Bootstrap.class.php';
+
+use config\Bootstrap;
+use config\Book_Database;
 use shopping\lib\Cart;
 use shopping\lib\shopping_Session;
 
@@ -16,7 +20,7 @@ $twig = new \Twig_Environment($loader, ['cache' => Bootstrap::CACHE_DIR]);
 
 $ses->checkSession();
 $customer_no = $_SESSION['customer_no'];
-$item_id = (isset($_GET['book_id']) === true && preg_match('/^\d+$/', $_GET[crt_id]) === 1) ? $_GET['book_id'] : '';
+$book_id = (isset($_GET['book_id']) === true && preg_match('/^\d+$/', $_GET[crt_id]) === 1) ? $_GET['book_id'] : '';
 $crt_id = (isset($_GET['crt_id']) === true && preg_match('/^\d+$/', $_GET['crt_id']) === 1) ? $_GET['crt_id'] : '';
 if ($book_id !== '') {
   $res = $cart->insCartData($customer_no, $book_id);

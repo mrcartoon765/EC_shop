@@ -6,7 +6,18 @@ use shopping\lib\Book;
 use shopping\lib\shopping_Session;
 
 $this_dir = basename(__DIR__);
-require_once dirname(__FILE__) . './../config/Bootstrap.class.php';
+
+var_dump($this_dir);
+
+$this_dir === "portforio" ?
+require_once dirname(__FILE__) .'/config/Bootstrap.class.php':
+require_once strstr(__FILE__, $this_dir,true) . 'config/Bootstrap.class.php';
+
+// require_once strstr(__FILE__, $this_dir, true) . 'config/Bootstrap.class.php';
+
+
+
+
 $db = new Book_Database(Bootstrap::DB_HOST, Bootstrap::DB_USER, Bootstrap::DB_PASS, Bootstrap::DB_NAME, Bootstrap::DB_TYPE);
 $ses = new shopping_Session($db);
 $book = new Book($db);
@@ -19,8 +30,6 @@ $ctg_id = (isset($_GET['ctg_id']) === true && preg_match('/^[0-9]+$/', $_GET['ct
 
 $cateArr = $book->getCategoryList();
 
-echo "DBからデータ取り出し表示";
-echo "\n\n";
 echo "カートに入れる";
 echo "\n\n";
 echo "イイネ！";

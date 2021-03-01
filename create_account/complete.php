@@ -1,7 +1,10 @@
 <?php 
 
 $this_dir = basename(__DIR__);
-require_once dirname(__FILE__) . '/../config/Bootstrap.class.php';
+$this_dir === "portforio" ?
+require_once dirname(__FILE__) .'/config/Bootstrap.class.php':
+require_once strstr(__FILE__, $this_dir,true) . 'config/Bootstrap.class.php';
+
 use config\Bootstrap;
 
 $loader = new \Twig_Loader_Filesystem($tempdir);
