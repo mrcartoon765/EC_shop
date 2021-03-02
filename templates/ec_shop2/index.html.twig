@@ -8,24 +8,45 @@
   <link rel="icon" href="favicon.ico">
 
 <link href="{{constant('config\\Bootstrap::APP_URL')}}css/style.css?v=2" rel="stylesheet">
+<link href="{{constant('config\\Bootstrap::APP_URL')}}css/responsive.css?v=2" rel="stylesheet">
+
 </head>
+
 <body>
   <header>
   <div class="container">
   <div class="header-logo">
-  <h1><a href="index.html"><img src="../image/square_logo-1024x192.png" id="logo"></a>
-  </h1>
+<h1><a href="{{constant ('config\\Bootstrap::APP_URL') }}"><img src= "{{constant ('config\\Bootstrap::APP_URL') }}/image/square_logo-1024x192.png" id="logo"></a><h1>
+  </div>
 
-  <nav class="menu-left menu">
+  <div class="toggle">
+  <div>
+  <span></span>
+  <span></span>
+  <span></span>
+  </div>
+  </div>
+
+  <nav class="sp-menu menu">
+  <ul>
+  <li><a href="{{constant('config\\Bootstrap::APP_URL')}}index.php#service">サービス</a></li>
+  <li><a href="{{constant('config\\Bootstrap::APP_URL')}}index.php#news">お知らせ</a></li>
+  <li><a href="{{constant('config\\Bootstrap::APP_URL')}}index.php#about">会社概要</a></li>
+    <li><a href="{{constant('config\\Bootstrap::APP_URL')}}index.php#contact">お問合せ</a></li>
+  </ul>
+  </nav>
+
+  <nav class="pc-menu menu-left menu">
   <ul>
   <li><a href="index.php#service">サービス</a></li>
-  <li><a href="index.php#news">お知らせ</a></li>
+  <li><a href="page.php">お知らせ</a></li>
   <li><a href="index.php#about">会社概要</a></li>
+  <li><a href="index.php#contact">お問合せ</a></li>
   </ul>
   </nav>
   </div>
-  </div>
   </header>
+
   <main>
   <div class="top-img">
   <div class="container">
@@ -54,7 +75,7 @@
   </div>
   </div>
   </div>
-  
+
   <div class="wrapper" id="service">
   <div class="container">
   <div class="wrapper-title">
@@ -82,7 +103,7 @@
   </div>
   </div>
 
-  <div class="wrapper last-wrapper" id="about">
+  <div class="wrapper" id="about">
   <div class="container">
   <div class="wrapper-title">
   <h3>ABOUT US</h3>
@@ -113,11 +134,45 @@
   </table>
   </div>
   </div>
+  <div class="wrapper last-wrapper" id="contact">
+  <div class="container">
+  <div class="wrapper-title">
+  <h3>CONTACT</h3>
+  <p>お問い合わせ</p>
+  </div>
+  <form method="POST" action="{{constant('config\\Bootstrap::APP_URL')}}Contact/confirm.php">
+  <div class="form-group">
+  <p>お名前 *</p>
+  <input type="text" name="name">
+  </div>
+  <div class="form-group">
+  <p>Email *</p>
+  <input type="email" name="email">
+  </div>
+  <div class="form-group">
+  <p>お問合せ内容 *</p>
+  <textarea name="text"></textarea>
+  </div>
+  <button type="submit" class="btn btn-submit">内容を確認する</button>
+  </form>
+  </div>
+  </div>
   </main>
+
   <footer>
   <div class="container">
   <p>Copyright @ 2021 EC_BOOK</p>
   </div>
   </footer>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script>
+  $(function(){
+    $('.toggle').click(function(){
+      $("header").toggleClass('open');
+      $(".sp-menu").slideToggle(500);
+    });
+  });
+  </script>
 </body>
 </html>

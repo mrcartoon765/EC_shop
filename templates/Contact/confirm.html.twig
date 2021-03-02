@@ -5,9 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>確認画面 | EC_BOOK</title>
 
-<link rel="stylesheet" href="" href="" n>
-<link rel="stylesheet" href="" hre>
-
   <link rel="icon" href="favicon.ico">
 
 <link href="{{constant('config\\Bootstrap::APP_URL')}}css/style.css?v=2" rel="stylesheet">
@@ -32,19 +29,19 @@
 
   <nav class="sp-menu menu">
   <ul>
-  <li><a href="index.php#service">サービス</a></li>
-  <li><a href="index.php#news">お知らせ</a></li>
-  <li><a href="index.php#about">会社概要</a></li>
-    <li><a href="index.php#contact">お問合せ</a></li>
+  <li><a href="{{constant('config\\Bootstrap::APP_URL')}}index.php#service">サービス</a></li>
+  <li><a href="{{constant('config\\Bootstrap::APP_URL')}}index.php#news">お知らせ</a></li>
+  <li><a href="{{constant('config\\Bootstrap::APP_URL')}}index.php#about">会社概要</a></li>
+    <li><a href="{{constant('config\\Bootstrap::APP_URL')}}index.php#contact">お問合せ</a></li>
   </ul>
   </nav>
 
   <nav class="pc-menu menu-left menu">
   <ul>
-  <li><a href="index.php#service">サービス</a></li>
-  <li><a href="page.php">お知らせ</a></li>
-  <li><a href="index.php#about">会社概要</a></li>
-  <li><a href="index.php#contact">お問合せ</a></li>
+  <li><a href="{{constant('config\\Bootstrap::APP_URL')}}index.php#service">サービス</a></li>
+  <li><a href="{{constant('config\\Bootstrap::APP_URL')}}index.php#news">お知らせ</a></li>
+  <li><a href="{{constant('config\\Bootstrap::APP_URL')}}index.php#about">会社概要</a></li>
+    <li><a href="{{constant('config\\Bootstrap::APP_URL')}}index.php#contact">お問合せ</a></li>
   </ul>
   </nav>
   </div>
@@ -57,33 +54,36 @@
   <h3>CONFIRM</h3>
   <p>お問い合わせ内容確認</p>
   </div>
-p
-  <input type="text">
 
-  <form class"conf-form">
+  <form method="POST" action="{{constant('config\\Bootstrap::APP_URL')}}Contact/send.php" class="conf-form">
   <div class="form-group">
   <p>お名前 *</p>
-  <p>{{ name; ?}}</p>
-  <p>{% if ( name==''):? %}
+  <p>{{ name }}</p>
+  <input type="hidden" name="name" value="{{ name }}" >
+  {% if ( name == '') %}
   <p class="error">名前が入力されていません</p>
   {% endif %}</p>
   </div>
 
   <div class="form-group">
   <p>Email *</p>
-  <p>{% if ( email=='') %}
+    <p>{{ email }}</p>
+  <input type="hidden" name="email" value="{{ email }}" >
+  {% if ( email == '') %}
   <p class="error">メールアドレスが入力されていません</p>
   {% endif %}</p>
   </div>
 
   <div class="form-group">
   <p>お問い合わせ内容 *</p>
-  <p>{% if ( text=='') %}
-  <p class="error">メールアドレスが入力されていません</p>
+    <p>{{ text }}</p>
+    <input type="hidden" name="text" value="{{ text }}" >
+  {% if ( text == '') %}
+  <p class="error">お問い合わせ内容が入力されていません</p>
   {% endif %}</p>
   </div>
 
-  {% if name!='' and email!='' and text!='' %}
+  {% if 'name' != '' and 'email' !='' and 'text' !='' %}
   <p>この内容で送信してよろしいですか？</p>
   <button type="submit" class="btn btn-submit">送信する</button>
   {% else %}

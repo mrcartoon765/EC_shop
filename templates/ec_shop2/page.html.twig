@@ -8,19 +8,23 @@
   <link rel="icon" href="favicon.ico">
 
   <link href="{{constant('config\\Bootstrap::APP_URL')}}css/style.css?v=2" rel="stylesheet">
+  <link href="{{constant('config\\Bootstrap::APP_URL')}}css/responsive.css?v=2" rel="stylesheet">
 </head>
 <body>
   <header>
   <div class="container">
   <div class="header-logo">
-  <h1><a href="index.html"><img src="./image/square_logo-1024x192.png" id="logo"></a></h1>
+<h1><a href="{{constant ('config\\Bootstrap::APP_URL') }}"><img src= "{{constant ('config\\Bootstrap::APP_URL') }}/image/square_logo-1024x192.png" id="logo"></a><h1>
   </div>
+
+  
 
   <nav class="menu-left menu">
   <ul>
-  <li><a href="index.php#service">サービス</a></li>
-  <li><a href="index.php#news">お知らせ</a></li>
-  <li><a href="index.php#about">会社概要</a></li>
+  <li><a href="{{constant('config\\Bootstrap::APP_URL')}}index.php#service">サービス</a></li>
+  <li><a href="{{constant('config\\Bootstrap::APP_URL')}}index.php#news">お知らせ</a></li>
+  <li><a href="{{constant('config\\Bootstrap::APP_URL')}}index.php#about">会社概要</a></li>
+    <li><a href="{{constant('config\\Bootstrap::APP_URL')}}index.php#contact">お問合せ</a></li>
   </ul>
   </nav>
   </div>
