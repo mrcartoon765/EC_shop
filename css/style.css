@@ -76,13 +76,12 @@ h4 {
 .wrapper-body{
     text-align: center;
 }
-        
+
 .news-list,
 form {
     width: 80%;
     margin: 0 auto;
 }
-        
 .btn-submit {
     background-color: #4c586f;
     color: #fff;
@@ -92,15 +91,13 @@ form {
     border: 1px solid #3e3e3b;
     color: #3e3e3b;
 }
-    
-        
 
 /* header */
 header {
     height: 60px;
     background-color: #4c586f;
     position: fixed;
-    z-index: 1; 
+    z-index: 1;
     width: 100%;
 }
 
@@ -137,7 +134,7 @@ header {
 /* top-img */
 .top-img {
     height: 600px;
-    background-image: url("img/bg.png");
+    background-image: url("../image/bg-1024x666.png");
     background-size: cover;
     background-position: center;
     position: relative;
@@ -201,31 +198,25 @@ header {
 form  {
     text-align: center;
 }
-    
 .form-group {
     margin-bottom: 20px;
     text-align: left;
 }
-    
 input,
 textarea {
     width: 100%;
     border: 1px solid #ebeced;
 }
-    
     input {
         height: 25px;
     }
-    
     textarea {
         height: 200px;
     }
-    
 .error {
     font-size: 12px;
     color: #d84950;
 }
-    
 
 /* footer */
 footer {
@@ -244,7 +235,6 @@ footer {
     border-bottom: 1px solid #ddd;
     padding: 20px 0 10px;
 }
-    
 .page-text {
     padding: 20px 0 80px;
 }
@@ -260,7 +250,31 @@ footer {
     background-color: #ebeced;
     padding: 80px 0;
 }
-    
     .thanks h4 {
         margin-bottom: 10px;
+    }
+
+/* breadcrumb */
+    .breadcrumbs {
+        padding-top: 60px;
+        background-color: #ebeced;
+    }
+    .breadcrumbs ul {
+        padding: 10px 0;
+    }
+    .breadcrumbs li {
+        display: inline;
+        font-size: 13px;
+    }
+    .breadcrumbs li a{
+        color: #4c586f;
+        font-size: 13px;
+    }
+    .breadcrumbs ul li::before{
+        padding: 0 10px 0 0;
+        font-family: "Font Awesome 5 free";
+        font-weight: 900;
+        content: "\f105";
+        font-size: 14px;
+        color: #3e3e3b;
     }

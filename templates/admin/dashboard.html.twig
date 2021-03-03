@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-13xxxxxxxxx"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'UA-13xxxxxxxxx');
+    </script>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>ダッシュボード</title>
+
+    <link rel="icon" href="favicon.ico">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css"
+        integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+        <link href="{{constant('config\\Bootstrap::APP_URL')}}css/admin/styles.css" rel="stylesheet">
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <div class="header-logo">
+                <h1><a href="{{constant('config\\Bootstrap::APP_URL')}}admin/dashboard.php">管理画面</a></h1>
+            </div>
+
+            <nav class="menu-right menu">
+                <a href="{{constant('config\\Bootstrap::APP_URL')}}index.php">ログアウト</a>
+            </nav>
+        </div>
+    </header>
+    <main>
+        <div class="wrapper">
+            <div class="container">
+                <div class="wrapper-title">
+                    <h3>ダッシュボード</h3>
+                </div>
+                <div class="boxs">
+                    <a href="{{constant('config\\Bootstrap::APP_URL')}}admin/news.php" class="box">
+                        <i class="far fa-newspaper icon"></i><!-- fontawesome利用部分 -->
+                        <p>記事管理</p>
+                    </a>
+
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <div class="container">
+            <p>Copyright @ 2021 EC_BOOK</p>
+        </div>
+    </footer>
+</body>
+
+</html>
