@@ -4,7 +4,9 @@ namespace config;
 
 $this_dir = basename(__DIR__);
 
-$this_dir === "ec_shop2" ?
+$app_name = explode('/',dirname(__FILE__))[4];
+
+$this_dir === $app_name ?
 require_once dirname(__FILE__) .'/config/Bootstrap.class.php':
 require_once strstr(__FILE__, $this_dir,true) . 'config/Bootstrap.class.php';
 
@@ -47,7 +49,7 @@ $text = isset($_POST['text'])? htmlspecialchars($_POST['text'], ENT_QUOTES, 'utf
 
 
   $mail = new PHPMailer(true);
-  $mail->SMTPDebug = 2;
+  $mail->SMTPDebug = 0;
   $mail->isSMTP();
   $mail->Host='smtp.mailtrap.io';
   $mail->SMTPAuth = true;
@@ -64,7 +66,7 @@ $text = isset($_POST['text'])? htmlspecialchars($_POST['text'], ENT_QUOTES, 'utf
   $mail->Body = $mail_body;
 
   $mail2 = new PHPMailer(true);
-  $mail2->SMTPDebug = 2;
+  $mail2->SMTPDebug = 0;
   $mail2->isSMTP();
   $mail2->Host='smtp.mailtrap.io';
   $mail2->SMTPAuth = true;
@@ -85,16 +87,10 @@ try {
     if($mail->send()){
      $result = 'お問い合わせありがとうございました。';
     } else {
-      echo 'ここのえらー１';
       $result = '送信できませんでした。';
-    };
-// }else{
-//   echo 'ここのえらー2';
-//    $result = '送信できませんでした';
-// }
+    }
 
 }catch(Exception $e){
-  echo 'ここのえらー3';
     $result = '送信できませんでした。';
 }
 $context['result'] = $result;

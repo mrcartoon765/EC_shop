@@ -5,12 +5,18 @@ namespace config;
 date_default_timezone_set('Asia/Tokyo');
 require_once dirname(__FILE__) . '/../vendor/autoload.php';
 
+//定数Appdirへルートディレクトリのフルパス設定
 define('AppDir',dirname(__DIR__) . '/');
+//定数DisDirへ読み込み元のディレクトリの設定
 define('DisDir',$this_dir . '/');
-define('AppName', array_slice(explode("/",__DIR__),-2)[1]);
-$tempdir = $this_dir !== 'portforio' ?
+//定数AppNameへアプリケーション名の設定 MAMPの場合は[0] ec2の場合は[4]
+define('AppName', array_slice(explode("/",__DIR__),-2)[0]);
+
+$tempdir = $this_dir !== AppName ?
 $tempdir = Bootstrap::TEMPLATE_DIR:
-NULL;
+Bootstrap::ROOT_TEMP_DIR;
+
+//DB_**** APP_URLに関しては随時変更
 
 class Bootstrap
 {
@@ -21,8 +27,9 @@ class Bootstrap
   const DB_TYPE = 'mysql';
   const APP_NAME = AppName;
   const APP_DIR = AppDir;
-  const TEMPLATE_DIR = self::APP_DIR . 'templates/' . DisDir . '/';
-  const CACHE_DIR = self::APP_DIR . 'templates_c/' . DisDir . '/';
+  const ROOT_TEMP_DIR = self::APP_DIR . 'templates/' . DisDir ;
+  const TEMPLATE_DIR = self::APP_DIR . 'templates/' . DisDir ;
+  const CACHE_DIR = self::APP_DIR . 'templates_c/' . DisDir ;
   const APP_URL = 'http://localhost:8888/';
   const ENTRY_URL = self::APP_URL . DisDir;
   const CREATE_ACCOUNT = self::APP_URL . '/create_account/regist.php';

@@ -12,8 +12,8 @@ use Twig\Sandbox\SecurityNotAllowedFunctionError;
 use Twig\Source;
 use Twig\Template;
 
-/* send.html.twig */
-class __TwigTemplate_f56481f2368b5719bb1b42d4fde3bf98e7340dd3b2c3c4832b0df3d7b55ed65f extends \Twig\Template
+/* confirm.html.twig */
+class __TwigTemplate_a3ddf7b9469e374b1d1601e12a401e7434e8571db06b5b4dc70b956b2c6c6a03 extends \Twig\Template
 {
     private $source;
     private $macros = [];
@@ -39,7 +39,7 @@ class __TwigTemplate_f56481f2368b5719bb1b42d4fde3bf98e7340dd3b2c3c4832b0df3d7b55
   <meta charset=\"UTF-8\">
   <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\">
   <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">
-  <title>お問い合わせ内容送信 | EC_BOOK</title>
+  <title>確認画面 | EC_BOOK</title>
 
   <link rel=\"icon\" href=\"favicon.ico\">
 
@@ -58,12 +58,12 @@ class __TwigTemplate_f56481f2368b5719bb1b42d4fde3bf98e7340dd3b2c3c4832b0df3d7b55
   <header>
   <div class=\"container\">
   <div class=\"header-logo\">
-  <h1><a href=\"";
+<h1><a href=\"";
         // line 19
         echo twig_escape_filter($this->env, twig_constant("config\\Bootstrap::APP_URL"), "html", null, true);
         echo "\"><img src= \"";
         echo twig_escape_filter($this->env, twig_constant("config\\Bootstrap::APP_URL"), "html", null, true);
-        echo "/image/square_logo-1024x192.png\" id=\"logo\"></a></h1>
+        echo "/image/square_logo-1024x192.png\" id=\"logo\"></a><h1>
   </div>
 
   <div class=\"toggle\">
@@ -122,21 +122,91 @@ class __TwigTemplate_f56481f2368b5719bb1b42d4fde3bf98e7340dd3b2c3c4832b0df3d7b55
   <div class=\"wrapper last-wrapper\">
   <div class=\"container\">
   <div class=\"wrapper-title\">
-  <h3>SEND</h3>
-  <p>お問い合わせ送信</p>
+  <h3>CONFIRM</h3>
+  <p>お問い合わせ内容確認</p>
   </div>
-  <div class=\"wrapper-body\">
-  <div class=\"thanks\">
-  <h4>";
-        // line 59
-        echo twig_escape_filter($this->env, ($context["result"] ?? null), "html", null, true);
-        echo "</h4>
-  </div>
-  <button type=\"button\" class=\"btn btn-gray\" onclick=\"location.href=\"";
+
+  <form method=\"POST\" action=\"";
+        // line 58
+        echo twig_escape_filter($this->env, twig_constant("config\\Bootstrap::APP_URL"), "html", null, true);
+        echo "Contact/send.php\" class=\"conf-form\">
+  <div class=\"form-group\">
+  <p>お名前 *</p>
+  <p>";
         // line 61
-        echo twig_escape_filter($this->env, twig_constant("confirm\\Bootstrap::APP_URL"), "html", null, true);
-        echo " >トップページに戻る</button>
+        echo twig_escape_filter($this->env, ($context["name"] ?? null), "html", null, true);
+        echo "</p>
+  <input type=\"hidden\" name=\"name\" value=\"";
+        // line 62
+        echo twig_escape_filter($this->env, ($context["name"] ?? null), "html", null, true);
+        echo "\" >
+  ";
+        // line 63
+        if ((($context["name"] ?? null) == "")) {
+            // line 64
+            echo "  <p class=\"error\">名前が入力されていません</p>
+  ";
+        }
+        // line 65
+        echo "</p>
   </div>
+
+  <div class=\"form-group\">
+  <p>Email *</p>
+    <p>";
+        // line 70
+        echo twig_escape_filter($this->env, ($context["email"] ?? null), "html", null, true);
+        echo "</p>
+  <input type=\"hidden\" name=\"email\" value=\"";
+        // line 71
+        echo twig_escape_filter($this->env, ($context["email"] ?? null), "html", null, true);
+        echo "\" >
+  ";
+        // line 72
+        if ((($context["email"] ?? null) == "")) {
+            // line 73
+            echo "  <p class=\"error\">メールアドレスが入力されていません</p>
+  ";
+        }
+        // line 74
+        echo "</p>
+  </div>
+
+  <div class=\"form-group\">
+  <p>お問い合わせ内容 *</p>
+    <p>";
+        // line 79
+        echo twig_escape_filter($this->env, ($context["text"] ?? null), "html", null, true);
+        echo "</p>
+    <input type=\"hidden\" name=\"text\" value=\"";
+        // line 80
+        echo twig_escape_filter($this->env, ($context["text"] ?? null), "html", null, true);
+        echo "\" >
+  ";
+        // line 81
+        if ((($context["text"] ?? null) == "")) {
+            // line 82
+            echo "  <p class=\"error\">お問い合わせ内容が入力されていません</p>
+  ";
+        }
+        // line 83
+        echo "</p>
+  </div>
+
+  ";
+        // line 86
+        if (((("name" != "") && ("email" != "")) && ("text" != ""))) {
+            // line 87
+            echo "  <p>この内容で送信してよろしいですか？</p>
+  <button type=\"submit\" class=\"btn btn-submit\">送信する</button>
+  ";
+        } else {
+            // line 90
+            echo "    <button class=\"btn btn-reutrn\">戻る</button>
+  ";
+        }
+        // line 92
+        echo "  </form>
   </div>
   </div>
   </main>
@@ -154,6 +224,12 @@ class __TwigTemplate_f56481f2368b5719bb1b42d4fde3bf98e7340dd3b2c3c4832b0df3d7b55
       \$(\"header\").toggleClass('open');
       \$(\".sp-menu\").slideToggle(500);
     });
+
+  \$(\".btn-return\").click(function(){
+    window.history.back(-1);
+    return false;
+  });
+
   });
   </script>
 </body>
@@ -162,7 +238,7 @@ class __TwigTemplate_f56481f2368b5719bb1b42d4fde3bf98e7340dd3b2c3c4832b0df3d7b55
 
     public function getTemplateName()
     {
-        return "send.html.twig";
+        return "confirm.html.twig";
     }
 
     public function isTraitable()
@@ -172,11 +248,11 @@ class __TwigTemplate_f56481f2368b5719bb1b42d4fde3bf98e7340dd3b2c3c4832b0df3d7b55
 
     public function getDebugInfo()
     {
-        return array (  137 => 61,  132 => 59,  114 => 44,  110 => 43,  106 => 42,  102 => 41,  93 => 35,  89 => 34,  85 => 33,  81 => 32,  63 => 19,  52 => 11,  48 => 10,  37 => 1,);
+        return array (  209 => 92,  205 => 90,  200 => 87,  198 => 86,  193 => 83,  189 => 82,  187 => 81,  183 => 80,  179 => 79,  172 => 74,  168 => 73,  166 => 72,  162 => 71,  158 => 70,  151 => 65,  147 => 64,  145 => 63,  141 => 62,  137 => 61,  131 => 58,  114 => 44,  110 => 43,  106 => 42,  102 => 41,  93 => 35,  89 => 34,  85 => 33,  81 => 32,  63 => 19,  52 => 11,  48 => 10,  37 => 1,);
     }
 
     public function getSourceContext()
     {
-        return new Source("", "send.html.twig", "/Applications/MAMP/htdocs/ec_shop2/templates/Contact/send.html.twig");
+        return new Source("", "confirm.html.twig", "/Applications/MAMP/htdocs/EC_shop/templates/Contact/confirm.html.twig");
     }
 }

@@ -2,6 +2,9 @@
 
 namespace config;
 $this_dir = basename(__DIR__);
+
+$app_name = explode('/',dirname(__FILE__))[4];
+
 $this_dir !== "portforio" ?
 require_once strstr(__FILE__, $this_dir,true) . 'config/Bootstrap.class.php'
 : require_once dirname(__FILE__) . '/config/Bootstrap.class.php';
@@ -25,7 +28,7 @@ if (!isset($row['mail'])) {
   echo 'メールアドレスまたはパスワードが間違っています1。';
   echo nl2br("<a href= index.php>再度ログイン</a>");
   return false;
-  header('Location:'.Bootstrap::APP_URL.'/create_account/login.php');
+  header('Location:'.Bootstrap::APP_URL.'create_account/login.php');
   header('Location: login.php');
   exit;
 }

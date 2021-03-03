@@ -12,8 +12,8 @@ use Twig\Sandbox\SecurityNotAllowedFunctionError;
 use Twig\Source;
 use Twig\Template;
 
-/* index.html.twig */
-class __TwigTemplate_237e5a808c660997c5e126cd90af4c012c4f9ad119582025a21c66c72f570b14 extends \Twig\Template
+/* send.html.twig */
+class __TwigTemplate_f4cafc19987a8eff7095351a4bc221b89a3d50aa2d9e4913a531835937f3a9e5 extends \Twig\Template
 {
     private $source;
     private $macros = [];
@@ -39,7 +39,7 @@ class __TwigTemplate_237e5a808c660997c5e126cd90af4c012c4f9ad119582025a21c66c72f5
   <meta charset=\"UTF-8\">
   <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\">
   <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">
-  <title>EC_BOOK</title>
+  <title>お問い合わせ内容送信 | EC_BOOK</title>
 
   <link rel=\"icon\" href=\"favicon.ico\">
 
@@ -58,12 +58,12 @@ class __TwigTemplate_237e5a808c660997c5e126cd90af4c012c4f9ad119582025a21c66c72f5
   <header>
   <div class=\"container\">
   <div class=\"header-logo\">
-<h1><a href=\"";
+  <h1><a href=\"";
         // line 19
         echo twig_escape_filter($this->env, twig_constant("config\\Bootstrap::APP_URL"), "html", null, true);
         echo "\"><img src= \"";
         echo twig_escape_filter($this->env, twig_constant("config\\Bootstrap::APP_URL"), "html", null, true);
-        echo "/image/square_logo-1024x192.png\" id=\"logo\"></a><h1>
+        echo "/image/square_logo-1024x192.png\" id=\"logo\"></a></h1>
   </div>
 
   <div class=\"toggle\">
@@ -97,126 +97,46 @@ class __TwigTemplate_237e5a808c660997c5e126cd90af4c012c4f9ad119582025a21c66c72f5
 
   <nav class=\"pc-menu menu-left menu\">
   <ul>
-  <li><a href=\"index.php#service\">サービス</a></li>
-  <li><a href=\"page.php\">お知らせ</a></li>
-  <li><a href=\"index.php#about\">会社概要</a></li>
-  <li><a href=\"index.php#contact\">お問合せ</a></li>
+  <li><a href=\"";
+        // line 41
+        echo twig_escape_filter($this->env, twig_constant("config\\Bootstrap::APP_URL"), "html", null, true);
+        echo "index.php#service\">サービス</a></li>
+  <li><a href=\"";
+        // line 42
+        echo twig_escape_filter($this->env, twig_constant("config\\Bootstrap::APP_URL"), "html", null, true);
+        echo "index.php#news\">お知らせ</a></li>
+  <li><a href=\"";
+        // line 43
+        echo twig_escape_filter($this->env, twig_constant("config\\Bootstrap::APP_URL"), "html", null, true);
+        echo "index.php#about\">会社概要</a></li>
+    <li><a href=\"";
+        // line 44
+        echo twig_escape_filter($this->env, twig_constant("config\\Bootstrap::APP_URL"), "html", null, true);
+        echo "index.php#contact\">お問合せ</a></li>
   </ul>
   </nav>
   </div>
   </header>
 
   <main>
-  <div class=\"top-img\">
-  <div class=\"container\">
-  <div class=\"top-text\">
-  <h2>THE BEST SERVICE</h2>
-  <h2>TO YOU.</h2>
-  </div>
-  </div>
-  </div>
-
-  <div class=\"wrapper\" id=\"news\">
+  <div class=\"wrapper last-wrapper\">
   <div class=\"container\">
   <div class=\"wrapper-title\">
-  <h3>NEWS</h3>
-  <p>お知らせ</p>
+  <h3>SEND</h3>
+  <p>お問い合わせ送信</p>
   </div>
-  <div class=\"news-list\">
-  <ul>
-  <li>
-  <a href=\"page.html\">リニューアルしました。</a>
-  </li>
-  <li>
-  <a href=\"page.html\">年末年始の営業時間について</a>
-  </li>
-  </ul>
+  <div class=\"wrapper-body\">
+  <div class=\"thanks\">
+  <h4>";
+        // line 59
+        echo twig_escape_filter($this->env, ($context["result"] ?? null), "html", null, true);
+        echo "</h4>
   </div>
+  <button type=\"button\" class=\"btn btn-gray\" onclick=\"location.href=\"";
+        // line 61
+        echo twig_escape_filter($this->env, twig_constant("confirm\\Bootstrap::APP_URL"), "html", null, true);
+        echo " >トップページに戻る</button>
   </div>
-  </div>
-
-  <div class=\"wrapper\" id=\"service\">
-  <div class=\"container\">
-  <div class=\"wrapper-title\">
-  <h3>SERVICE</h3>
-  <p>サービス</p>
-  </div>
-  <div class=\"boxs\">
-  <div class=\"box\">
-  <img src=\"/image/serviceimg-1.jpg\">
-  <h4 class=\"service-title\">ITコンサルティング</h4>
-  </div>
-  <div class=\"box\">
-  <img src=\"/image/serviceimg-2.jpg\">
-  <h4 class=\"service-title\">ソフトウェア開発</h4>
-  </div>
-  <div class=\"box\">
-  <img src=\"/image/serviceimg-3.jpg\">
-  <h4 class=\"service-title\">WEBデザイン</h4>
-  </div>
-  <div class=\"box\">
-  <img src=\"/image/serviceimg-4.jpg\">
-  <h4 class=\"service-title\">動画制作</h4>
-  </div>
-  </div>
-  </div>
-  </div>
-
-  <div class=\"wrapper\" id=\"about\">
-  <div class=\"container\">
-  <div class=\"wrapper-title\">
-  <h3>ABOUT US</h3>
-  <p>会社概要</p>
-  </div>
-  <table class=\"about-table\">
-  <tbody>
-  <tr>
-  <th>会社名</th>
-  <td>BOOK_EC</td>
-  </tr>
-  <tr>
-  <th>代表者名</th>
-  <td>野田　恭彦</td>
-  </tr>
-  <tr>
-  <th>所在地</th>
-  <td>
-  <p>〒　000-9999</p>
-  <p>東京都千代田区丸の内　架空ビル32階</p>
-  </td>
-  </tr>
-  <tr>
-  <th>アクセス</th>
-  <td><iframe src=\"https://goo.gl/maps/w1mmJKtAmsUMLxYE7\" width=\"400\" height=\"300\" frameborder=\"0\" style=\"border:0\" allowfullscreen></iframe></td>
-  </tr>
-  </tbody>
-  </table>
-  </div>
-  </div>
-  <div class=\"wrapper last-wrapper\" id=\"contact\">
-  <div class=\"container\">
-  <div class=\"wrapper-title\">
-  <h3>CONTACT</h3>
-  <p>お問い合わせ</p>
-  </div>
-  <form method=\"POST\" action=\"";
-        // line 143
-        echo twig_escape_filter($this->env, twig_constant("config\\Bootstrap::APP_URL"), "html", null, true);
-        echo "Contact/confirm.php\">
-  <div class=\"form-group\">
-  <p>お名前 *</p>
-  <input type=\"text\" name=\"name\">
-  </div>
-  <div class=\"form-group\">
-  <p>Email *</p>
-  <input type=\"email\" name=\"email\">
-  </div>
-  <div class=\"form-group\">
-  <p>お問合せ内容 *</p>
-  <textarea name=\"text\"></textarea>
-  </div>
-  <button type=\"submit\" class=\"btn btn-submit\">内容を確認する</button>
-  </form>
   </div>
   </div>
   </main>
@@ -242,7 +162,7 @@ class __TwigTemplate_237e5a808c660997c5e126cd90af4c012c4f9ad119582025a21c66c72f5
 
     public function getTemplateName()
     {
-        return "index.html.twig";
+        return "send.html.twig";
     }
 
     public function isTraitable()
@@ -252,11 +172,11 @@ class __TwigTemplate_237e5a808c660997c5e126cd90af4c012c4f9ad119582025a21c66c72f5
 
     public function getDebugInfo()
     {
-        return array (  204 => 143,  93 => 35,  89 => 34,  85 => 33,  81 => 32,  63 => 19,  52 => 11,  48 => 10,  37 => 1,);
+        return array (  137 => 61,  132 => 59,  114 => 44,  110 => 43,  106 => 42,  102 => 41,  93 => 35,  89 => 34,  85 => 33,  81 => 32,  63 => 19,  52 => 11,  48 => 10,  37 => 1,);
     }
 
     public function getSourceContext()
     {
-        return new Source("", "index.html.twig", "/Applications/MAMP/htdocs/ec_shop2/templates/ec_shop2/index.html.twig");
+        return new Source("", "send.html.twig", "/Applications/MAMP/htdocs/EC_shop/templates/Contact/send.html.twig");
     }
 }

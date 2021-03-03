@@ -2,6 +2,9 @@
 
 namespace shopping\lib;
 $this_dir = basename(__DIR__);
+
+$app_name = explode('/',dirname(__FILE__))[4];
+
 use config;
 class Cart
 {
