@@ -14,6 +14,12 @@ $loader = new \Twig_Loader_Filesystem($tempdir);
 
 $twig = new \Twig_Environment($loader, ['cache' => Bootstrap::CACHE_DIR]);
 
+session_start();
+
+  if($_SESSION['admin_login'] == false){
+      header("Location:" . Bootstrap::APP_URL ."/admin/index.php");
+      exit;
+  }
 $context = [];
 $filename = basename(__FILE__,'.php');
 $template = $twig->loadTemplate($filename . '.html.twig');

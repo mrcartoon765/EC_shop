@@ -23,6 +23,8 @@ if ($password == '') {
 }
 
 if ($email=='admin@admin.com'&&$password=='password01') {
+  session_start();
+  $_SESSION["admin_login"] = true;
   header("Location:" . Bootstrap::APP_URL . "admin/dashboard.php");
 } else {
   header("Location:". Bootstrap::APP_URL . "admin/index.php");
