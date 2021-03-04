@@ -12,8 +12,8 @@ use Twig\Sandbox\SecurityNotAllowedFunctionError;
 use Twig\Source;
 use Twig\Template;
 
-/* index.html.twig */
-class __TwigTemplate_63a5d708a9b80b4c7db761ed13f09406250317a2a9a9441e843bb53ca53944e6 extends \Twig\Template
+/* create_news.html.twig */
+class __TwigTemplate_6c5e2ad3c1564f98874c3e3b0a9ca330f3114397e0c22a58f56e62615da5e70b extends \Twig\Template
 {
     private $source;
     private $macros = [];
@@ -38,6 +38,7 @@ class __TwigTemplate_63a5d708a9b80b4c7db761ed13f09406250317a2a9a9441e843bb53ca53
 <html>
 
 <head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src=\"https://www.googletagmanager.com/gtag/js?id=UA-13xxxxxxxxx\"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
@@ -51,40 +52,65 @@ class __TwigTemplate_63a5d708a9b80b4c7db761ed13f09406250317a2a9a9441e843bb53ca53
     <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\">
     <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">
 
-    <title>管理画面ログイン</title>
+    <title>記事投稿</title>
 
     <link rel=\"icon\" href=\"favicon.ico\">
+    <link rel=\"stylesheet\" href=\"https://use.fontawesome.com/releases/v5.8.1/css/all.css\"
+        integrity=\"sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf\" crossorigin=\"anonymous\">
 
+    <!-- css -->
 <link href=\"";
-        // line 22
+        // line 26
         echo twig_escape_filter($this->env, twig_constant("config\\Bootstrap::APP_URL"), "html", null, true);
         echo "css/admin/styles.css?v=2\" rel=\"stylesheet\">
 </head>
 
 <body>
-    <div class=\"login-wrapper\" id=\"login\">
+    <header>
         <div class=\"container\">
-            <div class=\"login\">
-                <div class=\"login-wrapper-title\">
-                    <h3>ログイン</h3>
+            <div class=\"header-logo\">
+                <h1><a href=\"";
+        // line 33
+        echo twig_escape_filter($this->env, twig_constant("config\\Bootstrap::ENTRY_URL"), "html", null, true);
+        echo ".\"dashboard.php\"\">管理画面</a></h1>
+            </div>
+
+            <nav class=\"menu-right menu\">
+                <a href=\"";
+        // line 37
+        echo twig_escape_filter($this->env, twig_constant("config\\Bootstrap::ENTRY_URL"), "html", null, true);
+        echo ".\"logout.php\"\">ログアウト</a>
+            </nav>
+        </div>
+    </header>
+    <main>
+        <div class=\"wrapper\">
+            <div class=\"container\">
+                <div class=\"wrapper-title\">
+                    <h3>新規作成</h3>
                 </div>
-                <form class=\"login-form\" action=\"";
-        // line 32
+                <form class=\"edit-form\" method=\"POST\" action=\"";
+        // line 47
         echo twig_escape_filter($this->env, twig_constant("config\\Bootstrap::APP_URL"), "html", null, true);
-        echo "admin/check.php\" method=\"POST\">
+        echo ".\"store_news.php\"\">
                     <div class=\"form-group\">
-                        <p>メールアドレス</p>
-                        <input type=\"email\" name=\"email\" required>
+                        <p>タイトル</p>
+                        <input type=\"text\" name=\"title\" required>
                     </div>
                     <div class=\"form-group\">
-                        <p>パスワード</p>
-                        <input type=\"password\" name=\"password\" required>
+                        <p>本文</p>
+                        <textarea name=\"content\"></textarea>
                     </div>
-                    <button type=\"submit\" class=\"btn btn-submit\">ログイン</button>
+                    <button type=\"submit\" class=\"btn btn-blue\">公開する</button>
                 </form>
             </div>
         </div>
-    </div>
+    </main>
+    <footer>
+        <div class=\"container\">
+            <p>Copyright @ 2021 BOOK_EC</p>
+        </div>
+    </footer>
 </body>
 
 </html>";
@@ -92,7 +118,7 @@ class __TwigTemplate_63a5d708a9b80b4c7db761ed13f09406250317a2a9a9441e843bb53ca53
 
     public function getTemplateName()
     {
-        return "index.html.twig";
+        return "create_news.html.twig";
     }
 
     public function isTraitable()
@@ -102,11 +128,11 @@ class __TwigTemplate_63a5d708a9b80b4c7db761ed13f09406250317a2a9a9441e843bb53ca53
 
     public function getDebugInfo()
     {
-        return array (  73 => 32,  60 => 22,  37 => 1,);
+        return array (  94 => 47,  81 => 37,  74 => 33,  64 => 26,  37 => 1,);
     }
 
     public function getSourceContext()
     {
-        return new Source("", "index.html.twig", "/Applications/MAMP/htdocs/EC_shop/templates/admin/index.html.twig");
+        return new Source("", "create_news.html.twig", "/Applications/MAMP/htdocs/EC_shop/templates/admin/create_news.html.twig");
     }
 }
