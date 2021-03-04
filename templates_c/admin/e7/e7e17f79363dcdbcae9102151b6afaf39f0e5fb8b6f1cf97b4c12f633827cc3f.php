@@ -77,7 +77,7 @@ class __TwigTemplate_729820658d1c9d4844cd371ffa602d861bc812f0f48a9e59dc5c4af3526
                 <a href=\"";
         // line 35
         echo twig_escape_filter($this->env, twig_constant("config\\Bootstrap::APP_URL"), "html", null, true);
-        echo "index.php\">ログアウト</a>
+        echo "/admin/logout.php\">ログアウト</a>
             </nav>
         </div>
     </header>
