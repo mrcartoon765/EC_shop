@@ -11,6 +11,8 @@ define('AppDir',dirname(__DIR__) . '/');
 define('DisDir',$this_dir . '/');
 //定数AppNameへアプリケーション名の設定 MAMPの場合は[0] ec2の場合は[4]
 define('AppName', array_slice(explode("/",__DIR__),-2)[0]);
+//定数AppUrlへドメイン名を代入
+define('AppUrl', (empty($_SERVER['HTTPS']) ? 'http://' : 'https://') . $_SERVER['HTTP_HOST']);
 
 $tempdir = $this_dir !== AppName ?
 $tempdir = Bootstrap::TEMPLATE_DIR:
@@ -30,7 +32,7 @@ class Bootstrap
   const ROOT_TEMP_DIR = self::APP_DIR . 'templates/' . DisDir ;
   const TEMPLATE_DIR = self::APP_DIR . 'templates/' . DisDir ;
   const CACHE_DIR = self::APP_DIR . 'templates_c/' . DisDir ;
-  const APP_URL = 'http://localhost:8888/';
+  const APP_URL = AppUrl . '/';
   const ENTRY_URL = self::APP_URL . DisDir;
   const CREATE_ACCOUNT = self::APP_URL . '/create_account/regist.php';
 
