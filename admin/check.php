@@ -14,17 +14,17 @@ $email = isset($_POST['email'])? htmlspecialchars($_POST['email'], ENT_QUOTES, '
 $password = isset($_POST['password'])? htmlspecialchars($_POST['password'], ENT_QUOTES, 'utf-8'): '';
 
 if ($email == '') {
-  header("Location:" . Bootstrap::APP_URL . "index.php");
+  header("Location:" . Bootstrap::APP_URL . "admin/index.php");
     exit;
 }
 if ($password == '') {
-  header("Location:" . Bootstrap::APP_URL . "index.php");
+  header("Location:" . Bootstrap::APP_URL . "admin/index.php");
     exit;
 }
 
 if ($email=='admin@admin.com'&&$password=='password01') {
-  header("Location:" . Bootstrap::APP_URL . "dashboard.php");
+  header("Location:" . Bootstrap::APP_URL . "admin/dashboard.php");
 } else {
-  header("Location:". Bootstrap::APP_URL . "index.php");
+  header("Location:". Bootstrap::APP_URL . "admin/index.php");
 exit;
 }
