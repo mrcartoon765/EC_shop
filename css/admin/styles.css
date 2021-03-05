@@ -257,3 +257,19 @@ textarea {
     .edit-form textarea {
         height: 300px;
     }
+    /* news.php */
+.list table{
+    border-collapse: collapse;
+    margin: 20px 0;
+    width: 100%;
+}
+
+    .list th,
+    .list td {
+        border:1px solid #a2aab0;
+        padding: 20px 10px;
+    }
+
+    .list th {
+        background-color: #ebeced;
+    }

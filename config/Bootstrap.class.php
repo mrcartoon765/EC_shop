@@ -2,15 +2,21 @@
 
 namespace config;
 
+use PDO;
+
 date_default_timezone_set('Asia/Tokyo');
 require_once dirname(__FILE__) . '/../vendor/autoload.php';
 
 //定数Appdirへルートディレクトリのフルパス設定
 define('AppDir',dirname(__DIR__) . '/');
-//定数DisDirへ読み込み元のディレクトリの設定
-define('DisDir',$this_dir . '/');
 //定数AppNameへアプリケーションAPP_URL名の設定 MAMPの場合は[0] ec2の場合は[4]
 define('AppName', array_slice(explode("/",__DIR__),-2)[0]);
+//定数ThisDirへ読み込み元のディレクトリの設定
+if  ($this_dir !== AppName){
+define('ThisDir',$this_dir);
+} else {
+  define('ThisDir','');
+}
 //定数AppUrlへドメイン名を代入
 define('AppUrl', (empty($_SERVER['HTTPS']) ? 'http://' : 'https://') . $_SERVER['HTTP_HOST'].'/');
 
@@ -29,12 +35,16 @@ class Bootstrap
   const DB_TYPE = 'mysql';
   const APP_NAME = AppName;
   const APP_DIR = AppDir;
-  const ROOT_TEMP_DIR = self::APP_DIR . 'templates/' . DisDir ;
-  const TEMPLATE_DIR = self::APP_DIR . 'templates/' . DisDir ;
-  const CACHE_DIR = self::APP_DIR . 'templates_c/' . DisDir ;
+  const ROOT_TEMP_DIR = self::APP_DIR . 'templates/' . ThisDir ;
+  const TEMPLATE_DIR = self::APP_DIR . 'templates/' . ThisDir ;
+  const CACHE_DIR = self::APP_DIR . 'templates_c/' . ThisDir ;
   const APP_URL = AppUrl;
-  const ENTRY_URL = self::APP_URL . DisDir;
+  const ENTRY_URL = self::APP_URL . ThisDir;
   const CREATE_ACCOUNT = self::APP_URL . 'create_account/regist.php';
+  const CSS_FILE = self::APP_URL . "/css/" . ThisDir . "/styles.css?v=2";
+  const CSS_RESPONSIVE = self::APP_URL . "/css/" . ThisDir . "responsive.css?v=2" ;
+  const DEFAULT_CSS = self::APP_URL . "/css/styles.css?v=2";
+  const DEFAULT_RESPONSIVE = self::APP_URL . "/css/responsive.css?v=2" ;
 
   public static function loadClass($class)
   {

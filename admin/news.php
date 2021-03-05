@@ -16,12 +16,22 @@ $twig = new \Twig_Environment($loader, ['cache' => Bootstrap::CACHE_DIR]);
 
 session_start();
 
-  if($_SESSION['admin_login'] == false){
-      header("Location:" . Bootstrap::APP_URL ."/admin/index.php");
-      exit;
-  }
+if($_SESSION['admin_login'] == false){
+  header("Location:" . Bootstrap::ENTRY_URL . "/index.php");
+  exit;
+}
 
-$context = [];
+try{
+  $dbh = new \PDO("mysql:host=localhost;dbname=corporate_db","root","root");
+}catch(\PDOException $e){
+  var_dump($e->getMessage());
+  exit;
+}
+$stmt = $dbh->prepare("SELECT * FROM news");
+$stmt->execute();
+$news = $stmt->fetchAll(\PDO::FETCH_ASSOC);
+
+$context['news'] = $news;
 $filename = basename(__FILE__,'.php');
 $template = $twig->loadTemplate($filename . '.html.twig');
 $template->display($context);
