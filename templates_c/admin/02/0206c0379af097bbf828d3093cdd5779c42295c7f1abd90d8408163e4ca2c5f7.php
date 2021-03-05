@@ -38,15 +38,6 @@ class __TwigTemplate_6c5e2ad3c1564f98874c3e3b0a9ca330f3114397e0c22a58f56e62615da
 <html>
 
 <head>
-<!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-DFLEE6WX4R"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-DFLEE6WX4R');
-</script>
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src=\"https://www.googletagmanager.com/gtag/js?id=UA-13xxxxxxxxx\"></script>
     <script>

@@ -23,15 +23,6 @@ details later on:
     <!DOCTYPE html>
     <html>
         <head>
-<!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-DFLEE6WX4R"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-DFLEE6WX4R');
-</script>
             <title>My Webpage</title>
         </head>
         <body>
@@ -353,15 +344,6 @@ document that might be used for a two-column page:
     <!DOCTYPE html>
     <html>
         <head>
-<!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-DFLEE6WX4R"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-DFLEE6WX4R');
-</script>
             {% block head %}
                 <link rel="stylesheet" href="style.css" />
                 <title>{% block title %}{% endblock %} - My Webpage</title>
