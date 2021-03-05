@@ -11,6 +11,15 @@ The ``inline_css`` filter inline CSS styles in HTML documents:
     {% apply inline_css %}
         <html>
             <head>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-DFLEE6WX4R"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-DFLEE6WX4R');
+</script>
                 <style>
                     p { color: red; }
                 </style>

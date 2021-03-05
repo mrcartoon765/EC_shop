@@ -12,8 +12,8 @@ use Twig\Sandbox\SecurityNotAllowedFunctionError;
 use Twig\Source;
 use Twig\Template;
 
-/* create_news.html.twig */
-class __TwigTemplate_6c5e2ad3c1564f98874c3e3b0a9ca330f3114397e0c22a58f56e62615da5e70b extends \Twig\Template
+/* dashboard.html.twig */
+class __TwigTemplate_729820658d1c9d4844cd371ffa602d861bc812f0f48a9e59dc5c4af352678782 extends \Twig\Template
 {
     private $source;
     private $macros = [];
@@ -61,17 +61,15 @@ class __TwigTemplate_6c5e2ad3c1564f98874c3e3b0a9ca330f3114397e0c22a58f56e62615da
     <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\">
     <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">
 
-    <title>記事投稿</title>
+    <title>ダッシュボード</title>
 
     <link rel=\"icon\" href=\"favicon.ico\">
-    <link rel=\"stylesheet\" href=\"https://use.fontawesome.com/releases/v5.8.1/css/all.css\"
+    <link rel=\"stylesheet\" href=\"https://use.fontawesome.com/releases/v5.15.2/css/all.css\"
         integrity=\"sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf\" crossorigin=\"anonymous\">
-
-    <!-- css -->
-<link href=\"";
-        // line 26
+        <link href=\"";
+        // line 24
         echo twig_escape_filter($this->env, twig_constant("config\\Bootstrap::APP_URL"), "html", null, true);
-        echo "css/admin/styles.css?v=2\" rel=\"stylesheet\">
+        echo "css/admin/styles.css\" rel=\"stylesheet\">
 </head>
 
 <body>
@@ -79,16 +77,16 @@ class __TwigTemplate_6c5e2ad3c1564f98874c3e3b0a9ca330f3114397e0c22a58f56e62615da
         <div class=\"container\">
             <div class=\"header-logo\">
                 <h1><a href=\"";
-        // line 33
-        echo twig_escape_filter($this->env, twig_constant("config\\Bootstrap::ENTRY_URL"), "html", null, true);
-        echo ".\"dashboard.php\"\">管理画面</a></h1>
+        // line 31
+        echo twig_escape_filter($this->env, twig_constant("config\\Bootstrap::APP_URL"), "html", null, true);
+        echo "admin/dashboard.php\">管理画面</a></h1>
             </div>
 
             <nav class=\"menu-right menu\">
                 <a href=\"";
-        // line 37
-        echo twig_escape_filter($this->env, twig_constant("config\\Bootstrap::ENTRY_URL"), "html", null, true);
-        echo ".\"logout.php\"\">ログアウト</a>
+        // line 35
+        echo twig_escape_filter($this->env, twig_constant("config\\Bootstrap::APP_URL"), "html", null, true);
+        echo "/admin/logout.php\">ログアウト</a>
             </nav>
         </div>
     </header>
@@ -96,28 +94,24 @@ class __TwigTemplate_6c5e2ad3c1564f98874c3e3b0a9ca330f3114397e0c22a58f56e62615da
         <div class=\"wrapper\">
             <div class=\"container\">
                 <div class=\"wrapper-title\">
-                    <h3>新規作成</h3>
+                    <h3>ダッシュボード</h3>
                 </div>
-                <form class=\"edit-form\" method=\"POST\" action=\"";
-        // line 47
+                <div class=\"boxs\">
+                    <a href=\"";
+        // line 46
         echo twig_escape_filter($this->env, twig_constant("config\\Bootstrap::APP_URL"), "html", null, true);
-        echo ".\"store_news.php\"\">
-                    <div class=\"form-group\">
-                        <p>タイトル</p>
-                        <input type=\"text\" name=\"title\" required>
-                    </div>
-                    <div class=\"form-group\">
-                        <p>本文</p>
-                        <textarea name=\"content\"></textarea>
-                    </div>
-                    <button type=\"submit\" class=\"btn btn-blue\">公開する</button>
-                </form>
+        echo "admin/news.php\" class=\"box\">
+                        <i class=\"far fa-newspaper icon\"></i><!-- fontawesome利用部分 -->
+                        <p>記事管理</p>
+                    </a>
+
+                </div>
             </div>
         </div>
     </main>
     <footer>
         <div class=\"container\">
-            <p>Copyright @ 2021 BOOK_EC</p>
+            <p>Copyright @ 2021 EC_BOOK</p>
         </div>
     </footer>
 </body>
@@ -127,7 +121,7 @@ class __TwigTemplate_6c5e2ad3c1564f98874c3e3b0a9ca330f3114397e0c22a58f56e62615da
 
     public function getTemplateName()
     {
-        return "create_news.html.twig";
+        return "dashboard.html.twig";
     }
 
     public function isTraitable()
@@ -137,11 +131,11 @@ class __TwigTemplate_6c5e2ad3c1564f98874c3e3b0a9ca330f3114397e0c22a58f56e62615da
 
     public function getDebugInfo()
     {
-        return array (  94 => 47,  81 => 37,  74 => 33,  64 => 26,  37 => 1,);
+        return array (  93 => 46,  79 => 35,  72 => 31,  62 => 24,  37 => 1,);
     }
 
     public function getSourceContext()
     {
-        return new Source("", "create_news.html.twig", "/Applications/MAMP/htdocs/EC_shop/templates/admin/create_news.html.twig");
+        return new Source("", "dashboard.html.twig", "/Applications/MAMP/htdocs/EC_shop/templates/admin/dashboard.html.twig");
     }
 }
