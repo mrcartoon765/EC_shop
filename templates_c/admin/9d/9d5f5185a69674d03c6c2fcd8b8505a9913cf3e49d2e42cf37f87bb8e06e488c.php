@@ -123,7 +123,21 @@ class __TwigTemplate_18358452efb2742d58057b51ce985b328376179b39a4578cc241a65112e
             echo "/edit_news.php?id=";
             echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["value"], "id", [], "any", false, false, false, 58), "html", null, true);
             echo "'\">編集</button>
-                            <button type=\"button\" class=\"btn btn-red\">削除</button>
+                            <button type=\"button\" class=\"btn btn-red delete\" data-id='";
+            // line 59
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["value"], "id", [], "any", false, false, false, 59), "html", null, true);
+            echo "' >削除</button>
+                            <form method=\"POST\" action=\"";
+            // line 60
+            echo twig_escape_filter($this->env, twig_constant("config\\Bootstrap::ENTRY_URL"), "html", null, true);
+            echo "/delete_news.php\" id=\"delete_form_";
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["value"], "id", [], "any", false, false, false, 60), "html", null, true);
+            echo "\">
+                            <input type=\"hidden\" value='";
+            // line 61
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["value"], "id", [], "any", false, false, false, 61), "html", null, true);
+            echo "' name=\"id\">
+                            </form>
                             </td>
                             </tr>
                           ";
@@ -131,7 +145,7 @@ class __TwigTemplate_18358452efb2742d58057b51ce985b328376179b39a4578cc241a65112e
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['value'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 63
+        // line 66
         echo "                        </tbody>
                     </table>
                 </div>
@@ -143,6 +157,19 @@ class __TwigTemplate_18358452efb2742d58057b51ce985b328376179b39a4578cc241a65112e
             <p>Copyright @ 2018 SQUARE, inc</p>
         </div>
     </footer>
+    <script src=\"https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js\"></script>
+   <script>
+       \$(\".delete\").click(function(){
+           var id = this.dataset.id;
+           if(confirm(\"ID:\"+id+\"番の記事を本当に削除していいですか？\")){
+               //OK
+               \$(\"#delete_form_\"+id).submit();
+           }else{
+               //キャンセル
+               return false;
+           }
+       })
+   </script>
 </body>
 
 </html>";
@@ -160,7 +187,7 @@ class __TwigTemplate_18358452efb2742d58057b51ce985b328376179b39a4578cc241a65112e
 
     public function getDebugInfo()
     {
-        return array (  135 => 63,  122 => 58,  118 => 57,  114 => 56,  110 => 55,  106 => 54,  102 => 53,  99 => 52,  95 => 51,  64 => 23,  51 => 13,  37 => 1,);
+        return array (  149 => 66,  138 => 61,  132 => 60,  128 => 59,  122 => 58,  118 => 57,  114 => 56,  110 => 55,  106 => 54,  102 => 53,  99 => 52,  95 => 51,  64 => 23,  51 => 13,  37 => 1,);
     }
 
     public function getSourceContext()
