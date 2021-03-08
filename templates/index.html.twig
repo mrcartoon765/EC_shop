@@ -75,14 +75,12 @@
   <p>お知らせ</p>
   </div>
   <div class="news-list">
-  <ul>
-  <li>
-  <a href="{{constant('config\\Bootstrap::APP_URL')}}page.php">リニューアルしました。</a>
-  </li>
-  <li>
-  <a href="{{constant('config\\Bootstrap::APP_URL')}}page.php">年末年始の営業時間について</a>
-  </li>
-  </ul>
+{% for value in news %}
+<ul>
+<li><a "href={{constant('config\\Bootstrap::APP_URL')}}page.php?id="{{attribute (value,'id') }}"> {{ attribute(value,'updated_at') }}
+ {{ attribute(value,'title') }}</li>
+</ul>
+  {% endfor %}
   </div>
   </div>
   </div>

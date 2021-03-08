@@ -28,7 +28,6 @@ if($id == ''){
   exit;
 }
 
-   //DB接続
    try{
        $dbh = new \PDO("mysql:host=localhost;dbname=corporate_db","root","root");
    }catch(\PDOException $e){
