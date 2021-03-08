@@ -11,7 +11,7 @@ use create_account\lib\Database;
 use create_account\lib\Common;
 
 $loader = new \Twig_Loader_Filesystem($tempdir);
-$twig = new \Twig_Environment($loader, ['cache' => Bootstrap::CACHE_DIR]);
+$twig = new \Twig_Environment($loader, ['cache' => Bootstrap::CACHE_DIR, 'auto_reload' => TRUE]);
 
 $db = new account_DB(Bootstrap::DB_HOST, Bootstrap::DB_USER, Bootstrap::DB_PASS, Bootstrap::DB_NAME);
 $initMaster = new initMaster();

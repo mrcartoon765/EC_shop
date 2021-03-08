@@ -75,7 +75,7 @@ class account_DB
   }
   private function connectDB($db_host, $db_user, $db_pass, $db_name)
   {
-    $tmp_con = mysqli_connect($db_host, $db_user, $db_pass, $db_name);
+    $tmp_con = mysqli_connect($db_host, $db_user, $db_pass, $db_name); 
     if ($tmp_con !== false) {
 
         return $tmp_con;

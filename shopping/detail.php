@@ -25,7 +25,7 @@ $ses = new shopping_Session($db);
 $Book = new Book($db);
 
 $loader = new \Twig_Loader_Filesystem($tempdir);
-$twig = new \Twig_Environment($loader, ['cache' => Bootstrap::CACHE_DIR]);
+$twig = new \Twig_Environment($loader, ['cache' => Bootstrap::CACHE_DIR, 'auto_reload' => TRUE]);
 
 $ses->checkSession();
 

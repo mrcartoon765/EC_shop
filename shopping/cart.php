@@ -21,7 +21,7 @@ $ses = new shopping_Session($db);
 $cart = new Cart($db);
 
 $loader = new \Twig_Loader_Filesystem($tempdir);
-$twig = new \Twig_Environment($loader, ['cache' => Bootstrap::CACHE_DIR]);
+$twig = new \Twig_Environment($loader, ['cache' => Bootstrap::CACHE_DIR, 'auto_reload' => TRUE]);
 
 $ses->checkSession();
 $customer_no = $_SESSION['customer_no'];
