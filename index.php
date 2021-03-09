@@ -25,8 +25,6 @@ $stmt = $dbh->prepare("SELECT * FROM news ORDER BY id DESC LIMIT 5");
 $stmt->execute();
 $news = $stmt->fetchAll(\PDO::FETCH_ASSOC);
 
-var_dump($news);
-
 $context['news'] = $news;
 $filename = basename(__FILE__,'.php');
 $template = $twig->loadTemplate($filename . '.html.twig');

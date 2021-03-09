@@ -3,8 +3,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>記事タイトル</title>
-
+  <title>{{ news[page_no]['title'] }}|EC_BOOK|</title>
   <link rel="icon" href="favicon.ico">
 
   <link href="{{constant('config\\Bootstrap::DEFAULT_CSS')}}" rel="stylesheet">
@@ -35,7 +34,7 @@
   <div class="container">
   <ul>
   <li><a href="{{constant ('config\\Bootstrap::APP_URL') }}index.php">TOP</a></li>
-  <li>ホームページをリニューアルしました</li>
+  <li>{{ news[page_no]['title'] }}</li>
   </ul>
   </div>
   </div>
@@ -43,14 +42,11 @@
   <div class="container">
   <article>
   <div class="page-title">
-  <h1>ここに記事タイトルが入ります。</h1>
-  <p></p>
+  <h1>{{ news[page_no]['title'] }}</h1>
+  <p> {{ news[page_no]['updated_at'] }}</p>
   </div>
   <div class="page-text">
-  <p>ここに記事本文が入ります。</p>
-  <p>こんにちは。EC_BOOKです。ここにお知らせを書いていきます。</p> 
-  <br>
-  <p>より見やすく、使いやすいショップに夏用運営を進めますので、引き続きご愛顧のほどよろしくお願い申し上げます。</p>
+  {{ news[page_no]['content'] }}
   </div>
   </article>
   </div>

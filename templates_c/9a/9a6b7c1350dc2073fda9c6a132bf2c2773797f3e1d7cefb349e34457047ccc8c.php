@@ -153,25 +153,27 @@ class __TwigTemplate_e96b898f559602de8551dd26f7b7b48b09521038884d97452bbbf4dc675
         foreach ($context['_seq'] as $context["_key"] => $context["value"]) {
             // line 79
             echo "<ul>
-<li><a \"href=";
+<li><a href=\"";
             // line 80
             echo twig_escape_filter($this->env, twig_constant("config\\Bootstrap::APP_URL"), "html", null, true);
-            echo "page.php?id=\"";
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["value"], "id", [], "any", false, false, false, 80), "html", null, true);
+            echo "page.php?id=
+";
+            // line 81
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["value"], "id", [], "any", false, false, false, 81), "html", null, true);
             echo "\"> ";
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["value"], "updated_at", [], "any", false, false, false, 80), "html", null, true);
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["value"], "updated_at", [], "any", false, false, false, 81), "html", null, true);
             echo "
  ";
-            // line 81
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["value"], "title", [], "any", false, false, false, 81), "html", null, true);
-            echo "</li>
+            // line 82
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["value"], "title", [], "any", false, false, false, 82), "html", null, true);
+            echo "</a></li>
 </ul>
   ";
         }
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['value'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 84
+        // line 85
         echo "  </div>
   </div>
   </div>
@@ -241,7 +243,7 @@ class __TwigTemplate_e96b898f559602de8551dd26f7b7b48b09521038884d97452bbbf4dc675
   <p>お問い合わせ</p>
   </div>
   <form method=\"POST\" action=\"";
-        // line 152
+        // line 153
         echo twig_escape_filter($this->env, twig_constant("config\\Bootstrap::APP_URL"), "html", null, true);
         echo "/Contact/confirm.php\">
   <div class=\"form-group\">
@@ -293,7 +295,7 @@ class __TwigTemplate_e96b898f559602de8551dd26f7b7b48b09521038884d97452bbbf4dc675
 
     public function getDebugInfo()
     {
-        return array (  245 => 152,  175 => 84,  166 => 81,  158 => 80,  155 => 79,  151 => 78,  124 => 54,  120 => 53,  116 => 52,  112 => 51,  102 => 44,  98 => 43,  94 => 42,  90 => 41,  72 => 28,  59 => 18,  54 => 16,  37 => 1,);
+        return array (  247 => 153,  177 => 85,  168 => 82,  162 => 81,  158 => 80,  155 => 79,  151 => 78,  124 => 54,  120 => 53,  116 => 52,  112 => 51,  102 => 44,  98 => 43,  94 => 42,  90 => 41,  72 => 28,  59 => 18,  54 => 16,  37 => 1,);
     }
 
     public function getSourceContext()
