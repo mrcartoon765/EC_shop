@@ -30,12 +30,6 @@ $page_no = intval($page_no[1]);
 $page_array = array_column($news,'id');
 $page_no = array_search($page_no,$page_array);
 
-echo '<pre>';
-var_dump($news);//デバック箇所の挿入で上一行とこの行の繰り返し;
-var_dump(array_column($news,'id'));
-var_dump(array_search($page_no,$page_array));
-echo '</pre>';
-
 $context['news'] = $news;
 $context['page_no'] = $page_no;
 
