@@ -4,59 +4,89 @@
 <meta charset="utf-8">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="{{constant('config\\Bootstrap::APP_URL')}}/js/common.js"></script>
-<link href="{{constant('config\\Bootstrap::APP_URL')}}/css/style.css" rel="stylesheet">
+<link href="{{constant('config\\Bootstrap::DEFAULT_CSS')}}" rel="stylesheet">
+<link href="{{constant('config\\Bootstrap::DEFAULT_RESPONSIVE')}}" rel="stylesheet">
 <title>会員登録</title>
 </head>
+
 <body>
-<a href="{{ constant('config\\Bootstrap::APP_URL') }}" >トップページへ</a>
-<input type="hidden" name="entry_url" id="entry_url" value="{{constant('config\\Bootstrap::ENTRY_URL')}}">
-<form method="post" action="confirm.php">
-<table>
-<tr>
-<th>メールアドレス<span class="red">*</span></th>
-<td>
+  <header>
+  <div class="container">
+  <div class="header-logo">
+<h1><a href="{{constant ('config\\Bootstrap::APP_URL') }}"><img src= "{{constant ('config\\Bootstrap::APP_URL') }}image/square_logo-1024x192.png" id="logo"></a><h1>
+  </div>
+
+  <div class="toggle">
+  <div>
+  <span></span>
+  <span></span>
+  <span></span>
+  </div>
+  </div>
+
+  <nav class="sp-menu menu">
+  <ul>
+  <li><a href="{{constant('config\\Bootstrap::APP_URL')}}index.php#service">サービス</a></li>
+  <li><a href="{{constant('config\\Bootstrap::APP_URL')}}index.php#news">お知らせ</a></li>
+  <li><a href="{{constant('config\\Bootstrap::APP_URL')}}index.php#about">会社概要</a></li>
+  <li><a href="{{constant('config\\Bootstrap::APP_URL')}}index.php#contact">お問合せ</a></li>
+  <li><a href="https://mrcartoon995970419.wordpress.com/">ブログ</a></li>
+  <li><a href="{{constant('config\\Bootstrap::APP_URL')}}/create_account/index.php">会員登録</a></li>
+  </ul>
+  </nav>
+
+  <nav class="pc-menu menu-left menu">
+  <ul>
+  <li><a href="{{constant('config\\Bootstrap::APP_URL')}}index.php#service">サービス</a></li>
+  <li><a href="{{constant('config\\Bootstrap::APP_URL')}}index.php#news">お知らせ</a></li>
+  <li><a href="{{constant('config\\Bootstrap::APP_URL')}}index.php#about">会社概要</a></li>
+  <li><a href="{{constant('config\\Bootstrap::APP_URL')}}index.php#contact">お問合せ</a></li>
+  <li><a href="https://mrcartoon995970419.wordpress.com/">ブログ</a></li>
+  <li><a href="{{constant('config\\Bootstrap::APP_URL')}}/create_account/index.php">会員登録</a></li>
+  </ul>
+  </nav>
+<nav class="pc-menu menu-right menu">
+    <a href="{{constant('config\\Bootstrap::APP_URL')}}/create_account/index.php">会員登録</a>
+</nav>
+  </div>
+  </header>
+<main>
+<div class="wrapper last-wrapper register-wrapper">
+            <div class="container">
+                <div class="register">
+                    <div class="wrapper-title">
+                        <h3>REGISTER</h3>
+                        <p>新規登録</p>
+                    </div>
+<form method="post" action="{{constant('config//Bootstrap::APP_URL')}}/create_account/confirm.php">
+<div class="form-group">
+メールアドレス<span class="red">*</span>
 <input type="text" name="mail" value="{{dataArr.mail}}" size="40">
 {% if errArr.mail | length > 0 %}<br><span class="red">{{errArr.mail}}</span>{% endif %}
-</td>
-</tr>
-<table>
-<tr>
-<th>パスワード<span class="red">*</span></th>
-<td>
+</div>
+<div class="form-group">
+パスワード<span class="red">*</span>
 <input type="text" name="password" value="{{dataArr.password}}" size="40">
 {% if errArr.password | length > 0 %}<br><span class="red">{{errArr.password}}</span>{% endif %}
-</td>
-</tr>
-<tr>
-<th>お名前(氏名)<span class="red">*</span></th>
-{# *は赤文字で必須ポイント #}
-<td>
-<input type="text" name="family_name" value="{{dataArr.family_name}}">
-<input type="text" name="first_name"  value="{{dataArr.first_name}}">
+</div>
+
+
+お名前(氏名)<span class="red">*</span>
+<div class="form-group" style="display:inline-flex">
+姓<input type="text" name="family_name" value="{{dataArr.family_name}}">
+名<input type="text" name="first_name"  value="{{dataArr.first_name}}">
 {% if errArr.family_name | length > 0 %}<br><span class="red">{{ errArr.family_name }}</span>{% endif %}
 {% if errArr.first_name | length > 0 %}<br><span class="red">{{ errArr.first_name }}</span>{% endif %}
-</td>
-</tr>
-<tr>
-<th>お名前(かな)</th>
-<td>
-<input type="text" name="family_name_kana" value="{{dataArr.family_name_kana}}">
-<input type="text" name="first_name_kana"  value="{{dataArr.first_name_kana}}">
-</td>
-</tr>
-<tr>
-<th>性別<span class="red">*</span></th>
-<td>
-{% for index, label in sexArr %}
-  <input type="radio" name="sex" value="{{index}}" id="sex_{{index}}" {% if dataArr.sex == index %} checked="checked" {% endif %}>
-<label for="sex_{{index}}">{{label}}</label>
-{% endfor %}
-{% if errArr.sex | length > 0 %}<br><span class="red">{{errArr.sex}}</span>{% endif %}
-</td>
-</tr>
-<tr>
-<th>生年月日<span class="red">*</span></th>
-<td>
+</div>
+
+<br>お名前(かな)
+<div class="form-group" style="display:inline-flex">
+せい<input type="text" name="family_name_kana" value="{{dataArr.family_name_kana}}">
+めい<input type="text" name="first_name_kana"  value="{{dataArr.first_name_kana}}">
+</div>
+
+<div class="form-group">
+生年月日<span class="red">*</span>
 <select name="year" >
 {% for index, label in yearArr %}
 <option value="{{index}}" {% if dataArr.year == index %} selected {% endif %}>{{ label }}</option>
@@ -75,46 +105,69 @@
 {% if errArr.year | length > 0 %}<br><span class="red">{{errArr.year}}</span>{% endif %}
 {% if errArr.month | length > 0 %}<br><span class="red">{{errArr.month}}</span>{% endif %}
 {% if errArr.day | length > 0 %}<br><span class="red">{{errArr.day}}</span>{% endif %}
-</td>
-</tr>
-<tr>
-<th>郵便番号<span class="red">*</span></th>
-<td>
+</div>
+
+郵便番号<span class="red">*</span>
+<div class="form-group" style="display:inline-flex">
 <input type="text" name="zip1" value="{{dataArr.zip1}}" id="zip1" size="3" maxlength="3"> -
 <input type="text" name="zip2" value="{{dataArr.zip2}}" id="zip2" size="4" maxlength="4">
 <input type="button" name="address_search" value="〒から住所を入力" id="address_search">
 {% if errArr.zip1 | length > 0 %}<br><span class="red">{{errArr.zip1}}</span>{% endif %}
 {% if errArr.zip2 | length > 0 %}<br><span class="red">{{errArr.zip2}}</span>{% endif %}
-</td>
-</tr>
-<tr>
-<th>住所<span class="red">*</span></th>
-<td>
+</div>
+
+<div class="form-group">
+住所<span class="red">*</span>
 <input type="text" name="address" value="{{dataArr.address}}" id="address" size="40">
 {% if errArr.address | length > 0 %}<br><span class="red">{{errArr.address}}</span>{% endif %}
-</td>
-</tr>
-<tr>
-<th>電話番号<span class="red">*</span></th>
-<td>
-<input type="text" name="tel1" value="{{dataArr.tel1}}" size="6" maxlength="6"> -
+</div>
+
+電話番号<span class="red">*</span>
+<div class="form-group" style="display:inline-flex">
+<input type="tel" name="tel1" value="{{dataArr.tel1}}" size="6" maxlength="6"> -
 <input type="text" name="tel2" value="{{dataArr.tel2}}" size="6" maxlength="6"> -
 <input type="text" name="tel3" value="{{dataArr.tel3}}" size="6" maxlength="6">
 {% if errArr.tel1 | length > 0 %}<br><span class="red">{{errArr.tel1}}</span>{% endif %}
 {% if errArr.tel2 | length > 0 %}<br><span class="red">{{errArr.tel2}}</span>{% endif %}
 {% if errArr.tel3 | length > 0 %}<br><span class="red">{{errArr.tel3}}</span>{% endif %}
-</td>
-</tr>
-<tr>
-<th>備考</th>
-<td>
-<textarea name="contents" rows="4" cols="40">{{dataArr.contents}}</textarea>
-</td>
-</tr>
-</table>
-<div>
-<input type="submit" name="confirm" value="登録確認">
 </div>
+
+<div class="form-group">
+備考
+<textarea name="contents" rows="4" cols="40">{{dataArr.contents}}</textarea>
+</div>
+ <div class="form-group">
+
+<p>EC_BOOKからのお知らせを受信しますか？</p>
+<input type="hidden" name="dm" value="受信しない">
+<input type="checkbox" class="checkbox" name="dm" value="受信する" checked>
+<span>受信する</span>
+</div>
+<input type="submit" name="confirm" class="btn btn-submit" value="内容を確認する">
+</form>
+</div>
+</div>
+</div>
+</main>
 </form>
 </body>
+  <footer>
+        <div class="container">
+            <p>Copyright @ 2018 SQUARE, inc.</p>
+        </div>
+    </footer>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script>
+        $(function () {
+            // ハンバーガーメニューの動作
+            $('.toggle').click(function () {
+                $("header").toggleClass('open');
+                $(".sp-menu").slideToggle(500);
+            });
+
+        });
+
+    </script>
+</body>
+
 </html>

@@ -18,7 +18,6 @@ class Common
         $this->passwordCheck();
         $this->familyNameCheck();
         $this->firstNameCheck();
-        $this->sexCheck();
         $this->birthCheck();
         $this->zipCheck();
         $this->addCheck();
@@ -53,12 +52,6 @@ class Common
     {
         if ($this->dataArr['first_name'] === '') {
             $this->errArr['first_name'] = 'お名前(名)を入力してください';
-        }
-    }
-    private function sexCheck()
-    {
-        if ($this->dataArr['sex'] === '') {
-            $this->errArr['sex'] = '性別を選択してください';
         }
     }
     private function birthCheck()

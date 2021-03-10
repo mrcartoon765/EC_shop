@@ -5,20 +5,16 @@ $this_dir = basename(__DIR__);
 
 $app_name = explode('/',dirname(__FILE__))[4];
 
-
-$app_name = explode('/',dirname(__FILE__))[4];
-
 $this_dir === $app_name ?require_once dirname(__FILE__) .'/config/Bootstrap.class.php':
 require_once strstr(__FILE__, $this_dir,true) . 'config/Bootstrap.class.php';
 use create_account\master\initMaster;
 use create_account\lib\Common;
 
-$loader = new \Twig_Loader_Filesystem(
-  $this_dir !== portforio ? Bootstrap::TEMPLATE_DIR : NULL);
+$loader = new \Twig_Loader_Filesystem($tempdir);
+
 $twig = new \Twig_Environment($loader, ['cache' => Bootstrap::CACHE_DIR, 'auto_reload' => TRUE]);
 
 $db = new account_DB(Bootstrap::DB_HOST, Bootstrap::DB_USER, Bootstrap::DB_PASS, Bootstrap::DB_NAME);
-// new \PDO(Bootstrap::DB_TYPE.':dbname='. Bootstrap::DB_NAME .';host='. Bootstrap::DB_HOST, Bootstrap::DB_USER, Bootstrap::DB_PASS);
 
 $common = new Common();
 if (isset($_POST['confirm']) === true) {
@@ -37,10 +33,6 @@ switch ($mode) {
     unset($_POST['confirm']);
 
     $dataArr = $_POST;
-
-    if (isset($_POST['sex']) === false) {
-      $dataArr['sex'] = "";
-    }
 
     $errArr = $common->errorCheck($dataArr);
 
@@ -63,24 +55,37 @@ switch ($mode) {
         $insData = '';
 
         $dataArr['password'] = password_hash($dataArr['password'],PASSWORD_DEFAULT);
+        $dataArr['dm'] = ($dataArr['dm'] === '受信する')? 1:0;
+        var_dump($dataArr['dm']);
 
         foreach ($dataArr as $key => $value) {
-          $column .= $key . ', ';
-          $insData .= ($key === 'sex') ? $db->quote($value) . ',' : $db->str_quote($value) . ', ';
+          $column .= $key . ',';
+          $insData .= $db->str_quote($value) . ',';
           }
+          var_dump($insData);
+          echo 'この下';
+          var_dump($dataArr['dm']);
 
-          $query = " INSERT INTO Customer ( "
+          $query = " INSERT INTO Customer ("
           . $column
-          . " regist_date "
-          . " ) VALUES ( "
+          . "regist_date"
+          . ") VALUES ("
           . $insData
           . " NOW() "
           . " ) ";
 
           $res = $db->execute($query);
+
+          echo '<pre>';
+          var_dump($db);
+          var_dump($query);
+          var_dump($res);
+          var_dump($insData);
+          var_dump($query);
+          echo '</pre>';
           $db->close();
           if ($res === true) {
-              header('Location: ' . Bootstrap::ENTRY_URL . 'complete.php');
+              header('Location: ' . Bootstrap::ENTRY_URL . '/complete.php');
               exit();
           } else {
             $template = 'regist.html.twig';
@@ -91,8 +96,6 @@ switch ($mode) {
             break;
           }
 
-          $sexArr = initMaster::getSex();
-          $context['sexArr'] =  $sexArr;
           list($yearArr, $monthArr, $dayArr) = initMaster::getDate();
           $context['yearArr'] = $yearArr;
           $context['monthArr'] = $monthArr;
@@ -101,3 +104,5 @@ switch ($mode) {
           $context['errArr'] =  $errArr;
           $template = $twig->loadTemplate($template);
           $template->display($context);
+
+          var_dump(Bootstrap::APP_URL."create_account/confirm.php");

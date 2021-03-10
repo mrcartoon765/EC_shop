@@ -27,7 +27,6 @@ if (isset($_GET['account_id']) === true && $_GET['account_id'] !== '') {
     . "   first_name, "
     . "   family_name_kana, "
     . "   first_name_kana, "
-    . "   sex, "
     . "   year, "
     . "   month, "
     . "   day, "
