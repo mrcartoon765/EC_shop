@@ -5,7 +5,6 @@ namespace config;
 $this_dir = basename(__DIR__);
 
 $app_name = explode('/',dirname(__FILE__))[4];
-
 $this_dir === $app_name ?
 require_once dirname(__FILE__) .'/config/Bootstrap.class.php':
 require_once strstr(__FILE__, $this_dir,true) . 'config/Bootstrap.class.php';
@@ -20,7 +19,7 @@ if($_SESSION['admin_login'] == false){
 $id = isset($_POST['id'])? htmlspecialchars($_POST['id'], ENT_QUOTES, 'utf-8'):'';
 
 try{
-  $dbh = new \PDO("mysql:host=localhost;dbname=corporate_db","root","root");
+  $dbh = new \PDO("mysql:host=mysql;dbname=corporate_db","root","root");
 }catch(\PDOException $e){
   var_dump($e->getMessage());
   exit;

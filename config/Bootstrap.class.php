@@ -28,7 +28,7 @@ Bootstrap::ROOT_TEMP_DIR;
 
 class Bootstrap
 {
-  const DB_HOST = 'localhost';
+  const DB_HOST = 'mysql';
   const DB_NAME = 'BOOK_EC';
   const DB_USER = 'root';
   const DB_PASS = 'root';

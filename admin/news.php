@@ -22,7 +22,7 @@ if($_SESSION['admin_login'] == false){
 }
 
 try{
-  $dbh = new \PDO("mysql:host=localhost;dbname=corporate_db","root","root");
+  $dbh = new \PDO("mysql:host=mysql;dbname=corporate_db","root","root");
 }catch(\PDOException $e){
   var_dump($e->getMessage());
   exit;
