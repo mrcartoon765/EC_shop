@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>メール確認画面</title>
+</head>
+<body>
+  <h1>メール確認画面</h1>
+
+{% if count({{ errors }}) === 0 %}
+<p>{{ message }}%</p>
+
+<p>↓このURLが記載されたメールが届きます。</p>
+<a href="{{ url }}">{{ url }}</a>
+
+{% elseif ({{ errors }} as {{ value }}) %}
+echo "<p>" . {{ value }} .b "</p>";
+
+<input type="button" value="戻る" onclick="histroy.back()">
+
+{% endif %}
+</body>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ログイン</title>
+</head>
+<body>
+  <a href="{{ constant('config\\Bootstrap::APP_URL') }}">トップページへ</a>
+  <h1>ショッピングの利用をされる方はログインしてください</h1>
+  <form action="login.php" method="post">
+  <label for="mail">メールアドレス：</label>
+  <input type="mail" name="mail"><br><br>
+  <label for="password">パスワード：</label>
+  <input type="password" name="password"><br><br>
+  <button type="submit">サインイン</button>
+  </form>
+  <h1>初めての方は<a href="{{ constant('config\\Bootstrap::CREATE_ACCOUNT') }}" >こちら</a></h1>
+
+
+  </form>
+ </body>
+</html>

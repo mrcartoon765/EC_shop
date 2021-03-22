@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>登録内容確認｜SQUARE, inc.</title>
+
+    <link rel="icon" href="favicon.ico">
+
+<link href="{{constant('config\\Bootstrap::DEFAULT_CSS')}}" rel="stylesheet">
+<link href="{{constant('config\\Bootstrap::DEFAULT_RESPONSIVE')}}" rel="stylesheet">
+</head>
+<body>
+  <header>
+  <div class="container">
+  <div class="header-logo">
+<h1><a href="{{constant ('config\\Bootstrap::APP_URL') }}"><img src= "{{constant ('config\\Bootstrap::APP_URL') }}image/square_logo-1024x192.png" id="logo"></a><h1>
+  </div>
+
+  <div class="toggle">
+  <div>
+  <span></span>
+  <span></span>
+  <span></span>
+  </div>
+  </div>
+
+  <nav class="sp-menu menu">
+  <ul>
+  <li><a href="{{constant('config\\Bootstrap::APP_URL')}}index.php#service">サービス</a></li>
+  <li><a href="{{constant('config\\Bootstrap::APP_URL')}}index.php#news">お知らせ</a></li>
+  <li><a href="{{constant('config\\Bootstrap::APP_URL')}}index.php#about">会社概要</a></li>
+  <li><a href="{{constant('config\\Bootstrap::APP_URL')}}index.php#contact">お問合せ</a></li>
+  <li><a href="https://mrcartoon995970419.wordpress.com/">ブログ</a></li>
+  <li><a href="{{constant('config\\Bootstrap::APP_URL')}}/create_account/index.php">会員登録</a></li>
+  </ul>
+  </nav>
+
+  <nav class="pc-menu menu-left menu">
+  <ul>
+  <li><a href="{{constant('config\\Bootstrap::APP_URL')}}index.php#service">サービス</a></li>
+  <li><a href="{{constant('config\\Bootstrap::APP_URL')}}index.php#news">お知らせ</a></li>
+  <li><a href="{{constant('config\\Bootstrap::APP_URL')}}index.php#about">会社概要</a></li>
+  <li><a href="{{constant('config\\Bootstrap::APP_URL')}}index.php#contact">お問合せ</a></li>
+  <li><a href="https://mrcartoon995970419.wordpress.com/">ブログ</a></li>
+  <li><a href="{{constant('config\\Bootstrap::APP_URL')}}/create_account/index.php">会員登録</a></li>
+  </ul>
+  </nav>
+<nav class="pc-menu menu-right menu">
+    <a href="{{constant('config\\Bootstrap::APP_URL')}}/create_account/index.php">会員登録</a>
+</nav>
+  </div>
+  </header>
+
+<main>
+<div class="wrapper last-wrapper">
+            <div class="container">
+                <div class="wrapper-title">
+                    <h3>CONFIRM</h3>
+                    <p>登録内容確認</p>
+                </div>
+                <form method="POST" action="{{constant('config//Bootstrap::APP_URL')}}/create_account/confirm.php" class="conf-form">
+                    <div class="form-group">
+                        メールアドレス
+                        {{dataArr.mail}}
+                        <input type="hidden" name="mail" value={{ dataArr.mail }}>
+                    </div>
+                    <div class="form-group">
+                        パスワード
+                        {{dataArr.password}}
+                        <input type="hidden" name="password" value={{ dataArr.password}}>
+                    </div>
+                    <div class="form-group">
+                        お名前(氏名)
+                        {{dataArr.family_name}} {{dataArr.first_name}}
+                        <input type="hidden" name="family_name" value={{dataArr.family_name}}>
+                        <input type="hidden" name="first_name" value={{dataArr.first_name}}>
+                    </div>
+                    <div class="form-group">
+                        お名前(かな)
+                        {{dataArr.family_name_kana}} {{dataArr.first_name_kana}}
+                        <input type="hidden" name="family_name_kana" value={{dataArr.family_name_kana}}>
+                        <input type="hidden" name="first_name_kana" value={{dataArr.first_name_kana}}>
+                    </div>
+                    <div class="form-group">
+                    生年月日
+                    {{dataArr.year}}年 <input type="hidden" name="year" value
+                    ={{dataArr.year}}>
+                    {{dataArr.month}}月 <input type="hidden" name="month" value
+                    ={{dataArr.month}}>
+                    {{dataArr.day}}日 <input type="hidden" name="day" value
+                    ={{dataArr.day}}>
+                    </div>
+                    <div class="form-group">
+                    郵便番号
+                    {{dataArr.zip1}} - {{dataArr.zip2}}
+                    <input type="hidden" name="zip1" value={{dataArr.zip1}}>
+                    <input type="hidden" name="zip2" value={{dataArr.zip2}}>
+                    </div>
+                    <div class="form-group">
+                    住所
+                    {{dataArr.address}}
+                    <input type="hidden" name="address" value={{dataArr.address}}>
+                    </div>
+                    <div class="form-group">
+                    電話番号
+                    {{dataArr.tel1}}
+                    {{dataArr.tel2}}
+                    {{dataArr.tel3}}
+                    <input type="hidden" name="tel1" value={{dataArr.tel1}}>
+                    <input type="hidden" name="tel2" value={{dataArr.tel2}}>
+                    <input type="hidden" name="tel3" value={{dataArr.tel3}}>
+                    </div>
+
+                    備考
+                    {{dataArr.contents|nl2br}}
+                    <div class="form-group">
+                    <input type="hidden" name="contents" value{{dataArr.contents}}>
+                    </div>
+                    SQUAREからのお知らせを受信しますか？
+                    <div class="form_group">
+                    {{dataArr.dm}}
+                    <input type="hidden" name="dm" value={{dataArr.dm}}>
+                    </div>
+                    <div class="form-group">
+                    <p>この内容で送信してよろしいですか？</p>
+                    <input type="submit" name="complete" class="btn btn-submit" value="送信する">
+                    <input type="submit" name="back" class="btn btn-submit" value="戻る">
+                </form>
+            </div>
+        </div>
+</main>
+
+{% for key,value in dataArr %}
+
+{% if value is iterable %}
+
+{% for v in value %}
+<input type="hidden" name="{{key}}[]" value="{{value}}">
+
+{% endfor %}
+{% else %}
+<input type="hidden" name="{{key}}" value="{{value}}">
+{% endif %}
+{% endfor %}
+</div>
+</form>
+</body>
+</html>
