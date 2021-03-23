@@ -34,6 +34,10 @@
                 <div class="wrapper-title">
                     <h3>会員管理</h3>
                 </div>
+                <form class="search" action="{{constant('config\\Bootstrap::ENTRY_URL')}}/users.php" method="GET">
+                <input type="text" name="name" placeholder"名前検索">
+                <button type="submit" class="btn btn-blue">検索</button>
+                </form>
                 <div class="list">
                     <table>
                         <thead>
