@@ -61,29 +61,34 @@
                     <h3>CONFIRM</h3>
                     <p>登録内容確認</p>
                 </div>
+
                 <form method="POST" action="{{constant('config\\Bootstrap::APP_URL')}}/create_account/confirm.php" class="conf-form">
                     <div class="form-group">
                         メールアドレス
                         {{dataArr.mail}}
                         <input type="hidden" name="mail" value={{ dataArr.mail }}>
                     </div>
+
                     <div class="form-group">
                         パスワード
                         {{dataArr.password}}
                         <input type="hidden" name="password" value={{ dataArr.password}}>
                     </div>
+
                     <div class="form-group">
                         お名前(氏名)
                         {{dataArr.family_name}} {{dataArr.first_name}}
                         <input type="hidden" name="family_name" value={{dataArr.family_name}}>
                         <input type="hidden" name="first_name" value={{dataArr.first_name}}>
                     </div>
+
                     <div class="form-group">
                         お名前(かな)
                         {{dataArr.family_name_kana}} {{dataArr.first_name_kana}}
                         <input type="hidden" name="family_name_kana" value={{dataArr.family_name_kana}}>
                         <input type="hidden" name="first_name_kana" value={{dataArr.first_name_kana}}>
                     </div>
+
                     <div class="form-group">
                     生年月日
                     {{dataArr.year}}年 <input type="hidden" name="year" value
@@ -93,17 +98,20 @@
                     {{dataArr.day}}日 <input type="hidden" name="day" value
                     ={{dataArr.day}}>
                     </div>
+
                     <div class="form-group">
                     郵便番号
                     {{dataArr.zip1}} - {{dataArr.zip2}}
                     <input type="hidden" name="zip1" value={{dataArr.zip1}}>
                     <input type="hidden" name="zip2" value={{dataArr.zip2}}>
                     </div>
+
                     <div class="form-group">
                     住所
                     {{dataArr.address}}
                     <input type="hidden" name="address" value={{dataArr.address}}>
                     </div>
+
                     <div class="form-group">
                     電話番号
                     {{dataArr.tel1}}
@@ -114,20 +122,27 @@
                     <input type="hidden" name="tel3" value={{dataArr.tel3}}>
                     </div>
 
+                    
+                    <div class="form-group">
                     備考
                     {{dataArr.contents|nl2br}}
-                    <div class="form-group">
                     <input type="hidden" name="contents" value{{dataArr.contents}}>
                     </div>
-                    SQUAREからのお知らせを受信しますか？
-                    <div class="form_group">
+                    
+                    
+                    <div class="form-group">
+                    <p>SQUAREからのお知らせを受信しますか？</p>
                     {{dataArr.dm}}
                     <input type="hidden" name="dm" value={{dataArr.dm}}>
                     </div>
-                    <div class="form-group">
+
                     <p>この内容で送信してよろしいですか？</p>
+                    
+                    <div class="form-group">
                     <input type="submit" name="complete" class="btn btn-submit" value="送信する">
                     <input type="submit" name="back" class="btn btn-submit" value="戻る">
+                    </div>
+
                 </form>
             </div>
         </div>

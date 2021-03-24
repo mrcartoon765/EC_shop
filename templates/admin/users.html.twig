@@ -34,9 +34,10 @@
                 <div class="wrapper-title">
                     <h3>会員管理</h3>
                 </div>
-                <form class="search" action="{{constant('config\\Bootstrap::ENTRY_URL')}}/users.php" method="GET">
-                <input type="text" name="first_name" placeholder="名前検索">
-                <button type="submit" class="btn btn-blue">検索</button>
+                <button type="button" class="btn btn-gray" onclick="location.href='{{ constant('config\\Bootstrap::ENTRY_URL')}}/download.php'">CSV出力</button>
+                <form class="serch" action="{{constant('config\\Bootstrap::ENTRY_URL')}}/users.php" method="GET">
+                    <input type="text" name="first_name" placeholder="名前検索">
+                    <button type="submit" class="btn btn-blue">検索</button>
                 </form>
                 <div class="list">
                     <table>
@@ -55,7 +56,7 @@
                                 <td>{{ attribute(value,'id') }}</td>
                                 <td>{{ attribute(value,'first_name') }}</td>
                                 <td>{{ attribute(value,'mail') }}</td>
-                                <td>{{ attribute(value,'dm') }}</td>
+                                <td>{{ dm }}</td>
                                 <td>
                                     <button type="button" class="btn btn-green" onclick="location.href='{{ constant('config\\Bootstrap::ENTRY_URL')}}/edit_user.php?id={{ attribute(value,'id') }}'">編集</button>
                                     <button type="button" class="btn btn-red delete" data-id='{{ attribute(value,'id') }}' >削除</button>
@@ -68,6 +69,21 @@
                             {% endfor %}
                         </tbody>
                     </table>
+                    <ul class="paging">
+                    <li><a href="{{ constant('config\\Bootstrap::ENTRY_URL')}}/users.php?first_name={{ first_name }}">« 最初</a></li>
+
+                    {% if  prev  != '' %}
+                                            <li><a href="{{constant('config\\Bootstrap::ENTRY_URL')}}/users.php?page={{ prev }}&first_name={{ first_name }}"{{ page }}-1>{{ page -1}}</a></li>
+                    {% endif %}
+
+                    <li><span>{{ page }}</span></li>
+
+                    {% if next != '' %}
+                                            <li><a href="{{constant('config\\Bootstrap::ENTRY_URL')}}/users.php?page={{ next }}&first_name={{ first_name }}">{{ page +1}}</a></li>
+                    {% endif %}
+
+                    <li><a href="{{ constant('config\\Bootstrap::ENTRY_URL')}}/users.php?page={{ pages }}&fisrt_name={{ first_name }}">最後 »</a></li>
+                    </ul>
                 </div>
             </div>
         </div>

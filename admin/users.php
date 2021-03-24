@@ -30,25 +30,69 @@ try{
   exit;
 }
 
+
+// ページング設定
+// 10件ずつ表示させる
+$rows = 10;
+
+// 現在表示しているページ数
+$page = isset($_GET['page'])? $_GET['page']: 1;
+
+// レコード開始位置
+$offset = $rows * ($page-1);
+
+// 全件のレコード数
 if($first_name == '')
 {
-    $stmt = $dbh->prepare("SELECT * FROM customer");
+  $all_rows = $dbh->query("SELECT COUNT(*) FROM customer")->fetchColumn();
 
 }else{
-    // $stmt = $dbh->prepare("SELECT * FROM customer WHERE first_name=:first_name");
-    // $stmt->bindParam(":first_name",$first_name);
-    $stmt = $dbh->prepare("SELECT * FROM customer WHERE first_name like :first_name");
+ // 検索条件を考慮
+  $all_rows_stmt = $dbh->prepare("SELECT * FROM customer WHERE first_name like :first_name");
+  $all_rows_stmt->bindValue(":first_name",'%'.$first_name.'%');
+  $all_rows_stmt->execute();
+  $all_rows = $all_rows_stmt->rowCount();
+}
+
+// 全件を表示させたページ数 (全件％表示件数) をし0以下の場合はページ数を１に固定する
+if(($all_rows % $rows) <= 0){
+    $pages = (int)($all_rows/$rows);
+}else{
+    $pages = (int)($all_rows/$rows)+1;
+}
+
+// 次のページ数
+$next = ($page+1 > $pages)? '' : $page+1;
+
+// １つ前のページ数
+$prev = ($page-1 < 0)? '' : $page-1;
+
+// ページング設置終わり
+
+if($first_name == '')
+{
+    $stmt = $dbh->prepare("SELECT * FROM customer limit :offset,:rows");
+}else{
+    $stmt = $dbh->prepare("SELECT * FROM customer WHERE first_name like :name limit :offset,:rows");
     $stmt->bindValue(":first_name",'%'.$first_name.'%');
  }
 
+$stmt->bindParam(":offset",$offset,\PDO::PARAM_INT);
+$stmt->bindParam(":rows",$rows,\PDO::PARAM_INT);
 $stmt->execute();
 $customer = $stmt->fetchAll(\PDO::FETCH_ASSOC);
 
-($customer['dm']===1)?
+($customer['dm'] == 1)?
   $customer['dm'] = '受信する':
   $customer['dm'] = '-';
 
 $context['customer']=$customer;
+$context['dm'] = $customer['dm'];
+$context['first_name'] = $customer['first_name'];
+$context['pages'] = $pages;
+$context['prev'] = $prev;
+$context['page'] = $page;
+$context['next'] = $next;
 $filename = basename(__FILE__,'.php');
 $template = $twig->loadTemplate($filename . '.html.twig');
 $template->display($context);
