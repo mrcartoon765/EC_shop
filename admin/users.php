@@ -21,6 +21,8 @@ if($_SESSION['admin_login'] == false){
   exit;
 }
 
+$first_name = isset($_GET['first_name'])? htmlspecialchars($_GET['first_name'], ENT_QUOTES, 'utf-8'):'';
+
 try{
   $dbh = new \PDO("mysql:host=mysql;dbname=BOOK_EC","root","root");
 }catch(\PDOException $e){
@@ -28,7 +30,17 @@ try{
   exit;
 }
 
-$stmt = $dbh->prepare("SELECT * FROM customer");
+if($first_name == '')
+{
+    $stmt = $dbh->prepare("SELECT * FROM customer");
+
+}else{
+    // $stmt = $dbh->prepare("SELECT * FROM customer WHERE first_name=:first_name");
+    // $stmt->bindParam(":first_name",$first_name);
+    $stmt = $dbh->prepare("SELECT * FROM customer WHERE first_name like :first_name");
+    $stmt->bindValue(":first_name",'%'.$first_name.'%');
+ }
+
 $stmt->execute();
 $customer = $stmt->fetchAll(\PDO::FETCH_ASSOC);
 

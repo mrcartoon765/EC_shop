@@ -58,8 +58,10 @@
                         <h3>REGISTER</h3>
                         <p>新規登録</p>
                     </div>
-<form method="post" action="{{constant('config//Bootstrap::APP_URL')}}/create_account/confirm.php">
+<form class="regi-form" method="POST" action="{{constant('config\\Bootstrap::APP_URL')}}/create_account/confirm.php">
 <div class="form-group">
+
+
 メールアドレス<span class="red">*</span>
 <input type="text" name="mail" value="{{dataArr.mail}}" size="40">
 {% if errArr.mail | length > 0 %}<br><span class="red">{{errArr.mail}}</span>{% endif %}
@@ -70,17 +72,19 @@
 {% if errArr.password | length > 0 %}<br><span class="red">{{errArr.password}}</span>{% endif %}
 </div>
 
-
+<div class="form-group">
 お名前(氏名)<span class="red">*</span>
-<div class="form-group" style="display:inline-flex">
+<div class="form-group">
 姓<input type="text" name="family_name" value="{{dataArr.family_name}}">
 名<input type="text" name="first_name"  value="{{dataArr.first_name}}">
 {% if errArr.family_name | length > 0 %}<br><span class="red">{{ errArr.family_name }}</span>{% endif %}
 {% if errArr.first_name | length > 0 %}<br><span class="red">{{ errArr.first_name }}</span>{% endif %}
 </div>
 
+
+<div class="form-group">
 <br>お名前(かな)
-<div class="form-group" style="display:inline-flex">
+<div class="form-group"> 
 せい<input type="text" name="family_name_kana" value="{{dataArr.family_name_kana}}">
 めい<input type="text" name="first_name_kana"  value="{{dataArr.first_name_kana}}">
 </div>
@@ -107,6 +111,8 @@
 {% if errArr.day | length > 0 %}<br><span class="red">{{errArr.day}}</span>{% endif %}
 </div>
 
+
+<div class="form-group">
 郵便番号<span class="red">*</span>
 <div class="form-group" style="display:inline-flex">
 <input type="text" name="zip1" value="{{dataArr.zip1}}" id="zip1" size="3" maxlength="3"> -
@@ -122,6 +128,7 @@
 {% if errArr.address | length > 0 %}<br><span class="red">{{errArr.address}}</span>{% endif %}
 </div>
 
+<div class="form-group">
 電話番号<span class="red">*</span>
 <div class="form-group" style="display:inline-flex">
 <input type="tel" name="tel1" value="{{dataArr.tel1}}" size="6" maxlength="6"> -
@@ -143,14 +150,12 @@
 <input type="checkbox" class="checkbox" name="dm" value="受信する" checked>
 <span>受信する</span>
 </div>
-<input type="submit" name="confirm" class="btn btn-submit" value="内容を確認する">
+<button type="submit" name="confirm" class="btn btn-submit">内容を確認する</button>
 </form>
 </div>
 </div>
 </div>
 </main>
-</form>
-</body>
   <footer>
         <div class="container">
             <p>Copyright @ 2018 SQUARE, inc.</p>

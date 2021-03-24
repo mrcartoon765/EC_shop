@@ -56,15 +56,11 @@ switch ($mode) {
 
         $dataArr['password'] = password_hash($dataArr['password'],PASSWORD_DEFAULT);
         $dataArr['dm'] = ($dataArr['dm'] === '受信する')? 1:0;
-        var_dump($dataArr['dm']);
 
         foreach ($dataArr as $key => $value) {
           $column .= $key . ',';
           $insData .= $db->str_quote($value) . ',';
           }
-          var_dump($insData);
-          echo 'この下';
-          var_dump($dataArr['dm']);
 
           $query = " INSERT INTO Customer ("
           . $column
@@ -76,16 +72,8 @@ switch ($mode) {
 
           $res = $db->execute($query);
 
-          echo '<pre>';
-          var_dump($db);
-          var_dump($query);
-          var_dump($res);
-          var_dump($insData);
-          var_dump($query);
-          echo '</pre>';
-          $db->close();
           if ($res === true) {
-              header('Location: ' . Bootstrap::ENTRY_URL . '/complete.php');
+              header('Location:' . Bootstrap::ENTRY_URL . '/complete.php');
               exit();
           } else {
             $template = 'regist.html.twig';
@@ -104,5 +92,3 @@ switch ($mode) {
           $context['errArr'] =  $errArr;
           $template = $twig->loadTemplate($template);
           $template->display($context);
-
-          var_dump(Bootstrap::APP_URL."create_account/confirm.php");
