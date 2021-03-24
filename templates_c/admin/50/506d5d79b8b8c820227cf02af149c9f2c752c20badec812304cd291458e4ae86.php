@@ -73,12 +73,16 @@ class __TwigTemplate_800a5a654f9861dbaecd736b3ead6bacaa804f1d956057189d0cce15bf6
                 <div class=\"wrapper-title\">
                     <h3>会員管理</h3>
                 </div>
-                <button type=\"button\" class=\"btn btn-gray\" onclick=\"location.href='";
+                <button type=\"bnutton\" class='btn btn-blue' onclick=\"location.href='";
         // line 37
+        echo twig_escape_filter($this->env, twig_constant("config\\Bootstrap::ENTRY_URL"), "html", null, true);
+        echo "/create_dm.php'\">メルマガ配信</button>
+                <button type=\"button\" class=\"btn btn-gray\" onclick=\"location.href='";
+        // line 38
         echo twig_escape_filter($this->env, twig_constant("config\\Bootstrap::ENTRY_URL"), "html", null, true);
         echo "/download.php'\">CSV出力</button>
                 <form class=\"serch\" action=\"";
-        // line 38
+        // line 39
         echo twig_escape_filter($this->env, twig_constant("config\\Bootstrap::ENTRY_URL"), "html", null, true);
         echo "/users.php\" method=\"GET\">
                     <input type=\"text\" name=\"first_name\" placeholder=\"名前検索\">
@@ -97,49 +101,49 @@ class __TwigTemplate_800a5a654f9861dbaecd736b3ead6bacaa804f1d956057189d0cce15bf6
                         </thead>
                         <tbody>
                             ";
-        // line 54
+        // line 55
         $context['_parent'] = $context;
         $context['_seq'] = twig_ensure_traversable(($context["customer"] ?? null));
         foreach ($context['_seq'] as $context["_key"] => $context["value"]) {
-            // line 55
+            // line 56
             echo "                            <tr>
                                 <td>";
-            // line 56
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["value"], "id", [], "any", false, false, false, 56), "html", null, true);
-            echo "</td>
-                                <td>";
             // line 57
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["value"], "first_name", [], "any", false, false, false, 57), "html", null, true);
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["value"], "id", [], "any", false, false, false, 57), "html", null, true);
             echo "</td>
                                 <td>";
             // line 58
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["value"], "mail", [], "any", false, false, false, 58), "html", null, true);
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["value"], "first_name", [], "any", false, false, false, 58), "html", null, true);
             echo "</td>
                                 <td>";
             // line 59
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["value"], "mail", [], "any", false, false, false, 59), "html", null, true);
+            echo "</td>
+                                <td>";
+            // line 60
             echo twig_escape_filter($this->env, ($context["dm"] ?? null), "html", null, true);
             echo "</td>
                                 <td>
                                     <button type=\"button\" class=\"btn btn-green\" onclick=\"location.href='";
-            // line 61
+            // line 62
             echo twig_escape_filter($this->env, twig_constant("config\\Bootstrap::ENTRY_URL"), "html", null, true);
             echo "/edit_user.php?id=";
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["value"], "id", [], "any", false, false, false, 61), "html", null, true);
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["value"], "id", [], "any", false, false, false, 62), "html", null, true);
             echo "'\">編集</button>
                                     <button type=\"button\" class=\"btn btn-red delete\" data-id='";
-            // line 62
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["value"], "id", [], "any", false, false, false, 62), "html", null, true);
+            // line 63
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["value"], "id", [], "any", false, false, false, 63), "html", null, true);
             echo "' >削除</button>
                                     
                                     <form method=\"POST\" action=\"";
-            // line 64
+            // line 65
             echo twig_escape_filter($this->env, twig_constant("config\\Bootstrap::ENTRY_URL"), "html", null, true);
             echo "/delete_user.php\" id=\"delete_form_";
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["value"], "id", [], "any", false, false, false, 64), "html", null, true);
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["value"], "id", [], "any", false, false, false, 65), "html", null, true);
             echo "\">
                                     <input type=\"hidden\" value='";
-            // line 65
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["value"], "id", [], "any", false, false, false, 65), "html", null, true);
+            // line 66
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["value"], "id", [], "any", false, false, false, 66), "html", null, true);
             echo "' name=\"id\">
                                     </form>
                                 </td>
@@ -149,21 +153,21 @@ class __TwigTemplate_800a5a654f9861dbaecd736b3ead6bacaa804f1d956057189d0cce15bf6
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['value'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 70
+        // line 71
         echo "                        </tbody>
                     </table>
                     <ul class=\"paging\">
                     <li><a href=\"";
-        // line 73
+        // line 74
         echo twig_escape_filter($this->env, twig_constant("config\\Bootstrap::ENTRY_URL"), "html", null, true);
         echo "/users.php?first_name=";
         echo twig_escape_filter($this->env, ($context["first_name"] ?? null), "html", null, true);
         echo "\">« 最初</a></li>
 
                     ";
-        // line 75
+        // line 76
         if ((($context["prev"] ?? null) != "")) {
-            // line 76
+            // line 77
             echo "                                            <li><a href=\"";
             echo twig_escape_filter($this->env, twig_constant("config\\Bootstrap::ENTRY_URL"), "html", null, true);
             echo "/users.php?page=";
@@ -177,17 +181,17 @@ class __TwigTemplate_800a5a654f9861dbaecd736b3ead6bacaa804f1d956057189d0cce15bf6
             echo "</a></li>
                     ";
         }
-        // line 78
+        // line 79
         echo "
                     <li><span>";
-        // line 79
+        // line 80
         echo twig_escape_filter($this->env, ($context["page"] ?? null), "html", null, true);
         echo "</span></li>
 
                     ";
-        // line 81
+        // line 82
         if ((($context["next"] ?? null) != "")) {
-            // line 82
+            // line 83
             echo "                                            <li><a href=\"";
             echo twig_escape_filter($this->env, twig_constant("config\\Bootstrap::ENTRY_URL"), "html", null, true);
             echo "/users.php?page=";
@@ -199,10 +203,10 @@ class __TwigTemplate_800a5a654f9861dbaecd736b3ead6bacaa804f1d956057189d0cce15bf6
             echo "</a></li>
                     ";
         }
-        // line 84
+        // line 85
         echo "
                     <li><a href=\"";
-        // line 85
+        // line 86
         echo twig_escape_filter($this->env, twig_constant("config\\Bootstrap::ENTRY_URL"), "html", null, true);
         echo "/users.php?page=";
         echo twig_escape_filter($this->env, ($context["pages"] ?? null), "html", null, true);
@@ -249,7 +253,7 @@ class __TwigTemplate_800a5a654f9861dbaecd736b3ead6bacaa804f1d956057189d0cce15bf6
 
     public function getDebugInfo()
     {
-        return array (  206 => 85,  203 => 84,  191 => 82,  189 => 81,  184 => 79,  181 => 78,  167 => 76,  165 => 75,  158 => 73,  153 => 70,  142 => 65,  136 => 64,  131 => 62,  125 => 61,  120 => 59,  116 => 58,  112 => 57,  108 => 56,  105 => 55,  101 => 54,  82 => 38,  78 => 37,  54 => 16,  37 => 1,);
+        return array (  210 => 86,  207 => 85,  195 => 83,  193 => 82,  188 => 80,  185 => 79,  171 => 77,  169 => 76,  162 => 74,  157 => 71,  146 => 66,  140 => 65,  135 => 63,  129 => 62,  124 => 60,  120 => 59,  116 => 58,  112 => 57,  109 => 56,  105 => 55,  86 => 39,  82 => 38,  78 => 37,  54 => 16,  37 => 1,);
     }
 
     public function getSourceContext()
