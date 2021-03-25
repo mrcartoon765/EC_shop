@@ -33,3 +33,8 @@ try{
 $stmt = $dbh->prepare("SELECT * FROM customer");
 $stmt->execute();
 $customers = $stmt->fetchAll(\PDO::FETCH_ASSOC);
+
+$context[] = [];
+$filename = basename(__FILE__,'.php');
+$template = $twig->loadTemplate($filename . '.html.twig');
+$template->display($context);

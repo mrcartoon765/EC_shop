@@ -57,7 +57,11 @@
                                 <td>{{ attribute(value,'id') }}</td>
                                 <td>{{ attribute(value,'first_name') }}</td>
                                 <td>{{ attribute(value,'mail') }}</td>
-                                <td>{{ dm }}</td>
+                                {% if attribute(value,'dm') == 1 %}
+                                    <td>受信する</td>
+                                    {% else %}
+                                    <td>受信しない</td>
+                                {% endif %}
                                 <td>
                                     <button type="button" class="btn btn-green" onclick="location.href='{{ constant('config\\Bootstrap::ENTRY_URL')}}/edit_user.php?id={{ attribute(value,'id') }}'">編集</button>
                                     <button type="button" class="btn btn-red delete" data-id='{{ attribute(value,'id') }}' >削除</button>

@@ -55,7 +55,7 @@ switch ($mode) {
         $insData = '';
 
         $dataArr['password'] = password_hash($dataArr['password'],PASSWORD_DEFAULT);
-        $dataArr['dm'] = ($dataArr['dm'] === '受信する')? 1:0;
+        $dataArr['dm'] = ($dataArr['dm'] === '受信する')? intval(1):intval(0);
 
         foreach ($dataArr as $key => $value) {
           $column .= $key . ',';

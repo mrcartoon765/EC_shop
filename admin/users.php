@@ -81,13 +81,11 @@ $stmt->bindParam(":offset",$offset,\PDO::PARAM_INT);
 $stmt->bindParam(":rows",$rows,\PDO::PARAM_INT);
 $stmt->execute();
 $customer = $stmt->fetchAll(\PDO::FETCH_ASSOC);
-
-($customer['dm'] == 1)?
-  $customer['dm'] = '受信する':
-  $customer['dm'] = '-';
+($customer['dm'] === 1)?
+  $customer['dm'] = '受信する??':
+  $customer['dm'] = 'しない!!!';
 
 $context['customer']=$customer;
-$context['dm'] = $customer['dm'];
 $context['first_name'] = $customer['first_name'];
 $context['pages'] = $pages;
 $context['prev'] = $prev;
