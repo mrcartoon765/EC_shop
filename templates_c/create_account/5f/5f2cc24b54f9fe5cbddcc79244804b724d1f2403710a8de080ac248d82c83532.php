@@ -416,7 +416,7 @@ class __TwigTemplate_3e5a15ebe083e1f4eeb022166973a04aa36402f0658014c579a701490d1
 </main>
   <footer>
         <div class=\"container\">
-            <p>Copyright @ 2018 SQUARE, inc.</p>
+            <p>Copyright @ 2021  HEALTH KNOWLEGE.</p>
         </div>
     </footer>
     <script src=\"https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js\"></script>

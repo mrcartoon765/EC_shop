@@ -21,7 +21,6 @@ session_start();
     exit;
   }
 
-$context = [];
-$filename = basename(__FILE__,'.php');
-$template = $twig->loadTemplate($filename . '.html.twig');
-$template->display($context);
+  $context['header'] = include Bootstrap::ADMIN_HEADER_FILE;
+  $template = $twig->loadTemplate($filename . '.html.twig');
+  $template->display($context);

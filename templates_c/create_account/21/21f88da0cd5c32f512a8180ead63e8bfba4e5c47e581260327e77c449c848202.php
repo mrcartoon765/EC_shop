@@ -34,25 +34,17 @@ class __TwigTemplate_9ab7c77fa6d41736876a1bfc1fbd2aaa874254054279e1a0497ea72ebd2
     {
         $macros = $this->macros;
         // line 1
-        echo "<!DOCTYPE html>
-<html>
-<head>
-  <meta charset=\"utf-8\">
-
-  <title>会員登録完了</title>
-
-</head>
-<body>
-  <div>会員登録が完了しました</div>
-  <br><br><br><br><br><br>
-<a href=\"";
-        // line 12
-        echo twig_escape_filter($this->env, twig_constant("config\\Bootstrap::APP_URL"), "html", null, true);
-        echo "\" >トップページへ</a>
-
-</body>
-
-</html>";
+        echo "  <main>
+        <div class=\"wrapper last-wrapper\">
+            <div class=\"container\">
+                <div class=\"thanks\">
+                    <h3>登録完了しました。</h3>
+                    <p>ご登録ありがとうございました。</p>
+                    <button type=\"button\" class=\"btn btn-gray\" onclick=\"location.href='./index.php'\">トップページに戻る</button>
+                </div>
+            </div>
+        </div>
+    </main>";
     }
 
     public function getTemplateName()
@@ -60,14 +52,9 @@ class __TwigTemplate_9ab7c77fa6d41736876a1bfc1fbd2aaa874254054279e1a0497ea72ebd2
         return "complete.html.twig";
     }
 
-    public function isTraitable()
-    {
-        return false;
-    }
-
     public function getDebugInfo()
     {
-        return array (  50 => 12,  37 => 1,);
+        return array (  37 => 1,);
     }
 
     public function getSourceContext()

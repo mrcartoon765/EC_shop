@@ -45,7 +45,7 @@ if (password_verify($_POST['password'], $row['password'])) {
   exit;
 }
 
-$context = [];
-$filename = basename(__FILE__,'.php');
+$context['header'] = include Bootstrap::HEADER_FILE;
 $template = $twig->loadTemplate($filename . '.html.twig');
 $template->display($context);
+$context['footer'] = include Bootstrap::FOOTER_FILE;

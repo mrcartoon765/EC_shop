@@ -31,6 +31,7 @@ $text = isset($_POST['text'])?
   $context['email'] = $email;
   $context['text'] = $text;
 
-$filename = basename(__FILE__,'.php');
-$template = $twig->loadTemplate($filename . '.html.twig');
-$template->display($context);
+  $context['header'] = include Bootstrap::HEADER_FILE;
+  $template = $twig->loadTemplate($filename . '.html.twig');
+  $template->display($context);
+  $context['footer'] = include Bootstrap::FOOTER_FILE;

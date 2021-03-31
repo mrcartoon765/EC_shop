@@ -73,7 +73,7 @@ if($first_name == '')
 {
     $stmt = $dbh->prepare("SELECT * FROM customer limit :offset,:rows");
 }else{
-    $stmt = $dbh->prepare("SELECT * FROM customer WHERE first_name like :name limit :offset,:rows");
+    $stmt = $dbh->prepare("SELECT * FROM customer WHERE first_name like :first_name limit :offset,:rows");
     $stmt->bindValue(":first_name",'%'.$first_name.'%');
  }
 
@@ -81,9 +81,6 @@ $stmt->bindParam(":offset",$offset,\PDO::PARAM_INT);
 $stmt->bindParam(":rows",$rows,\PDO::PARAM_INT);
 $stmt->execute();
 $customer = $stmt->fetchAll(\PDO::FETCH_ASSOC);
-($customer['dm'] === 1)?
-  $customer['dm'] = '受信する??':
-  $customer['dm'] = 'しない!!!';
 
 $context['customer']=$customer;
 $context['first_name'] = $customer['first_name'];
@@ -91,6 +88,6 @@ $context['pages'] = $pages;
 $context['prev'] = $prev;
 $context['page'] = $page;
 $context['next'] = $next;
-$filename = basename(__FILE__,'.php');
+$context['header'] = include Bootstrap::ADMIN_HEADER_FILE;
 $template = $twig->loadTemplate($filename . '.html.twig');
 $template->display($context);

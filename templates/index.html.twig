@@ -19,7 +19,7 @@
 				<div class="news-list">
 					{% for value in news %}
 						<ul>
-							<li><ahref="{{constant('config\\Bootstrap::APP_URL')}}page.php?id= {{attribute(value,'id') }}">{{ attribute(value,'updated_at') }}{{ attribute(value,'title') }}</a></li>
+							<li><a href="{{constant('config\\Bootstrap::APP_URL')}}page.php?id={{attribute(value,'id') }}">{{ attribute(value,'updated_at') }}{{ attribute(value,'title') }}</a></li>
 						</ul>
 					{% endfor %}
 				</div>
@@ -111,4 +111,3 @@
 		</div>
 	</main>
 </body>
-</html>

@@ -90,5 +90,7 @@ switch ($mode) {
           $context['dayArr'] = $dayArr;
           $context['dataArr'] =  $dataArr;
           $context['errArr'] =  $errArr;
-          $template = $twig->loadTemplate($template);
+          $context['header'] = include Bootstrap::HEADER_FILE;
+          $template = $twig->loadTemplate($filename . '.html.twig');
           $template->display($context);
+          $context['footer'] = include Bootstrap::FOOTER_FILE;

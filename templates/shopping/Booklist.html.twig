@@ -1,5 +1,3 @@
-<!DOCTYPE html>
-
 <main>
 	<div class="wrapper last-wrapper">
 		<div class="container">
@@ -14,10 +12,10 @@
 	</form>
 	<div class="itemlist">
 		<ul>
-			{% for value in Book %}
+		<li>
+			{% for value in Book_data %}
 					<form action="../../shopping/Booklist.php" method="POST" class="item-form" >
-				<li>
-					<img src="{{constant('config\\Bootstrap::IMAGE_DIR')}}book/{{ attribute(value,'image') }}">
+					<img src="{{constant('config\\Bootstrap::BOOK_IMAGE_DIR')}}{{ attribute(value,'image') }}">
 					<div class="item-body">
 						<h5>{{ attribute(value,'title') }}</h5>
 						<input type="hidden" name="Book_title" value={{ attribute(value,'title')}}>
@@ -30,10 +28,8 @@
 							</form>
 						</div>
 					</div>
-				</li>
 			{% endfor %}
+			</li>
 		</ul>
 	</div>
 </main>
-
-<body></html></body>

@@ -24,25 +24,40 @@ $twig = new \Twig_Environment($loader, ['cache' => Bootstrap::CACHE_DIR, 'auto_r
 $ses->checkSession();
 $ctg_id = (isset($_GET['ctg_id']) === true && preg_match('/^[0-9]+$/', $_GET['ctg_id']) === 1)? $_GET['ctg_id'] : '';
 
+$Book_title = isset($_POST['Book_title'])? htmlspecialchars($_POST['Book_title'], ENT_QUOTES,'utf-8'):'';
+$Book_price = isset($_POST['Book_price'])? htmlspecialchars($_POST['Book_price'], ENT_QUOTES,'utf-8'):'';
+$Book_count = isset($_POST['Book_count'])? htmlspecialchars($_POST['Book_count'], ENT_QUOTES,'utf-8'):'';
+
+session_start();
+
+if(isset($_SESSION['Books'])){
+  $Books = $_SESSION['Books'];
+  foreach($Books as $key => $cart_Book){
+    if($key == $Book_title){
+      $Book_count = (int)$Book_count + (int)$cart_Book['Book_count'];
+    }
+  }
+}
+
+
+  if($Book_title!=''&&$Book_price!=''&&$Book_count!=''){
+      $_SESSION['Books'][$Book_title]=[
+        'Book_title' => $Book_title,
+        'Book_price' => $Book_price,
+        'Book_count' => $Book_count
+      ];
+  }
+  $Books = isset($_SESSION['Books'])? $_SESSION['Books']:[];
+
+var_dump($Books);
+
 $cateArr = $book->getCategoryList();
 
-echo "カートに入れる";
-echo "\n\n";
-echo "イイネ！";
-echo "\n\n";
-echo "レビュー";
-echo "\n\n";
-echo "画像表示";
-echo "\n\n";
-echo "商品説明";
-echo "\n\n";
-echo "価格";
-echo "\n\n";
+$Book_data = $book->getBookList($ctg_id);
 
-$dataArr = $book->getBookList($ctg_id);
-$context = [];
 $context['cateArr'] = $cateArr;
-$context['dataArr'] = $dataArr;
-$filename = basename(__FILE__,'.php');
+$context['Book_data'] = $Book_data;
+$context['header'] = include Bootstrap::HEADER_FILE;
 $template = $twig->loadTemplate($filename . '.html.twig');
 $template->display($context);
+$context['footer'] = include Bootstrap::FOOTER_FILE;

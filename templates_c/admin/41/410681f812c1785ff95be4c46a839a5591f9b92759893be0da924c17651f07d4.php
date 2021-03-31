@@ -34,47 +34,14 @@ class __TwigTemplate_c26b1af14bee07a7631336c3b985c4d9893b67744a87ef88da2c085b308
     {
         $macros = $this->macros;
         // line 1
-        echo "<!DOCTYPE html>
-<html>
-
-<head>
-
-    <meta charset=\"utf-8\">
-    <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\">
-    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">
-
-    <title>メルマガ作成</title>
-
-    <link rel=\"icon\" href=\"favicon.ico\">
-    <link rel=\"stylesheet\" href=\"https://use.fontawesome.com/releases/v5.8.1/css/all.css\"
-        integrity=\"sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf\" crossorigin=\"anonymous\">
-
-        <link href=\"";
-        // line 16
-        echo twig_escape_filter($this->env, twig_constant("config\\Bootstrap::CSS_FILE"), "html", null, true);
-        echo "\" rel=\"stylesheet\">    
-    </head>
-
-<body>
-    <header>
-        <div class=\"container\">
-            <div class=\"header-logo\">
-                <h1><a href=\"dashboard.php\">管理画面</a></h1>
-            </div>
-
-            <nav class=\"menu-right menu\">
-                <a href=\"logout.php\">ログアウト</a>
-            </nav>
-        </div>
-    </header>
-    <main>
+        echo "    <main>
         <div class=\"wrapper\">
             <div class=\"container\">
                 <div class=\"wrapper-title\">
                     <h3>メルマガ作成</h3>
                 </div>
                 <form class=\"edit-form\" method=\"POST\" action=\"";
-        // line 37
+        // line 7
         echo twig_escape_filter($this->env, twig_constant("config\\Bootstrap::ENTRY_URL"), "html", null, true);
         echo "/send_dm.php\">
                     <div class=\"form-group\">
@@ -91,10 +58,10 @@ class __TwigTemplate_c26b1af14bee07a7631336c3b985c4d9893b67744a87ef88da2c085b308
         </div>
     </main>
     <footer>
-        <div class=\"container\">
-            <p>Copyright @ 2018 SQUARE, inc</p>
-        </div>
-    </footer>
+  <div class=\"container\">
+  <p>Copyright @ 2021  HEALTH KNOWLEGE</p>
+  </div>
+  </footer>
 </body>
 
 </html>";
@@ -112,7 +79,7 @@ class __TwigTemplate_c26b1af14bee07a7631336c3b985c4d9893b67744a87ef88da2c085b308
 
     public function getDebugInfo()
     {
-        return array (  78 => 37,  54 => 16,  37 => 1,);
+        return array (  45 => 7,  37 => 1,);
     }
 
     public function getSourceContext()

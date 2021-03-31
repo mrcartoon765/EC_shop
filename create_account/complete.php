@@ -12,7 +12,7 @@ use config\Bootstrap;
 $loader = new \Twig_Loader_Filesystem($tempdir);
 $twig = new \Twig_Environment($loader, ['cache' => Bootstrap::CACHE_DIR, 'auto_reload' => TRUE]);
 
-$context[] = [];
-$filename = basename(__FILE__,'.php');
+$context['header'] = include Bootstrap::HEADER_FILE;
 $template = $twig->loadTemplate($filename . '.html.twig');
 $template->display($context);
+$context['footer'] = include Bootstrap::FOOTER_FILE;

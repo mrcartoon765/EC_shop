@@ -83,17 +83,19 @@ $text = isset($_POST['text'])? htmlspecialchars($_POST['text'], ENT_QUOTES, 'utf
   $mail2->Body = $mail_body2;
 
 try {
-  // if($mail2->send()){
+  if($mail2->send()){
     if($mail->send()){
      $result = 'お問い合わせありがとうございました。';
     } else {
       $result = '送信できませんでした。';
     }
+  }
 
 }catch(Exception $e){
     $result = '送信できませんでした。';
 }
 $context['result'] = $result;
-$filename = basename(__FILE__,'.php');
+$context['header'] = include Bootstrap::HEADER_FILE;
 $template = $twig->loadTemplate($filename . '.html.twig');
 $template->display($context);
+$context['footer'] = include Bootstrap::FOOTER_FILE;

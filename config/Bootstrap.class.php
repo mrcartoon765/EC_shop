@@ -24,6 +24,8 @@ $tempdir = $this_dir !== AppName ?
 $tempdir = Bootstrap::TEMPLATE_DIR:
 Bootstrap::ROOT_TEMP_DIR;
 
+$filename = basename(debug_backtrace()[0]['file'],'.php');
+
 //DB_****に関しては随時変更
 
 class Bootstrap
@@ -41,10 +43,11 @@ class Bootstrap
   const APP_URL = AppUrl;
   const ENTRY_URL = self::APP_URL . ThisDir;
   const CREATE_ACCOUNT = self::APP_URL . 'create_account/regist.php';
-  const CSS_FILE = self::APP_URL . "/css/" . ThisDir . "/styles.css?v=2";
-  const CSS_RESPONSIVE = self::APP_URL . "/css/" . ThisDir . "responsive.css?v=2" ;
-  const DEFAULT_CSS = self::APP_URL . "/css/styles.css?v=2";
-  const DEFAULT_RESPONSIVE = self::APP_URL . "/css/responsive.css?v=2" ;
+  const BOOK_IMAGE_DIR = self::ENTRY_URL . "/image/";
+  const COMMON_TEMP = self::APP_DIR . "/templates/common";
+  const HEADER_FILE = self::COMMON_TEMP . "/header.html.twig";
+  const ADMIN_HEADER_FILE = self::COMMON_TEMP . "/header_admin.html.twig";
+  const FOOTER_FILE = self::COMMON_TEMP . "/footer.html.twig";
 
   public static function loadClass($class)
   {
