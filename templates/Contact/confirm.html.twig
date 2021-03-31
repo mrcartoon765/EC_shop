@@ -1,52 +1,120 @@
 <!DOCTYPE html>
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>確認画面 | EC_BOOK</title>
 
-{{ header }}
+  <link rel="icon" href="favicon.ico">
+
+<link href="{{constant('config\\Bootstrap::DEFAULT_CSS')}}" rel="stylesheet">
+<link href="{{constant('config\\Bootstrap::DEFAULT_RESPONSIVE')}} rel="stylesheet">
+<link href="htttps://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
+
+</head>
 
 <body>
-	<main>
-		<div class="wrapper last-wrapper">
-			<div class="container">
-				<div class="wrapper-title">
-					<h3>CONFIRM</h3>
-					<p>お問い合わせ内容確認</p>
-				</div>
+  <header>
+  <div class="container">
+  <div class="header-logo">
+<h1><a href="{{constant ('config\\Bootstrap::APP_URL') }}"><img src= "{{constant ('config\\Bootstrap::APP_URL') }}/image/square_logo-1024x192.png" id="logo"></a><h1>
+  </div>
 
-				<form method="POST" action="{{constant('config\\Bootstrap::APP_URL')}}/Contact/send.php" class="conf-form">
-					<div class="form-group">
-						<p>お名前 *</p>
-						<p>{{ name }}</p>
-						<input type="hidden" name="name" value="{{ name }}">
-						{% if ( name == '') %}
-							<p class="error">名前が入力されていません</p>
-						{% endif %}
-					</p>
-				</div>
+  <div class="toggle">
+  <div>
+  <span></span>
+  <span></span>
+  <span></span>
+  </div>
+  </div>
 
-				<div class="form-group">
-					<p>Email *</p>
-					<p>{{ email }}</p>
-					<input type="hidden" name="email" value="{{ email }}">
-					{% if ( email == '') %}
-						<p class="error">メールアドレスが入力されていません</p>
-					{% endif %}
-				</p>
-			</div>
+  <nav class="sp-menu menu">
+  <ul>
+  <li><a href="{{constant('config\\Bootstrap::APP_URL')}}index.php#service">サービス</a></li>
+  <li><a href="{{constant('config\\Bootstrap::APP_URL')}}index.php#news">お知らせ</a></li>
+  <li><a href="{{constant('config\\Bootstrap::APP_URL')}}index.php#about">会社概要</a></li>
+    <li><a href="{{constant('config\\Bootstrap::APP_URL')}}index.php#contact">お問合せ</a></li>
+  </ul>
+  </nav>
 
-			<div class="form-group">
-				<p>お問い合わせ内容 *</p>
-				<p>{{ text }}</p>
-				<input type="hidden" name="text" value="{{ text }}">
-				{% if ( text == '') %}
-					<p class="error">お問い合わせ内容が入力されていません</p>
-				{% endif %}
-			</p>
-		</div>
+  <nav class="pc-menu menu-left menu">
+  <ul>
+  <li><a href="{{constant('config\\Bootstrap::APP_URL')}}index.php#service">サービス</a></li>
+  <li><a href="{{constant('config\\Bootstrap::APP_URL')}}index.php#news">お知らせ</a></li>
+  <li><a href="{{constant('config\\Bootstrap::APP_URL')}}index.php#about">会社概要</a></li>
+    <li><a href="{{constant('config\\Bootstrap::APP_URL')}}index.php#contact">お問合せ</a></li>
+  </ul>
+  </nav>
+  </div>
+  </header>
 
-		{% if 'name' != '' and 'email' !='' and 'text' !='' %}
-			<p>この内容で送信してよろしいですか？</p>
-			<button type="submit" class="btn btn-submit">送信する</button>
-		{% else %}
-			<button class="btn btn-reutrn">戻る</button>
-		{% endif %}
-	</form>
-</body></div></div></main></body>{{ footer }}</html>
+  <main>
+  <div class="wrapper last-wrapper">
+  <div class="container">
+  <div class="wrapper-title">
+  <h3>CONFIRM</h3>
+  <p>お問い合わせ内容確認</p>
+  </div>
+
+  <form method="POST" action="{{constant('config\\Bootstrap::APP_URL')}}/Contact/send.php" class="conf-form">
+  <div class="form-group">
+  <p>お名前 *</p>
+  <p>{{ name }}</p>
+  <input type="hidden" name="name" value="{{ name }}" >
+  {% if ( name == '') %}
+  <p class="error">名前が入力されていません</p>
+  {% endif %}</p>
+  </div>
+
+  <div class="form-group">
+  <p>Email *</p>
+    <p>{{ email }}</p>
+  <input type="hidden" name="email" value="{{ email }}" >
+  {% if ( email == '') %}
+  <p class="error">メールアドレスが入力されていません</p>
+  {% endif %}</p>
+  </div>
+
+  <div class="form-group">
+  <p>お問い合わせ内容 *</p>
+    <p>{{ text }}</p>
+    <input type="hidden" name="text" value="{{ text }}" >
+  {% if ( text == '') %}
+  <p class="error">お問い合わせ内容が入力されていません</p>
+  {% endif %}</p>
+  </div>
+
+  {% if 'name' != '' and 'email' !='' and 'text' !='' %}
+  <p>この内容で送信してよろしいですか？</p>
+  <button type="submit" class="btn btn-submit">送信する</button>
+  {% else %}
+    <button class="btn btn-reutrn">戻る</button>
+  {% endif %}
+  </form>
+  </div>
+  </div>
+  </main>
+
+  <footer>
+  <div class="container">
+  <p>Copyright @ 2021 EC_BOOK</p>
+  </div>
+  </footer>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script>
+  $(function(){
+    $('.toggle').click(function(){
+      $("header").toggleClass('open');
+      $(".sp-menu").slideToggle(500);
+    });
+
+  $(".btn-return").click(function(){
+    window.history.back(-1);
+    return false;
+  });
+
+  });
+  </script>
+</body>
+</html>

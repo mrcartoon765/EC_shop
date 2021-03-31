@@ -1,3 +1,33 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>記事管理</title>
+
+    <link rel="icon" href="favicon.ico">
+    <!-- css -->
+    <link href="{{constant('config\\Bootstrap::CSS_FILE')}}" rel="stylesheet" >
+  
+      <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+        integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <div class="header-logo">
+                <h1><a href="{{constant('config\\Bootstrap::ENTRY_URL')}}/dashboard.php">管理画面</a></h1>
+            </div>
+
+            <nav class="menu-right menu">
+                <a href="logout.php">ログアウト</a>
+            </nav>
+        </div>
+    </header>
     <main>
         <div class="wrapper">
             <div class="container">
@@ -44,11 +74,9 @@
     </main>
     <footer>
         <div class="container">
-            <p>Copyright @ 2021  HEALTH KNOWLEGE</p>
+            <p>Copyright @ 2018 SQUARE, inc</p>
         </div>
     </footer>
-    </body>
-
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
    <script>
        $(".delete").click(function(){
@@ -62,4 +90,6 @@
            }
        })
    </script>
-  </html> 
+</body>
+
+</html>

@@ -1,39 +1,36 @@
 <!DOCTYPE html>
+<html lang="jp">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BookList</title>
+</head>
+<body>
 
-<main>
-	<div class="wrapper last-wrapper">
-		<div class="container">
-			<div class="wrapper-title">
-				<h3>BOOK</h3>
-				<p>書籍一覧</p>
-			</div>
-		</div>
+<a href="{{ constant('config\\Bootstrap::APP_URL') }}" >トップページへ</a>
 
-		<input type="text" name="title" placeholder="名前検索">
-		<button type="submit" class="btn btn-blue">検索</button>
-	</form>
-	<div class="itemlist">
-		<ul>
-			{% for value in Book %}
-					<form action="../../shopping/Booklist.php" method="POST" class="item-form" >
-				<li>
-					<img src="{{constant('config\\Bootstrap::IMAGE_DIR')}}book/{{ attribute(value,'image') }}">
-					<div class="item-body">
-						<h5>{{ attribute(value,'title') }}</h5>
-						<input type="hidden" name="Book_title" value={{ attribute(value,'title')}}>
-						<p>価格　￥{{ attribute(value,'price') }}</p>
-						<input type="hidden" name="Book_price" value={{ attribute(value,'price')}}>
-						<p>{{  attribute(value,'detail')|slice(0,40) }}...</p>
-						<div class="item-form">
-							<input type="text" value="1" name="Book_count">
-							<button type="submit" class="btn-sm btn-blue">カートに入れる</button>
-							</form>
-						</div>
-					</div>
-				</li>
-			{% endfor %}
-		</ul>
-	</div>
-</main>
+<div id="wrapper">
+{% include 'category_menu.html.twig' %}
+<div id="Book_list">
+{% for value in dataArr %}
+<div class="Book"></div>
+<ul>
 
-<body></html></body>
+<li class="title"><a href="{{ constant('config\\Bootstrap::ENTRY_URL')}}detail.php?Book_id={{value.book_id}} ">{{ value.title }}</a></li>
+
+<li class="price">&yen;{{ value.price|number_format(0, '.', ',') }}</li>
+
+<li class="image">
+<a href="{{ constant('config\\Bootstrap::ENTRY_URL') }}detail.php?Book_id={{ value.book_id }}">
+
+<img src="{{ constant('config\\Bootstrap::ENTRY_URL') }}image/{{ value.image }}" alt="{{ value.title }}"></a></li>
+
+</ul>
+</div>
+{% endfor %}
+</div>
+</div>
+
+<a href="{{ constant('config\\Bootstrap::APP_URL') }}" >トップページへ</a></li>
+</body>
+</html>

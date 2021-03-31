@@ -1,33 +1,61 @@
 <!DOCTYPE html>
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ news[page_no]['title'] }}|EC_BOOK|</title>
+  <link rel="icon" href="favicon.ico">
 
-{{ header }}
+  <link href="{{constant('config\\Bootstrap::DEFAULT_CSS')}}" rel="stylesheet">
 
+  <link href="{{constant('config\\Bootstrap::DEFAULT_RESPONSIVE')}}" rel="stylesheet">
+
+<link href="htttps://use.fontawesome.com/releases/v5.15.2/css/all.css" rel="stylesheet">
+</head>
 <body>
-	<main>
-		<div class="breadcrumbs">
-			<div class="container">
-				<ul>
-					<li>
-						<a href="{{constant ('config\\Bootstrap::APP_URL') }}index.php">TOP</a>
-					</li>
-					<li>{{ news[page_no]['title'] }}</li>
-				</ul>
-			</div>
-		</div>
-		<div class="wrapper">
-			<div class="container">
-				<article>
-					<div class="page-title">
-						<h1>{{ news[page_no]['title'] }}</h1>
-						<p>
-							{{ news[page_no]['updated_at'] }}</p>
-					</div>
-					<div class="page-text">
-						{{ news[page_no]['content'] }}
-					</div>
-				</article>
-			</div>
-		</div>
-	</main>
+  <header>
+  <div class="container">
+  <div class="header-logo">
+<h1><a href="{{constant ('config\\Bootstrap::APP_URL') }}"><img src= "{{constant ('config\\Bootstrap::APP_URL') }}/image/square_logo-1024x192.png" id="logo"></a><h1>
+  </div>
+
+  <nav class="menu-left menu">
+  <ul>
+  <li><a href="{{constant('config\\Bootstrap::APP_URL')}}index.php#service">サービス</a></li>
+  <li><a href="{{constant('config\\Bootstrap::APP_URL')}}index.php#news">お知らせ</a></li>
+  <li><a href="{{constant('config\\Bootstrap::APP_URL')}}index.php#about">会社概要</a></li>
+    <li><a href="{{constant('config\\Bootstrap::APP_URL')}}index.php#contact">お問合せ</a></li>
+  </ul>
+  </nav>
+  </div>
+  </header>
+  <main>
+  <div class="breadcrumbs">
+  <div class="container">
+  <ul>
+  <li><a href="{{constant ('config\\Bootstrap::APP_URL') }}index.php">TOP</a></li>
+  <li>{{ news[page_no]['title'] }}</li>
+  </ul>
+  </div>
+  </div>
+  <div class="wrapper">
+  <div class="container">
+  <article>
+  <div class="page-title">
+  <h1>{{ news[page_no]['title'] }}</h1>
+  <p> {{ news[page_no]['updated_at'] }}</p>
+  </div>
+  <div class="page-text">
+  {{ news[page_no]['content'] }}
+  </div>
+  </article>
+  </div>
+  </div>
+  </main>
+  <footer>
+  <div class="container">
+    <p>Copyright @ 2021 EC_BOOK</p>
+  </div>
+  </footer>
 </body>
-{{ footer }}</html>
+</html>

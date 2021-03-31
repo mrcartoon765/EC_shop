@@ -1,21 +1,86 @@
 <!DOCTYPE html>
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>お問い合わせ内容送信 | EC_BOOK</title>
+
+  <link rel="icon" href="favicon.ico">
+
+<link href="{{constant('config\\Bootstrap::DEFAULT_CSS')}}" rel="stylesheet">
+
+<link href="{{constant('config\\Bootstrap::DEFAULT_RESPONSIVE')}}" rel="stylesheet">
+
+<link href="htttps://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
+
+</head>
 
 <body>
-	<main>
-		<div class="wrapper last-wrapper">
-			<div class="container">
-				<div class="wrapper-title">
-					<h3>SEND</h3>
-					<p>お問い合わせ送信</p>
-				</div>
-				<div class="wrapper-body">
-					<div class="thanks">
-						<h4>{{ result }}</h4>
-					</div>
-					<button type="button" class="btn btn-gray" onclick="location.href=" {{ constant ('confirm\\Bootstrap::APP_URL') }}>トップページに戻る</button>
-				</div>
-			</div>
-		</div>
-	</main>
+  <header>
+  <div class="container">
+  <div class="header-logo">
+  <h1><a href="{{constant ('config\\Bootstrap::APP_URL') }}"><img src= "{{constant ('config\\Bootstrap::APP_URL') }}/image/square_logo-1024x192.png" id="logo"></a></h1>
+  </div>
+
+  <div class="toggle">
+  <div>
+  <span></span>
+  <span></span>
+  <span></span>
+  </div>
+  </div>
+
+  <nav class="sp-menu menu">
+  <ul>
+  <li><a href="{{constant('config\\Bootstrap::APP_URL')}}index.php#service">サービス</a></li>
+  <li><a href="{{constant('config\\Bootstrap::APP_URL')}}index.php#news">お知らせ</a></li>
+  <li><a href="{{constant('config\\Bootstrap::APP_URL')}}index.php#about">会社概要</a></li>
+    <li><a href="{{constant('config\\Bootstrap::APP_URL')}}index.php#contact">お問合せ</a></li>
+  </ul>
+  </nav>
+
+  <nav class="pc-menu menu-left menu">
+  <ul>
+  <li><a href="{{constant('config\\Bootstrap::APP_URL')}}index.php#service">サービス</a></li>
+  <li><a href="{{constant('config\\Bootstrap::APP_URL')}}index.php#news">お知らせ</a></li>
+  <li><a href="{{constant('config\\Bootstrap::APP_URL')}}index.php#about">会社概要</a></li>
+    <li><a href="{{constant('config\\Bootstrap::APP_URL')}}index.php#contact">お問合せ</a></li>
+  </ul>
+  </nav>
+  </div>
+  </header>
+
+  <main>
+  <div class="wrapper last-wrapper">
+  <div class="container">
+  <div class="wrapper-title">
+  <h3>SEND</h3>
+  <p>お問い合わせ送信</p>
+  </div>
+  <div class="wrapper-body">
+  <div class="thanks">
+  <h4>{{ result }}</h4>
+  </div>
+  <button type="button" class="btn btn-gray" onclick="location.href="{{ constant ('confirm\\Bootstrap::APP_URL') }} >トップページに戻る</button>
+  </div>
+  </div>
+  </div>
+  </main>
+
+  <footer>
+  <div class="container">
+  <p>Copyright @ 2021 EC_BOOK</p>
+  </div>
+  </footer>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script>
+  $(function(){
+    $('.toggle').click(function(){
+      $("header").toggleClass('open');
+      $(".sp-menu").slideToggle(500);
+    });
+  });
+  </script>
 </body>
 </html>
