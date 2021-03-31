@@ -49,8 +49,6 @@ if(isset($_SESSION['Books'])){
   }
   $Books = isset($_SESSION['Books'])? $_SESSION['Books']:[];
 
-var_dump($Books);
-
 $cateArr = $book->getCategoryList();
 
 $Book_data = $book->getBookList($ctg_id);

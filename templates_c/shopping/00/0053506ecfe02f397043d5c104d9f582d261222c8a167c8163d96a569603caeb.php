@@ -110,8 +110,22 @@ class __TwigTemplate_ec21c8e3d184ad113450d37d7eb8c31f9cadddd77c0170d324495731fea
             </tbody>
 </table>
                 <div class=\"cart-btn\">
-                    <button type=\"button\" class=\"btn btn-blue\">購入手続きへ</button>
-                    <button type=\"button\" class=\"btn btn-gray\">お買い物を続ける</button>
+
+                    ";
+        // line 50
+        if (twig_test_empty(($context["Books_cart"] ?? null))) {
+            // line 51
+            echo "                    ";
+        } else {
+            // line 52
+            echo "                    <button type=\"button\" class=\"btn btn-blue\" onclick=\"location.href='pay.php'\">購入手続きへ
+                    </button>
+                    ";
+        }
+        // line 55
+        echo "
+
+                    <button type=\"button\" class=\"btn btn-gray\" onclick=\"location.href='Booklist.php'\">お買い物を続ける</button>
                 </div>
             </div>
         </div>
@@ -130,7 +144,7 @@ class __TwigTemplate_ec21c8e3d184ad113450d37d7eb8c31f9cadddd77c0170d324495731fea
 
     public function getDebugInfo()
     {
-        return array (  107 => 44,  103 => 42,  91 => 36,  85 => 33,  81 => 32,  77 => 31,  73 => 30,  70 => 29,  66 => 28,  37 => 1,);
+        return array (  126 => 55,  121 => 52,  118 => 51,  116 => 50,  107 => 44,  103 => 42,  91 => 36,  85 => 33,  81 => 32,  77 => 31,  73 => 30,  70 => 29,  66 => 28,  37 => 1,);
     }
 
     public function getSourceContext()

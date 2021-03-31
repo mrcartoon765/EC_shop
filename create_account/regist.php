@@ -53,6 +53,7 @@ $context['monthArr'] = $monthArr;
 $context['dayArr'] = $dayArr;
 $context['dataArr'] = $dataArr;
 $context['errArr'] = $errArr;
-$filename = basename(__FILE__,'.php');
+$context['header'] = include Bootstrap::HEADER_FILE;
 $template = $twig->loadTemplate($filename . '.html.twig');
 $template->display($context);
+$context['footer'] = include Bootstrap::FOOTER_FILE;

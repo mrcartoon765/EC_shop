@@ -34,106 +34,7 @@ class __TwigTemplate_3e5a15ebe083e1f4eeb022166973a04aa36402f0658014c579a701490d1
     {
         $macros = $this->macros;
         // line 1
-        echo "<!DOCTYPE html>
-<html>
-<head>
-<meta charset=\"utf-8\">
-<script src=\"https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js\"></script>
-<script src=\"";
-        // line 6
-        echo twig_escape_filter($this->env, twig_constant("config\\Bootstrap::APP_URL"), "html", null, true);
-        echo "/js/common.js\"></script>
-<link href=\"";
-        // line 7
-        echo twig_escape_filter($this->env, twig_constant("config\\Bootstrap::DEFAULT_CSS"), "html", null, true);
-        echo "\" rel=\"stylesheet\">
-<link href=\"";
-        // line 8
-        echo twig_escape_filter($this->env, twig_constant("config\\Bootstrap::DEFAULT_RESPONSIVE"), "html", null, true);
-        echo "\" rel=\"stylesheet\">
-<title>会員登録</title>
-</head>
-
-<body>
-  <header>
-  <div class=\"container\">
-  <div class=\"header-logo\">
-<h1><a href=\"";
-        // line 16
-        echo twig_escape_filter($this->env, twig_constant("config\\Bootstrap::APP_URL"), "html", null, true);
-        echo "\"><img src= \"";
-        echo twig_escape_filter($this->env, twig_constant("config\\Bootstrap::APP_URL"), "html", null, true);
-        echo "image/square_logo-1024x192.png\" id=\"logo\"></a><h1>
-  </div>
-
-  <div class=\"toggle\">
-  <div>
-  <span></span>
-  <span></span>
-  <span></span>
-  </div>
-  </div>
-
-  <nav class=\"sp-menu menu\">
-  <ul>
-  <li><a href=\"";
-        // line 29
-        echo twig_escape_filter($this->env, twig_constant("config\\Bootstrap::APP_URL"), "html", null, true);
-        echo "index.php#service\">サービス</a></li>
-  <li><a href=\"";
-        // line 30
-        echo twig_escape_filter($this->env, twig_constant("config\\Bootstrap::APP_URL"), "html", null, true);
-        echo "index.php#news\">お知らせ</a></li>
-  <li><a href=\"";
-        // line 31
-        echo twig_escape_filter($this->env, twig_constant("config\\Bootstrap::APP_URL"), "html", null, true);
-        echo "index.php#about\">会社概要</a></li>
-  <li><a href=\"";
-        // line 32
-        echo twig_escape_filter($this->env, twig_constant("config\\Bootstrap::APP_URL"), "html", null, true);
-        echo "index.php#contact\">お問合せ</a></li>
-  <li><a href=\"https://mrcartoon995970419.wordpress.com/\">ブログ</a></li>
-  <li><a href=\"";
-        // line 34
-        echo twig_escape_filter($this->env, twig_constant("config\\Bootstrap::APP_URL"), "html", null, true);
-        echo "/create_account/index.php\">会員登録</a></li>
-  </ul>
-  </nav>
-
-  <nav class=\"pc-menu menu-left menu\">
-  <ul>
-  <li><a href=\"";
-        // line 40
-        echo twig_escape_filter($this->env, twig_constant("config\\Bootstrap::APP_URL"), "html", null, true);
-        echo "index.php#service\">サービス</a></li>
-  <li><a href=\"";
-        // line 41
-        echo twig_escape_filter($this->env, twig_constant("config\\Bootstrap::APP_URL"), "html", null, true);
-        echo "index.php#news\">お知らせ</a></li>
-  <li><a href=\"";
-        // line 42
-        echo twig_escape_filter($this->env, twig_constant("config\\Bootstrap::APP_URL"), "html", null, true);
-        echo "index.php#about\">会社概要</a></li>
-  <li><a href=\"";
-        // line 43
-        echo twig_escape_filter($this->env, twig_constant("config\\Bootstrap::APP_URL"), "html", null, true);
-        echo "index.php#contact\">お問合せ</a></li>
-  <li><a href=\"https://mrcartoon995970419.wordpress.com/\">ブログ</a></li>
-  <li><a href=\"";
-        // line 45
-        echo twig_escape_filter($this->env, twig_constant("config\\Bootstrap::APP_URL"), "html", null, true);
-        echo "/create_account/index.php\">会員登録</a></li>
-  </ul>
-  </nav>
-<nav class=\"pc-menu menu-right menu\">
-    <a href=\"";
-        // line 49
-        echo twig_escape_filter($this->env, twig_constant("config\\Bootstrap::APP_URL"), "html", null, true);
-        echo "/create_account/index.php\">会員登録</a>
-</nav>
-  </div>
-  </header>
-<main>
+        echo "<main>
 <div class=\"wrapper last-wrapper register-wrapper\">
             <div class=\"container\">
                 <div class=\"register\">
@@ -142,7 +43,7 @@ class __TwigTemplate_3e5a15ebe083e1f4eeb022166973a04aa36402f0658014c579a701490d1
                         <p>新規登録</p>
                     </div>
 <form class=\"regi-form\" method=\"POST\" action=\"";
-        // line 61
+        // line 9
         echo twig_escape_filter($this->env, twig_constant("config\\Bootstrap::APP_URL"), "html", null, true);
         echo "/create_account/confirm.php\">
 <div class=\"form-group\">
@@ -150,59 +51,59 @@ class __TwigTemplate_3e5a15ebe083e1f4eeb022166973a04aa36402f0658014c579a701490d1
 
 メールアドレス<span class=\"red\">*</span>
 <input type=\"text\" name=\"mail\" value=\"";
-        // line 66
-        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, ($context["dataArr"] ?? null), "mail", [], "any", false, false, false, 66), "html", null, true);
+        // line 14
+        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, ($context["dataArr"] ?? null), "mail", [], "any", false, false, false, 14), "html", null, true);
         echo "\" size=\"40\">
 ";
-        // line 67
-        if ((twig_length_filter($this->env, twig_get_attribute($this->env, $this->source, ($context["errArr"] ?? null), "mail", [], "any", false, false, false, 67)) > 0)) {
+        // line 15
+        if ((twig_length_filter($this->env, twig_get_attribute($this->env, $this->source, ($context["errArr"] ?? null), "mail", [], "any", false, false, false, 15)) > 0)) {
             echo "<br><span class=\"red\">";
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, ($context["errArr"] ?? null), "mail", [], "any", false, false, false, 67), "html", null, true);
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, ($context["errArr"] ?? null), "mail", [], "any", false, false, false, 15), "html", null, true);
             echo "</span>";
         }
-        // line 68
+        // line 16
         echo "</div>
 <div class=\"form-group\">
 パスワード<span class=\"red\">*</span>
 <input type=\"text\" name=\"password\" value=\"";
-        // line 71
-        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, ($context["dataArr"] ?? null), "password", [], "any", false, false, false, 71), "html", null, true);
+        // line 19
+        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, ($context["dataArr"] ?? null), "password", [], "any", false, false, false, 19), "html", null, true);
         echo "\" size=\"40\">
 ";
-        // line 72
-        if ((twig_length_filter($this->env, twig_get_attribute($this->env, $this->source, ($context["errArr"] ?? null), "password", [], "any", false, false, false, 72)) > 0)) {
+        // line 20
+        if ((twig_length_filter($this->env, twig_get_attribute($this->env, $this->source, ($context["errArr"] ?? null), "password", [], "any", false, false, false, 20)) > 0)) {
             echo "<br><span class=\"red\">";
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, ($context["errArr"] ?? null), "password", [], "any", false, false, false, 72), "html", null, true);
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, ($context["errArr"] ?? null), "password", [], "any", false, false, false, 20), "html", null, true);
             echo "</span>";
         }
-        // line 73
+        // line 21
         echo "</div>
 
 <div class=\"form-group\">
 お名前(氏名)<span class=\"red\">*</span>
 <div class=\"form-group\">
 姓<input type=\"text\" name=\"family_name\" value=\"";
-        // line 78
-        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, ($context["dataArr"] ?? null), "family_name", [], "any", false, false, false, 78), "html", null, true);
+        // line 26
+        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, ($context["dataArr"] ?? null), "family_name", [], "any", false, false, false, 26), "html", null, true);
         echo "\">
 名<input type=\"text\" name=\"first_name\"  value=\"";
-        // line 79
-        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, ($context["dataArr"] ?? null), "first_name", [], "any", false, false, false, 79), "html", null, true);
+        // line 27
+        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, ($context["dataArr"] ?? null), "first_name", [], "any", false, false, false, 27), "html", null, true);
         echo "\">
 ";
-        // line 80
-        if ((twig_length_filter($this->env, twig_get_attribute($this->env, $this->source, ($context["errArr"] ?? null), "family_name", [], "any", false, false, false, 80)) > 0)) {
+        // line 28
+        if ((twig_length_filter($this->env, twig_get_attribute($this->env, $this->source, ($context["errArr"] ?? null), "family_name", [], "any", false, false, false, 28)) > 0)) {
             echo "<br><span class=\"red\">";
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, ($context["errArr"] ?? null), "family_name", [], "any", false, false, false, 80), "html", null, true);
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, ($context["errArr"] ?? null), "family_name", [], "any", false, false, false, 28), "html", null, true);
             echo "</span>";
         }
-        // line 81
-        if ((twig_length_filter($this->env, twig_get_attribute($this->env, $this->source, ($context["errArr"] ?? null), "first_name", [], "any", false, false, false, 81)) > 0)) {
+        // line 29
+        if ((twig_length_filter($this->env, twig_get_attribute($this->env, $this->source, ($context["errArr"] ?? null), "first_name", [], "any", false, false, false, 29)) > 0)) {
             echo "<br><span class=\"red\">";
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, ($context["errArr"] ?? null), "first_name", [], "any", false, false, false, 81), "html", null, true);
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, ($context["errArr"] ?? null), "first_name", [], "any", false, false, false, 29), "html", null, true);
             echo "</span>";
         }
-        // line 82
+        // line 30
         echo "</div>
 
 
@@ -210,12 +111,12 @@ class __TwigTemplate_3e5a15ebe083e1f4eeb022166973a04aa36402f0658014c579a701490d1
 <br>お名前(かな)
 <div class=\"form-group\"> 
 せい<input type=\"text\" name=\"family_name_kana\" value=\"";
-        // line 88
-        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, ($context["dataArr"] ?? null), "family_name_kana", [], "any", false, false, false, 88), "html", null, true);
+        // line 36
+        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, ($context["dataArr"] ?? null), "family_name_kana", [], "any", false, false, false, 36), "html", null, true);
         echo "\">
 めい<input type=\"text\" name=\"first_name_kana\"  value=\"";
-        // line 89
-        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, ($context["dataArr"] ?? null), "first_name_kana", [], "any", false, false, false, 89), "html", null, true);
+        // line 37
+        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, ($context["dataArr"] ?? null), "first_name_kana", [], "any", false, false, false, 37), "html", null, true);
         echo "\">
 </div>
 
@@ -223,15 +124,15 @@ class __TwigTemplate_3e5a15ebe083e1f4eeb022166973a04aa36402f0658014c579a701490d1
 生年月日<span class=\"red\">*</span>
 <select name=\"year\" >
 ";
-        // line 95
+        // line 43
         $context['_parent'] = $context;
         $context['_seq'] = twig_ensure_traversable(($context["yearArr"] ?? null));
         foreach ($context['_seq'] as $context["index"] => $context["label"]) {
-            // line 96
+            // line 44
             echo "<option value=\"";
             echo twig_escape_filter($this->env, $context["index"], "html", null, true);
             echo "\" ";
-            if ((twig_get_attribute($this->env, $this->source, ($context["dataArr"] ?? null), "year", [], "any", false, false, false, 96) == $context["index"])) {
+            if ((twig_get_attribute($this->env, $this->source, ($context["dataArr"] ?? null), "year", [], "any", false, false, false, 44) == $context["index"])) {
                 echo " selected ";
             }
             echo ">";
@@ -242,19 +143,19 @@ class __TwigTemplate_3e5a15ebe083e1f4eeb022166973a04aa36402f0658014c579a701490d1
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['index'], $context['label'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 98
+        // line 46
         echo "</select>
 <select name='month'>
 ";
-        // line 100
+        // line 48
         $context['_parent'] = $context;
         $context['_seq'] = twig_ensure_traversable(($context["monthArr"] ?? null));
         foreach ($context['_seq'] as $context["index"] => $context["label"]) {
-            // line 101
+            // line 49
             echo "<option value=\"";
             echo twig_escape_filter($this->env, $context["index"], "html", null, true);
             echo "\" ";
-            if ((twig_get_attribute($this->env, $this->source, ($context["dataArr"] ?? null), "month", [], "any", false, false, false, 101) == $context["index"])) {
+            if ((twig_get_attribute($this->env, $this->source, ($context["dataArr"] ?? null), "month", [], "any", false, false, false, 49) == $context["index"])) {
                 echo " selected ";
             }
             echo ">";
@@ -265,19 +166,19 @@ class __TwigTemplate_3e5a15ebe083e1f4eeb022166973a04aa36402f0658014c579a701490d1
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['index'], $context['label'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 103
+        // line 51
         echo "</select>
 <select name='day'>
 ";
-        // line 105
+        // line 53
         $context['_parent'] = $context;
         $context['_seq'] = twig_ensure_traversable(($context["dayArr"] ?? null));
         foreach ($context['_seq'] as $context["index"] => $context["label"]) {
-            // line 106
+            // line 54
             echo "<option value=\"";
             echo twig_escape_filter($this->env, $context["index"], "html", null, true);
             echo "\" ";
-            if ((twig_get_attribute($this->env, $this->source, ($context["dataArr"] ?? null), "day", [], "any", false, false, false, 106) == $context["index"])) {
+            if ((twig_get_attribute($this->env, $this->source, ($context["dataArr"] ?? null), "day", [], "any", false, false, false, 54) == $context["index"])) {
                 echo " selected ";
             }
             echo ">";
@@ -288,28 +189,28 @@ class __TwigTemplate_3e5a15ebe083e1f4eeb022166973a04aa36402f0658014c579a701490d1
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['index'], $context['label'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 108
+        // line 56
         echo "</select>
 ";
-        // line 109
-        if ((twig_length_filter($this->env, twig_get_attribute($this->env, $this->source, ($context["errArr"] ?? null), "year", [], "any", false, false, false, 109)) > 0)) {
+        // line 57
+        if ((twig_length_filter($this->env, twig_get_attribute($this->env, $this->source, ($context["errArr"] ?? null), "year", [], "any", false, false, false, 57)) > 0)) {
             echo "<br><span class=\"red\">";
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, ($context["errArr"] ?? null), "year", [], "any", false, false, false, 109), "html", null, true);
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, ($context["errArr"] ?? null), "year", [], "any", false, false, false, 57), "html", null, true);
             echo "</span>";
         }
-        // line 110
-        if ((twig_length_filter($this->env, twig_get_attribute($this->env, $this->source, ($context["errArr"] ?? null), "month", [], "any", false, false, false, 110)) > 0)) {
+        // line 58
+        if ((twig_length_filter($this->env, twig_get_attribute($this->env, $this->source, ($context["errArr"] ?? null), "month", [], "any", false, false, false, 58)) > 0)) {
             echo "<br><span class=\"red\">";
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, ($context["errArr"] ?? null), "month", [], "any", false, false, false, 110), "html", null, true);
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, ($context["errArr"] ?? null), "month", [], "any", false, false, false, 58), "html", null, true);
             echo "</span>";
         }
-        // line 111
-        if ((twig_length_filter($this->env, twig_get_attribute($this->env, $this->source, ($context["errArr"] ?? null), "day", [], "any", false, false, false, 111)) > 0)) {
+        // line 59
+        if ((twig_length_filter($this->env, twig_get_attribute($this->env, $this->source, ($context["errArr"] ?? null), "day", [], "any", false, false, false, 59)) > 0)) {
             echo "<br><span class=\"red\">";
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, ($context["errArr"] ?? null), "day", [], "any", false, false, false, 111), "html", null, true);
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, ($context["errArr"] ?? null), "day", [], "any", false, false, false, 59), "html", null, true);
             echo "</span>";
         }
-        // line 112
+        // line 60
         echo "</div>
 
 
@@ -317,88 +218,88 @@ class __TwigTemplate_3e5a15ebe083e1f4eeb022166973a04aa36402f0658014c579a701490d1
 郵便番号<span class=\"red\">*</span>
 <div class=\"form-group\" style=\"display:inline-flex\">
 <input type=\"text\" name=\"zip1\" value=\"";
-        // line 118
-        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, ($context["dataArr"] ?? null), "zip1", [], "any", false, false, false, 118), "html", null, true);
+        // line 66
+        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, ($context["dataArr"] ?? null), "zip1", [], "any", false, false, false, 66), "html", null, true);
         echo "\" id=\"zip1\" size=\"3\" maxlength=\"3\"> -
 <input type=\"text\" name=\"zip2\" value=\"";
-        // line 119
-        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, ($context["dataArr"] ?? null), "zip2", [], "any", false, false, false, 119), "html", null, true);
+        // line 67
+        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, ($context["dataArr"] ?? null), "zip2", [], "any", false, false, false, 67), "html", null, true);
         echo "\" id=\"zip2\" size=\"4\" maxlength=\"4\">
 <input type=\"button\" name=\"address_search\" value=\"〒から住所を入力\" id=\"address_search\">
 ";
-        // line 121
-        if ((twig_length_filter($this->env, twig_get_attribute($this->env, $this->source, ($context["errArr"] ?? null), "zip1", [], "any", false, false, false, 121)) > 0)) {
+        // line 69
+        if ((twig_length_filter($this->env, twig_get_attribute($this->env, $this->source, ($context["errArr"] ?? null), "zip1", [], "any", false, false, false, 69)) > 0)) {
             echo "<br><span class=\"red\">";
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, ($context["errArr"] ?? null), "zip1", [], "any", false, false, false, 121), "html", null, true);
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, ($context["errArr"] ?? null), "zip1", [], "any", false, false, false, 69), "html", null, true);
             echo "</span>";
         }
-        // line 122
-        if ((twig_length_filter($this->env, twig_get_attribute($this->env, $this->source, ($context["errArr"] ?? null), "zip2", [], "any", false, false, false, 122)) > 0)) {
+        // line 70
+        if ((twig_length_filter($this->env, twig_get_attribute($this->env, $this->source, ($context["errArr"] ?? null), "zip2", [], "any", false, false, false, 70)) > 0)) {
             echo "<br><span class=\"red\">";
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, ($context["errArr"] ?? null), "zip2", [], "any", false, false, false, 122), "html", null, true);
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, ($context["errArr"] ?? null), "zip2", [], "any", false, false, false, 70), "html", null, true);
             echo "</span>";
         }
-        // line 123
+        // line 71
         echo "</div>
 
 <div class=\"form-group\">
 住所<span class=\"red\">*</span>
 <input type=\"text\" name=\"address\" value=\"";
-        // line 127
-        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, ($context["dataArr"] ?? null), "address", [], "any", false, false, false, 127), "html", null, true);
+        // line 75
+        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, ($context["dataArr"] ?? null), "address", [], "any", false, false, false, 75), "html", null, true);
         echo "\" id=\"address\" size=\"40\">
 ";
-        // line 128
-        if ((twig_length_filter($this->env, twig_get_attribute($this->env, $this->source, ($context["errArr"] ?? null), "address", [], "any", false, false, false, 128)) > 0)) {
+        // line 76
+        if ((twig_length_filter($this->env, twig_get_attribute($this->env, $this->source, ($context["errArr"] ?? null), "address", [], "any", false, false, false, 76)) > 0)) {
             echo "<br><span class=\"red\">";
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, ($context["errArr"] ?? null), "address", [], "any", false, false, false, 128), "html", null, true);
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, ($context["errArr"] ?? null), "address", [], "any", false, false, false, 76), "html", null, true);
             echo "</span>";
         }
-        // line 129
+        // line 77
         echo "</div>
 
 <div class=\"form-group\">
 電話番号<span class=\"red\">*</span>
 <div class=\"form-group\" style=\"display:inline-flex\">
 <input type=\"tel\" name=\"tel1\" value=\"";
-        // line 134
-        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, ($context["dataArr"] ?? null), "tel1", [], "any", false, false, false, 134), "html", null, true);
+        // line 82
+        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, ($context["dataArr"] ?? null), "tel1", [], "any", false, false, false, 82), "html", null, true);
         echo "\" size=\"6\" maxlength=\"6\"> -
 <input type=\"text\" name=\"tel2\" value=\"";
-        // line 135
-        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, ($context["dataArr"] ?? null), "tel2", [], "any", false, false, false, 135), "html", null, true);
+        // line 83
+        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, ($context["dataArr"] ?? null), "tel2", [], "any", false, false, false, 83), "html", null, true);
         echo "\" size=\"6\" maxlength=\"6\"> -
 <input type=\"text\" name=\"tel3\" value=\"";
-        // line 136
-        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, ($context["dataArr"] ?? null), "tel3", [], "any", false, false, false, 136), "html", null, true);
+        // line 84
+        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, ($context["dataArr"] ?? null), "tel3", [], "any", false, false, false, 84), "html", null, true);
         echo "\" size=\"6\" maxlength=\"6\">
 ";
-        // line 137
-        if ((twig_length_filter($this->env, twig_get_attribute($this->env, $this->source, ($context["errArr"] ?? null), "tel1", [], "any", false, false, false, 137)) > 0)) {
+        // line 85
+        if ((twig_length_filter($this->env, twig_get_attribute($this->env, $this->source, ($context["errArr"] ?? null), "tel1", [], "any", false, false, false, 85)) > 0)) {
             echo "<br><span class=\"red\">";
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, ($context["errArr"] ?? null), "tel1", [], "any", false, false, false, 137), "html", null, true);
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, ($context["errArr"] ?? null), "tel1", [], "any", false, false, false, 85), "html", null, true);
             echo "</span>";
         }
-        // line 138
-        if ((twig_length_filter($this->env, twig_get_attribute($this->env, $this->source, ($context["errArr"] ?? null), "tel2", [], "any", false, false, false, 138)) > 0)) {
+        // line 86
+        if ((twig_length_filter($this->env, twig_get_attribute($this->env, $this->source, ($context["errArr"] ?? null), "tel2", [], "any", false, false, false, 86)) > 0)) {
             echo "<br><span class=\"red\">";
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, ($context["errArr"] ?? null), "tel2", [], "any", false, false, false, 138), "html", null, true);
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, ($context["errArr"] ?? null), "tel2", [], "any", false, false, false, 86), "html", null, true);
             echo "</span>";
         }
-        // line 139
-        if ((twig_length_filter($this->env, twig_get_attribute($this->env, $this->source, ($context["errArr"] ?? null), "tel3", [], "any", false, false, false, 139)) > 0)) {
+        // line 87
+        if ((twig_length_filter($this->env, twig_get_attribute($this->env, $this->source, ($context["errArr"] ?? null), "tel3", [], "any", false, false, false, 87)) > 0)) {
             echo "<br><span class=\"red\">";
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, ($context["errArr"] ?? null), "tel3", [], "any", false, false, false, 139), "html", null, true);
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, ($context["errArr"] ?? null), "tel3", [], "any", false, false, false, 87), "html", null, true);
             echo "</span>";
         }
-        // line 140
+        // line 88
         echo "</div>
 
 <div class=\"form-group\">
 備考
 <textarea name=\"contents\" rows=\"4\" cols=\"40\">";
-        // line 144
-        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, ($context["dataArr"] ?? null), "contents", [], "any", false, false, false, 144), "html", null, true);
+        // line 92
+        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, ($context["dataArr"] ?? null), "contents", [], "any", false, false, false, 92), "html", null, true);
         echo "</textarea>
 </div>
  <div class=\"form-group\">
@@ -413,27 +314,7 @@ class __TwigTemplate_3e5a15ebe083e1f4eeb022166973a04aa36402f0658014c579a701490d1
 </div>
 </div>
 </div>
-</main>
-  <footer>
-        <div class=\"container\">
-            <p>Copyright @ 2021  HEALTH KNOWLEGE.</p>
-        </div>
-    </footer>
-    <script src=\"https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js\"></script>
-    <script>
-        \$(function () {
-            // ハンバーガーメニューの動作
-            \$('.toggle').click(function () {
-                \$(\"header\").toggleClass('open');
-                \$(\".sp-menu\").slideToggle(500);
-            });
-
-        });
-
-    </script>
-</body>
-
-</html>";
+</main>";
     }
 
     public function getTemplateName()
@@ -448,7 +329,7 @@ class __TwigTemplate_3e5a15ebe083e1f4eeb022166973a04aa36402f0658014c579a701490d1
 
     public function getDebugInfo()
     {
-        return array (  401 => 144,  395 => 140,  389 => 139,  383 => 138,  377 => 137,  373 => 136,  369 => 135,  365 => 134,  358 => 129,  352 => 128,  348 => 127,  342 => 123,  336 => 122,  330 => 121,  325 => 119,  321 => 118,  313 => 112,  307 => 111,  301 => 110,  295 => 109,  292 => 108,  277 => 106,  273 => 105,  269 => 103,  254 => 101,  250 => 100,  246 => 98,  231 => 96,  227 => 95,  218 => 89,  214 => 88,  206 => 82,  200 => 81,  194 => 80,  190 => 79,  186 => 78,  179 => 73,  173 => 72,  169 => 71,  164 => 68,  158 => 67,  154 => 66,  146 => 61,  131 => 49,  124 => 45,  119 => 43,  115 => 42,  111 => 41,  107 => 40,  98 => 34,  93 => 32,  89 => 31,  85 => 30,  81 => 29,  63 => 16,  52 => 8,  48 => 7,  44 => 6,  37 => 1,);
+        return array (  302 => 92,  296 => 88,  290 => 87,  284 => 86,  278 => 85,  274 => 84,  270 => 83,  266 => 82,  259 => 77,  253 => 76,  249 => 75,  243 => 71,  237 => 70,  231 => 69,  226 => 67,  222 => 66,  214 => 60,  208 => 59,  202 => 58,  196 => 57,  193 => 56,  178 => 54,  174 => 53,  170 => 51,  155 => 49,  151 => 48,  147 => 46,  132 => 44,  128 => 43,  119 => 37,  115 => 36,  107 => 30,  101 => 29,  95 => 28,  91 => 27,  87 => 26,  80 => 21,  74 => 20,  70 => 19,  65 => 16,  59 => 15,  55 => 14,  47 => 9,  37 => 1,);
     }
 
     public function getSourceContext()

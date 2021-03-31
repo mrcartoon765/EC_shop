@@ -46,8 +46,15 @@
             </tbody>
 </table>
                 <div class="cart-btn">
-                    <button type="button" class="btn btn-blue">購入手続きへ</button>
-                    <button type="button" class="btn btn-gray">お買い物を続ける</button>
+
+                    {% if Books_cart is empty %}
+                    {% else %}
+                    <button type="button" class="btn btn-blue" onclick="location.href='pay.php'">購入手続きへ
+                    </button>
+                    {% endif %}
+
+
+                    <button type="button" class="btn btn-gray" onclick="location.href='Booklist.php'">お買い物を続ける</button>
                 </div>
             </div>
         </div>

@@ -1,55 +1,3 @@
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="utf-8">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script src="{{constant('config\\Bootstrap::APP_URL')}}/js/common.js"></script>
-<link href="{{constant('config\\Bootstrap::DEFAULT_CSS')}}" rel="stylesheet">
-<link href="{{constant('config\\Bootstrap::DEFAULT_RESPONSIVE')}}" rel="stylesheet">
-<title>会員登録</title>
-</head>
-
-<body>
-  <header>
-  <div class="container">
-  <div class="header-logo">
-<h1><a href="{{constant ('config\\Bootstrap::APP_URL') }}"><img src= "{{constant ('config\\Bootstrap::APP_URL') }}image/square_logo-1024x192.png" id="logo"></a><h1>
-  </div>
-
-  <div class="toggle">
-  <div>
-  <span></span>
-  <span></span>
-  <span></span>
-  </div>
-  </div>
-
-  <nav class="sp-menu menu">
-  <ul>
-  <li><a href="{{constant('config\\Bootstrap::APP_URL')}}index.php#service">サービス</a></li>
-  <li><a href="{{constant('config\\Bootstrap::APP_URL')}}index.php#news">お知らせ</a></li>
-  <li><a href="{{constant('config\\Bootstrap::APP_URL')}}index.php#about">会社概要</a></li>
-  <li><a href="{{constant('config\\Bootstrap::APP_URL')}}index.php#contact">お問合せ</a></li>
-  <li><a href="https://mrcartoon995970419.wordpress.com/">ブログ</a></li>
-  <li><a href="{{constant('config\\Bootstrap::APP_URL')}}/create_account/index.php">会員登録</a></li>
-  </ul>
-  </nav>
-
-  <nav class="pc-menu menu-left menu">
-  <ul>
-  <li><a href="{{constant('config\\Bootstrap::APP_URL')}}index.php#service">サービス</a></li>
-  <li><a href="{{constant('config\\Bootstrap::APP_URL')}}index.php#news">お知らせ</a></li>
-  <li><a href="{{constant('config\\Bootstrap::APP_URL')}}index.php#about">会社概要</a></li>
-  <li><a href="{{constant('config\\Bootstrap::APP_URL')}}index.php#contact">お問合せ</a></li>
-  <li><a href="https://mrcartoon995970419.wordpress.com/">ブログ</a></li>
-  <li><a href="{{constant('config\\Bootstrap::APP_URL')}}/create_account/index.php">会員登録</a></li>
-  </ul>
-  </nav>
-<nav class="pc-menu menu-right menu">
-    <a href="{{constant('config\\Bootstrap::APP_URL')}}/create_account/index.php">会員登録</a>
-</nav>
-  </div>
-  </header>
 <main>
 <div class="wrapper last-wrapper register-wrapper">
             <div class="container">
@@ -156,23 +104,3 @@
 </div>
 </div>
 </main>
-  <footer>
-        <div class="container">
-            <p>Copyright @ 2021  HEALTH KNOWLEGE.</p>
-        </div>
-    </footer>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script>
-        $(function () {
-            // ハンバーガーメニューの動作
-            $('.toggle').click(function () {
-                $("header").toggleClass('open');
-                $(".sp-menu").slideToggle(500);
-            });
-
-        });
-
-    </script>
-</body>
-
-</html>
