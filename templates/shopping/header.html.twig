@@ -1,0 +1,60 @@
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>本一覧</title>
+	<link rel="icon" href="favicon.ico">
+	<link href="{{constant('config\\Bootstrap::DEFAULT_CSS')}}" rel="stylesheet">
+
+	<link href="{{constant('config\\Bootstrap::DEFAULT_RESPONSIVE')}}" rel="stylesheet">
+
+<a href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous"></a>
+</head>
+<body>
+<header>
+  <div class="container">
+  <div class="header-logo">
+<h1><a href="{{constant ('config\\Bootstrap::APP_URL') }}"><img src= "{{constant ('config\\Bootstrap::APP_URL') }}image/square_logo-1024x192.png" id="logo"></a><h1>
+  </div>
+
+  <div class="toggle">
+  <div>
+  <span></span>
+  <span></span>
+  <span></span>
+  </div>
+  </div> 
+  <div class="cart">
+    <a href="{{constant('config\\Bootstrap::APP_URL')}}/shopping/cart.php"><i class="fas fa-shopping-cart"></i></a>
+  </divr
+
+  <nav class="sp-menu menu">
+  <ul>
+  <li><a href="{{constant('config\\Bootstrap::APP_URL')}}index.php#service">サービス</a></li>
+  <li><a href="{{constant('config\\Bootstrap::APP_URL')}}/shopping/Booklist.php">書籍一覧</a></li>
+  <li><a href="{{constant('config\\Bootstrap::APP_URL')}}index.php#news">お知らせ</a></li>
+  <li><a href="{{constant('config\\Bootstrap::APP_URL')}}index.php#about">会社概要</a></li>
+  <li><a href="{{constant('config\\Bootstrap::APP_URL')}}index.php#contact">お問合せ</a></li>
+  <li><a href="https://mrcartoon995970419.wordpress.com/">ブログ</a></li>
+  <li><a href="{{constant('config\\Bootstrap::APP_URL')}}/create_account/index.php">会員登録</a></li>
+  </ul>
+  </nav>
+
+  <nav class="pc-menu menu-left menu">
+  <ul>
+  <li><a href="{{constant('config\\Bootstrap::APP_URL')}}index.php#service">サービス</a></li>
+  <li><a href="{{constant('config\\Bootstrap::APP_URL')}}index.php#news">お知らせ</a></li>
+  <li><a href="{{constant('config\\Bootstrap::APP_URL')}}index.php#about">会社概要</a></li>
+  <li><a href="{{constant('config\\Bootstrap::APP_URL')}}index.php#contact">お問合せ</a></li>
+  <li><a href="https://mrcartoon995970419.wordpress.com/">ブログ</a></li>
+  <li><a href="{{constant('config\\Bootstrap::APP_URL')}}/create_account/index.php">会員登録</a></li>
+  </ul>
+  </nav>
+<nav class="pc-menu menu-right menu">
+  <ul>
+  <li><a href="{{constant('config\\Bootstrap::APP_URL')}}/shopping/cart.php"><i class="fas fa-shopping-cart"></i></a></li>
+  <li><a href="{{constant('config\\Bootstrap::APP_URL')}}/create_account/index.php">会員登録</a></li>
+  </ul>
+</nav>
+  </div>
+  </header>
