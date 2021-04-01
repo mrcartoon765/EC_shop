@@ -34,32 +34,24 @@ try{
   exit;
 }
 
-// $sql = "SELECT order_status FROM order_data WHERE id";
+$sql = ("SELECT id, order_status FROM order_data WHERE id = $id")
+;
 
-// $res =$dbh->query($sql);
+$res =$dbh->query($sql);
 
-// $status = $res->fetchAll(\PDO::FETCH_BOTH);
+$id_status = $res->fetchAll(\PDO::FETCH_BOTH);
 
-// foreach ($res as $status){
-//   $s =  $status['order_status'];
-// }
+$order_status = (INT)$id_status[0]['order_status'];
 
-// echo '<pre>';
-// var_dump($status);
-// echo '<pre>';
-
-// if ($dbh->query($sql)) {
-//   # code...
-// }
+if($order_status === 0){
 $stmt = $dbh->prepare("UPDATE order_data SET order_status = 1 WHERE id=:id");
+}else{
+$stmt = $dbh->prepare("UPDATE order_data SET order_status = 0 WHERE id=:id"); 
+}
 $stmt->bindParam(":id",$id);
 $stmt->execute();
 
 header('location:./orders.php');
-
-$order_products = $stmt2->fetchAll(\PDO::FETCH_ASSOC);
-
-var_dump($order_data);
 
 $context['header'] = include Bootstrap::ADMIN_HEADER_FILE;
 $template = $twig->loadTemplate($filename . '.html.twig');
