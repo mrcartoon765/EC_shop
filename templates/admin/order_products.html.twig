@@ -1,0 +1,42 @@
+<main>
+            <div class="wrapper">
+                <div class="container">
+                    <div class="wrapper-title">
+                        <h3>受注管理</h3>
+                    </div>
+                    <div class="list">
+                        <table>
+                        <thead>
+                            <tr>
+                                <th>id</th>
+                                <th>氏名</th>
+                                <th>電話番号</th>
+                                <th>合計金額</th>
+                                <th>注文日時</th>
+                                <th>更新日時</th>
+                                <th>注文ステータス</th>
+                                <th>操作</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                          {% for item in items %}
+                            
+                            <tr>
+                                <td>
+                                    <?php if($order['order_status']==0): ?>
+                                    　　　<button type="button" class="btn btn-red">受付中</button>
+                                    <?php else: ?>
+                                    　　　<button type="button" class="btn btn-blue">発送済</a></button>
+                                    <?php endif;?>
+                                </td>
+                                <td>
+                                   <button type="button" class="btn btn-green" onclick="location.href='order_products.php?id=<?php echo $order['id']; ?>'">詳細</button>
+                                </td>
+                            </tr>
+                          {% endfor %}
+                        </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </main>

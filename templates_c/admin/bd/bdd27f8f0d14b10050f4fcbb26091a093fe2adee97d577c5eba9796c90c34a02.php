@@ -55,6 +55,13 @@ class __TwigTemplate_38fc33f528a3fd5f7f5bd2e8b69505d4dba02e21fde425e300a0aea65d5
 \t\t\t\t\t\t<i class=\"fas fa-users icon\"></i>
 \t\t\t\t\t\t\t<p>会員管理</p>
 \t\t\t\t\t\t</a>
+\t\t\t\t\t\t<a href=\"";
+        // line 16
+        echo twig_escape_filter($this->env, twig_constant("config\\Bootstrap::APP_URL"), "html", null, true);
+        echo "admin/orders.php\" class=\"box\">
+\t\t\t\t\t\t<i class=\"fas fa-ambulance icon\"></i>
+\t\t\t\t\t\t<p>受注管理</p> 
+\t\t\t\t\t\t</a>
 \t\t\t\t\t</div>
 \t\t\t\t</div>
 \t\t\t</div>
@@ -77,7 +84,7 @@ class __TwigTemplate_38fc33f528a3fd5f7f5bd2e8b69505d4dba02e21fde425e300a0aea65d5
 
     public function getDebugInfo()
     {
-        return array (  53 => 12,  46 => 8,  37 => 1,);
+        return array (  60 => 16,  53 => 12,  46 => 8,  37 => 1,);
     }
 
     public function getSourceContext()
