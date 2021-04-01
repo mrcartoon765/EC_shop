@@ -95,7 +95,7 @@ class __TwigTemplate_1763674daf666368ae6af3d1ef9d4b43ca885db53dfb926555c65fbc6c0
                                 <td>
                                     ";
             // line 31
-            if (((($__internal_887a873a4dc3cf8bd4f99c487b4c7727999c350cc3a772414714e49a195e4386 = ($context["order"] ?? null)) && is_array($__internal_887a873a4dc3cf8bd4f99c487b4c7727999c350cc3a772414714e49a195e4386) || $__internal_887a873a4dc3cf8bd4f99c487b4c7727999c350cc3a772414714e49a195e4386 instanceof ArrayAccess ? ($__internal_887a873a4dc3cf8bd4f99c487b4c7727999c350cc3a772414714e49a195e4386["order_status"] ?? null) : null) == 0)) {
+            if (((($__internal_887a873a4dc3cf8bd4f99c487b4c7727999c350cc3a772414714e49a195e4386 = $context["orders"]) && is_array($__internal_887a873a4dc3cf8bd4f99c487b4c7727999c350cc3a772414714e49a195e4386) || $__internal_887a873a4dc3cf8bd4f99c487b4c7727999c350cc3a772414714e49a195e4386 instanceof ArrayAccess ? ($__internal_887a873a4dc3cf8bd4f99c487b4c7727999c350cc3a772414714e49a195e4386["order_status"] ?? null) : null) == 0)) {
                 // line 32
                 echo "                                    <button type=\"button\" class=\"btn btn-red\">受付中</button>
                                     ";
@@ -107,9 +107,9 @@ class __TwigTemplate_1763674daf666368ae6af3d1ef9d4b43ca885db53dfb926555c65fbc6c0
             // line 36
             echo "                                </td>
                                 <td>
-                                   <button type=\"button\" class=\"btn btn-green\" onclick=\"location.href='../../shopping/order_products.php?id=";
+                                   <button type=\"button\" class=\"btn btn-green\" onclick=\"location.href='../../admin/order_products.php?id=";
             // line 38
-            echo twig_escape_filter($this->env, (($__internal_d527c24a729d38501d770b40a0d25e1ce8a7f0bff897cc4f8f449ba71fcff3d9 = ($context["order"] ?? null)) && is_array($__internal_d527c24a729d38501d770b40a0d25e1ce8a7f0bff897cc4f8f449ba71fcff3d9) || $__internal_d527c24a729d38501d770b40a0d25e1ce8a7f0bff897cc4f8f449ba71fcff3d9 instanceof ArrayAccess ? ($__internal_d527c24a729d38501d770b40a0d25e1ce8a7f0bff897cc4f8f449ba71fcff3d9["id"] ?? null) : null), "html", null, true);
+            echo twig_escape_filter($this->env, (($__internal_d527c24a729d38501d770b40a0d25e1ce8a7f0bff897cc4f8f449ba71fcff3d9 = $context["orders"]) && is_array($__internal_d527c24a729d38501d770b40a0d25e1ce8a7f0bff897cc4f8f449ba71fcff3d9) || $__internal_d527c24a729d38501d770b40a0d25e1ce8a7f0bff897cc4f8f449ba71fcff3d9 instanceof ArrayAccess ? ($__internal_d527c24a729d38501d770b40a0d25e1ce8a7f0bff897cc4f8f449ba71fcff3d9["id"] ?? null) : null), "html", null, true);
             echo "'\">詳細</button>
                                 </td>
                             </tr>

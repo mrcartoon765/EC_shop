@@ -28,14 +28,14 @@
                             <td>{{ orders['created_at'] }}</td>
                             <td>{{ orders['update_at'] }}</td>
                                 <td>
-                                    {% if order['order_status'] == 0 %}
+                                    {% if orders['order_status'] == 0 %}
                                     <button type="button" class="btn btn-red">受付中</button>
                                     {% else %}
                                     <button type="button" class="btn btn-blue">発送済</a></button>
                                     {% endif %}
                                 </td>
                                 <td>
-                                   <button type="button" class="btn btn-green" onclick="location.href='../../shopping/order_products.php?id={{order['id']}}'">詳細</button>
+                                   <button type="button" class="btn btn-green" onclick="location.href='../../admin/order_products.php?id={{orders['id']}}'">詳細</button>
                                 </td>
                             </tr>
                           {% endfor %}

@@ -34,19 +34,33 @@ try{
   exit;
 }
 
-$stmt1 = $dbh->prepare("SELECT * FROM order_data WHERE id=:id");
-$stmt1->bindParam(':id',$id);
-$stmt1->execute();
-$order_data = $stmt->fetchAll(\PDO::FETCH_ASSOC);
+// $sql = "SELECT order_status FROM order_data WHERE id";
 
-$stmt2 = $dbh->prepare("SELECT * FROM order_products WHERE order_id=:id");
-$stmt2->bindParam(':id',$id);
-$stmt2->execute();
+// $res =$dbh->query($sql);
+
+// $status = $res->fetchAll(\PDO::FETCH_BOTH);
+
+// foreach ($res as $status){
+//   $s =  $status['order_status'];
+// }
+
+// echo '<pre>';
+// var_dump($status);
+// echo '<pre>';
+
+// if ($dbh->query($sql)) {
+//   # code...
+// }
+$stmt = $dbh->prepare("UPDATE order_data SET order_status = 1 WHERE id=:id");
+$stmt->bindParam(":id",$id);
+$stmt->execute();
+
+header('location:./orders.php');
+
 $order_products = $stmt2->fetchAll(\PDO::FETCH_ASSOC);
 
-var_dump($order_products);
+var_dump($order_data);
 
-$context['orders'] = $order_products;
 $context['header'] = include Bootstrap::ADMIN_HEADER_FILE;
 $template = $twig->loadTemplate($filename . '.html.twig');
 $template->display($context);

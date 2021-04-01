@@ -2,41 +2,41 @@
             <div class="wrapper">
                 <div class="container">
                     <div class="wrapper-title">
-                        <h3>受注管理</h3>
+                        <h3>受注明細</h3>
                     </div>
                     <div class="list">
+                    <h4>購入者情報</h4>
                         <table>
-                        <thead>
-                            <tr>
-                                <th>id</th>
-                                <th>氏名</th>
-                                <th>電話番号</th>
-                                <th>合計金額</th>
-                                <th>注文日時</th>
-                                <th>更新日時</th>
-                                <th>注文ステータス</th>
-                                <th>操作</th>
-                            </tr>
-                        </thead>
                         <tbody>
-                          {% for item in items %}
-                            
-                            <tr>
-                                <td>
-                                    <?php if($order['order_status']==0): ?>
-                                    　　　<button type="button" class="btn btn-red">受付中</button>
-                                    <?php else: ?>
-                                    　　　<button type="button" class="btn btn-blue">発送済</a></button>
-                                    <?php endif;?>
-                                </td>
-                                <td>
-                                   <button type="button" class="btn btn-green" onclick="location.href='order_products.php?id=<?php echo $order['id']; ?>'">詳細</button>
-                                </td>
-                            </tr>
-                          {% endfor %}
+                        <tr><th>氏名</th><td>{{ orders['first_name'] }}</td></tr>
+                        <tr><th>郵便番号</th><td>{{ orders['zip1'] }}-{{ orders['zip2'] }}</td></tr>
+                        <tr><th>住所</th><td>{{ orders['address'] }}</td></tr>
+                        <tr><th>メールアドレス</th><td>{{ orders['mail'] }}</td></tr>
+                        <tr><th>電話番号</th><td>{{ orders['tel1'] }}-{{ orders['tel2'] }}-{{ orders['tel3'] }}</td></tr>
+                        <tr><th>合計金額</th><td>￥{{ orders['total'] }}</td></tr>
+                        <tr><th>受注日時</th><td>{{ orders['created_at'] }}</td></tr>
+                        <tr><th>更新日時</th><td>{{ orders['update_at'] }}</td></tr>
+                        <tr><th>注文状況</th><td>
+                        {% if  orders['order_status'] == 0 %}
+                        <button type="button" class="btn btn-red">受付中</button>
+                        <button type="button" class="btn btn-blue" onclick="location.href='../../admin/update_order_status.php?id={{ orders['id'] }}'">発送済みにする</button>
+                        {% else %}
+                        <button type="button" class="btn btn-blue">発送済</button>
+                        <button type="button" class="btn btn-red" onclick="location.href='../../admin/update_order_status.php?id={{ orders['id'] }}'">発送を取り消す</button>
+                        {% endif %}
+                        </td></tr>
                         </tbody>
                         </table>
                     </div>
                 </div>
             </div>
         </main>
+         <footer>
+        <div class="container">
+            <p>Copyright @ 2018 SQUARE, inc</p>
+        </div>
+    </footer>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</body>
+
+</html>
