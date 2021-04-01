@@ -1,43 +1,0 @@
-version 6.0
-if &cp | set nocp | endif
-let s:cpo_save=&cpo
-set cpo&vim
-inoremap <expr> <S-Tab> pumvisible() ? "\" : "\<S-Tab>" 
-smap <expr> 	 neosnippet#expandable_or_jumpable() ? "\<Plug>(neosnippet_expand_or_jump)": "\	"
-xmap  <Plug>(neosnippet_expand_target)
-smap  <Plug>(neosnippet_expand_or_jump)
-nnoremap  g 
-nnoremap <silent>  t :TagbarToggle
-noremap  n :NERDTreeToggle
-nnoremap <silent>  nf :NERDTreeFind
-inoremap <expr> 	 pumvisible() ? "\" : "\	"   
-imap  <Plug>(neosnippet_expand_or_jump)
-let &cpo=s:cpo_save
-unlet s:cpo_save
-set autoindent
-set background=dark
-set backspace=indent,eol,start
-set binary
-set expandtab
-set fileencodings=utf-8
-set fileformats=unix,dos,mac
-set helplang=ja
-set hlsearch
-set ignorecase
-set incsearch
-set nomodeline
-set ruler
-set runtimepath=~/.vim,~/.vim/bundle/.neobundle,/usr/share/vim/vimfiles,/usr/share/vim/vim80,/usr/share/vim/vimfiles/after,~/.vim/after,~/.vim/bundle/neobundle.vim/
-set shell=/bin/sh
-set shiftwidth=2
-set showcmd
-set smartcase
-set statusline=%#warningmsg#%{SyntasticStatuslineFlag()}%*
-set noswapfile
-set synmaxcol=256
-set tabstop=2
-set tags=./tags,tags,.tags,.Gemfile.lock.tags,tags;
-set whichwrap=h,l,b,s,<,>,[,]
-set wildignore=*/tmp/*,*.so,*.swp,*.zip,*.pyc,*.db,*.sqlite
-set window=0
-" vim: set ft=vim :
