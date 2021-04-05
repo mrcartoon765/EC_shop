@@ -1,0 +1,69 @@
+    <main>
+        <div class="wrapper">
+            <div class="container">
+                <div class="wrapper-title">
+                    <h3>書籍管理</h3>
+                </div>
+                <button type="button" class="btn btn-blue" onclick="location.href='create_Book_list.php'">書籍の登録をする</button>
+                <div class="list">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>書籍ID</th>
+                                <th>タイトル</th>
+                                <th>説明文</th>
+                                <th>価格</th>
+                                <th>画像</th>
+                                <th>発売日</th>
+                                <th>関連商材ID</th>
+                                <th>操作</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                          {% for value in Books %}
+                            <tr>
+                            <td>{{ attribute(value,'book_id') }}</td>
+                            <td>{{ attribute(value,'title') }}</td>
+                            <td>{{ attribute(value,'detail') }}</td>
+                            <td>{{ attribute(value,'price') }}</td>
+                            <td>{{ attribute(value,'image') }}</td>
+                            <td>{{ attribute(value,'date') }}</td>
+                            <td>{{ attribute(value,'ctg_id') }}</td>
+                            <td>
+                            <button type="button" class="btn btn-green" onclick="location.href='{{ constant('config\\Bootstrap::ENTRY_URL')}}/edit_news.php?id={{ attribute(value,'id') }}'">編集</button>
+                            
+                            <button type="button" class="btn btn-red delete" data-id='{{ attribute(value,'book_id') }}' >削除</button>
+                            
+                            <form method="POST" action="{{ constant('config\\Bootstrap::ENTRY_URL')}}/delete_Books.php" id="delete_form_{{ attribute(value,'book_id')}}">
+                            <input type="hidden" value='{{ attribute(value,'book_id') }}' name="book_id">
+                            </form>
+                            </td>
+                            </tr>
+                          {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <div class="container">
+            <p>Copyright @ 2021  HEALTH KNOWLEGE</p>
+        </div>
+    </footer>
+    </body>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+   <script>
+       $(".delete").click(function(){
+           var id = this.dataset.id;
+           if(confirm("ID:"+id+"番の記事を本当に削除していいですか？")){
+               //OK
+               $("#delete_form_"+id).submit();
+           }else{
+               //キャンセル
+               return false;
+           }
+       })
+   </script>
+  </html> 
