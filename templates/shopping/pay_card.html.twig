@@ -1,0 +1,60 @@
+<main>
+	<div class="breadcrumbs">
+		<div class="container">
+			<ul>
+				<li>
+					<a href="../../index.php">TOP</a>
+				</li>
+				<li>
+					<a href="../../shopping/Booklist.php">商品一覧</a>
+				</li>
+				<li>
+					<a href="../../shopping/cart.php">カート</a>
+				</li>
+				<li>
+					<a href="../../shopping/pay.php">ご購入者情報</a>
+				</li>
+				<li>決済カード情報</li>
+			</ul>
+		</div>
+	</div>
+	<div class="wrapper last-wrapper">
+		<div class="container">
+			<div class="wrapper-title">
+				<h3>決済カード情報</h3>
+				<span class="error"></span>
+			</div>
+			<form class="pay-form" action="../../shopping/pay_conf.php" method="POST">
+				<input type="hidden" name="family_name" value="{{ family_name }}">
+				<input type="hidden" name="first_name" value="{{ first_name }}">
+				<input type="hidden" name="mail" value="{{ mail }}">
+				<input type="hidden" name="tel1" value="{{ tel1 }}">
+				<input type="hidden" name="tel2" value="{{ tel2 }}">
+				<input type="hidden" name="tel3" value="{{ tel3 }}">
+				<input type="hidden" name="zip1" value="{{ zip1 }}">
+				<input type="hidden" name="zip2" value="{{ zip2 }}">
+				<input type="hidden" name="address" value="{{ address }}">
+				  <script src="https://checkout.pay.jp/" 
+					type="text/javascript"
+					class="payjp-button" 
+					data-token-name="payjp_token"
+					data-key="*******"
+					data-text="カード情報の入力"
+					data-submit-text ="支払い確認画面へ"
+					>
+					</script>
+
+			</form>
+		</div>
+	</div>
+</main>
+<footer>
+	<div class="container">
+		<p>Copyright @ 2021  HEALTH KNOWLEGE</p>
+	</div>
+</footer>
+
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</script>
+    </body>
+</html>

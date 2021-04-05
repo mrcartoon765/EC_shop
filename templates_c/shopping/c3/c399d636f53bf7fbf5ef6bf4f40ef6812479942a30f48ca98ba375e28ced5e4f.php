@@ -38,9 +38,12 @@ class __TwigTemplate_1730cf274631d9d2c51357c1e5c4f6ea4702ecf55f505ca2d3a9b1b5bc6
         <div class=\"breadcrumbs\">
             <div class=\"container\">
                 <ul>
-                    <li><a href=\"index.php\">TOP</a></li>
-                    <li><a href=\"cart.php\">カート</a></li>
-                    <li>ご購入者情報</li>
+                <li><a href=\"../../index.php\">TOP</a></li>
+                <li><a href=\"../../shopping/Booklist.php\">書籍一覧</a></li>
+                <li><a href=\"../../shopping/cart.php\">カート</a></li>
++               <li><a href=\"../../shopping/pay.php\">ご購入者情報</a></li>
++               <li><a href=\"../../shopping/pay_card.php\">クレジットカード情報</a></li>
++               <li>ご購入者情報確認</li>
                 </ul>
             </div>
         </div>
@@ -49,38 +52,42 @@ class __TwigTemplate_1730cf274631d9d2c51357c1e5c4f6ea4702ecf55f505ca2d3a9b1b5bc6
                 <div class=\"wrapper-title\">
                     <h3>ご購入者情報</h3>
    <form class=\"pay-form\"  action=\"../../shopping/pay_end.php\" method=\"POST\">
+   <input type=\"hidden\" name=\"payjp_token\" value=";
+        // line 19
+        echo twig_escape_filter($this->env, ($context["payjp_token"] ?? null), "html", null, true);
+        echo ">
        <div class=\"form-group\">
            <p class=\"form-title\">お名前 *</p>
            ";
-        // line 18
+        // line 22
         echo twig_escape_filter($this->env, ($context["family_name"] ?? null), "html", null, true);
         echo " ";
         echo twig_escape_filter($this->env, ($context["first_name"] ?? null), "html", null, true);
         echo "
            <input type=\"hidden\" name=\"family_name\" value=";
-        // line 19
+        // line 23
         echo twig_escape_filter($this->env, ($context["family_name"] ?? null), "html", null, true);
         echo " >
            <input type=\"hidden\" name=\"first_name\" value=";
-        // line 20
+        // line 24
         echo twig_escape_filter($this->env, ($context["first_name"] ?? null), "html", null, true);
         echo " >
        </div>
        <div class=\"form-group\">
            <p class=\"form-title\">mail *</p>
            ";
-        // line 24
+        // line 28
         echo twig_escape_filter($this->env, ($context["mail"] ?? null), "html", null, true);
         echo "
            <input type=\"hidden\" name=\"mail\" value=";
-        // line 25
+        // line 29
         echo twig_escape_filter($this->env, ($context["mail"] ?? null), "html", null, true);
         echo " >
        </div>
        <div class=\"form-group\">
            <p class=\"form-title\">電話番号 *</p>
            ";
-        // line 29
+        // line 33
         echo twig_escape_filter($this->env, ($context["tel1"] ?? null), "html", null, true);
         echo "-";
         echo twig_escape_filter($this->env, ($context["tel2"] ?? null), "html", null, true);
@@ -88,15 +95,15 @@ class __TwigTemplate_1730cf274631d9d2c51357c1e5c4f6ea4702ecf55f505ca2d3a9b1b5bc6
         echo twig_escape_filter($this->env, ($context["tel3"] ?? null), "html", null, true);
         echo "
            <input type=\"hidden\" name=\"tel1\" value=";
-        // line 30
+        // line 34
         echo twig_escape_filter($this->env, ($context["tel1"] ?? null), "html", null, true);
         echo " >
            <input type=\"hidden\" name=\"tel2\" value=";
-        // line 31
+        // line 35
         echo twig_escape_filter($this->env, ($context["tel2"] ?? null), "html", null, true);
         echo " >
            <input type=\"hidden\" name=\"tel3\" value=";
-        // line 32
+        // line 36
         echo twig_escape_filter($this->env, ($context["tel3"] ?? null), "html", null, true);
         echo " >
        </div>
@@ -104,26 +111,26 @@ class __TwigTemplate_1730cf274631d9d2c51357c1e5c4f6ea4702ecf55f505ca2d3a9b1b5bc6
            <p class=\"form-title\">お届け先 *</p>
            <label>郵便番号</label><br>
            ";
-        // line 37
+        // line 41
         echo twig_escape_filter($this->env, ($context["zip1"] ?? null), "html", null, true);
         echo "-";
         echo twig_escape_filter($this->env, ($context["zip2"] ?? null), "html", null, true);
         echo "
            <input type=\"hidden\" name=\"zip1\" value=";
-        // line 38
+        // line 42
         echo twig_escape_filter($this->env, ($context["zip1"] ?? null), "html", null, true);
         echo " >
            <input type=\"hidden\" name=\"zip2\" value=";
-        // line 39
+        // line 43
         echo twig_escape_filter($this->env, ($context["zip2"] ?? null), "html", null, true);
         echo " >
            <br><label>住所</label><br>
            ";
-        // line 41
+        // line 45
         echo twig_escape_filter($this->env, ($context["address"] ?? null), "html", null, true);
         echo "
            <input type=\"hidden\" name=\"address\" value=";
-        // line 42
+        // line 46
         echo twig_escape_filter($this->env, ($context["address"] ?? null), "html", null, true);
         echo " >
        </div>
@@ -149,7 +156,7 @@ class __TwigTemplate_1730cf274631d9d2c51357c1e5c4f6ea4702ecf55f505ca2d3a9b1b5bc6
 
     public function getDebugInfo()
     {
-        return array (  127 => 42,  123 => 41,  118 => 39,  114 => 38,  108 => 37,  100 => 32,  96 => 31,  92 => 30,  84 => 29,  77 => 25,  73 => 24,  66 => 20,  62 => 19,  56 => 18,  37 => 1,);
+        return array (  134 => 46,  130 => 45,  125 => 43,  121 => 42,  115 => 41,  107 => 36,  103 => 35,  99 => 34,  91 => 33,  84 => 29,  80 => 28,  73 => 24,  69 => 23,  63 => 22,  57 => 19,  37 => 1,);
     }
 
     public function getSourceContext()

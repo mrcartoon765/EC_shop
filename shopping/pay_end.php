@@ -20,6 +20,10 @@ $loader = new \Twig_Loader_Filesystem($tempdir);
 $twig = new \Twig_Environment($loader, ['cache' => Bootstrap::CACHE_DIR, 'auto_reload' => TRUE]);
 
 
+require_once '../vendor/payjp/payjp-php/init.php';
+
+\Payjp\Payjp::setApiKey("*******");
+
 $mail = isset($_POST['mail'])? htmlspecialchars($_POST['mail'],ENT_QUOTES,'utf-8'):'';
 $family_name = isset($_POST['family_name'])? htmlspecialchars($_POST['family_name'],ENT_QUOTES,'utf-8'):'';
 $first_name = isset($_POST['first_name'])? htmlspecialchars($_POST['first_name'],ENT_QUOTES,'utf-8'):'';
@@ -29,6 +33,7 @@ $address = isset($_POST['address'])? htmlspecialchars($_POST['address'],ENT_QUOT
 $tel1 = isset($_POST['tel1'])? htmlspecialchars($_POST['tel1'],ENT_QUOTES,'utf-8'):'';
 $tel2 = isset($_POST['tel2'])? htmlspecialchars($_POST['tel2'],ENT_QUOTES,'utf-8'):'';
 $tel3 = isset($_POST['tel3'])? htmlspecialchars($_POST['tel3'],ENT_QUOTES,'utf-8'):'';
+$payjp_token = isset($_POST['payjp_token'])? htmlspecialchars($_POST['payjp_token'],ENT_QUOTES,'utf-8'):'';
 
 session_start();
 
@@ -37,6 +42,20 @@ $total = 0;
 foreach($Books as $Book_title => $cart_in_Book){
   $subtotal = (int)$cart_in_Book['Book_price']*(int)$cart_in_Book['Book_count'];
   $total += $subtotal;
+}
+
+$res = \Payjp\Charge::create([
+          "card" => $payjp_token,
+          "amount" => (int)$total,
+          "currency" => 'jpy'
+]);
+
+if($res['error']){
+  $result = '決済処理に失敗しました。';
+  $result_title = '決済失敗';
+}else{
+  $result = 'ご購入ありがとうございます。';
+  $result_title = '購入完了';
 }
 
 try{
@@ -70,6 +89,9 @@ $stmt2->execute();
 }
 
 unset($_SESSION['Books']);
+
+$context['result'] = $result_title;
+$context['result_comment'] = $result;
 $context['header'] = include Bootstrap::HEADER_FILE;
 $template = $twig->loadTemplate($filename . '.html.twig');
 $template->display($context);

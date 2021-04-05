@@ -40,18 +40,27 @@ class __TwigTemplate_7db3a8e5edfa727edbe86f647a6a1289ed7480a94db2e11d37724cfb57c
                 <ul>
                     <li><a href=\"index.php\">TOP</a></li>
                     <li><a href=\"cart.php\">カート</a></li>
-                    <li>購入完了</li>
+                    <li>";
+        // line 7
+        echo twig_escape_filter($this->env, ($context["result"] ?? null), "html", null, true);
+        echo "</li>
                 </ul>
             </div>
         </div>
         <div class=\"wrapper last-wrapper\">
             <div class=\"container\">
                 <div class=\"wrapper-title\">
-                    <h3>購入完了</h3>
+                    <h3>";
+        // line 14
+        echo twig_escape_filter($this->env, ($context["result"] ?? null), "html", null, true);
+        echo "</h3>
                 </div>
                 <div class=\"wrapper-body\">
                     <div class=\"thanks\">
-                        <h4>ご購入ありがとうございました。</h4>
+                        <h4>";
+        // line 18
+        echo twig_escape_filter($this->env, ($context["result_comment"] ?? null), "html", null, true);
+        echo "<h4>
                     </div>
                     <button type=\"button\" class=\"btn btn-gray\" onclick=\"location.href='../../index.php'\">トップページに戻る</button>
                 </div>
@@ -65,9 +74,14 @@ class __TwigTemplate_7db3a8e5edfa727edbe86f647a6a1289ed7480a94db2e11d37724cfb57c
         return "pay_end.html.twig";
     }
 
+    public function isTraitable()
+    {
+        return false;
+    }
+
     public function getDebugInfo()
     {
-        return array (  37 => 1,);
+        return array (  62 => 18,  55 => 14,  45 => 7,  37 => 1,);
     }
 
     public function getSourceContext()

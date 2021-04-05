@@ -6,7 +6,7 @@
     'aliases' => 
     array (
     ),
-    'reference' => 'a68a2ab185198be4181f6569c4fbc1e47a56ba19',
+    'reference' => 'a0ce508338f141c6555a081fd8c62aca3d50ff6e',
     'name' => '__root__',
   ),
   'versions' => 
@@ -18,7 +18,16 @@
       'aliases' => 
       array (
       ),
-      'reference' => 'a68a2ab185198be4181f6569c4fbc1e47a56ba19',
+      'reference' => 'a0ce508338f141c6555a081fd8c62aca3d50ff6e',
+    ),
+    'payjp/payjp-php' => 
+    array (
+      'pretty_version' => '1.2.0',
+      'version' => '1.2.0.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => 'a5db0417a31e1d01bca643bde3a127829d1017e2',
     ),
     'symfony/polyfill-ctype' => 
     array (

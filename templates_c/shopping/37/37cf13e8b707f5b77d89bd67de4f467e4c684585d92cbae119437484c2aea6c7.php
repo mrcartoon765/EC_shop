@@ -48,7 +48,7 @@ class __TwigTemplate_e9f286ec4cd4e7cc25948eb00b02149a5e71a7cade2d33b9fda47f976a0
             <div class=\"container\">
                 <div class=\"wrapper-title\">
                     <h3>ご購入者情報</h3>
-   <form class=\"pay-form\"  action=\"pay_conf.php\" method=\"POST\">
+   <form class=\"pay-form\"  action=\"../../shopping/pay_card.php\" method=\"POST\">
        <div class=\"form-group\">
            <p class=\"form-title\">お名前 *</p>
            <div class=\"form-group\">

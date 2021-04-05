@@ -33,7 +33,7 @@ $tel3 = isset($_POST['tel3'])? htmlspecialchars($_POST['tel3'],ENT_QUOTES,'utf-8
 $zip1 = isset($_POST['zip1'])? htmlspecialchars($_POST['zip1'],ENT_QUOTES,'utf-8'):'';
 $zip2 = isset($_POST['zip2'])? htmlspecialchars($_POST['zip2'],ENT_QUOTES,'utf-8'):'';
 $address = isset($_POST['address'])? htmlspecialchars($_POST['address'],ENT_QUOTES,'utf-8'):'';
-
+$payjp_token = isset($_POST['payjp_token'])? htmlspecialchars($_POST['payjp_token'],ENT_QUOTES,'utf-8'):'';
 
 $context['family_name']=$family_name;
 $context['first_name']=$first_name;
@@ -44,6 +44,7 @@ $context['tel3']=$tel3;
 $context['zip1']=$zip1;
 $context['zip2']=$zip2;
 $context['address']=$address;
+$context['payjp_token']=$payjp_token;
 $context['header'] = include Bootstrap::HEADER_FILE;
 $template = $twig->loadTemplate($filename . '.html.twig');
 $template->display($context);
