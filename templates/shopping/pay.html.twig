@@ -16,12 +16,12 @@
        <div class="form-group">
            <p class="form-title">お名前 *</p>
            <div class="form-group">
-           姓<input type="text" name="family_name" required>
-           名<input type="text" name="first_name" required>
+           姓<input type="text" name="family_name" required value={{ family_name }}>
+           名<input type="text" name="first_name" required value={{ first_name }}>
        </div>
        <div class="form-group">
            <p class="form-title">メールアドレス *</p>
-           <input type="email" name="mail" required>
+           <input type="email" name="mail" required value={{ mail }}>
        </div>
        <div class="form-group">
            電話番号 *
@@ -38,7 +38,7 @@
            <input type="text" name="zip2" required>
            </div>
            <label><br>住所</label><br>
-           <input type="text" name="address" required>
+           <input type="text" name="address" required value={{ address }}>
        </div>
        <button type="submit" class="btn btn-blue">決済情報を入力する</button>
    </form>

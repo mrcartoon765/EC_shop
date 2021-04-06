@@ -40,21 +40,28 @@
                   </tr>
 {% endfor %}
 <tr class="total">
-	<th colspan="2">合計</th>
-	<td colspan="2">￥{{ total }}</td>
+	<th colspan="3">合計</th>
+	<td colspan="2">
+    <p>￥{{ total }}</p>
+    {% if login == true %}
+        <span style='color:red'>会員特別価格(30%OFF)</span>
+    {% endif %}
+
 </tr>
             </tbody>
 </table>
                 <div class="cart-btn">
+   
+    {% if Books_cart is not empty %}
+        {% if login == true %}
+    <button type="button" class="btn btn-blue" onclick="location.href='pay.php'">購入手続きへ</button>
+    {% else %}
+    <button type="button" class="btn btn-blue" onclick="location.href='../../create_account/Login.php'">ログインして購入手続きへ</button>
+    <button type="button" class="btn btn-blue" onclick="location.href='../../create_account/Login.php'">ログインせずに購入手続きへ</button>
+    {% endif %}
+    {% endif %}
 
-                    {% if Books_cart is empty %}
-                    {% else %}
-                    <button type="button" class="btn btn-blue" onclick="location.href='pay.php'">購入手続きへ
-                    </button>
-                    {% endif %}
-
-
-                    <button type="button" class="btn btn-gray" onclick="location.href='Booklist.php'">お買い物を続ける</button>
+<button type="button" class="btn btn-gray" onclick="location.href='Booklist.php'">お買い物を続ける</button>
                 </div>
             </div>
         </div>

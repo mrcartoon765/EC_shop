@@ -19,7 +19,7 @@ if($_SESSION['admin_login'] == false){
 $id = isset($_POST['id'])? htmlspecialchars($_POST['id'], ENT_QUOTES, 'utf-8'):'';
 
 try{
-  $dbh = new \PDO("mysql:host=mysql;dbname=Book_EC","root","root");
+  $dbh = new \PDO($DB_BOOK_EC,"root","root");
 }catch(\PDOException $e){
   var_dump($e->getMessage());
   exit;

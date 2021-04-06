@@ -37,6 +37,11 @@ foreach($Books as $Book_title => $cart_in_Book){
   $total += $subtotal;
 }
 
+if($customer_login == true){
+  $total = intval($total*0.7);
+}
+$_SESSION['total_price'] = $total;
+
 $context['Books_cart'] = $Books;
 $context['total'] = $total;
 $context['header'] = include Bootstrap::HEADER_FILE;

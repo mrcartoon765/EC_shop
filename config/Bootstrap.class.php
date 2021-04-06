@@ -311,3 +311,15 @@ class account_DB
     error_log($logData, 3, $logPath);
   }
 }
+
+$DB_BOOK_EC = "mysql:host=mysql;dbname=BOOK_EC";
+$DB_CORPORATION ="mysql:host=mysql;dbname=corporate_db";
+
+
+//ログインセッションチェック
+session_start();
+$customer_login = isset($_SESSION['customer_login'])? $_SESSION['customer_login']:false;
+
+// ($customer_login == true)?$login_or_logout='<li><a href="../../create_account/Login.php">ログイン</a></li>':$login_or_logout='<li><a href="../../create_account/logout.php">ログアウト</a></li>';
+// $context['login_or_logout'] = $login_or_logout;
+$context['login'] = $customer_login;

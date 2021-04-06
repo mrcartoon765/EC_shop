@@ -22,7 +22,7 @@ $first_name = isset($_POST['first_name'])? htmlspecialchars($_POST['first_name']
 $mail = isset($_POST['mail'])? htmlspecialchars($_POST['mail'], ENT_QUOTES, 'utf-8'):'';
 
 try{
-    $dbh = new \PDO("mysql:host=mysql;dbname=Book_EC","root","root");
+    $dbh = new \PDO($DB_BOOK_EC,"root","root");
 }catch(\PDOException $e){
     var_dump($e->getMessage());
     exit;

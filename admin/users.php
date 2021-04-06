@@ -24,7 +24,7 @@ if($_SESSION['admin_login'] == false){
 $first_name = isset($_GET['first_name'])? htmlspecialchars($_GET['first_name'], ENT_QUOTES, 'utf-8'):'';
 
 try{
-  $dbh = new \PDO("mysql:host=mysql;dbname=BOOK_EC","root","root");
+  $dbh = new \PDO($DB_BOOK_EC,"root","root");
 }catch(\PDOException $e){
   var_dump($e->getMessage());
   exit;

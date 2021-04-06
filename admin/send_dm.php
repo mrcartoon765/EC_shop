@@ -53,7 +53,7 @@ $mail->isHTML(true);
 $mail->CharSet = 'UTF-8'; //文字化け防止
 
 try{
-  $dbh = new \PDO("mysql:host=mysql;dbname=BOOK_EC","root","root");
+  $dbh = new \PDO($DB_BOOK_EC,"root","root");
 }catch(\PDOException $e){
   var_dump($e->getMessage());
   exit;

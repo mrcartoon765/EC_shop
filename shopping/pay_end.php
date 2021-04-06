@@ -38,11 +38,7 @@ $payjp_token = isset($_POST['payjp_token'])? htmlspecialchars($_POST['payjp_toke
 session_start();
 
 $Books = isset($_SESSION['Books'])? $_SESSION['Books']:[];
-$total = 0;
-foreach($Books as $Book_title => $cart_in_Book){
-  $subtotal = (int)$cart_in_Book['Book_price']*(int)$cart_in_Book['Book_count'];
-  $total += $subtotal;
-}
+$total = isset($_SESSION['total_price'])? $_SESSION['total_price']:0;
 
 $res = \Payjp\Charge::create([
           "card" => $payjp_token,
@@ -59,7 +55,7 @@ if($res['error']){
 }
 
 try{
-  $dbh = new \PDO("mysql:host=mysql;dbname=BOOK_EC","root","root");
+  $dbh = new \PDO($DB_BOOK_EC,"root","root");
 }catch(\PDOException $e){
   var_dump($e->getMessage());
   exit;
@@ -89,6 +85,7 @@ $stmt2->execute();
 }
 
 unset($_SESSION['Books']);
+unset($_SESSION['total_price']);
 
 $context['result'] = $result_title;
 $context['result_comment'] = $result;

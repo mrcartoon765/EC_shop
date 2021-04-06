@@ -29,7 +29,7 @@ if($id == ''){
 }
 
    try{
-       $dbh = new \PDO("mysql:host=mysql;dbname=corporate_db","root","root");
+       $dbh = new \PDO($DB_CORPORATION,"root","root");
    }catch(\PDOException $e){
        var_dump($e->getMessage());
        exit;

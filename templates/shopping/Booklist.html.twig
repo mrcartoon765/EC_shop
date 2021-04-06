@@ -7,13 +7,10 @@
 			</div>
 		</div>
 
-		<input type="text" name="title" placeholder="名前検索">
-		<button type="submit" class="btn btn-blue">検索</button>
-	</form>
 	<div class="itemlist">
 		<ul>
-		<li>
 			{% for value in Book_data %}
+					<li>
 					<form action="../../shopping/Booklist.php" method="POST" class="item-form" >
 					<img src="{{constant('config\\Bootstrap::BOOK_IMAGE_DIR')}}{{ attribute(value,'image') }}">
 					<div class="item-body">
@@ -28,8 +25,8 @@
 							</form>
 						</div>
 					</div>
-			{% endfor %}
 			</li>
+			{% endfor %}
 		</ul>
 	</div>
 </main>
