@@ -2,6 +2,9 @@
 
 namespace config;
 
+use PDO;
+use phpDocumentor\Reflection\DocBlock\Tags\Var_;
+
 $this_dir = basename(__DIR__);
 
 $app_name = explode('/',dirname(__FILE__))[4];
@@ -15,14 +18,14 @@ $loader = new \Twig_Loader_Filesystem($tempdir);
 $twig = new \Twig_Environment($loader, ['cache' => Bootstrap::CACHE_DIR, 'auto_reload' => TRUE]);
 
 try{
-  $dbh = new \PDO($DB_CORPORATION,"root","root");
+  $dbh = new \PDO($DB_BOOK_EC,"root","root");
 }catch(\PDOException $e){
   var_dump($e->getMessage());
   exit;
 }
 
 
-$stmt = $dbh->prepare("SELECT * FORM news ORDER BY id DESC LIMIT 5");
+$stmt = $dbh->prepare("SELECT * FROM news ORDER BY id DESC LIMIT 5");
 $stmt->execute();
 $news = $stmt->fetchAll(\PDO::FETCH_ASSOC);
 

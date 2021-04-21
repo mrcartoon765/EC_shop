@@ -313,7 +313,6 @@ class account_DB
 }
 
 $DB_BOOK_EC = "mysql:host=mysql;dbname=BOOK_EC";
-$DB_CORPORATION ="mysql:host=mysql;dbname=corporate_db";
 
 
 //ログインセッションチェック

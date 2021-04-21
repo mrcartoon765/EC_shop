@@ -24,7 +24,7 @@ if($_SESSION['admin_login'] == false){
 $id = isset($_GET['id'])? htmlspecialchars($_GET['id'], ENT_QUOTES, 'utf-8'):'';
 
 if($id == ''){
-  header("Location:" . Bootstrap::ENTRY_URL . "/news.php");
+  header("Location:" . Bootstrap::ENTRY_URL . "/Books.php");
   exit;
 }
 
@@ -34,12 +34,12 @@ if($id == ''){
        var_dump($e->getMessage());
        exit;
    }
-   $stmt = $dbh->prepare("SELECT * FROM news WHERE id=:id");
+   $stmt = $dbh->prepare("SELECT * FROM book WHERE book_id=:id");
    $stmt->bindParam(":id",$id);
    $stmt->execute();
-   $news = $stmt->fetchAll(\PDO::FETCH_ASSOC);
+   $book = $stmt->fetchAll(\PDO::FETCH_ASSOC);
 
-$context['news'] = $news;
+$context['book'] = $book;
 $context['header'] = include Bootstrap::ADMIN_HEADER_FILE;
 $template = $twig->loadTemplate($filename . '.html.twig');
 $template->display($context);

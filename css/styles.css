@@ -114,8 +114,10 @@ form {
     padding: 5px 10px;
     font-size: 15px;
 }
-        
 
+.red {
+    color: #d84950;
+}
 /* header */
 header {
     height: 60px;

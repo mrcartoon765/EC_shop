@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>書籍商材編集</title>
+
+    <link rel="icon" href="favicon.ico">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+        integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+
+        <link href="{{constant('config\\Bootstrap::CSS_FILE')}}" rel="stylesheet">
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <div class="header-logo">
+                <h1><a href="{{constant('config\\Bootstrap::ENTRY_URL')}}/dashboard.php"></a></h1>
+            </div>
+
+            <nav class="menu-right menu">
+                <a href="{{constant('config\\Bootstrap::ENTRY_URL')}}/logout.php">ログアウト</a>
+            </nav>
+        </div>
+    </header>
+    <main>
+        <div class="wrapper">
+            <div class="container">
+                <div class="wrapper-title">
+                    <h3>書籍編集</h3>
+                </div>
+                <form class="edit-form" action="{{constant('config\\Bootstrap::ENTRY_URL')}}/update_book.php" method="POST" enctype="multipart/form-data">
+                    <input type="hidden" name='book_id' value={{ book[0]['book_id'] }}>
+                    <div class="form-group">
+                        <p>タイトル</p>
+                        {{ book[0] }}
+                        <input type='text' name='title' value={{ book[0]['title'] }} >
+                    </div>
+                    <div class="form-group">
+                        <p>説明文</p>
+                        <textarea name='detail'>{{ book[0]['detail'] }}</textarea>
+                    </div>
+                    <div class="form-group">
+                        <p>価格</p>
+                        <input type='text' name='price' value={{ book[0]['price'] }} required>
+                    </div>
+                    <div class="form-group">
+                        <p>画像</p>
+                        <input type='file' name='image'  class="imgform" value={{ book[0]['image'] }} required>
+                    </div>
+                    <div class="form-group">
+                        <p>発売日</p>
+                        <input type='text' name='date' value={{ book[0]['date'] }} required>
+                    </div>
+                    <div class="form-group">
+                        <p>関連商材ID</p>
+                        <input type='text' name='ctg_id' value={{ book[0]['ctg_id'] }} required>
+                    </div>
+                    <button type="submit" class="btn btn-blue">更新する</button>
+                </form>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <div class="container">
+            <p>Copyright @ 2021  HEALTH KNOWLEGE</p>
+        </div>
+    </footer>
+</body>
+
+</html>

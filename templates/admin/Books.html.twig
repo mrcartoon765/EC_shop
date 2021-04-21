@@ -26,14 +26,14 @@
                             <td>{{ attribute(value,'title') }}</td>
                             <td>{{ attribute(value,'detail') }}</td>
                             <td>{{ attribute(value,'price') }}</td>
-                            <td>{{ attribute(value,'image') }}</td>
+                            <td><img src="../../shopping/image/{{ attribute(value,'image') }}" alt=""></td>
                             <td>{{ attribute(value,'date') }}</td>
                             <td>{{ attribute(value,'ctg_id') }}</td>
                             <td>
-                            <button type="button" class="btn btn-green" onclick="location.href='{{ constant('config\\Bootstrap::ENTRY_URL')}}/edit_news.php?id={{ attribute(value,'id') }}'">編集</button>
-                            
+                            <button type="button" class="btn btn-green" onclick="location.href='{{ constant('config\\Bootstrap::ENTRY_URL')}}/edit_book.php?id={{ attribute(value,'book_id') }}'">編集</button>
+
                             <button type="button" class="btn btn-red delete" data-id='{{ attribute(value,'book_id') }}' >削除</button>
-                            
+
                             <form method="POST" action="{{ constant('config\\Bootstrap::ENTRY_URL')}}/delete_Books.php" id="delete_form_{{ attribute(value,'book_id')}}">
                             <input type="hidden" value='{{ attribute(value,'book_id') }}' name="book_id">
                             </form>
@@ -57,7 +57,7 @@
    <script>
        $(".delete").click(function(){
            var id = this.dataset.id;
-           if(confirm("ID:"+id+"番の記事を本当に削除していいですか？")){
+           if(confirm("ID:"+id+"番の書籍を本当に削除していいですか？")){
                //OK
                $("#delete_form_"+id).submit();
            }else{

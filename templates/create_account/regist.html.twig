@@ -10,23 +10,23 @@
 <div class="form-group">
 
 
-メールアドレス<span class="red">*</span>
-<input type="text" name="mail" value="{{dataArr.mail}}" size="40">
-{% if errArr.mail | length > 0 %}<br><span class="red">{{errArr.mail}}</span>{% endif %}
+メールアドレス<span class="error">*</span>
+<input type="email" name="mail" value="{{dataArr.mail}}" size="40">
+{% if errArr.mail | length > 0 %}<br><span class="error">{{errArr.mail}}</span>{% endif %}
 </div>
 <div class="form-group">
-パスワード<span class="red">*</span>
-<input type="text" name="password" value="{{dataArr.password}}" size="40">
-{% if errArr.password | length > 0 %}<br><span class="red">{{errArr.password}}</span>{% endif %}
+パスワード<span class="error">*</span>
+<input type="password" name="password" value="{{dataArr.password}}" size="40">
+{% if errArr.password | length > 0 %}<br><span class="error">{{errArr.password}}</span>{% endif %}
 </div>
 
 <div class="form-group">
-お名前(氏名)<span class="red">*</span>
+お名前(氏名)<span class="error">*</span>
 <div class="form-group">
 姓<input type="text" name="family_name" value="{{dataArr.family_name}}">
 名<input type="text" name="first_name"  value="{{dataArr.first_name}}">
-{% if errArr.family_name | length > 0 %}<br><span class="red">{{ errArr.family_name }}</span>{% endif %}
-{% if errArr.first_name | length > 0 %}<br><span class="red">{{ errArr.first_name }}</span>{% endif %}
+{% if errArr.family_name | length > 0 %}<br><span class="error">{{ errArr.family_name }}</span>{% endif %}
+{% if errArr.first_name | length > 0 %}<br><span class="error">{{ errArr.first_name }}</span>{% endif %}
 </div>
 
 
@@ -38,7 +38,7 @@
 </div>
 
 <div class="form-group">
-生年月日<span class="red">*</span>
+生年月日<span class="error">*</span>
 <select name="year" >
 {% for index, label in yearArr %}
 <option value="{{index}}" {% if dataArr.year == index %} selected {% endif %}>{{ label }}</option>
@@ -54,38 +54,39 @@
 <option value="{{index}}" {% if dataArr.day == index %} selected {% endif %}>{{ label }}</option>
 {% endfor %}
 </select>
-{% if errArr.year | length > 0 %}<br><span class="red">{{errArr.year}}</span>{% endif %}
-{% if errArr.month | length > 0 %}<br><span class="red">{{errArr.month}}</span>{% endif %}
-{% if errArr.day | length > 0 %}<br><span class="red">{{errArr.day}}</span>{% endif %}
+{% if errArr.year | length > 0 %}<br><span class="error">{{errArr.year}}</span>{% endif %}
+{% if errArr.month | length > 0 %}<br><span class="error">{{errArr.month}}</span>{% endif %}
+{% if errArr.day | length > 0 %}<br><span class="error">{{errArr.day}}</span>{% endif %}
 </div>
 
 
 <div class="form-group">
-郵便番号<span class="red">*</span>
+郵便番号<span class="error">*</span>
 <div class="form-group" style="display:inline-flex">
 <input type="text" name="zip1" value="{{dataArr.zip1}}" id="zip1" size="3" maxlength="3"> -
 <input type="text" name="zip2" value="{{dataArr.zip2}}" id="zip2" size="4" maxlength="4">
 <input type="button" name="address_search" value="〒から住所を入力" id="address_search">
-{% if errArr.zip1 | length > 0 %}<br><span class="red">{{errArr.zip1}}</span>{% endif %}
-{% if errArr.zip2 | length > 0 %}<br><span class="red">{{errArr.zip2}}</span>{% endif %}
+</div>
+{% if errArr.zip1 | length > 0 %}<br><span class="error">{{errArr.zip1}}</span>{% endif %}
+{% if errArr.zip2 | length > 0 %}<br><span class="error">{{errArr.zip2}}</span>{% endif %}
 </div>
 
 <div class="form-group">
-住所<span class="red">*</span>
+住所<span class="error">*</span>
 <input type="text" name="address" value="{{dataArr.address}}" id="address" size="40">
-{% if errArr.address | length > 0 %}<br><span class="red">{{errArr.address}}</span>{% endif %}
+{% if errArr.address | length > 0 %}<br><span class="error">{{errArr.address}}</span>{% endif %}
 </div>
 
 <div class="form-group">
-電話番号<span class="red">*</span>
+電話番号<span class="error">*</span>
 <div class="form-group" style="display:inline-flex">
-<input type="tel" name="tel1" value="{{dataArr.tel1}}" size="6" maxlength="6"> -
+<input type="text" name="tel1" value="{{dataArr.tel1}}" size="6" maxlength="6"> -
 <input type="text" name="tel2" value="{{dataArr.tel2}}" size="6" maxlength="6"> -
 <input type="text" name="tel3" value="{{dataArr.tel3}}" size="6" maxlength="6">
-{% if errArr.tel1 | length > 0 %}<br><span class="red">{{errArr.tel1}}</span>{% endif %}
-{% if errArr.tel2 | length > 0 %}<br><span class="red">{{errArr.tel2}}</span>{% endif %}
-{% if errArr.tel3 | length > 0 %}<br><span class="red">{{errArr.tel3}}</span>{% endif %}
 </div>
+{% if errArr.tel1 | length > 0 %}<br><span class="error">{{errArr.tel1}}</span>{% endif %}
+{% if errArr.tel2 | length > 0 %}<br><span class="error">{{errArr.tel2}}</span>{% endif %}
+{% if errArr.tel3 | length > 0 %}<br><span class="error">{{errArr.tel3}}</span>{% endif %}
 
 <div class="form-group">
 備考
@@ -104,3 +105,4 @@
 </div>
 </div>
 </main>
+

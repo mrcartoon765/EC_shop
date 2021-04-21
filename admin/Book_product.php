@@ -48,29 +48,18 @@ session_start();
           }
 
           $stmt = $dbh->prepare("INSERT INTO Book(
-            title,
-            detail,
-            price,
-            image,
-            date,
+            title, detail, price, image, date,
             ctg_id
-            ) VALUES(
-              :title,
-              :detail,
-              :price,
-              :image,
-              :date,
-              :ctg_id
-              )");
-            $stmt->bindParam(':title',$Book_title);     
-            $stmt->bindParam(':detail',$Book_detail);    
-            $stmt->bindParam(':price',$Book_price);    
-            $stmt->bindParam(':image',$Book_file_name);    
-            $stmt->bindParam(':date',$Book_date);    
+            ) VALUES ( :title, :detail, :price, :image, :date, :ctg_id)");
+            $stmt->bindParam(':title',$Book_title);
+            $stmt->bindParam(':detail',$Book_detail);
+            $stmt->bindParam(':price',$Book_price);
+            $stmt->bindParam(':image',$Book_file_name);
+            $stmt->bindParam(':date',$Book_date);
             $stmt->bindParam(':ctg_id',$Book_ctg_id);
             $stmt->execute();
 
-            echo "登録完了";
+            // echo "登録完了";
 
             header('location:./Books.php');
 

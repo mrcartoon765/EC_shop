@@ -39,7 +39,7 @@ class Common
     private function passwordCheck()
     {
         if (preg_match('/\A(?=.*?[a-z])(?=.*?\d)[a-z\d]{8,100}+\z/i', $this->dataArr['password']) === 0) {
-            $this->errArr['password'] = 'パスワードは半角英数字をそれぞれ１種類以上含む8文字以上100文字以内で入力してください';
+            $this->errArr['password'] = 'パスワードは半角英数字をそれぞれ１種類以上含む8文字以上で入力してください';
         }
     }
     private function familyNameCheck()

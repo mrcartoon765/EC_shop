@@ -15,7 +15,7 @@ $loader = new \Twig_Loader_Filesystem($tempdir);
 $twig = new \Twig_Environment($loader, ['cache' => Bootstrap::CACHE_DIR, 'auto_reload' => TRUE]);
 
 try{
-  $dbh = new \PDO($DB_CORPORATION,"root","root");
+  $dbh = new \PDO($DB_BOOK_EC,"root","root");
 }catch(\PDOException $e){
   var_dump($e->getMessage());
   exit;
