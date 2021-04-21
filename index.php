@@ -2,16 +2,11 @@
 
 namespace config;
 
-use PDO;
-use phpDocumentor\Reflection\DocBlock\Tags\Var_;
-
 $this_dir = basename(__DIR__);
 
 $app_name = explode('/',dirname(__FILE__))[4];
 
-$this_dir === $app_name ?
-require_once dirname(__FILE__) .'/config/Bootstrap.class.php':
-require_once strstr(__FILE__, $this_dir,true) . 'config/Bootstrap.class.php';
+require_once $_SERVER['DOCUMENT_ROOT']."/config/Bootstrap.class.php";
 
 $loader = new \Twig_Loader_Filesystem($tempdir);
 
@@ -24,6 +19,7 @@ try{
   exit;
 }
 
+var_dump($_SESSION);
 
 $stmt = $dbh->prepare("SELECT * FROM news ORDER BY id DESC LIMIT 5");
 $stmt->execute();

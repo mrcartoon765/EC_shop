@@ -5,6 +5,8 @@ namespace config;
 date_default_timezone_set('Asia/Tokyo');
 require_once dirname(__FILE__) . '/../vendor/autoload.php';
 
+$document_root = $_SERVER['DOCUMENT_ROOT'];
+
 //定数Appdirへルートディレクトリのフルパス設定
 define('AppDir',dirname(__DIR__) . '/');
 //定数AppNameへアプリケーションAPP_URL名の設定 MAMPの場合は[0] ec2の場合は[4]
@@ -313,9 +315,11 @@ class account_DB
 }
 
 $DB_BOOK_EC = "mysql:host=mysql;dbname=BOOK_EC";
-
+$DB_BOOK_EC_USER = "root";
+$DB_BOOK_EC_PASS = "root";
 
 //ログインセッションチェック
+
 session_start();
 $customer_login = isset($_SESSION['customer_login'])? $_SESSION['customer_login']:false;
 

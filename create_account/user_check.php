@@ -2,6 +2,7 @@
 
 namespace config;
 
+use Payjp\Customer;
 use PDOException;
 
 $this_dir = basename(__DIR__);
@@ -24,13 +25,13 @@ if($mail ==''|$password==''){
 }
 
 try{
-  $dbh = new \PDO("mysql:host=mysql;dbname=BOOK_EC","root","root");
+  $dbh = new \PDO($DB_BOOK_EC,"root","root");
 } catch(\PDOException $e){
   var_dump($e->getMessage());
   exit;
 }
 
-$stmt = $dbh->prepare("SELECT * FROM Customer WHERE mail=:mail");
+$stmt = $dbh->prepare("SELECT * FROM customer WHERE mail=:mail");
 $stmt->bindParam(':mail',$mail);
 $stmt->execute();
 
@@ -44,21 +45,27 @@ if($count==0){
   header('location:./../login.php');
 }else{
 //ログイン完了
+
+$stmt = $dbh->prepare("SELECT * FROM customer WHERE mail=:mail");
+$stmt->bindParam(':mail',$mail);
+$stmt->execute();
 $customer = $stmt->fetchAll(\PDO::FETCH_ASSOC);
 
 session_start();
 $_SESSION['customer_login']=true;
 $_SESSION['customer_id']=$customer[0]['id'];
 $_SESSION['customer_first_name']=$customer[0]['first_name'];
+$_SESSION['customer_family_name']=$customer[0]['family_name'];
 
 header("location:./../index.php");
 }
 
 }else{
   header( "refresh:3;url=./login.php" );
-
+  $context['header'] = include Bootstrap::HEADER_FILE;
+  echo "<br><br><br><br><br><br><br><br>";
   echo "メ-ルアドレスあるいはパスワードが違います";
-  echo "\n\n\n\n";
+  echo "<br><br><br><br><br><br><br><br>";
   echo "3秒後ログイン画面に戻ります";
-
+  $context['footer'] = include Bootstrap::FOOTER_FILE;
 }
