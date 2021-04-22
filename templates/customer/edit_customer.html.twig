@@ -11,7 +11,7 @@
 
 
 メールアドレス<span class="error">*</span>
-<input type="email" name="mail" value={{ customer[0]['mail']}} size="40">
+<input type="email" name="mail" value={{ customer['mail']}} size="40">
 {% if errArr.mail | length > 0 %}<br><span class="error">{{errArr.mail}}</span>{% endif %}
 </div>
 <div class="form-group">
@@ -24,8 +24,8 @@
 <div class="form-group">
 お名前(氏名)<span class="error">*</span>
 <div class="form-group">
-姓<input type="text" name="family_name" value="{{ customer[0]['family_name'] }}">
-名<input type="text" name="first_name"  value="{{ customer[0]['first_name'] }}">
+姓<input type="text" name="family_name" value="{{ customer['family_name'] }}">
+名<input type="text" name="first_name"  value="{{ customer['first_name'] }}">
 {% if errArr.family_name | length > 0 %}<br><span class="error">{{ errArr.family_name }}</span>{% endif %}
 {% if errArr.first_name | length > 0 %}<br><span class="error">{{ errArr.first_name }}</span>{% endif %}
 </div>
@@ -34,8 +34,8 @@
 <div class="form-group">
 <br>お名前(かな)
 <div class="form-group"> 
-せい<input type="text" name="family_name_kana" value="{{customer[0]['family_name']}}">
-めい<input type="text" name="first_name_kana"  value="{{customer[0]['first_name']}}">
+せい<input type="text" name="family_name_kana" value="{{customer['family_name']}}">
+めい<input type="text" name="first_name_kana"  value="{{customer['first_name']}}">
 </div>
 
 <div class="form-group">
@@ -64,8 +64,8 @@
 <div class="form-group">
 郵便番号<span class="error">*</span>
 <div class="form-group" style="display:inline-flex">
-<input type="text" name="zip1" value="{{customer[0]['zip1']}}" id="zip1" size="3" maxlength="3"> -
-<input type="text" name="zip2" value="{{customer[0]['zip2']}}" id="zip2" size="4" maxlength="4">
+<input type="text" name="zip1" value="{{customer['zip1']}}" id="zip1" size="3" maxlength="3"> -
+<input type="text" name="zip2" value="{{customer['zip2']}}" id="zip2" size="4" maxlength="4">
 <input type="button" name="address_search" value="〒から住所を入力" id="address_search">
 </div>
 {% if errArr.zip1 | length > 0 %}<br><span class="error">{{errArr.zip1}}</span>{% endif %}
@@ -74,16 +74,16 @@
 
 <div class="form-group">
 住所<span class="error">*</span>
-<input type="text" name="address" value="{{customer[0]['address']}}" id="address" size="40">
+<input type="text" name="address" value="{{customer['address']}}" id="address" size="40">
 {% if errArr.address | length > 0 %}<br><span class="error">{{errArr.address}}</span>{% endif %}
 </div>
 
 <div class="form-group">
 電話番号<span class="error">*</span>
 <div class="form-group" style="display:inline-flex">
-<input type="text" name="tel1" value="{{customer[0]['tel1']}}" size="6" maxlength="6"> -
-<input type="text" name="tel2" value="{{customer[0]['tel2']}}" size="6" maxlength="6"> -
-<input type="text" name="tel3" value="{{customer[0]['tel3']}}" size="6" maxlength="6">
+<input type="text" name="tel1" value="{{customer['tel1']}}" size="6" maxlength="6"> -
+<input type="text" name="tel2" value="{{customer['tel2']}}" size="6" maxlength="6"> -
+<input type="text" name="tel3" value="{{customer['tel3']}}" size="6" maxlength="6">
 </div>
 {% if errArr.tel1 | length > 0 %}<br><span class="error">{{errArr.tel1}}</span>{% endif %}
 {% if errArr.tel2 | length > 0 %}<br><span class="error">{{errArr.tel2}}</span>{% endif %}
@@ -91,7 +91,7 @@
 
 <div class="form-group">
 備考
-<textarea name="contents" rows="4" cols="40">{{customer[0]['contents']}}</textarea>
+<textarea name="contents" rows="4" cols="40">{{customer['contents']}}</textarea>
 </div>
  <div class="form-group">
 

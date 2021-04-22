@@ -19,11 +19,11 @@ try{
   exit;
 }
 
-var_dump($_SESSION);
-
 $stmt = $dbh->prepare("SELECT * FROM news ORDER BY id DESC LIMIT 5");
 $stmt->execute();
 $news = $stmt->fetchAll(\PDO::FETCH_ASSOC);
+
+var_dump($_SESSION);
 
 $context['news'] = $news;
 $context['header'] = include Bootstrap::HEADER_FILE;
