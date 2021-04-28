@@ -18,7 +18,7 @@
 				<div class="news-list">
 					{% for value in news %}
 						<ul>
-							<li><a href="{{constant('config\\Bootstrap::APP_URL')}}page.php?id={{attribute(value,'id') }}">{{ attribute(value,'updated_at') }}{{ attribute(value,'title') }}</a></li>
+							<li><a href="{{APP_URL}}page.php?id={{attribute(value,'id') }}">{{ attribute(value,'updated_at') }}{{ attribute(value,'title') }}</a></li>
 						</ul>
 					{% endfor %}
 				</div>
@@ -91,7 +91,7 @@
 					<h3>CONTACT</h3>
 					<p>お問い合わせ</p>
 				</div>
-				<form method="POST" action="{{constant('config\\Bootstrap::APP_URL')}}/Contact/confirm.php">
+				<form method="POST" action="{{APP_URL}}/Contact/confirm.php">
 					<div class="form-group">
 						<p>お名前 *</p>
 						<input type="text" name="name">

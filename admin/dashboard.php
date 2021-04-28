@@ -2,25 +2,18 @@
 
 namespace config;
 
+use config\template_twig_files;
+use config\admin_login;
+
 $this_dir = basename(__DIR__);
 
 $app_name = explode('/',dirname(__FILE__))[4];
 
-$this_dir === $app_name ?
-require_once dirname(__FILE__) .'/config/Bootstrap.class.php':
-require_once strstr(__FILE__, $this_dir,true) . 'config/Bootstrap.class.php';
+require_once $_SERVER['DOCUMENT_ROOT']."/config/Bootstrap.class.php";
 
-$loader = new \Twig_Loader_Filesystem($document_root."/templates");
+template_twig_files::Prepare_the_template();
 
-$twig = new \Twig_Environment($loader, ['cache' => Bootstrap::CACHE_DIR, 'auto_reload' => TRUE]);
+admin_login::login_session();
 
-session_start();
-
-  if($_SESSION['admin_login'] == false){
-      header("Location:" . Bootstrap::APP_URL ."/admin/index.php");
-      exit;
-  }
-
-  $context['header'] = include Bootstrap::ADMIN_HEADER_FILE;
   $template = $twig->loadTemplate($this_dir.$filename.".html.twig");
   $template->display($context);

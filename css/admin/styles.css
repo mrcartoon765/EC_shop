@@ -193,7 +193,7 @@ footer {
     color: #fff;
 }
 
-.btn-green {
+.btn-info {
     background-color: #20c977;
     border: 1px solid #20c977;
     color: #fff;
@@ -201,7 +201,7 @@ footer {
     font-size: 15px;
 }
 
-.btn-red {
+.btn-danger {
     border: 1px solid #d84950;
     color: red;
     padding: 5px 10px;

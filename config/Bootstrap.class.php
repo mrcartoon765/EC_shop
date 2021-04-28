@@ -2,12 +2,16 @@
 
 namespace config;
 
+use config\template_twig_files;
+
 use phpDocumentor\Reflection\DocBlock\Tags\Var_;
 
 date_default_timezone_set('Asia/Tokyo');
 require_once dirname(__FILE__) . '/../vendor/autoload.php';
 
 $document_root = $_SERVER['DOCUMENT_ROOT'];
+
+global $filename;
 
 $filename = basename(debug_backtrace()[0]['file'],'.php');
 
@@ -62,7 +66,7 @@ class Bootstrap
   const CREATE_ACCOUNT = self::APP_URL . 'create_account/regist.php';
   const BOOK_IMAGE_DIR = self::ENTRY_URL . "/image/";
   const COMMON_TEMP = self::APP_DIR . "/templates/common";
-  const HEADER_FILE = self::COMMON_TEMP . "/header.html.twig";
+  const HEADER_FILE = "common/header.html.twig";
   const ADMIN_HEADER_FILE = self::COMMON_TEMP . "/header_admin.html.twig";
   const FOOTER_FILE = self::COMMON_TEMP . "/footer.html.twig";
 
@@ -336,14 +340,11 @@ $DB_BOOK_EC = "mysql:host=mysql;dbname=BOOK_EC";
 $DB_BOOK_EC_USER = "root";
 $DB_BOOK_EC_PASS = "root";
 
-//ログインセッションチェック
 
-
-session_start();
-// ($customer_login == true)?$login_or_logout='<li><a href="../../create_account/Login.php">ログイン</a></li>':$login_or_logout='<li><a href="../../create_account/logout.php">ログアウト</a></li>';
-// $context['login_or_logout'] = $login_or_logout;
 $context['login'] = $customer_login;
-
+$context['APP_URL'] = Bootstrap::APP_URL;
+$context['ENTRY_URL'] = Bootstrap::ENTRY_URL;
+$context['ADMIN_HEADER'] = Bootstrap::ADMIN_HEADER_FILE;
 class original_Mysql_command
 {
   public static function customer_data_update($table)
@@ -356,6 +357,7 @@ class original_Mysql_command
     $sql = "UPDATE ".$table." SET ".$key_value." WHERE id =".$ses.';';
     return $sql;
   }
+  public static function POST_DATA_INSERT()
 }
 
 class customer_login
@@ -385,6 +387,34 @@ class customer_login
     }
 }
 
+class admin_login
+  {
+    public static function login_session()
+    {
+      session_start();
+  if($_SESSION['admin_login'] == false){
+  header("Location:" . Bootstrap::ENTRY_URL . "/index.php");
+  exit;
+  }}
+ }
+
+ class database
+ {
+  public static function data_get($table)
+  {
+  try{
+    $dbh = new \PDO("mysql:host=".Bootstrap::DB_HOST.";dbname=".Bootstrap::DB_NAME,Bootstrap::DB_USER,Bootstrap::DB_PASS);
+  }catch(\PDOException $e){
+    var_dump($e->getMessage());
+    exit;
+  }
+  global $DB_DATA_GET;
+  $stmt = $dbh->prepare("SELECT * FROM ".$table);
+  $stmt->execute();
+  $DB_DATA_GET = $stmt->fetchAll(\PDO::FETCH_ASSOC);
+}
+ }
+
 class POST_GET
 {
   public function GET($variable,$column)
@@ -394,28 +424,25 @@ class POST_GET
 }
 
 $context['session'] = $_SESSION;
-
-class template
+class template_twig_files
 {
   public static function Prepare_the_template()
   {
+    global $loader,$twig;
   $loader = new \Twig_Loader_Filesystem($_SERVER['DOCUMENT_ROOT']."/templates");
   $twig = new \Twig_Environment($loader, ['cache' => Bootstrap::CACHE_DIR, 'auto_reload' => TRUE]);
   return $loader;
   // return $twig;
-  }
+  $loader = new \Twig_Loader_Filesystem($_SERVER['DOCUMENT_ROOT'].'/templates'.$tempdir);
+  $twig = new \Twig_Environment($loader, ['cache' => $_SERVER['DOCUMENT_ROOT'].'/templates_c'.$tempdir, 'auto_reload' => TRUE]);
+   $twig = new \Twig_Environment($loader, ['cache' => Bootstrap::CACHE_DIR, 'auto_reload' => TRUE]);
 }
-// }
-//   $loader = new \Twig_Loader_Filesystem($_SERVER['DOCUMENT_ROOT'].'/templates'.$tempdir);
-//   $twig = new \Twig_Environment($loader, ['cache' => $_SERVER['DOCUMENT_ROOT'].'/templates_c'.$tempdir, 'auto_reload' => TRUE]);
-//    $twig = new \Twig_Environment($loader, ['cache' => Bootstrap::CACHE_DIR, 'auto_reload' => TRUE]);
-
-//   }
+}
 //   public static function template_load_front()
 //   {
-//     include Bootstrap::HEADER_FILE;
-//     $twig->loadTemplate($filename . '.html.twig');
+//     $twig = 
+//     $context[''] = '';
+//     $template = $twig->loadTemplate($this_dir.$filename.".html.twig");
 //     $template->display($context);
-//     include Bootstrap::FOOTER_FILE;
 //   }
 // }

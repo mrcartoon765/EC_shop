@@ -108,7 +108,7 @@ form {
     margin: 0 ;
 }
 
-.btn-red {
+.btn-danger {
     border: 1px solid red;
     color: red;
     padding: 5px 10px;

@@ -2,26 +2,20 @@
 
 namespace config;
 
+use config\template_twig_files;
+
 use shopping\lib\Book;
 
 $this_dir = basename(__DIR__);
 
 $app_name = explode('/',dirname(__FILE__))[4];
 
-$this_dir === $app_name ?
-require_once dirname(__FILE__) .'/config/Bootstrap.class.php':
-require_once strstr(__FILE__, $this_dir,true) . 'config/Bootstrap.class.php';
+require_once $_SERVER['DOCUMENT_ROOT']."/config/Bootstrap.class.php";
 
-$loader = new \Twig_Loader_Filesystem($document_root."/templates");
+template_twig_files::Prepare_the_template();
 
-$twig = new \Twig_Environment($loader, ['cache' => Bootstrap::CACHE_DIR, 'auto_reload' => TRUE]);
 
-session_start();
-
-if($_SESSION['admin_login'] == false){
-  header("Location:" . Bootstrap::ENTRY_URL . "/index.php");
-  exit;
-}
+admin_login::login_session();
 
 try{
   $dbh = new \PDO($DB_BOOK_EC,"root","root");

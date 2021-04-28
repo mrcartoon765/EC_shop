@@ -2,7 +2,7 @@
 =========
 
 Macros are comparable with functions in regular programming languages. They
-are useful to reuse template fragments to not repeat yourself.
+are useful to reuse config\template_twig_files; fragments to not repeat yourself.
 
 Macros are defined in regular templates.
 

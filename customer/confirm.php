@@ -1,5 +1,7 @@
 <?php
 namespace config;
+
+use config\template_twig_files;
 use create_account\lib\Common;
 use create_account\master\initMaster;
 use config\original_Mysql_command;
@@ -10,9 +12,8 @@ $app_name = explode('/', dirname(__FILE__))[4];
 
 require_once $_SERVER['DOCUMENT_ROOT']."/config/Bootstrap.class.php";
 
-$loader = new \Twig_Loader_Filesystem($document_root."/templates");
+template_twig_files::Prepare_the_template();
 
-$twig = new \Twig_Environment($loader, ['cache' => Bootstrap::CACHE_DIR, 'auto_reload' => true]);
 
 $db = new account_DB(Bootstrap::DB_HOST, Bootstrap::DB_USER, Bootstrap::DB_PASS, Bootstrap::DB_NAME);
 

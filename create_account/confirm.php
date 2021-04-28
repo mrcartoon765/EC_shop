@@ -2,6 +2,8 @@
 
 namespace config;
 
+use config\template_twig_files;
+
 $this_dir = basename(__DIR__);
 
 $app_name = explode('/', dirname(__FILE__))[4];
@@ -11,9 +13,8 @@ require_once strstr(__FILE__, $this_dir, true) . 'config/Bootstrap.class.php';
 use create_account\lib\Common;
 use create_account\master\initMaster;
 
-$loader = new \Twig_Loader_Filesystem($document_root."/templates");
+template_twig_files::Prepare_the_template();
 
-$twig = new \Twig_Environment($loader, ['cache' => Bootstrap::CACHE_DIR, 'auto_reload' => true]);
 
 $db = new account_DB(Bootstrap::DB_HOST, Bootstrap::DB_USER, Bootstrap::DB_PASS, Bootstrap::DB_NAME);
 

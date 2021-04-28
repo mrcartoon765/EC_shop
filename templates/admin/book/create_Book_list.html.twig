@@ -1,0 +1,29 @@
+    {% include "common/header_admin.html.twig" %}
+    
+	<main>
+        <div class="wrapper">
+            <div class="container">
+                <div class="wrapper-title">
+                    <h3>書籍データ新規作成</h3>
+                </div>
+                <form class="edit-form" method="POST" action="{{ENTRY_URL}}/Book_product.php" enctype="multipart/form-data">
+                <div class="form-group"><p>商品名</p><input type="text" name="title" required></div>
+                <div class="form-group"><p>説明文</p><input type="text" name="detail" ></div>
+                <div class="form-group"><p>価格</p><input type="text" name="price" required></div>
+                <div class="form-group"><p>画像</p><input type="file" name="image" class="imgform"></div>
+                <div class="form-group"><p>発売日</p><input type="text" name="date" required></div>
+                <div class="form-group"><p>関連商材ID</p><input type="text" name="ctg_id" required></div>
+                <button type="submit" class="btn btn-blue">登録</button>
+                </form>
+            </div>
+        </div>
+    </main>
+ {% include "common/footer.html.twig" %}
+    <footer>
+        <div class="container">
+            <p>Copyright @ 2021 BOOK_EC</p>
+        </div>
+    </footer>
+</body>
+
+</html>

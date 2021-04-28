@@ -2,6 +2,8 @@
 
 namespace config;
 
+use config\template_twig_files;
+
 $this_dir = basename(__DIR__);
 
 $app_name = explode('/',dirname(__FILE__))[4];

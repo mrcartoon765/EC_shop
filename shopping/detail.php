@@ -24,8 +24,7 @@ $db = new Book_Database(Bootstrap::DB_HOST, Bootstrap::DB_USER, Bootstrap::DB_PA
 $ses = new shopping_Session($db);
 $Book = new Book($db);
 
-$loader = new \Twig_Loader_Filesystem($document_root."/templates");
-$twig = new \Twig_Environment($loader, ['cache' => Bootstrap::CACHE_DIR, 'auto_reload' => TRUE]);
+template_twig_files::Prepare_the_template();
 
 $ses->checkSession();
 

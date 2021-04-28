@@ -8,8 +8,7 @@ require_once $_SERVER['DOCUMENT_ROOT']."/config/Bootstrap.class.php";
 
 use config\Bootstrap;
 
-$loader = new \Twig_Loader_Filesystem($document_root."/templates");
-$twig = new \Twig_Environment($loader, ['cache' => Bootstrap::CACHE_DIR, 'auto_reload' => TRUE]);
+template_twig_files::Prepare_the_template();
 
 
 $template = $twig->loadTemplate($this_dir.$filename.".html.twig");

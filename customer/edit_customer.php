@@ -2,15 +2,16 @@
 
 namespace config;
 
+use config\template_twig_files;
+
 $this_dir = basename(__DIR__);
 
 $app_name = explode('/', dirname(__FILE__))[4];
 
 require_once $_SERVER['DOCUMENT_ROOT'] . "/config/Bootstrap.class.php";
 
-$loader = new \Twig_Loader_Filesystem($document_root."/templates");
+template_twig_files::Prepare_the_template();
 
-$twig = new \Twig_Environment($loader, ['cache' => Bootstrap::CACHE_DIR, 'auto_reload' => true]);
 
 use config\customer_login;
 use create_account\master\initMaster;
