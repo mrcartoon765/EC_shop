@@ -9,11 +9,9 @@ $this_dir = basename(__DIR__);
 
 $app_name = explode('/',dirname(__FILE__))[4];
 
-$this_dir === $app_name ?
-require_once dirname(__FILE__) .'/config/Bootstrap.class.php':
-require_once strstr(__FILE__, $this_dir,true) . 'config/Bootstrap.class.php';
+require_once $_SERVER['DOCUMENT_ROOT']."/config/Bootstrap.class.php";
 
-$loader = new \Twig_Loader_Filesystem($tempdir);
+$loader = new \Twig_Loader_Filesystem($document_root."/templates");
 
 $twig = new \Twig_Environment($loader, ['cache' => Bootstrap::CACHE_DIR, 'auto_reload' => TRUE]);
 
@@ -62,10 +60,10 @@ header("location:./../index.php");
 
 }else{
   header( "refresh:3;url=./login.php" );
-  $context['header'] = include Bootstrap::HEADER_FILE;
+  
   echo "<br><br><br><br><br><br><br><br>";
   echo "メ-ルアドレスあるいはパスワードが違います";
   echo "<br><br><br><br><br><br><br><br>";
   echo "3秒後ログイン画面に戻ります";
-  $context['footer'] = include Bootstrap::FOOTER_FILE;
+  
 }

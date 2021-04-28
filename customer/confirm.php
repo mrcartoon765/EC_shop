@@ -1,21 +1,30 @@
 <?php
-
 namespace config;
+use create_account\lib\Common;
+use create_account\master\initMaster;
+use config\original_Mysql_command;
 
 $this_dir = basename(__DIR__);
 
 $app_name = explode('/', dirname(__FILE__))[4];
 
-$this_dir === $app_name ? require_once dirname(__FILE__) . '/config/Bootstrap.class.php' :
-require_once strstr(__FILE__, $this_dir, true) . 'config/Bootstrap.class.php';
-use create_account\lib\Common;
-use create_account\master\initMaster;
+require_once $_SERVER['DOCUMENT_ROOT']."/config/Bootstrap.class.php";
 
-$loader = new \Twig_Loader_Filesystem($tempdir);
+$loader = new \Twig_Loader_Filesystem($document_root."/templates");
 
 $twig = new \Twig_Environment($loader, ['cache' => Bootstrap::CACHE_DIR, 'auto_reload' => true]);
 
 $db = new account_DB(Bootstrap::DB_HOST, Bootstrap::DB_USER, Bootstrap::DB_PASS, Bootstrap::DB_NAME);
+
+// $login_session = customer_login::login_session();
+
+$login_data = customer_login::login_data();
+
+// var_dump($_SESSION);
+
+$query = original_Mysql_command::customer_data_update('customer');
+
+// var_dump($_POST)
 
 $common = new Common();
 if (isset($_POST['confirm']) === true) {
@@ -39,7 +48,7 @@ switch ($mode) {
 
         $err_check = $common->getErrorFlg();
 
-        $template = ($err_check === true) ? 'confirm.html.twig' : 'regist.html.twig';
+        $template = ($err_check === true) ? 'confirm.html.twig' : 'edit_customer.html.twig';
         break;
 
     case 'back':
@@ -48,7 +57,7 @@ switch ($mode) {
         foreach ($dataArr as $key => $value) {
             $errArr[$key] = '';
         }
-        $template = 'regist.html.twig';
+        $template = 'edit_customer.html.twig';
         break;
 
     case 'complete':
@@ -59,22 +68,27 @@ switch ($mode) {
 
         $dataArr['password'] = password_hash($dataArr['password'], PASSWORD_DEFAULT);
         $dataArr['dm'] = ($dataArr['dm'] === '受信する') ? intval(1) : intval(0);
-
         foreach ($dataArr as $key => $value) {
-            $column .= $key . ',';
-            $insData .= $db->str_quote($value) . ',';
+            $key_value[] = $key. '=' .'"'.$value.'"'.', ';
         }
+        // array_splice($key_value,-1);
+        $key_value = rtrim(implode($key_value), '`, ');
+        $table = 'Customer';
+        $ses = $_SESSION['customer_id'];
+        $sql = "UPDATE ".$table. " SET " .$key_value." WHERE id =".$ses.';';
+        // return $sql;
+        // var_dump($sql);
 
-        $query = "INSERT INTO Customer("
-            . $column . "regist_date" . ") VALUES (" . $insData . " NOW()" ." );";
 
-        $res = $db->execute($query);
+
+        $res = $db->execute($sql);
+        // var_dump($query);
 
         if ($res === true) {
             header('Location:' . Bootstrap::ENTRY_URL . '/complete.php');
             exit();
         } else {
-            $template = 'regist.html.twig';
+            $template = 'edit_customer.html.twig';
             foreach ($dataArr as $key => $value) {
                 $errArr[$key] = '';
             }
@@ -83,12 +97,12 @@ switch ($mode) {
 }
 
 list($yearArr, $monthArr, $dayArr) = initMaster::getDate();
+$context['customer'] = $login_data;
 $context['yearArr'] = $yearArr;
 $context['monthArr'] = $monthArr;
 $context['dayArr'] = $dayArr;
 $context['dataArr'] = $dataArr;
 $context['errArr'] = $errArr;
-$context['header'] = include Bootstrap::HEADER_FILE;
-$template = $twig->loadTemplate($template);
+
+$template = $twig->loadTemplate($this_dir.$filename.".html.twig");
 $template->display($context);
-$context['footer'] = include Bootstrap::FOOTER_FILE;

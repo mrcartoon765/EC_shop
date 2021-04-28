@@ -1,4 +1,5 @@
-<main>
+{% include "common/header.html.twig" %}
+	<main>
 <div class="wrapper last-wrapper register-wrapper">
             <div class="container">
                 <div class="register">
@@ -13,27 +14,19 @@
 メールアドレス<span class="error">*</span>
 <input type="email" name="mail" value={{ customer['mail']}} size="40">
 {% if errArr.mail | length > 0 %}<br><span class="error">{{errArr.mail}}</span>{% endif %}
-</div>
-<div class="form-group">
 パスワード<span class="error">*</span><br>
 <span class="error">(変更の場合がない場合も再入力をお願いします)</span>
 <input type="password" name="password" value="{{dataArr.password}}" size="40">
 {% if errArr.password | length > 0 %}<br><span class="error">{{errArr.password}}</span>{% endif %}
-</div>
 
-<div class="form-group">
 お名前(氏名)<span class="error">*</span>
-<div class="form-group">
 姓<input type="text" name="family_name" value="{{ customer['family_name'] }}">
 名<input type="text" name="first_name"  value="{{ customer['first_name'] }}">
 {% if errArr.family_name | length > 0 %}<br><span class="error">{{ errArr.family_name }}</span>{% endif %}
 {% if errArr.first_name | length > 0 %}<br><span class="error">{{ errArr.first_name }}</span>{% endif %}
-</div>
 
 
-<div class="form-group">
 <br>お名前(かな)
-<div class="form-group"> 
 せい<input type="text" name="family_name_kana" value="{{customer['family_name']}}">
 めい<input type="text" name="first_name_kana"  value="{{customer['first_name']}}">
 </div>
@@ -45,16 +38,19 @@
 <option value="{{index}}" {% if dataArr.year == index %} selected {% endif %}>{{ label }}</option>
 {% endfor %}
 </select>
+年
 <select name='month'>
 {% for index, label in monthArr %}
 <option value="{{index}}" {% if dataArr.month == index %} selected {% endif %}>{{ label }}</option>
 {% endfor %}
 </select>
+月
 <select name='day'>
 {% for index, label in dayArr %}
 <option value="{{index}}" {% if dataArr.day == index %} selected {% endif %}>{{ label }}</option>
 {% endfor %}
 </select>
+日
 {% if errArr.year | length > 0 %}<br><span class="error">{{errArr.year}}</span>{% endif %}
 {% if errArr.month | length > 0 %}<br><span class="error">{{errArr.month}}</span>{% endif %}
 {% if errArr.day | length > 0 %}<br><span class="error">{{errArr.day}}</span>{% endif %}
@@ -106,4 +102,5 @@
 </div>
 </div>
 </main>
+ {% include "common/footer.html.twig" %}
 

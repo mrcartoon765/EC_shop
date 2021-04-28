@@ -3,6 +3,7 @@
 {{ header }}
 
 <body>
+	{% include "common/header.html.twig" %}
 	<main>
 		<div class="wrapper last-wrapper">
 			<div class="container">
@@ -49,4 +50,5 @@
 			<button class="btn btn-reutrn">戻る</button>
 		{% endif %}
 	</form>
-</body></div></div></main></body>{{ footer }}</html>
+</body></div></div></main>
+ {% include "common/footer.html.twig" %}</body>{{ footer }}</html>

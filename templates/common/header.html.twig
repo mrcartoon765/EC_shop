@@ -1,81 +1,85 @@
-
 <!DOCTYPE html>
 <html>
-<head>
+	<head>
 
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>HealthKnowledg</title>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>HealthKnowledg</title>
 
-  <meta property"og:title" content="EC_BOOK, inc." />
-  <meta property"og:type" content="website" />
-  <meta property"og:image" content="../../image/bg-1024x666.png" />
-  <meta property"og:url" content="('config\\Bootstrap::APP_URL') }}" />
-  <meta property"og:description" content="健康知識に関する本のサイトです" />
+		<meta property"og:title" content="EC_BOOK, inc."/>
+		<meta property"og:type" content="website"/>
+		<meta property"og:image" content="../../image/bg-1024x666.png"/>
+		<meta property"og:url" content="('config\\Bootstrap::APP_URL') }}"/>
+		<meta property"og:description" content="健康知識に関する本のサイトです"/>
 
-  <link rel="icon" href="favicon.ico">
+		<link rel="icon" href="favicon.ico">
 
-<link href="../../css/styles.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
 
-<link href="../../css/responsive.css" rel="stylesheet">
+		<link href="../../css/styles.css" rel="stylesheet">
+
+		<link href="../../css/responsive.css" rel="stylesheet">
+
+    <!-- Bootstrap CSS -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+<!-- Bootstrap Javascript(jQuery含む) -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 
 
-<link href="https://use.fontawesome.com/releases/v5.15.2/css/all.css" rel="stylesheet">
-</head>
+		<link href="https://use.fontawesome.com/releases/v5.15.2/css/all.css" rel="stylesheet">
+	</head>
 
 <body>
-<header>
-  <div class="container">
-  <div class="header-logo">
-<h1><a href="../../index.php"><img src= "../../image/square_logo-1024x192.png" id="logo"></a><h1>
-  </div>
 
-  <div class="toggle">
-  <div>
-  <span></span>
-  <span></span>
-  <span></span>
+<nav class="navbar navbar-expand-lg navbar-dark bg-secondary" >
+  <div class="container-fluid">
+    <a class="navbar-brand" href="../../index.php"><img src="../../image/square_logo-1024x192.png" id="logo" ></a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="../../shopping/Booklist.php">書籍一覧</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">関連商品一覧</a>
+          {% if session['customer_login'] == 1 %}
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            会員メニュー
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+            <li><a class="dropdown-item" href="">カート確認</a></li>
+            <li><a class="dropdown-item" href="../customer/edit_customer.php">ユーザー情報編集</a></li>
+            <li><a class="dropdown-item" href="#">そのた</a></li>
+            <li><a class="dropdown-item" href="../../create_account/logout.php">ログアウト</a></li>
+          </ul>
+        </li>
+          {% else %}
+            <li><a href="../../create_account/Login.php">ログイン</a></li>
+          {% endif %}
+      </ul>
+      </ul>
+       <form class="d-flex">
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success" type="submit">Search</button>
+      </form>
+      <div class="cart">
+				<a href="../../shopping/cart.php">
+					<i class="fas fa-shopping-cart"></i>
+				</a>
+			</div>
+					<li><a href="../../shopping/cart.php"><i class="fas fa-shopping-cart"></i></a></li>
+			</nav>
+		</div>
+    </div>
   </div>
-  </div>
-
-  <div class="cart">
-      <a href="../../shopping/cart.php"><i class="fas fa-shopping-cart"></i></a>
-  </div>
-
-  <nav class="sp-menu menu">
-  <ul>
-  <li><a href="../../customer/edit_customer.php">えぢっと</a></li>
-  <li><a href="../../index.php#service">サービス</a></li>
-  <li><a href="../../shopping/Booklist.php">書籍一覧</a></li>
-  <li><a href="../../index.php#news">お知らせ</a></li>
-  <li><a href="../../index.php#about">会社概要</a></li>
-  <li><a href="../../index.php#contact">お問合せ</a></li>
-  <li><a href="https://mrcartoon995970419.wordpress.com/">ブログ</a></li>
-  <li><a href="../../create_account/regist.php">新規会員登録</a></li>
-  <li><a href="../../create_account/Login.php">ログイン</a></li>
-  <li><a href="../../create_account/logout.php">ログアウト</a></li>
-  </ul>
-  </nav>
-
-  <nav class="pc-menu menu-left menu">
-  <ul>
-  <li><a href="../../customer/edit_customer.php">えぢっと</a></li>
-  <li><a href="../../index.php#service">サービス</a></li>
-  <li><a href="../../shopping/Booklist.php">書籍一覧</a></li>
-  <li><a href="../../index.php#news">お知らせ</a></li>
-  <li><a href="../../index.php#about">会社概要</a></li>
-  <li><a href="../../index.php#contact">お問合せ</a></li>
-  <li><a href="https://mrcartoon995970419.wordpress.com/">ブログ</a></li>
-  <li><a href="../../create_account/regist.php">新規会員登録</a></li>
-  <li><a href="../../create_account/Login.php">ログイン</a></li>
-  <li><a href="../../create_account/logout.php">ログアウト</a></li>
-  </ul>
-  </nav>
-<nav class="pc-menu menu-right menu">
-  <ul>
-  <li><a href="../../shopping/cart.php"><i class="fas fa-shopping-cart"></i></a></li>
-  </ul>
 </nav>
-  </div>
-  </header>
+	</header>

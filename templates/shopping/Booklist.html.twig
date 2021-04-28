@@ -1,4 +1,5 @@
-<main>
+{% include "common/header.html.twig" %}
+	<main>
 	<div class="wrapper last-wrapper">
 		<div class="container">
 			<div class="wrapper-title">
@@ -12,7 +13,7 @@
 			{% for value in Book_data %}
 					<li>
 					<form action="../../shopping/Booklist.php" method="POST" class="item-form" >
-					<img src="{{constant('config\\Bootstrap::BOOK_IMAGE_DIR')}}{{ attribute(value,'image') }}">
+					<img src="{{constant('config\\Bootstrap::BOOK_IMAGE_DIR')}}{{ attribute(value,'image') }}" class="w-100">
 					<div class="item-body">
 						<h5>{{ attribute(value,'title') }}</h5>
 						<input type="hidden" name="Book_title" value={{ attribute(value,'title')}}>
@@ -30,3 +31,4 @@
 		</ul>
 	</div>
 </main>
+ {% include "common/footer.html.twig" %}

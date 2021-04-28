@@ -17,7 +17,7 @@ $db = new Book_Database(Bootstrap::DB_HOST, Bootstrap::DB_USER, Bootstrap::DB_PA
 $ses = new shopping_Session($db);
 $book = new Book($db);
 
-$loader = new \Twig_Loader_Filesystem($tempdir);
+$loader = new \Twig_Loader_Filesystem($document_root."/templates");
 $twig = new \Twig_Environment($loader, ['cache' => Bootstrap::CACHE_DIR, 'auto_reload' => TRUE]);
 
 
@@ -43,7 +43,6 @@ $_SESSION['total_price'] = $total;
 
 $context['Books_cart'] = $Books;
 $context['total'] = $total;
-$context['header'] = include Bootstrap::HEADER_FILE;
-$template = $twig->loadTemplate($filename . '.html.twig');
+
+$template = $twig->loadTemplate($this_dir.$filename.".html.twig");
 $template->display($context);
-$context['footer'] = include Bootstrap::FOOTER_FILE;

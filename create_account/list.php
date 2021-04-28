@@ -38,5 +38,5 @@ $db->close();
 $context = [];
 $context['dataArr'] = $dataArr;
 $filename = basename(__FILE__,'.php');
-$template = $twig->loadTemplate($filename . '.html.twig');
+$template = $twig->loadTemplate($this_dir.$filename.".html.twig");
 $template->display($context);

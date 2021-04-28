@@ -4,21 +4,18 @@ namespace config;
 
 use shopping\lib\Book;
 use shopping\lib\shopping_Session;
-
-$this_dir = basename(__DIR__);
+use config\template;
 
 $app_name = explode('/',dirname(__FILE__))[4];
 
-$this_dir === $app_name ?require_once dirname(__FILE__) .'/config/Bootstrap.class.php':
-require_once strstr(__FILE__, $this_dir,true) . 'config/Bootstrap.class.php';
-
-// require_once strstr(__FILE__, $this_dir, true) . 'config/Bootstrap.class.php';
+require_once $_SERVER['DOCUMENT_ROOT']."/config/Bootstrap.class.php";
 
 $db = new Book_Database(Bootstrap::DB_HOST, Bootstrap::DB_USER, Bootstrap::DB_PASS, Bootstrap::DB_NAME, Bootstrap::DB_TYPE);
 $ses = new shopping_Session($db);
 $book = new Book($db);
 
-$loader = new \Twig_Loader_Filesystem($tempdir);
+$loader = new \Twig_Loader_Filesystem($document_root."/templates");
+
 $twig = new \Twig_Environment($loader, ['cache' => Bootstrap::CACHE_DIR, 'auto_reload' => TRUE]);
 
 $ses->checkSession();
@@ -53,9 +50,8 @@ $cateArr = $book->getCategoryList();
 
 $Book_data = $book->getBookList($ctg_id);
 
+
 $context['cateArr'] = $cateArr;
 $context['Book_data'] = $Book_data;
-$context['header'] = include Bootstrap::HEADER_FILE;
-$template = $twig->loadTemplate($filename . '.html.twig');
+$template = $twig->loadTemplate($this_dir.$filename.".html.twig");
 $template->display($context);
-$context['footer'] = include Bootstrap::FOOTER_FILE;

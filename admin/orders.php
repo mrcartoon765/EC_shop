@@ -10,7 +10,7 @@ $this_dir === $app_name ?
 require_once dirname(__FILE__) .'/config/Bootstrap.class.php':
 require_once strstr(__FILE__, $this_dir,true) . 'config/Bootstrap.class.php';
 
-$loader = new \Twig_Loader_Filesystem($tempdir);
+$loader = new \Twig_Loader_Filesystem($document_root."/templates");
 
 $twig = new \Twig_Environment($loader, ['cache' => Bootstrap::CACHE_DIR, 'auto_reload' => TRUE]);
 
@@ -34,5 +34,5 @@ $order_data = $stmt->fetchAll(\PDO::FETCH_ASSOC);
 
 $context['order_data'] = $order_data;
 $context['header'] = include Bootstrap::ADMIN_HEADER_FILE;
-$template = $twig->loadTemplate($filename . '.html.twig');
+$template = $twig->loadTemplate($this_dir.$filename.".html.twig");
 $template->display($context);

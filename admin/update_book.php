@@ -2,15 +2,11 @@
 
 namespace config;
 
-use Laravel\Ui\Presets\Bootstrap;
-
 $this_dir = basename(__DIR__);
 
 $app_name = explode('/',dirname(__FILE__))[4];
 
-$this_dir === $app_name ?
-require_once dirname(__FILE__) .'/config/Bootstrap.class.php':
-require_once strstr(__FILE__, $this_dir,true) . 'config/Bootstrap.class.php';
+require_once $_SERVER['DOCUMENT_ROOT']."/config/Bootstrap.class.php";
 
 session_start();
 
@@ -19,6 +15,8 @@ if($_SESSION['admin_login'] == false){
   exit;
 }
 
+POST_GET::GET($book_id,book_id);
+POST_GET::
 $book_id = isset($_POST['book_id'])? htmlspecialchars($_POST['book_id'], ENT_QUOTES, 'utf-8'):'';
 $title = isset($_POST['title'])? htmlspecialchars($_POST['title'], ENT_QUOTES, 'utf-8'):'';
 $detail = isset($_POST['detail'])? htmlspecialchars($_POST['detail'], ENT_QUOTES, 'utf-8'):'';

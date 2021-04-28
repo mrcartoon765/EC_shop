@@ -2,10 +2,23 @@
 
 namespace config;
 
+use phpDocumentor\Reflection\DocBlock\Tags\Var_;
+
 date_default_timezone_set('Asia/Tokyo');
 require_once dirname(__FILE__) . '/../vendor/autoload.php';
 
 $document_root = $_SERVER['DOCUMENT_ROOT'];
+
+$filename = basename(debug_backtrace()[0]['file'],'.php');
+
+$this_dir_replace =
+[
+  $_SERVER['DOCUMENT_ROOT'] => "",
+  $filename.".php" => ""
+];
+
+$this_dir =
+strtr(debug_backtrace()[0]['file'],$this_dir_replace);
 
 //定数Appdirへルートディレクトリのフルパス設定
 define('AppDir',dirname(__DIR__) . '/');
@@ -20,11 +33,15 @@ define('ThisDir',$this_dir);
 //定数AppUrlへドメイン名を代入
 define('AppUrl', (empty($_SERVER['HTTPS']) ? 'http://' : 'https://') . $_SERVER['HTTP_HOST'].'/');
 
-$tempdir = $this_dir !== AppName ?
-$tempdir = Bootstrap::TEMPLATE_DIR:
-Bootstrap::ROOT_TEMP_DIR;
+// $tempdir = $this_dir !== AppName ?
+// $tempdir = Bootstrap::TEMPLATE_DIR:
+// Bootstrap::ROOT_TEMP_DIR;
 
-$filename = basename(debug_backtrace()[0]['file'],'.php');
+
+
+// 呼び出し元のファイル名を取得
+// $fil = (basename(preg_replace('/.*?\//s'.$filename,'',str_replace($_SERVER['DOCUMENT_ROOT'].'/','',debug_backtrace()[0]["file"])),'.php'));
+
 
 //DB_****に関しては随時変更
 
@@ -321,10 +338,26 @@ $DB_BOOK_EC_PASS = "root";
 
 //ログインセッションチェック
 
+
 session_start();
 // ($customer_login == true)?$login_or_logout='<li><a href="../../create_account/Login.php">ログイン</a></li>':$login_or_logout='<li><a href="../../create_account/logout.php">ログアウト</a></li>';
 // $context['login_or_logout'] = $login_or_logout;
 $context['login'] = $customer_login;
+
+class original_Mysql_command
+{
+  public static function customer_data_update($table)
+  {
+    foreach($_POST as $key => $value){
+      $key_value[] = $key. ' = ' .'"'.$value.'"'.',';
+  }
+    $key_value = rtrim(implode($key_value), ',');
+    $ses = $_SESSION['customer_id'];
+    $sql = "UPDATE ".$table." SET ".$key_value." WHERE id =".$ses.';';
+    return $sql;
+  }
+}
+
 class customer_login
 {
   public static function login_session()
@@ -343,7 +376,7 @@ class customer_login
   }
   public static function login_data()
   {
-      $dbh = new \PDO("mysql:host=mysql;dbname=BOOK_EC",Bootstrap::DB_USER,Bootstrap::DB_PASS);
+      $dbh = new \PDO('mysql:host='.Bootstrap::DB_HOST.';dbname='.Bootstrap::DB_NAME,Bootstrap::DB_USER,Bootstrap::DB_PASS);
       $stmt = $dbh->prepare("SELECT * FROM customer WHERE id=:id");
       $stmt->bindParam(":id",$_SESSION['customer_id']);
       $stmt->execute();
@@ -351,3 +384,38 @@ class customer_login
       return $login_customer_data[0];
     }
 }
+
+class POST_GET
+{
+  public function GET($variable,$column)
+  {
+    $variable = isset($_POST[$column])? htmlspecialchars($_POST[column], ENT_QUOTES,'utf-8'):'';
+  }
+}
+
+$context['session'] = $_SESSION;
+
+class template
+{
+  public static function Prepare_the_template()
+  {
+  $loader = new \Twig_Loader_Filesystem($_SERVER['DOCUMENT_ROOT']."/templates");
+  $twig = new \Twig_Environment($loader, ['cache' => Bootstrap::CACHE_DIR, 'auto_reload' => TRUE]);
+  return $loader;
+  // return $twig;
+  }
+}
+// }
+//   $loader = new \Twig_Loader_Filesystem($_SERVER['DOCUMENT_ROOT'].'/templates'.$tempdir);
+//   $twig = new \Twig_Environment($loader, ['cache' => $_SERVER['DOCUMENT_ROOT'].'/templates_c'.$tempdir, 'auto_reload' => TRUE]);
+//    $twig = new \Twig_Environment($loader, ['cache' => Bootstrap::CACHE_DIR, 'auto_reload' => TRUE]);
+
+//   }
+//   public static function template_load_front()
+//   {
+//     include Bootstrap::HEADER_FILE;
+//     $twig->loadTemplate($filename . '.html.twig');
+//     $template->display($context);
+//     include Bootstrap::FOOTER_FILE;
+//   }
+// }

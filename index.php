@@ -8,7 +8,7 @@ $app_name = explode('/',dirname(__FILE__))[4];
 
 require_once $_SERVER['DOCUMENT_ROOT']."/config/Bootstrap.class.php";
 
-$loader = new \Twig_Loader_Filesystem($tempdir);
+$loader = new \Twig_Loader_Filesystem($_SERVER['DOCUMENT_ROOT']."/templates");
 
 $twig = new \Twig_Environment($loader, ['cache' => Bootstrap::CACHE_DIR, 'auto_reload' => TRUE]);
 
@@ -23,10 +23,6 @@ $stmt = $dbh->prepare("SELECT * FROM news ORDER BY id DESC LIMIT 5");
 $stmt->execute();
 $news = $stmt->fetchAll(\PDO::FETCH_ASSOC);
 
-var_dump($_SESSION);
-
 $context['news'] = $news;
-$context['header'] = include Bootstrap::HEADER_FILE;
-$template = $twig->loadTemplate($filename . '.html.twig');
+$template = $twig->loadTemplate($this_dir.$filename.".html.twig");
 $template->display($context);
-$context['footer'] = include Bootstrap::FOOTER_FILE;
