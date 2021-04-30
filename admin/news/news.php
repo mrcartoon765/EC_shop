@@ -27,5 +27,4 @@ $news = $stmt->fetchAll(\PDO::FETCH_ASSOC);
 
 $context['news'] = $news;
 
-$template = $twig->loadTemplate($this_dir.$filename.".html.twig");
-$template->display($context);
+template_twig_files::template_load_front();

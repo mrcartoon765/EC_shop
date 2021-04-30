@@ -10,10 +10,8 @@ $app_name = explode('/',dirname(__FILE__))[4];
 
 require_once $_SERVER['DOCUMENT_ROOT']."/config/Bootstrap.class.php";
 
-
 template_twig_files::Prepare_the_template();
 
+var_dump($_POST);
 
-
-$template = $twig->loadTemplate($this_dir.$filename.".html.twig");
-$template->display($context);
+template_twig_files::template_load_front();

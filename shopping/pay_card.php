@@ -48,5 +48,4 @@ $context['zip1']=$zip1;
 $context['zip2']=$zip2;
 $context['address']=$address;
 
-$template = $twig->loadTemplate($this_dir.$filename.".html.twig");
-$template->display($context);
+template_twig_files::template_load_front();

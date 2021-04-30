@@ -14,6 +14,5 @@ template_twig_files::Prepare_the_template();
 
 
 admin_login::login_session();
-  
-  $template = $twig->loadTemplate($this_dir.$filename.".html.twig");
-  $template->display($context);
+
+template_twig_files::template_load_front();

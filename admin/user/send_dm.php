@@ -72,5 +72,4 @@ try{
 
 $context['result'] = $result;
 $filename = basename(__FILE__,'.php');
-$template = $twig->loadTemplate($this_dir.$filename.".html.twig");
-$template->display($context);
+template_twig_files::template_load_front();

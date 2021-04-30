@@ -10,7 +10,12 @@ $app_name = explode('/',dirname(__FILE__))[4];
 
 require_once $_SERVER['DOCUMENT_ROOT']."/config/Bootstrap.class.php";
 
+template_twig_files::Prepare_the_template();
+
 session_start();
 $_SESSION['admin_login'] = false;
 
-header('location:'. Bootstrap::APP_URL . "/admin/index.php");
+header( "refresh:10;url=".Bootstrap::APP_URL );
+
+$context[''] = '';
+template_twig_files::template_load_front();

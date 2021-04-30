@@ -4,7 +4,6 @@ namespace config;
 
 use config\template_twig_files;
 
-use Payjp\Customer;
 use PDOException;
 
 $this_dir = basename(__DIR__);
@@ -14,7 +13,6 @@ $app_name = explode('/',dirname(__FILE__))[4];
 require_once $_SERVER['DOCUMENT_ROOT']."/config/Bootstrap.class.php";
 
 template_twig_files::Prepare_the_template();
-
 
 $mail = isset($_POST['mail'])? htmlspecialchars($_POST['mail'], ENT_QUOTES, 'utf-8'): '';
 $password = isset($_POST['password'])? htmlspecialchars($_POST['password'], ENT_QUOTES, 'utf-8'): '';
@@ -55,16 +53,13 @@ $_SESSION['customer_login']=true;
 $_SESSION['customer_id']=$customer[0]['id'];
 $_SESSION['customer_first_name']=$customer[0]['first_name'];
 $_SESSION['customer_family_name']=$customer[0]['family_name'];
-
+// var_dump($_SESSION);
 header("location:./../index.php");
 }
 
 }else{
-  header( "refresh:3;url=./login.php" );
-  
-  echo "<br><br><br><br><br><br><br><br>";
-  echo "メ-ルアドレスあるいはパスワードが違います";
-  echo "<br><br><br><br><br><br><br><br>";
-  echo "3秒後ログイン画面に戻ります";
-  
+  header( "refresh:5;url=./login.php" );
+  $context[''] = '';
+$template = $twig->loadTemplate($this_dir."login_false.html.twig");
+$template->display($context);
 }

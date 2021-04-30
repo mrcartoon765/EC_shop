@@ -18,5 +18,5 @@ database::data_get('book');
 
 $context['Books'] = $DB_DATA_GET;
 
-$template = $twig->loadTemplate($this_dir.$filename.".html.twig");
-$template->display($context);
+// template_twig_files::template_load_front();
+template_twig_files::template_load_front();

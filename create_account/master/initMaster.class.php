@@ -9,9 +9,6 @@ class initMaster
 {
     public static function getDate()
     {
-      // $month = $customer_birth['month'];
-      // $day = $customer_birth['day'];
-      // }{'';}
       $yearArr = [];
       $monthArr = [];
       $dayArr = [];
@@ -31,6 +28,3 @@ class initMaster
       return [$yearArr, $monthArr, $dayArr];
       }
     }
-
-    // // UPDATE Customer set (mail,password,family_name,first_name,family_name_kana,first_name_kana,year,month,day,zip1,zip2,address,tel1,tel2,tel3,contents,dm,update_date) set
-    // ('donnnamondesyoka@gmail.com','$2y$10$Juj9.mWZEVAewLVj5kW1OeTDoC6FuvVxvxMEyuCULhH/u4LvdB20q','tekitou','tekiteou','tekitou','tekiteou','1900','01','01','028','3601','どんなもんでしょうか','222','6666','7777','','1', NOW() );

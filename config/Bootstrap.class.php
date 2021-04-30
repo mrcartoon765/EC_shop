@@ -2,16 +2,12 @@
 
 namespace config;
 
-use config\template_twig_files;
-
-use phpDocumentor\Reflection\DocBlock\Tags\Var_;
-
 date_default_timezone_set('Asia/Tokyo');
 require_once dirname(__FILE__) . '/../vendor/autoload.php';
 
-$document_root = $_SERVER['DOCUMENT_ROOT'];
+global $filename, $this_dir, $document_root;
 
-global $filename;
+$document_root = $_SERVER['DOCUMENT_ROOT'];
 
 $filename = basename(debug_backtrace()[0]['file'],'.php');
 
@@ -341,10 +337,24 @@ $DB_BOOK_EC_USER = "root";
 $DB_BOOK_EC_PASS = "root";
 
 
-$context['login'] = $customer_login;
 $context['APP_URL'] = Bootstrap::APP_URL;
 $context['ENTRY_URL'] = Bootstrap::ENTRY_URL;
 $context['ADMIN_HEADER'] = Bootstrap::ADMIN_HEADER_FILE;
+
+class template_twig_files
+{
+  public static function Prepare_the_template()
+  {
+  global $loader,$twig;
+  $loader = new \Twig_Loader_Filesystem($_SERVER['DOCUMENT_ROOT']."/templates");
+  $twig = new \Twig_Environment($loader, ['cache' => Bootstrap::CACHE_DIR, 'auto_reload' => TRUE]);
+  }
+  public static function template_load_front()
+  {
+    $template = $GLOBALS['twig']->loadTemplate($GLOBALS['this_dir'].$GLOBALS['filename'].".html.twig");
+    $template->display($GLOBALS['context']);
+  }
+}
 class original_Mysql_command
 {
   public static function customer_data_update($table)
@@ -357,7 +367,57 @@ class original_Mysql_command
     $sql = "UPDATE ".$table." SET ".$key_value." WHERE id =".$ses.';';
     return $sql;
   }
-  public static function POST_DATA_INSERT()
+  public static function POST_DATA_INSERT($table)
+  {
+    foreach($_POST as $key => $value){
+      $k[] = $key.', ';
+      $v[] = '"'.$value.'", ';  // $v[] = $value;
+    }
+        $k = (rtrim(implode($k), ', '));
+        $v = rtrim(implode($v), ', ');
+
+        if (is_uploaded_file($_FILES["image"]["tmp_name"])) {
+          // 成功;
+          $file_name =  date('YmdHis')."_".$_FILES["image"]["name"];
+          if (pathinfo($file_name, PATHINFO_EXTENSION) == 'jpg' || pathinfo($file_name, PATHINFO_EXTENSION) == 'png') {
+            // 拡張子チェックOK
+            $tmp_name = $_FILES["image"]["tmp_name"];
+            $document_root = $_SERVER['DOCUMENT_ROOT'];
+            if (move_uploaded_file($tmp_name, $document_root."/shopping/image/".$table."/". $file_name)) {
+              // "アップロード完了,画像保存先のディレクトリは、DBのテーブル名と同じとする"
+
+              try{
+                $dbh = new \PDO('mysql:host='.Bootstrap::DB_HOST.';dbname='.Bootstrap::DB_NAME,Bootstrap::DB_USER,Bootstrap::DB_PASS);
+              }catch(\PDOException $e){
+                var_dump($e->getMessage());
+                exit;
+              }
+              $sql = "INSERT INTO $table ( image, ".$k." ) VALUES ( ".'"'.$file_name.'"'.", ".$v." );";
+              $stmt = $dbh->prepare($sql);
+
+                $stmt->execute();
+
+                header( "refresh:3;url=".Bootstrap::ENTRY_URL.'books.php' );
+
+                template_twig_files::Prepare_the_template();
+                $context[''] = '';
+                $template = $GLOBALS['twig']->loadTemplate($GLOBALS['this_dir'].$GLOBALS['filename']."complete.html.twig");
+                $template->display($context);
+            } else {
+              echo "画像をアップロードできません。";
+              exit;
+            }
+
+          } else {
+            echo "ファイル形式はjpg/pngのみです";
+            exit;
+          }
+
+        }else {
+          echo "アップロードに失敗しました";
+          exit;
+        }
+  }
 }
 
 class customer_login
@@ -394,7 +454,7 @@ class admin_login
       session_start();
   if($_SESSION['admin_login'] == false){
   header("Location:" . Bootstrap::ENTRY_URL . "/index.php");
-  exit;
+  exit;  template_twig_files::template_load_front();
   }}
  }
 
@@ -413,7 +473,13 @@ class admin_login
   $stmt->execute();
   $DB_DATA_GET = $stmt->fetchAll(\PDO::FETCH_ASSOC);
 }
+  // public static function get_book_ctg($ctg_no)
+  // {
+  //   var_dump($GLOBALS('DB_DATA_GET'));
+  //   return $ctg_no;
+  // }
  }
+
 
 class POST_GET
 {
@@ -422,27 +488,6 @@ class POST_GET
     $variable = isset($_POST[$column])? htmlspecialchars($_POST[column], ENT_QUOTES,'utf-8'):'';
   }
 }
-
+session_start();
 $context['session'] = $_SESSION;
-class template_twig_files
-{
-  public static function Prepare_the_template()
-  {
-    global $loader,$twig;
-  $loader = new \Twig_Loader_Filesystem($_SERVER['DOCUMENT_ROOT']."/templates");
-  $twig = new \Twig_Environment($loader, ['cache' => Bootstrap::CACHE_DIR, 'auto_reload' => TRUE]);
-  return $loader;
-  // return $twig;
-  $loader = new \Twig_Loader_Filesystem($_SERVER['DOCUMENT_ROOT'].'/templates'.$tempdir);
-  $twig = new \Twig_Environment($loader, ['cache' => $_SERVER['DOCUMENT_ROOT'].'/templates_c'.$tempdir, 'auto_reload' => TRUE]);
-   $twig = new \Twig_Environment($loader, ['cache' => Bootstrap::CACHE_DIR, 'auto_reload' => TRUE]);
-}
-}
-//   public static function template_load_front()
-//   {
-//     $twig = 
-//     $context[''] = '';
-//     $template = $twig->loadTemplate($this_dir.$filename.".html.twig");
-//     $template->display($context);
-//   }
-// }
+$context['login'] = $_SESSION["customer_login"];

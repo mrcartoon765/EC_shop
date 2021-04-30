@@ -10,9 +10,7 @@ $app_name = explode('/',dirname(__FILE__))[4];
 
 require_once $_SERVER['DOCUMENT_ROOT']."/config/Bootstrap.class.php";
 
-$loader = new \Twig_Loader_Filesystem($_SERVER['DOCUMENT_ROOT']."/templates");
-
-$twig = new \Twig_Environment($loader, ['cache' => Bootstrap::CACHE_DIR, 'auto_reload' => TRUE]);
+template_twig_files::Prepare_the_template();
 
 try{
   $dbh = new \PDO($DB_BOOK_EC,"root","root");
@@ -26,5 +24,4 @@ $stmt->execute();
 $news = $stmt->fetchAll(\PDO::FETCH_ASSOC);
 
 $context['news'] = $news;
-$template = $twig->loadTemplate($this_dir.$filename.".html.twig");
-$template->display($context);
+template_twig_files::template_load_front();

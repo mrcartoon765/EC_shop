@@ -29,5 +29,4 @@ $stmt->execute();
 $customers = $stmt->fetchAll(\PDO::FETCH_ASSOC);
 
 
-$template = $twig->loadTemplate($this_dir.$filename.".html.twig");
-$template->display($context);
+template_twig_files::template_load_front();

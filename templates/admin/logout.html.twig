@@ -1,0 +1,16 @@
+  {% include "common/header.html.twig" %}
+	<main>
+        <div class="wrapper last-wrapper">
+            <div class="container">
+                <div class="thanks">
+                    <h3>ログアウトしました</h3>
+                    <p>管理者画面からログアウトしました</p>
+                    <p>10秒後トップ画面へ戻ります</p>
+                    <p>お疲れ様でした</p>
+                    <button type="button" class="btn btn-success" onclick="location.href='{{APP_URL}}index.php'">トップページに戻る</button>
+                    <button type="button" class="btn btn-info" onclick="location.href='{{APP_URL}}admin/index.php'">管理者ログインページに戻る</button>
+                </div>
+            </div>
+        </div>
+    </main>
+ {% include "common/footer.html.twig" %}

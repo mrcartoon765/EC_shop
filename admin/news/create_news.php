@@ -21,5 +21,4 @@ session_start();
   }
 
   
-  $template = $twig->loadTemplate($this_dir.$filename.".html.twig");
-  $template->display($context);
+template_twig_files::template_load_front();

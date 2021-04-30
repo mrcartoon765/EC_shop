@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -16,15 +17,14 @@
 
 <link href="{{APP_URL}}/css/admin/styles.css" rel="stylesheet">
 
-<link href="{{APP_URL}}/css/admin/responsive.css" rel="stylesheet">
+<link href="{{APP_URL}}/css/responsive.css" rel="stylesheet">
+
 
     <a href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous"></a>
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
 
-		<link href="{{APP_URL}}/css/styles.css" rel="stylesheet">
 
-		<link href="{{APP_URL}}/css/responsive.css" rel="stylesheet">
 
     <!-- Bootstrap CSS -->
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
@@ -39,19 +39,38 @@
 	</head>
 
 <body>
-	<header>
-			<div class="container">
-				<div class="header-logo">
-					<h1>
-						<a href="{{APP_URL}}/admin/dashboard.php">管理画面</a>
-            <a href="{{APP_URL}}/index.php">トップページへ</a>
-					</h1>
-				</div>
-
-
-
-				<nav class="menu-right menu">
-					<a href="../admin/logout.php">ログアウト</a>
-				</nav>
-			</div>
-		</header>
+<header>
+<nav class="navbar navbar-expand-lg navbar-light" style="background-color: #20c997
+;">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">管理画面トップ</a>
+    <button class="navbar-toggler" type="button button-red" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="{{APP_URL}}admin/news/news.php">記事管理</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="{{APP_URL}}admin/user/users.php">会員管理</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="{{APP_URL}}admin/order/orders.php">受注管理</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="{{APP_URL}}admin/book/books.php">書籍管理</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="{{APP_URL}}admin/subproduct/secondary_products.php">副商材管理</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="{{APP_URL}}index.php">サイトトップページへ</a>
+				<li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="{{APP_URL}}admin/logout.php">管理画面からログアウト</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+</header>

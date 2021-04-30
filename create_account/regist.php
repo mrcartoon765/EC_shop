@@ -53,5 +53,4 @@ $context['dayArr'] = $dayArr;
 $context['dataArr'] = $dataArr;
 $context['errArr'] = $errArr;
 
-$template = $twig->loadTemplate($this_dir.$filename.".html.twig");
-$template->display($context);
+template_twig_files::template_load_front();

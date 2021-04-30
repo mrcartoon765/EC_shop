@@ -43,5 +43,4 @@ $_SESSION['total_price'] = $total;
 $context['Books_cart'] = $Books;
 $context['total'] = $total;
 
-$template = $twig->loadTemplate($this_dir.$filename.".html.twig");
-$template->display($context);
+template_twig_files::template_load_front();

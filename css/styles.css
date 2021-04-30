@@ -25,7 +25,7 @@ html {
 .container {
    max-width: 1100px;
    margin: 0 auto;
-   padding: 0 15px; 
+   padding: 0 15px;
 }
 
 a:hover,
@@ -65,6 +65,7 @@ h4 {
     width: 70%;
     padding: 80px 0 30px;
     margin: 0 auto;
+    margin-bottom: 20000000px;
 }
 
     .wrapper-title {
@@ -261,7 +262,7 @@ footer {
     height: 80px;
     background-color: #3e3e3b;
     text-align: right;
-    position: absolute;
+    position: fixed;
     bottom: 0;
     width: 100%;
     color: #fff;

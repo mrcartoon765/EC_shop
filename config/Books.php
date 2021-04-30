@@ -18,5 +18,4 @@ admin_login::DB_data_get('Book');
 
 $context['Books'] = $Book;
 
-$template = $twig->loadTemplate($this_dir.$filename.".html.twig");
-$template->display($context);
+template_twig_files::template_load_front();

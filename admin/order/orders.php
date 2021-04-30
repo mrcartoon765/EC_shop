@@ -28,5 +28,4 @@ $order_data = $stmt->fetchAll(\PDO::FETCH_ASSOC);
 
 $context['order_data'] = $order_data;
 
-$template = $twig->loadTemplate($this_dir.$filename.".html.twig");
-$template->display($context);
+template_twig_files::template_load_front();

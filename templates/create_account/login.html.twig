@@ -6,7 +6,7 @@
             <div class="wrapper-title">
             <h4>ログイン</h4>
             </div>
-            <form class="login-form" action="./../../create_account/user_check.php" method="POST">
+            <form class="login-form" action="{{APP_URL}}/create_account/user_check.php" method="POST">
             <div class="form-group">
             <p>メールアドレス</p>
             <input type="email" name="mail" required>
@@ -23,7 +23,7 @@
             <h4>新規登録</h4>
             <p>登録がお済みでない方はこちらから新規登録してください。</p>
             </div>
-            <button type="button" class="btn btn-submit" onclick="location.href='./../../create_account/regist.php'">新規登録</button>
+            <button type="button" class="btn btn-submit" onclick="location.href='{{APP_URL}}/create_account/regist.php'">新規登録</button>
             </div>
         </div>
         </div>
