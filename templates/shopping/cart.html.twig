@@ -57,10 +57,10 @@
 
 					{% if Books_cart is not empty %}
 						{% if login == true %}
-							<button type="button" class="btn btn-blue" onclick="location.href='pay.php'">購入手続きへ</button>
+							<button type="button" class="btn btn-primary" onclick="location.href='pay.php'">購入手続きへ</button>
 						{% else %}
-							<button type="button" class="btn btn-blue" onclick="location.href='{{APP_URL}}create_account/Login.php'">ログインして購入手続きへ</button>
-							<button type="button" class="btn btn-blue" onclick="location.href='{{APP_URL}}shopping/pay.php'">ログインせずに購入手続きへ</button>
+							<button type="button" class="btn btn-primary" onclick="location.href='{{APP_URL}}create_account/Login.php'">ログインして購入手続きへ</button>
+							<button type="button" class="btn btn-primary" onclick="location.href='{{APP_URL}}shopping/pay.php'">ログインせずに購入手続きへ</button>
 						{% endif %}
 					{% endif %}
 

@@ -53,7 +53,6 @@ $_SESSION['customer_login']=true;
 $_SESSION['customer_id']=$customer[0]['id'];
 $_SESSION['customer_first_name']=$customer[0]['first_name'];
 $_SESSION['customer_family_name']=$customer[0]['family_name'];
-// var_dump($_SESSION);
 header("location:./../index.php");
 }
 

@@ -12,27 +12,13 @@ require_once $_SERVER['DOCUMENT_ROOT']."/config/Bootstrap.class.php";
 
 template_twig_files::Prepare_the_template();
 
-
 admin_login::login_session();
 
-$id = isset($_GET['id'])? htmlspecialchars($_GET['id'], ENT_QUOTES, 'utf-8'):'';
+database::data_get('book');
 
-if($id == ''){
-  header("Location:" . Bootstrap::ENTRY_URL . "/Books.php");
-  exit;
-}
+database::get_detail_data('book',$_GET['id']);
 
-   try{
-       $dbh = new \PDO($DB_BOOK_EC,"root","root");
-   }catch(\PDOException $e){
-       var_dump($e->getMessage());
-       exit;
-   }
-   $stmt = $dbh->prepare("SELECT * FROM book WHERE book_id=:id");
-   $stmt->bindParam(":id",$id);
-   $stmt->execute();
-   $book = $stmt->fetchAll(\PDO::FETCH_ASSOC);
-
-$context['book'] = $book;
+$context['book'] = $detail_data[0];
+$context['sent_id'] =$_GET['id'];
 
 template_twig_files::template_load_front();

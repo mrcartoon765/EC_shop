@@ -59,6 +59,7 @@ class Bootstrap
   const CACHE_DIR = self::APP_DIR . 'templates_c/' . ThisDir ;
   const APP_URL = AppUrl;
   const ENTRY_URL = self::APP_URL . ThisDir;
+  const ADMIN_URL = self::APP_URL . 'admin/dashboard.php';
   const CREATE_ACCOUNT = self::APP_URL . 'create_account/regist.php';
   const BOOK_IMAGE_DIR = self::ENTRY_URL . "/image/";
   const COMMON_TEMP = self::APP_DIR . "/templates/common";
@@ -340,6 +341,7 @@ $DB_BOOK_EC_PASS = "root";
 $context['APP_URL'] = Bootstrap::APP_URL;
 $context['ENTRY_URL'] = Bootstrap::ENTRY_URL;
 $context['ADMIN_HEADER'] = Bootstrap::ADMIN_HEADER_FILE;
+$context['document_root'] = $document_root;
 
 class template_twig_files
 {
@@ -355,6 +357,56 @@ class template_twig_files
     $template->display($GLOBALS['context']);
   }
 }
+
+class database
+ {
+  public static function dbh()
+  {
+  try{
+    global $dbh;
+    $dbh = new \PDO('mysql:host='.Bootstrap::DB_HOST.';dbname='.Bootstrap::DB_NAME,Bootstrap::DB_USER,Bootstrap::DB_PASS);
+  }catch(\PDOException $e){
+    var_dump($e->getMessage());
+    exit;
+  }
+  }
+  public static function data_get($table)
+  {
+  self::dbh();
+  global $DB_DATA_GET;
+  $stmt = $GLOBALS['dbh']->prepare("SELECT * FROM ".$table);
+  $stmt->execute();
+  $DB_DATA_GET = $stmt->fetchAll(\PDO::FETCH_ASSOC);
+  }
+  public static function get_detail_data($table,$id)
+  {
+    self::dbh();
+    global $detail_data;
+    $sql = "SELECT * FROM " . $table . " WHERE id = ".$id;
+    $stmt = $GLOBALS['dbh']->prepare($sql);
+    $stmt->execute();
+    $detail_data = $stmt->fetchall(\PDO::FETCH_ASSOC);
+  }
+  public static function db_delete($table)
+  {
+  self::dbh();
+  $id = $_POST['id'];
+  $sql = "SELECT image FROM " .$table. " WHERE id=".$id;
+  $delete_file_name = $GLOBALS['dbh']->prepare($sql);
+  $delete_file_name->execute();
+  $delete_file_name = $delete_file_name->fetchAll(\PDO::FETCH_ASSOC);
+  $delete_file_name = $delete_file_name[0]['image'];
+  $empty = $GLOBALS['document_root'].'/shopping/image/'.$table."/".$delete_file_name;
+  file_exists($empty)?
+  unlink($empty):
+  '';
+
+  $stmt = $GLOBALS['dbh']->prepare("DELETE FROM " .$table. " WHERE id=:id");
+  $stmt->bindParam(":id",$_POST['id']);
+  $stmt->execute();
+}
+ }
+
 class original_Mysql_command
 {
   public static function customer_data_update($table)
@@ -385,19 +437,13 @@ class original_Mysql_command
             $document_root = $_SERVER['DOCUMENT_ROOT'];
             if (move_uploaded_file($tmp_name, $document_root."/shopping/image/".$table."/". $file_name)) {
               // "アップロード完了,画像保存先のディレクトリは、DBのテーブル名と同じとする"
-
-              try{
-                $dbh = new \PDO('mysql:host='.Bootstrap::DB_HOST.';dbname='.Bootstrap::DB_NAME,Bootstrap::DB_USER,Bootstrap::DB_PASS);
-              }catch(\PDOException $e){
-                var_dump($e->getMessage());
-                exit;
-              }
+              database::dbh();
               $sql = "INSERT INTO $table ( image, ".$k." ) VALUES ( ".'"'.$file_name.'"'.", ".$v." );";
-              $stmt = $dbh->prepare($sql);
+              $stmt = $GLOBALS['dbh']->prepare($sql);
 
                 $stmt->execute();
 
-                header( "refresh:3;url=".Bootstrap::ENTRY_URL.'books.php' );
+                header( "refresh:3;url=".Bootstrap::ADMIN_URL);
 
                 template_twig_files::Prepare_the_template();
                 $context[''] = '';
@@ -417,6 +463,64 @@ class original_Mysql_command
           echo "アップロードに失敗しました";
           exit;
         }
+  }
+  public static function POST_DATA_UPDATE($table)
+  {
+    foreach($_POST as $key => $value){
+      if ($key == 'id'){
+        continue;
+      } else {
+      $k[] = $key.'='."'".$value."'".", ";
+    }
+    }
+        $sql = (rtrim(implode($k), ', '));
+
+    if (is_uploaded_file($_FILES["image"]["tmp_name"])) {
+      // 成功;
+      $file_name =  date('YmdHis')."_".$_FILES["image"]["name"];
+      if (pathinfo($file_name, PATHINFO_EXTENSION) == 'jpg' || pathinfo($file_name, PATHINFO_EXTENSION) == 'png') {
+        // 拡張子チェックOK
+        $tmp_name = $_FILES["image"]["tmp_name"];
+        if (move_uploaded_file($tmp_name, $GLOBALS['document_root']."/shopping/image/".$table."/" . $file_name)) {
+          // "アップロード完了"
+
+          database::dbh();
+          $file_name = htmlspecialchars($file_name);
+
+          $delete_id = intval($_POST['id']);
+
+          //画像更新の前に古い画像データの削除
+          $old_image_delete_sql = 'SELECT image FROM '.$table. ' WHERE '. $table . '.id=' . $delete_id;
+          $old_image_file = $GLOBALS['dbh']->query($old_image_delete_sql);
+          $old_image_file = $old_image_file->fetch()['image'];
+          $image_dir = $GLOBALS['document_root'].'/shopping/image/'.$table.'/';
+          file_exists($image_dir.$old_image_file)?
+          unlink($image_dir.$old_image_file):
+          '';
+
+          $stmt = $GLOBALS['dbh']->prepare("UPDATE $table SET " .$sql. ", image=". "'".$file_name."'" ." WHERE ". $table.".id=".$delete_id);
+           $stmt->execute();
+
+           header( "refresh:3;url=".Bootstrap::ADMIN_URL);
+
+                template_twig_files::Prepare_the_template();
+                $context[''] = '';
+                $template = $GLOBALS['twig']->loadTemplate($GLOBALS['this_dir'].$GLOBALS['filename']."complete.html.twig");
+                $template->display($context);
+
+        } else {
+          echo "画像をアップロードできません。";
+          exit;
+        }
+      } else {
+        echo "ファイル形式はjpg/pngのみです";
+        exit;
+      }
+    } else {
+      echo "アップロードに失敗しました";
+      exit;
+    }
+    database::dbh();
   }
 }
 
@@ -458,29 +562,6 @@ class admin_login
   }}
  }
 
- class database
- {
-  public static function data_get($table)
-  {
-  try{
-    $dbh = new \PDO("mysql:host=".Bootstrap::DB_HOST.";dbname=".Bootstrap::DB_NAME,Bootstrap::DB_USER,Bootstrap::DB_PASS);
-  }catch(\PDOException $e){
-    var_dump($e->getMessage());
-    exit;
-  }
-  global $DB_DATA_GET;
-  $stmt = $dbh->prepare("SELECT * FROM ".$table);
-  $stmt->execute();
-  $DB_DATA_GET = $stmt->fetchAll(\PDO::FETCH_ASSOC);
-}
-  // public static function get_book_ctg($ctg_no)
-  // {
-  //   var_dump($GLOBALS('DB_DATA_GET'));
-  //   return $ctg_no;
-  // }
- }
-
-
 class POST_GET
 {
   public function GET($variable,$column)
@@ -491,3 +572,6 @@ class POST_GET
 session_start();
 $context['session'] = $_SESSION;
 $context['login'] = $_SESSION["customer_login"];
+
+// var_dump($_SESSION);
+// var_dump($_POST);

@@ -20,8 +20,6 @@ customer_login::login_session();
 
 $customer_logindata = customer_login::login_data();
 
-var_dump($_SESSION);
-
 list($yearArr, $monthArr, $dayArr) = initMaster::getDate();
 
 $context['yearArr'] = $yearArr;

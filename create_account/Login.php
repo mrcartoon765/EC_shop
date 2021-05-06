@@ -12,6 +12,4 @@ require_once $_SERVER['DOCUMENT_ROOT']."/config/Bootstrap.class.php";
 
 template_twig_files::Prepare_the_template();
 
-var_dump($_POST);
-
 template_twig_files::template_load_front();

@@ -18,5 +18,4 @@ database::data_get('book');
 
 $context['Books'] = $DB_DATA_GET;
 
-// template_twig_files::template_load_front();
 template_twig_files::template_load_front();

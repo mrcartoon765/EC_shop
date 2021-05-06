@@ -20,9 +20,9 @@
                         <tr><th>注文状況</th><td>
                         {% if  orders['order_status'] == 0 %}
                         <button type="button" class="btn btn-danger">受付中</button>
-                        <button type="button" class="btn btn-blue" onclick="location.href='../../admin/update_order_status.php?id={{ orders['id'] }}'">発送済みにする</button>
+                        <button type="button" class="btn btn-primary" onclick="location.href='../../admin/update_order_status.php?id={{ orders['id'] }}'">発送済みにする</button>
                         {% else %}
-                        <button type="button" class="btn btn-blue">発送済</button>
+                        <button type="button" class="btn btn-primary">発送済</button>
                         <button type="button" class="btn btn-danger" onclick="location.href='../../admin/update_order_status.php?id={{ orders['id'] }}'">発送を取り消す</button>
                         {% endif %}
                         </td></tr>

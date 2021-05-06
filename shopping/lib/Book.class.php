@@ -18,7 +18,7 @@ class Book{
   public function getBookList($ctg_id)
   {
     $table = ' Book ';
-    $col = ' book_id, title, detail, price, image, date, ctg_id ';
+    $col = ' id, title, detail, price, image, date, ctg_id ';
     $where = ($ctg_id !== '')? 'ctg_id = ? ' : '';
     $arrVal = ($ctg_id !== '') ? [$ctg_id] : [];
     $res = $this->db->select($table, $col, $where, $arrVal);

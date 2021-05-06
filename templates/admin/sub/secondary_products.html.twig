@@ -1,0 +1,54 @@
+    {% include "common/header_admin.html.twig" %}
+	<main>
+    <div class="wrapper last-wrapper ">
+        <div class="wrapper">
+            <div class="container">
+                <div class="wrapper-title">
+                    <h3>副商材管理</h3>
+                </div>
+                <button type="button" class="btn btn-primary" onclick="location.href='{{ENTRY_URL}}/create_sub.php'">副商材を新規登録する</button>
+                <div class="list">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>副商材ID</th>
+                                <th>商品名</th>
+                                <th>説明文</th>
+                                <th>価格</th>
+                                <th>画像</th>
+                                <th>関連商材名</th>
+                                <th>カテゴリ1</th>
+                                <th>カテゴリ2</th>
+                                <th>操作</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                          {% for value in sub %}
+                            <tr>
+                            <td>{{ attribute(value,'id') }}</td>
+                            <td>{{ attribute(value,'title') }}</td>
+                            <td>{{ attribute(value,'detail') }}</td>
+                            <td>{{ attribute(value,'price') }}</td>
+                            <td><img src="{{APP_URL}}/shopping/image/sub/{{ attribute(value,'image') }}" alt=""></td>
+                            <td>{{ attribute(value,'ctg_id') }}</td>
+                            <td>{{attribute(value,'ctg1')}}</td>
+                            <td>{{attribute(value,'ctg2')}}</td>
+                            <td>
+                            <button type="button" class="btn btn-info" onclick="location.href='{{ENTRY_URL}}/edit_sub.php?id={{ attribute(value,'id') }}'">編集</button>
+
+                            <button type="button" class="btn btn-danger delete" data-id='{{ attribute(value,'id') }}' >削除</button>
+
+                            <form method="POST" action="{{ENTRY_URL}}/delete_sub.php" id="delete_form_{{ attribute(value,'id')}}">
+                            <input type="hidden" value='{{ attribute(value,'id') }}' name="id">
+                            </form>
+                            </td>
+                            </tr>
+                          {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        </div>
+    </main>
+ {% include "common/footer.html.twig" %}

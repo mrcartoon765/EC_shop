@@ -1,0 +1,1 @@
+UPDATE book SET title='テスト', detail=' てすてす', price='1540', date='2018/12/31', ctg_id='3' WHERE book.id=22;

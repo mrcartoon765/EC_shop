@@ -21,11 +21,7 @@ $db = new account_DB(Bootstrap::DB_HOST, Bootstrap::DB_USER, Bootstrap::DB_PASS,
 
 $login_data = customer_login::login_data();
 
-// var_dump($_SESSION);
-
 $query = original_Mysql_command::customer_data_update('customer');
-
-// var_dump($_POST)
 
 $common = new Common();
 if (isset($_POST['confirm']) === true) {
@@ -77,13 +73,10 @@ switch ($mode) {
         $table = 'Customer';
         $ses = $_SESSION['customer_id'];
         $sql = "UPDATE ".$table. " SET " .$key_value." WHERE id =".$ses.';';
-        // return $sql;
-        // var_dump($sql);
 
 
 
         $res = $db->execute($sql);
-        // var_dump($query);
 
         if ($res === true) {
             header('Location:' . Bootstrap::ENTRY_URL . '/complete.php');
