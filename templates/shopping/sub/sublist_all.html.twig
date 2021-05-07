@@ -1,0 +1,35 @@
+{% include "common/header.html.twig" %}
+	<main>
+	<div class="wrapper last-wrapper">
+		<div class="container">
+			<div class="wrapper-title">
+				<h3>Health Products</h3>
+				<p>関連商品一覧</p>
+			</div>
+		</div>
+
+	<div class="itemlist">
+		<ul>
+			{% for value in product_data %}
+					<li>
+					<form action="{{APP_URL}}/shopping/cart.php" method="POST" class="item-form" >
+					<img src="{{IMAGE_DIR}}{{ attribute(value,'image') }}" alt="">
+					<div class="item-body">
+						<h5>{{ attribute(value,'title') }}</h5>
+						<input type="hidden" name="title" value={{ attribute(value,'title')}}>
+						<p>価格　￥{{ attribute(value,'price') }}</p>
+						<input type="hidden" name="price" value={{ attribute(value,'price')}}>
+						<p>{{  attribute(value,'detail')|slice(0,40) }}...</p>
+						<div class="item-form">
+            <input type="number" name="count" maxlength="1000" step="1" placeholder="数値を入力" style="width:150px;">
+            <br>
+							<button type="submit" class="btn btn-primary">カートに入れる</button>
+							</form>
+						</div>
+					</div>
+			</li>
+			{% endfor %}
+		</ul>
+	</div>
+</main>
+ {% include "common/footer.html.twig" %}

@@ -6,7 +6,7 @@
                 <div class="wrapper-title">
                     <h3>副商材管理</h3>
                 </div>
-                <button type="button" class="btn btn-primary" onclick="location.href='{{ENTRY_URL}}/create_sub.php'">副商材を新規登録する</button>
+                <button type="button" class="btn btn-blue" onclick="location.href='{{ENTRY_URL}}/create_sub.php'">副商材を新規登録する</button>
                 <div class="list">
                     <table>
                         <thead>
@@ -30,9 +30,41 @@
                             <td>{{ attribute(value,'detail') }}</td>
                             <td>{{ attribute(value,'price') }}</td>
                             <td><img src="{{APP_URL}}/shopping/image/sub/{{ attribute(value,'image') }}" alt=""></td>
-                            <td>{{ attribute(value,'ctg_id') }}</td>
-                            <td>{{attribute(value,'ctg1')}}</td>
-                            <td>{{attribute(value,'ctg2')}}</td>
+                            {% if attribute(value,'ctg_id') == 1 %}
+                            <td>超ストレス解消法</td>
+                            {% elseif attribute(value,'ctg_id') == 2 %}
+                            <td>最高の体調</td>
+                            {% elseif attribute(value,'ctg_id') == 3 %}
+                            <td>【新装版】一生リバウンドしないパレオダイエットの教科書</td>
+                            {% elseif attribute(value,'ctg_id') == 4 %}
+                            <td>ヤバい集中力　1日ブッ通しでアタマが冴えわたる神ライフハック45</td>
+                            {% elseif attribute(value,'ctg_id') == 5 %}
+                            <td>科学的な適職</td>
+                            {% elseif attribute(value,'ctg_id') == 6 %}
+                            <td>不老長寿メソッド　死ぬまで若いは武器になる</td>
+                            {% endif %}
+                            {% if attribute(value,'ctg1') == 1 %}
+                            <td>食品</td>
+                            {% elseif attribute(value,'ctg1') == 2 %}
+                            <td>サプリ</td>
+                            {% elseif attribute(value,'ctg1') == 3 %}
+                            <td>ガジェット</td>
+                            {% elseif attribute(value,'ctg1') == 4 %}
+                            <td>家具・寝具</td>
+                            {% elseif attribute(value,'ctg1') == 5 %}
+                            <td>美容品</td>
+                            {% endif %}
+                            {% if attribute(value,'ctg2') == 1 %}
+                            <td>ストレス対策</td>
+                            {% elseif attribute(value,'ctg2') == 2 %}
+                            <td>アンチエイジング</td>
+                            {% elseif attribute(value,'ctg2') == 3 %}
+                            <td>集中力改善</td>
+                            {% elseif attribute(value,'ctg2') == 4 %}
+                            <td>睡眠改善</td>
+                            {% elseif attribute(value,'ctg2') == 5 %}
+                            <td>ダイエット</td>
+                            {% endif %}
                             <td>
                             <button type="button" class="btn btn-info" onclick="location.href='{{ENTRY_URL}}/edit_sub.php?id={{ attribute(value,'id') }}'">編集</button>
 

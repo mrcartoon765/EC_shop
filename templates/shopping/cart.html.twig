@@ -4,7 +4,7 @@
 		<div class="container">
 			<ul>
 				<li>
-					<a href="index.php">TOP</a>
+				<a href="{{APP_URL}}index.php">TOP</a>
 				</li>
 				<li>カート</li>
 			</ul>
@@ -28,15 +28,15 @@
 						</tr>
 					</thead>
 					<tbody>
-						{% for cart_in_Book in Books_cart %}
+						{% for value in product_cart %}
 							<tr>
-								<td label="商品名:">{{ attribute(cart_in_Book,'Book_title') }}</td>
-								<td label="価格:" class="text-right">￥{{ attribute(cart_in_Book,'Book_price') }}</td>
-								<td label="個数:" class="text-right">{{ attribute(cart_in_Book,'Book_count') }}</td>
-								<td label="小計:" class="text-right">￥{{ attribute(cart_in_Book,'Book_price') * attribute(cart_in_Book,'Book_count') }}</td>
+								<td label="商品名:">{{ attribute(value,'product_title') }}</td>
+								<td label="価格:" class="text-right">￥{{ attribute(value,'product_price') }}</td>
+								<td label="個数:" class="text-right">{{ attribute(value,'product_count') }}</td>
+								<td label="小計:" class="text-right">￥{{ attribute(value,'product_price') * attribute(value,'product_count') }}</td>
 								<td>
 									<form action="../../shopping/cart.php" method="post">
-										<input type="hidden" name='delete_name' value={{ attribute(cart_in_Book,'Book_title') }}>
+										<input type="hidden" name='delete_name' value={{ attribute(value,'product_title') }}>
 										<button type="submit" class="btn btn-danger">削除</button>
 									</form>
 								</td>
@@ -55,7 +55,7 @@
 				</table>
 				<div class="cart-btn">
 
-					{% if Books_cart is not empty %}
+					{% if product_cart is not empty %}
 						{% if login == true %}
 							<button type="button" class="btn btn-primary" onclick="location.href='pay.php'">購入手続きへ</button>
 						{% else %}
@@ -64,7 +64,7 @@
 						{% endif %}
 					{% endif %}
 
-					<button type="button" class="btn btn-gray" onclick="location.href='Booklist.php'">お買い物を続ける</button>
+					<button type="button" class="btn btn-gray" onclick="location.href='{{APP_URL}}/shopping/book/Booklist.php'">お買い物を続ける</button>
 				</div>
 			</div>
 		</div>

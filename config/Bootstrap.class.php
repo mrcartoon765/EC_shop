@@ -2,21 +2,21 @@
 
 namespace config;
 
+use shopping\lib\Cart;
+use shopping\lib\shopping_Session;
+
 date_default_timezone_set('Asia/Tokyo');
 require_once dirname(__FILE__) . '/../vendor/autoload.php';
 
 global $filename, $this_dir, $document_root;
 
 $document_root = $_SERVER['DOCUMENT_ROOT'];
-
 $filename = basename(debug_backtrace()[0]['file'],'.php');
-
 $this_dir_replace =
 [
   $_SERVER['DOCUMENT_ROOT'] => "",
   $filename.".php" => ""
 ];
-
 $this_dir =
 strtr(debug_backtrace()[0]['file'],$this_dir_replace);
 
@@ -37,14 +37,10 @@ define('AppUrl', (empty($_SERVER['HTTPS']) ? 'http://' : 'https://') . $_SERVER[
 // $tempdir = Bootstrap::TEMPLATE_DIR:
 // Bootstrap::ROOT_TEMP_DIR;
 
-
-
 // 呼び出し元のファイル名を取得
 // $fil = (basename(preg_replace('/.*?\//s'.$filename,'',str_replace($_SERVER['DOCUMENT_ROOT'].'/','',debug_backtrace()[0]["file"])),'.php'));
 
-
-//DB_****に関しては随時変更
-
+define('table',str_replace(['/shopping/','/'],'',$this_dir));
 class Bootstrap
 {
   const DB_HOST = 'mysql';
@@ -61,7 +57,7 @@ class Bootstrap
   const ENTRY_URL = self::APP_URL . ThisDir;
   const ADMIN_URL = self::APP_URL . 'admin/dashboard.php';
   const CREATE_ACCOUNT = self::APP_URL . 'create_account/regist.php';
-  const BOOK_IMAGE_DIR = self::ENTRY_URL . "/image/";
+  const IMAGE_DIR = self::APP_URL ."/shopping" ."/image/".table.'/';
   const COMMON_TEMP = self::APP_DIR . "/templates/common";
   const HEADER_FILE = "common/header.html.twig";
   const ADMIN_HEADER_FILE = self::COMMON_TEMP . "/header_admin.html.twig";
@@ -73,12 +69,10 @@ class Bootstrap
     require_once $path;
 }
 }
-
 spl_autoload_register([
   basename(__DIR__). '\Bootstrap',
   'loadClass'
 ]);
-
 class account_DB
 {
   public $db_con = null;
@@ -98,10 +92,8 @@ class account_DB
   {
     $tmp_con = mysqli_connect($db_host, $db_user, $db_pass, $db_name); 
     if ($tmp_con !== false) {
-
         return $tmp_con;
     } else {
-
       printf("Connect failed: %s\n", mysqli_connect_error());
       exit();
     }
@@ -136,7 +128,6 @@ class account_DB
         mysqli_close($this->db_con);
       }
     }
-
     class Book_Database
 {
   private $dbh = null;
@@ -332,17 +323,25 @@ class account_DB
   }
 }
 
-
 $DB_BOOK_EC = "mysql:host=mysql;dbname=BOOK_EC";
 $DB_BOOK_EC_USER = "root";
 $DB_BOOK_EC_PASS = "root";
-
 
 $context['APP_URL'] = Bootstrap::APP_URL;
 $context['ENTRY_URL'] = Bootstrap::ENTRY_URL;
 $context['ADMIN_HEADER'] = Bootstrap::ADMIN_HEADER_FILE;
 $context['document_root'] = $document_root;
-
+$context['IMAGE_DIR'] = Bootstrap::IMAGE_DIR;
+class admin_login
+  {
+    public static function login_session()
+    {
+      session_start();
+  if($_SESSION['admin_login'] == false){
+  header("Location:" . Bootstrap::ENTRY_URL . "/index.php");
+  exit;  template_twig_files::template_load_front();
+  }}
+ }
 class template_twig_files
 {
   public static function Prepare_the_template()
@@ -357,11 +356,9 @@ class template_twig_files
     $template->display($GLOBALS['context']);
   }
 }
-
 class database
  {
-  public static function dbh()
-  {
+  public static function dbh() {
   try{
     global $dbh;
     $dbh = new \PDO('mysql:host='.Bootstrap::DB_HOST.';dbname='.Bootstrap::DB_NAME,Bootstrap::DB_USER,Bootstrap::DB_PASS);
@@ -369,7 +366,7 @@ class database
     var_dump($e->getMessage());
     exit;
   }
-  }
+}
   public static function data_get($table)
   {
   self::dbh();
@@ -386,6 +383,26 @@ class database
     $stmt = $GLOBALS['dbh']->prepare($sql);
     $stmt->execute();
     $detail_data = $stmt->fetchall(\PDO::FETCH_ASSOC);
+  }
+  public static function get_ctg_product($ctg1_or_ctg2,$ctg_id)
+  {
+    self::dbh();
+    global $ctg_product_data;
+    $sql = "SELECT * FROM sub WHERE ".$ctg1_or_ctg2." = ".$ctg_id;
+    $stmt = $GLOBALS['dbh']->prepare($sql);
+    $stmt->execute();
+    $ctg_product_data = $stmt->fetchall(\PDO::FETCH_ASSOC);
+  }
+  public static function get_ctg_name($ctg_no_search,$ctg_no='1')
+  {
+    global $ctg_name;
+    $ctg1_array = array('食品'=>'1','サプリ'=>'2','ガジェット'=>'3','家具・寝具'=>'4','美容品'=>'5');
+    $ctg2_array = array('ストレス対策'=>'1','アンチエイジング'=>'2','集中力改善'=>'3','睡眠改善'=>'4','ダイエット'=>'5');
+    if ($ctg_no == 1) {
+      $ctg_name = array_search($ctg_no_search,$ctg1_array);
+    } elseif ($ctg_no == 2) {
+      $ctg_name = array_search($ctg_no_search,$ctg2_array);
+    }
   }
   public static function db_delete($table)
   {
@@ -435,7 +452,7 @@ class original_Mysql_command
             // 拡張子チェックOK
             $tmp_name = $_FILES["image"]["tmp_name"];
             $document_root = $_SERVER['DOCUMENT_ROOT'];
-            if (move_uploaded_file($tmp_name, $document_root."/shopping/image/".$table."/". $file_name)) {
+            if (move_uploaded_file($tmp_name, $document_root."/shopping/image/".$table."/". $ctg .$file_name)) {
               // "アップロード完了,画像保存先のディレクトリは、DBのテーブル名と同じとする"
               database::dbh();
               $sql = "INSERT INTO $table ( image, ".$k." ) VALUES ( ".'"'.$file_name.'"'.", ".$v." );";
@@ -483,12 +500,9 @@ class original_Mysql_command
         $tmp_name = $_FILES["image"]["tmp_name"];
         if (move_uploaded_file($tmp_name, $GLOBALS['document_root']."/shopping/image/".$table."/" . $file_name)) {
           // "アップロード完了"
-
           database::dbh();
           $file_name = htmlspecialchars($file_name);
-
           $delete_id = intval($_POST['id']);
-
           //画像更新の前に古い画像データの削除
           $old_image_delete_sql = 'SELECT image FROM '.$table. ' WHERE '. $table . '.id=' . $delete_id;
           $old_image_file = $GLOBALS['dbh']->query($old_image_delete_sql);
@@ -497,17 +511,13 @@ class original_Mysql_command
           file_exists($image_dir.$old_image_file)?
           unlink($image_dir.$old_image_file):
           '';
-
           $stmt = $GLOBALS['dbh']->prepare("UPDATE $table SET " .$sql. ", image=". "'".$file_name."'" ." WHERE ". $table.".id=".$delete_id);
            $stmt->execute();
-
            header( "refresh:3;url=".Bootstrap::ADMIN_URL);
-
                 template_twig_files::Prepare_the_template();
                 $context[''] = '';
                 $template = $GLOBALS['twig']->loadTemplate($GLOBALS['this_dir'].$GLOBALS['filename']."complete.html.twig");
                 $template->display($context);
-
         } else {
           echo "画像をアップロードできません。";
           exit;
@@ -523,7 +533,10 @@ class original_Mysql_command
     database::dbh();
   }
 }
-
+session_start();
+$context['session'] = $_SESSION;
+$context['login'] = $_SESSION["customer_login"];
+$customer_login = $_SESSION['customer_login'];
 class customer_login
 {
   public static function login_session()
@@ -551,27 +564,60 @@ class customer_login
     }
 }
 
-class admin_login
-  {
-    public static function login_session()
-    {
-      session_start();
-  if($_SESSION['admin_login'] == false){
-  header("Location:" . Bootstrap::ENTRY_URL . "/index.php");
-  exit;  template_twig_files::template_load_front();
-  }}
- }
-
 class POST_GET
 {
-  public function GET($variable,$column)
+  public static function GET($variable,$column)
   {
     $variable = isset($_POST[$column])? htmlspecialchars($_POST[column], ENT_QUOTES,'utf-8'):'';
+    return $column;
   }
 }
-session_start();
-$context['session'] = $_SESSION;
-$context['login'] = $_SESSION["customer_login"];
 
-// var_dump($_SESSION);
-// var_dump($_POST);
+class shopping_cart
+{
+  public static function cart_session()
+  {
+$product_title = isset($_POST['title'])? htmlspecialchars($_POST['title'], ENT_QUOTES,'utf-8'):'';
+$product_price = isset($_POST['price'])? htmlspecialchars($_POST['price'], ENT_QUOTES,'utf-8'):'';
+$product_count = isset($_POST['count'])? htmlspecialchars($_POST['count'], ENT_QUOTES,'utf-8'):'';
+
+session_start();
+
+if(isset($_SESSION['products'])){
+  $product = $_SESSION['products'];
+  foreach($product as $key => $cart_product){
+    if($key == $product_title){
+      $product_count = (int)$product_count + (int)$cart_product['product_count'];
+    }
+  }
+}
+
+  if($product_title!=''&&$product_price!=''&&$product_count!=''){
+      $_SESSION['products'][$product_title]=[
+        'product_title' => $product_title,
+        'product_price' => $product_price,
+        'product_count' => $product_count
+      ];
+  }
+  $products = isset($_SESSION['products'])? $_SESSION['products']:[];
+  }
+
+  public static function cart_sum()
+  {
+    $delete_name = isset($_POST['delete_name'])? htmlspecialchars($_POST['delete_name'], ENT_QUOTES, 'utf-8') : '';
+session_start();
+if($delete_name != '') unset($_SESSION['products'][$delete_name]);
+$total = 0;
+$products = isset($_SESSION['products'])? $_SESSION['products']:[];
+foreach($products as $product_title => $cart_in_product){
+  $subtotal = (int)$cart_in_product['product_price']*(int)$cart_in_product['product_count'];
+  $total += $subtotal;
+}
+if($customer_login == true){
+  $total = intval($total*0.7);
+}
+$_SESSION['total_price'] = $total;
+$context['product_cart'] = $products;
+$context['total'] = $total;
+}
+}

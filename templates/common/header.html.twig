@@ -46,10 +46,32 @@
         <li class="nav-item">
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="{{APP_URL}}/shopping/Booklist.php">書籍一覧</a>
+          <a class="nav-link" href="{{APP_URL}}/shopping/book/Booklist.php">書籍一覧</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">関連商品一覧</a>
+          <a class="nav-link" href="{{APP_URL}}/shopping/sub/sublist_all.php">関連商品一覧</a>
+          </li>
+          <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            関連商品カテゴリ
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+            <li><a class="dropdown-item" href="{{APP_URL}}/shopping/sub/sublist_ctg1_1.php">食品</a></li>
+            <li><a class="dropdown-item" href="{{APP_URL}}/shopping/sub/sublist_ctg1_2.php">サプリ</a></li>
+            <li><a class="dropdown-item" href="{{APP_URL}}/shopping/sub/sublist_ctg1_3.php">ガジェット</a></li>
+            <li><a class="dropdown-item" href="{{APP_URL}}/shopping/sub/sublist_ctg1_4.php">家具・寝具</a></li>
+            <li><a class="dropdown-item" href="{{APP_URL}}/shopping/sub/sublist_ctg1_5.php">美容品</a></li>
+            </ul>
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            目的別商品テゴリ
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+            <li><a class="dropdown-item" href="{{APP_URL}}/shopping/sub/sublist_ctg2_1.php">ストレス対策</a></li>
+            <li><a class="dropdown-item" href="{{APP_URL}}/shopping/sub/sublist_ctg2_2.php">アンチエイジング</a></li>
+            <li><a class="dropdown-item" href="{{APP_URL}}/shopping/sub/sublist_ctg2_3.php">集中力改善</a></li>
+            <li><a class="dropdown-item" href="{{APP_URL}}/shopping/sub/sublist_ctg2_4.php">睡眠改善</a></li>
+            <li><a class="dropdown-item" href="{{APP_URL}}/shopping/sub/sublist_ctg2_5.php">ダイエット</a></li>
+          </ul>
           {% if session['customer_login'] == 1 %}
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
