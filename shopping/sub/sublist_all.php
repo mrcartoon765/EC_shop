@@ -18,5 +18,17 @@ template_twig_files::Prepare_the_template();
 
 database::data_get('sub');
 
-$context['product_data'] = $DB_DATA_GET;
+original_Mysql_command::search_data_and_paging('sub','title');
+
+$context['product_data'] = $GLOBALS['search'];
+
+$sub = $GLOBALS['search'];
+
+$context['customer']=$sub;
+$context['title'] = $_GET['title'];
+$context['pages'] = $GLOBALS['pages'];
+$context['prev'] =  $GLOBALS['prev'];
+$context['page'] =  $GLOBALS['page'];
+$context['next'] =  $GLOBALS['next'];
+
 template_twig_files::template_load_front();

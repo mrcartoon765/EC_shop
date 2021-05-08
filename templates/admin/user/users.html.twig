@@ -1,69 +1,76 @@
-    {% include "common/header_admin.html.twig" %}
-	<main>
-        <div class="wrapper">
-            <div class="container">
-                <div class="wrapper-title">
-                    <h3>会員管理</h3>
-                </div>
-                <button type="bnutton" class='btn btn-blue' onclick="location.href='{{ENTRY_URL}}create_dm.php'">メルマガ配信</button>
-                <button type="button" class="btn btn-secondary" onclick="location.href='{{ENTRY_URL}}download.php'">CSV出力</button>
-                <form class="serch" action="{{ENTRY_URL}}users.php" method="GET">
-                    <input type="text" name="first_name" placeholder="名前検索">
-                    <button type="submit" class="btn btn-blue">検索</button>
-                </form>
-                <div class="list">
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>id</th>
-                                <th>名前</th>
-                                <th>メールアドレス</th>
-                                <th>DM配信</th>
-                                <th>操作</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {% for value in customer %}
-                            <tr>
-                                <td>{{ attribute(value,'id') }}</td>
-                                <td>{{ attribute(value,'first_name') }}</td>
-                                <td>{{ attribute(value,'mail') }}</td>
-                                {% if attribute(value,'dm') == 1 %}
-                                    <td>受信する</td>
-                                    {% else %}
-                                    <td>受信しない</td>
-                                {% endif %}
-                                <td>
-                                    <button type="button" class="btn btn-info" onclick="location.href='{{ENTRY_URL}}edit_user.php?id={{ attribute(value,'id') }}'">編集</button>
-                                    <button type="button" class="btn btn-danger delete" data-id='{{ attribute(value,'id') }}' >削除</button>
-                                    
-                                    <form method="POST" action="{{ENTRY_URL}}delete_user.php" id="delete_form_{{ attribute(value,'id')}}">
-                                    <input type="hidden" value='{{ attribute(value,'id') }}' name="id">
-                                    </form>
-                                </td>
-                                </tr>
-                            {% endfor %}
-                        </tbody>
-                    </table>
-                                    </div>
+{% include "common/header_admin.html.twig" %}
+<main>
+	<div class="wrapper">
+		<div class="container">
+			<div class="wrapper-title">
+				<h3>会員管理</h3>
+			</div>
+			<button type="button" class='btn btn-primary' onclick="location.href='{{ENTRY_URL}}create_dm.php'">メルマガ配信</button>
+			<button type="button" class="btn btn-secondary" onclick="location.href='{{ENTRY_URL}}download.php'">CSV出力</button>
+			<form class="serch" action="{{ENTRY_URL}}users.php" method="GET">
+				<input type="text" name="first_name" placeholder="名前検索">
+				<button type="submit" class="btn btn-primary">検索</button>
+			</form>
+			<div class="list">
+				<table>
+					<thead>
+						<tr>
+							<th>id</th>
+							<th>名前</th>
+							<th>メールアドレス</th>
+							<th>DM配信</th>
+							<th>操作</th>
+						</tr>
+					</thead>
+					<tbody>
+						{% for value in customer %}
+							<tr>
+								<td>{{ attribute(value,'id') }}</td>
+								<td>{{ attribute(value,'first_name') }}</td>
+								<td>{{ attribute(value,'mail') }}</td>
+								{% if attribute(value, 'dm') == 1 %}
+									<td>受信する</td>
+								{% else %}
+									<td>受信しない</td>
+								{% endif %}
+								<td>
+									<button type="button" class="btn btn-info" onclick="location.href='{{ENTRY_URL}}edit_user.php?id={{ attribute(value,'id') }}'">編集</button>
+									<button type="button" class="btn btn-danger delete" data-id='{{ attribute(value,' id') }}' ="id') }}'">削除</button>
+									<form method="POST" action="{{ENTRY_URL}}delete_user.php" id="delete_form_{{ attribute(value,'id')}}">
+										<input type="hidden" value='{{ attribute(value,' id') }}' ="id') }}'" name="id">
+									</form>
+								</td>
+							</tr>
+						{% endfor %}
+					</tbody>
+				</table>
+			</div>
 
-                    <ul class="paging">
-                    <li><a href="{{ENTRY_URL}}users.php?first_name={{ first_name }}">« 最初</a></li>
+			<ul class="paging">
+				<li>
+					<a href="{{ENTRY_URL}}users.php?first_name={{ first_name }}">« 最初</a>
+				</li>
 
-                    {% if  prev  != '' %}
-                                            <li><a href="{{ENTRY_URL}}users.php?page={{ prev }}&first_name={{ first_name }}"{{ page }}-1>{{ page -1}}</a></li>
-                    {% endif %}
+				{% if prev != '' %}
+					<li>
+						<a href="{{ENTRY_URL}}users.php?page={{ prev }}&first_name={{ first_name }}" {{ page }} -1="-1">{{ page -1}}</a>
+					</li>
+				{% endif %}
 
-                    <li><span>{{ page }}</span></li>
+				<li>
+					<span>{{ page }}</span>
+				</li>
 
-                    {% if next != '' %}
-                                            <li><a href="{{ENTRY_URL}}users.php?page={{ next }}&first_name={{ first_name }}">{{ page +1}}</a></li>
-                    {% endif %}
+				{% if next != '' %}
+					<li>
+						<a href="{{ENTRY_URL}}users.php?page={{ next }}&first_name={{ first_name }}">{{ page +1}}</a>
+					</li>
+				{% endif %}
 
-                    <li><a href="{{ENTRY_URL}}/users.php?page={{ pages }}&fisrt_name={{ first_name }}">最後 »</a></li>
-                    </ul>
-            </div>
-        </div>
-        </div>
-    </main>
-     {% include "common/footer.html.twig" %}
+				<li>
+					<a href="{{ENTRY_URL}}/users.php?page={{ pages }}&first_name={{ first_name }}">最後 »</a>
+				</li>
+			</ul>
+		</div>
+	</div>
+</div></main>{% include "common/footer.html.twig" %}

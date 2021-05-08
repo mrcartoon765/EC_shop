@@ -89,10 +89,11 @@
           {% endif %}
       </ul>
       </ul>
-       <form class="d-flex">
-        <input class="form-control me-2" type="search" placeholder="全商品検索" aria-label="Search">
+       <form class="d-flex" type="search" action="{{APP_URL}}shopping/sub/sublist_all.php" method="GET">
+        <input class="form-control me-2" type="search"  name="title" placeholder="全商品名から検索">
         <button class="btn btn-outline-success" type="submit">Search</button>
       </form>
+
       <div class="cart">
 				<a href="{{APP_URL}}/shopping/cart.php">
 					<i class="fas fa-shopping-cart"></i>

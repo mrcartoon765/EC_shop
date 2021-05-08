@@ -12,12 +12,7 @@ require_once $_SERVER['DOCUMENT_ROOT']."/config/Bootstrap.class.php";
 
 template_twig_files::Prepare_the_template();
 
-try{
-  $dbh = new \PDO($DB_BOOK_EC,"root","root");
-}catch(\PDOException $e){
-  var_dump($e->getMessage());
-  exit;
-}
+database::dbh();
 
 $stmt = $dbh->prepare("SELECT * FROM news ORDER BY id DESC LIMIT 5");
 $stmt->execute();
