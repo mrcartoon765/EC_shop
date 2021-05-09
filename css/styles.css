@@ -496,3 +496,18 @@ footer {
 .day {
     height: 100px;
 }
+
+.btn-want{
+    display: inline-block;
+    padding: 0 8px;
+    cursor: pointer;
+}
+.btn-want:hover{
+    color: #f44336;
+}
+.active{
+    color: #f44336;
+}
+.btn-want .active{
+    color: #f44336;
+}

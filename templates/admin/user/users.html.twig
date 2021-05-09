@@ -35,9 +35,9 @@
 								{% endif %}
 								<td>
 									<button type="button" class="btn btn-info" onclick="location.href='{{ENTRY_URL}}edit_user.php?id={{ attribute(value,'id') }}'">編集</button>
-									<button type="button" class="btn btn-danger delete" data-id='{{ attribute(value,' id') }}' ="id') }}'">削除</button>
-									<form method="POST" action="{{ENTRY_URL}}delete_user.php" id="delete_form_{{ attribute(value,'id')}}">
-										<input type="hidden" value='{{ attribute(value,' id') }}' ="id') }}'" name="id">
+									<button type="button" class="btn btn-danger delete" data-id='{{ attribute(value,'id') }}' >削除</button>
+									<form method="POST" action="{{ENTRY_URL}}/delete_user.php" id="delete_form_{{ attribute(value,'id')}}">
+										<input type="hidden" value='{{ attribute(value,'id') }}'  name="id">
 									</form>
 								</td>
 							</tr>

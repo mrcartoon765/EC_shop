@@ -1,6 +1,7 @@
 {
     "require": {
         "twig/twig": "^2.13",
-        "payjp/payjp-php": "^1.2"
+        "payjp/payjp-php": "^1.2",
+        "maximebf/debugbar": "^1.16"
     }
 }

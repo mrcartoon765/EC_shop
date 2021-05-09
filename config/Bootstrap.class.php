@@ -328,7 +328,9 @@ $context['APP_URL'] = Bootstrap::APP_URL;
 $context['ENTRY_URL'] = Bootstrap::ENTRY_URL;
 $context['ADMIN_HEADER'] = Bootstrap::ADMIN_HEADER_FILE;
 $context['document_root'] = $document_root;
+$context['APP_ROOT'] = $_SERVER['HTTP_HOST'];
 $context['IMAGE_DIR'] = Bootstrap::IMAGE_DIR;
+$context['icon'] = 'far';
 class admin_login
 {
     public static function login_session()
@@ -640,6 +642,8 @@ class shopping_cart
 
     public static function cart_sum()
     {
+        customer_login::login_session();
+        $customer_login == $_POST['customer_login'];
         $delete_name = isset($_POST['delete_name']) ? htmlspecialchars($_POST['delete_name'], ENT_QUOTES, 'utf-8') : '';
         session_start();
         if ($delete_name != '') {
@@ -660,3 +664,7 @@ class shopping_cart
         $context['total'] = $total;
     }
 }
+echo '<pre>';
+var_dump($_POST);
+var_dump($_GET);
+echo '</pre>';

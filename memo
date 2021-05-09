@@ -1,10 +1,36 @@
-＄cには検索したい文字列を入れる
-$GETで検索で送られてきた値
+いいねボタンが押された時にその投稿IDを取得。
+投稿IDとは、ここでいう、post_id
 
-$cがからの場合
-$all_rowsに全部検索された状態（全表示を入れる）
+Ajaxで取得した投稿IDをPHPファイルへ渡す。
+post_idをPHPファイルへ渡す
 
-そうでなければ
+取得された投稿IDと押した本人のID（セッションを使う）を元にいいねされた投稿を格納しているテーブルに挿入。
+post_idとセッションキーに入るidをもとにwantされた投稿を格納しているテーブル
 
-$all_rowsは171
+既にいいねテーブルにレコードがあればいいねを取り消す(レコード削除)。
+wantテーブルにレコードがあればwantを取り消してレコードの削除
 
+いいねの総数を取得してAjaxの引数に渡す。
+wantの総数を取得してajax引数に渡す
+
+いいね数を表示・いいねを押した・取り消したでスタイルを変化させる。
+want数を表示、wantを押した、取り消した、で表示の変化をささえる
+
+元々本人がいいねを押している投稿にはそのまま押された場合のスタイルを保持する。
+本人がwantを押した本・副商材にはそのまま押された場合の表示を維持する。
+
+    <div class="btn-want <?php if(isWant($_SESSION['customer_id'], $dbPostData['id'])) echo 'active'; ?>">
+
+ <?php
+            if(isWant($_SESSION['customer_id'],$dbPostData['id'])){ //いいね押したらハートが塗りつぶされる
+                echo ' active fas';
+            }else{ //いいねを取り消したらハートのスタイルが取り消される
+                echo ' far';
+            }; ?>">
+
+
+
+$context['p_id'] = htmlspecialchars($p_id);
+$context['active'] = $active;
+$context['icon'] = $icon;
+$context['WantNum'] = $dbPostWantNum;

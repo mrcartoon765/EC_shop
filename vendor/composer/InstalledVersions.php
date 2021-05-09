@@ -29,7 +29,7 @@ private static $installed = array (
     'aliases' => 
     array (
     ),
-    'reference' => 'a0ce508338f141c6555a081fd8c62aca3d50ff6e',
+    'reference' => '4f80557001d856a7d97b3e890c6aeba4023a3895',
     'name' => '__root__',
   ),
   'versions' => 
@@ -41,7 +41,16 @@ private static $installed = array (
       'aliases' => 
       array (
       ),
-      'reference' => 'a0ce508338f141c6555a081fd8c62aca3d50ff6e',
+      'reference' => '4f80557001d856a7d97b3e890c6aeba4023a3895',
+    ),
+    'maximebf/debugbar' => 
+    array (
+      'pretty_version' => 'v1.16.5',
+      'version' => '1.16.5.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '6d51ee9e94cff14412783785e79a4e7ef97b9d62',
     ),
     'payjp/payjp-php' => 
     array (
@@ -51,6 +60,15 @@ private static $installed = array (
       array (
       ),
       'reference' => 'a5db0417a31e1d01bca643bde3a127829d1017e2',
+    ),
+    'psr/log' => 
+    array (
+      'pretty_version' => '1.1.4',
+      'version' => '1.1.4.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => 'd49695b909c3b7628b6289db5479a1c204601f11',
     ),
     'symfony/polyfill-ctype' => 
     array (
@@ -69,6 +87,24 @@ private static $installed = array (
       array (
       ),
       'reference' => '5232de97ee3b75b0360528dae24e73db49566ab1',
+    ),
+    'symfony/polyfill-php80' => 
+    array (
+      'pretty_version' => 'v1.22.1',
+      'version' => '1.22.1.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => 'dc3063ba22c2a1fd2f45ed856374d79114998f91',
+    ),
+    'symfony/var-dumper' => 
+    array (
+      'pretty_version' => 'v5.2.7',
+      'version' => '5.2.7.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '27cb9f7cfa3853c736425c7233a8f68814b19636',
     ),
     'twig/twig' => 
     array (
