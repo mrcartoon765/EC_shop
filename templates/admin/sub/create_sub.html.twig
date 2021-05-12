@@ -4,6 +4,7 @@
             <div class="container">
                 <div class="wrapper-title">
                     <h3>関連商材データ新規作成</h3>
+                    <h3>{{now_date_time}}</h3>
                 </div>
                 <form class="edit-form" method="POST" action="{{ENTRY_URL}}/sub_product.php" enctype="multipart/form-data">
                 <div class="form-group"><p>商品名</p><input type="text" name="title" required></div>
@@ -36,6 +37,7 @@
                 <option value="4">睡眠改善</option>
                 <option value="5">ダイエット</option>
                 </select></div>
+                <input type="hidden" name="last_update">
                 <button type="submit" class="btn btn-blue">登録</button>
                 </form>
             </div>

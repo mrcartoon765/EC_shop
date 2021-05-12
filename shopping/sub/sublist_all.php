@@ -3,6 +3,7 @@ namespace config;
 
 use shopping;
 use config\want2;
+use admin\admin_login;
 
 $app_name = explode('/',dirname(__FILE__))[4];
 

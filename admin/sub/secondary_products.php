@@ -4,6 +4,7 @@ namespace config;
 use config\admin_login;
 use config\template_twig_files;
 
+
 $this_dir = basename(__DIR__);
 
 $app_name = explode('/',dirname(__FILE__))[4];
@@ -14,7 +15,8 @@ template_twig_files::Prepare_the_template();
 
 admin_login::login_session();
 
-original_Mysql_command::search_data_and_paging('sub','title');
+original_Mysql_command::search_data_and_paging('sub','title',30);
+database::db_delete('sub');
 
 $context['product_data'] = $search;
 $context['title'] = $title;
@@ -25,7 +27,5 @@ $context['prev'] =  $prev;
 $context['page'] =  $page;
 $context['next'] =  $next;
 $context['want'] =  $want;
-// database::data_get('sub');
 
-// $context['sub'] = $DB_DATA_GET;
 template_twig_files::template_load_front();
