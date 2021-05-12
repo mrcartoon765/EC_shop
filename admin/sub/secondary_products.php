@@ -17,5 +17,4 @@ admin_login::login_session();
 database::data_get('sub');
 
 $context['sub'] = $DB_DATA_GET;
-
 template_twig_files::template_load_front();

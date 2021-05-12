@@ -13,8 +13,11 @@
 				{% for value in product_data %}
 					<li>
 						<form action="{{APP_URL}}/shopping/cart.php" method="POST" class="item-form">
+
+<a href="{{APP_URL}}{{this_dir}}detail.php?id={{ attribute(value,'id') }}">
 							<img src="{{IMAGE_DIR}}{{ attribute(value,'image') }}" alt="">
-							<div class="item-body">
+							</a>
+							<div class="item-body text-center">
 								<h5>{{ attribute(value,'title') }}</h5>
 								<input type="hidden" name="title" value={{ attribute(value,'title')}}>
 								<p>価格　￥{{ attribute(value,'price') }}</p>
@@ -22,8 +25,15 @@
 								<p>{{  attribute(value,'detail')|slice(0,40) }}...</p>
 								<div class="item-form">
 									<input type="number" name="count" maxlength="1000" step="1" placeholder="数値を入力" style="width:150px;">
-									<br>
-									{% include "js/wantView.html.twig" %}
+									{% if login == true %}
+									<section class="post" data-wantName="{{ want_name }}">
+    <div class="btn-want {{active}}">
+        <!-- 自分がいいねした投稿にはハートのスタイルを常に保持する -->
+        <i class="fa-heart fa-lg px-16 {{icon}}"></i><span></span>
+    </div>
+</section>
+{% else %}
+									{% endif %}
 									<button type="submit" class="btn 	btn-primary">カートに入れる</button>
 								</div>
 							</form>
@@ -31,6 +41,7 @@
 					</li>
 				{% endfor %}
 			</ul>
+			
 			<ul class="paging">
 				<li>
 					<a href="{{ENTRY_URL}}sublist_all.php?title={{ title }}">« 最初</a>

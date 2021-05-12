@@ -1,0 +1,60 @@
+{% include "common/header.html.twig" %}
+<main>
+	<div class="wrapper last-wrapper center-block">
+		<div class="container  center-block">
+			<div class="wrapper-title  center-block">
+				<h3>商品詳細</h3>
+				<p>{{value['title']}}</p>
+			</div>
+		</div>
+
+		<div class="album py-5 bg-light">
+			<div class="container">
+
+				<div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+					<div class="col">
+						<div class="card shadow-sm">
+							<form action="{{APP_URL}}/shopping/cart.php" method="POST">
+									<div class="card">
+                  <img src="{{IMAGE_DIR}}{{ value['image'] }}" class="card-img-top" alt="">
+                  </div>
+								<div class="card-body">
+									<input type="hidden" name="title" value={{value['title']}}>
+									<p class="text-center" style="100%">価格 ￥{{value['price']}}</p>
+									<input type="hidden" name="price" value={{value['price']}}>
+									<p class="card-text" style="white-space: pre-wrap;">{{value['detail']}}</p>
+									<div class="text-center">
+										<div class="btn-group" type='center'>
+											<input type="number" name="count" maxlength="1" step="1" placeholder="数量を入力" style="width:50%;">
+											<button type="submit" class="btn btn-sm btn-outline-secondary" style="width:50%;">カートに入れる</button>
+											{% if login == true %}
+												<section class="post" data-wantname="{{ want_name }}">
+													<div
+														class="btn-want {{active}}">
+														<i class="fa-heart fa-lg px-16 {{icon}}"></i>
+														<span></span>
+													</div>
+												</section>
+												{% else %}
+											{% endif %}
+										</form>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+       <ul id="slider">
+         <li><img alt="画像1" src="../../../shopping/image/chou.jpg" /></li>
+         <li><img alt="画像1" src="../../../shopping/image/chou.jpg" /></li>
+         <li><img alt="画像1" src="../../../shopping/image/chou.jpg" /></li>
+         <li><img alt="画像1" src="../../../shopping/image/chou.jpg" /></li>
+         <li><img alt="画像1" src="../../../shopping/image/chou.jpg" /></li>
+         <li><img alt="画像1" src="../../../shopping/image/chou.jpg" /></li>
+       </ul>
+</div>
+
+			</div>
+      </div>
+		</main>
+		{% include "common/footer.html.twig" %}

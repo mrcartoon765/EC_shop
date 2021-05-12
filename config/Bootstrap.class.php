@@ -5,7 +5,7 @@ namespace config;
 date_default_timezone_set('Asia/Tokyo');
 require_once dirname(__FILE__) . '/../vendor/autoload.php';
 
-global $filename, $this_dir, $document_root;
+global $filename, $this_dir, $document_root, $customer_login;
 
 $document_root = $_SERVER['DOCUMENT_ROOT'];
 $filename = basename(debug_backtrace()[0]['file'], '.php');
@@ -440,7 +440,7 @@ class original_Mysql_command
     public static function POST_DATA_INSERT($table)
     {
         foreach ($_POST as $key => $value) {
-            $k[] = $key . ', ';
+            $k[] = '`'.$key.'`' . ', ';
             $v[] = '"' . $value . '", '; // $v[] = $value;
         }
         $k = (rtrim(implode($k), ', '));
@@ -453,10 +453,10 @@ class original_Mysql_command
                 // 拡張子チェックOK
                 $tmp_name = $_FILES["image"]["tmp_name"];
                 $document_root = $_SERVER['DOCUMENT_ROOT'];
-                if (move_uploaded_file($tmp_name, $document_root . "/shopping/image/" . $table . "/" . $ctg . $file_name)) {
+                if (move_uploaded_file($tmp_name, $document_root . "/shopping/image/" . $table . "/" . $file_name)) {
                     // "アップロード完了,画像保存先のディレクトリは、DBのテーブル名と同じとする"
                     database::dbh();
-                    $sql = "INSERT INTO $table ( image, " . $k . " ) VALUES ( " . '"' . $file_name . '"' . ", " . $v . " );";
+                    $sql = "INSERT INTO $table ( `image`, " . $k . " ) VALUES ( " . '"' . $file_name . '"' . ", " . $v . " );";
                     $stmt = $GLOBALS['dbh']->prepare($sql);
 
                     $stmt->execute();
@@ -571,10 +571,12 @@ class original_Mysql_command
         $search = $stmt->fetchAll(\PDO::FETCH_ASSOC);
     }
 }
+
 session_start();
 $context['session'] = $_SESSION;
-$context['login'] = $_SESSION["customer_login"];
-$customer_ = $_SESSION['customer_login'];
+$customer_login = $_SESSION['customer_login'];
+$context['login'] = $_SESSION['customer_login'];
+
 class customer_login
 {
     public static function login_session()
@@ -643,13 +645,12 @@ class shopping_cart
     public static function cart_sum()
     {
         customer_login::login_session();
-        $customer_login == $_POST['customer_login'];
+        $customer_login = $_SESSION['customer_login'];
         $delete_name = isset($_POST['delete_name']) ? htmlspecialchars($_POST['delete_name'], ENT_QUOTES, 'utf-8') : '';
         session_start();
         if ($delete_name != '') {
             unset($_SESSION['products'][$delete_name]);
         }
-
         $total = 0;
         $products = isset($_SESSION['products']) ? $_SESSION['products'] : [];
         foreach ($products as $product_title => $cart_in_product) {
@@ -664,7 +665,5 @@ class shopping_cart
         $context['total'] = $total;
     }
 }
-echo '<pre>';
-var_dump($_POST);
-var_dump($_GET);
-echo '</pre>';
+// var_dump($_POST);
+// var_dump($_SESSION);

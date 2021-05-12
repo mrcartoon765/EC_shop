@@ -13,9 +13,11 @@ $app_name = explode('/',dirname(__FILE__))[4];
 
 require_once $_SERVER['DOCUMENT_ROOT']."/config/Bootstrap.class.php";
 
-shopping_cart::cart_session();
-
 template_twig_files::Prepare_the_template();
+
+shopping_cart::cart_session();
+// shopping_cart::cart_sum();
+
 $delete_name = isset($_POST['delete_name'])? htmlspecialchars($_POST['delete_name'], ENT_QUOTES, 'utf-8') : '';
 session_start();
 if($delete_name != '') unset($_SESSION['products'][$delete_name]);
@@ -28,6 +30,7 @@ foreach($products as $product_title => $cart_in_product){
 if($customer_login == true){
   $total = intval($total*0.7);
 }
+
 $_SESSION['total_price'] = $total;
 $context['product_cart'] = $products;
 $context['total'] = $total;

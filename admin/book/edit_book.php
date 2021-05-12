@@ -20,5 +20,6 @@ database::get_detail_data('book',$_GET['id']);
 
 $context['book'] = $detail_data[0];
 $context['sent_id'] =$_GET['id'];
+// $context['id'] = $_GET['id']-1;
 
 template_twig_files::template_load_front();

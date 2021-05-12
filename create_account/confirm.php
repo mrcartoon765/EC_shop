@@ -8,13 +8,12 @@ $this_dir = basename(__DIR__);
 
 $app_name = explode('/', dirname(__FILE__))[4];
 
-$this_dir === $app_name ? require_once dirname(__FILE__) . '/config/Bootstrap.class.php' :
-require_once strstr(__FILE__, $this_dir, true) . 'config/Bootstrap.class.php';
+require_once $_SERVER['DOCUMENT_ROOT']."/config/Bootstrap.class.php";
+
 use create_account\lib\Common;
 use create_account\master\initMaster;
 
 template_twig_files::Prepare_the_template();
-
 
 $db = new account_DB(Bootstrap::DB_HOST, Bootstrap::DB_USER, Bootstrap::DB_PASS, Bootstrap::DB_NAME);
 
@@ -90,5 +89,4 @@ $context['dayArr'] = $dayArr;
 $context['dataArr'] = $dataArr;
 $context['errArr'] = $errArr;
 
-$template = $twig->loadTemplate($this_dir.$filename.".html.twig");$template->display($context);
-
+template_twig_files::template_load_front();
