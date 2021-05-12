@@ -25,8 +25,6 @@ want::want_button();
 $context['product_data'] = $search;
 $context['title'] = $title;
 
-// var_dump($this_dir);
-
 $context['this_dir'] = $this_dir;
 $context['pages'] = $pages;
 $context['prev'] =  $prev;

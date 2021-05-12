@@ -14,25 +14,27 @@
 				<h3>副商材編集</h3>
 				<p></p>
 			</div>
+			 <form class="d-flex" type="search" action="{{APP_URL}}admin/sub/secondary_products.php" method="GET">
+        <input class="form-control me-2" type="search"  name="title" placeholder="全商品名から検索">
+        <button class="btn btn-outline-success" type="submit">Search</button>
+      </form>
+<button type="button" class="btn btn-blue" onclick="location.href='{{ENTRY_URL}}/create_sub.php'">副商材を新規登録する</button>
 
 			<div class="itemlist">
 				<div class="container">
 					<div class="row">
-						{% for value in sub %}
+						{% for value in product_data %}
 							<div class="col-md-3">
 								<div class="card-deck">
 									<div class="card">
 										<div class="column flex-direction:row">
 											<div class="card-body">
 												<img class="card-img-top" src="{{APP_DIR}}/shopping/image/sub/{{ attribute(value,'image') }}" alt="">
-												<div class="row" >
-													<h8 class="card-title">商品ID:</h8>
-													<p class="card-text">{{attribute (value,'id')}}</p>
-													<h8 class="card-title">価格:</h8>
-													<p class="card-text">￥{{attribute (value,'price')}}</p>
-												</div>
+													<h8 class="card-title">商品ID:{{attribute (value,'id')}}</h8>
+													<p></p>
 												<h8 class="card-title">商品名</h8>
 												<p class="card-text">{{attribute (value,'title')}}</p>
+													<h8 class="card-title">価格:￥{{attribute (value,'price')}}</p>
 												<h8 class="card-title">商品説明</h8>
 												<p class="card-text">{{attribute (value,'detail')|slice(0,40)}}...</p>
 												<h8 class="card-title">発売日</h8>
@@ -41,13 +43,13 @@
 												<p class="card-text">{{attribute (value,'update')}}</p>
                                                 {% set books = {1:'超ストレス解消法',2:'最高の体調',3:'【新装版】一生リバウンドしないパレオダイエットの教科書',4:'ヤバい集中力　１日ブッ通しで頭が冴えわたる神ライフハック45',5:'科学的な適職',6:'不老長寿メソッド　死ぬまで若いは武器になる'}%}
 												<h8 class="card-title">関連書籍</h8>
-												<p class="card-text">{{ attribute(books,attribute (value,'ctg1'))}}</p>
+												<p class="card-text">・{{ attribute(books,attribute (value,'ctg1'))}}</p>
                                                 {% set ctg1 = {1:'食品',2:'サプリ',3:'ガジェット',4:'家具・寝具',5:'美容品'}%}
 												<h8 class="card-title">関連商品カテゴリ</h8>
-												<p class="card-text">{{ attribute(ctg1,attribute (value,'ctg1'))}}</p>
+												<p class="card-text">・{{ attribute(ctg1,attribute (value,'ctg1'))}}</p>
                                                 {% set ctg2 = {1:'ストレス対策',2:'アンチエイジング',3:'集中力改善',4:'睡眠改善',5:'ダイエット'}%}
 												<h8 class="card-title">目的別商品カテゴリ</h8>
-												<p class="card-text">{{ attribute(ctg2,attribute (value,'ctg2'))}}</p>
+												<p class="card-text">・{{ attribute(ctg2,attribute (value,'ctg2'))}}</p>
 												<button type="button" class="btn btn-info" onclick="location.href='{{ENTRY_URL}}/edit_sub.php?id={{ attribute(value,'id') }}'">編集</button>
 												<button type="button" class="btn btn-danger delete" data-id='{{ attribute(value,'id') }}'>削除</button>
 											</div>
@@ -66,7 +68,7 @@
 																                <div class="wrapper-title">
 																                    <h3>副商材管理</h3>
 																                </div>
-																                <button type="button" class="btn btn-blue" onclick="location.href='{{ENTRY_URL}}/create_sub.php'">副商材を新規登録する</button>
+																                
 																                <div class="list">
 																                    <table>
 																                        <thead>
