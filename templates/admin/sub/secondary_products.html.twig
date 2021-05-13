@@ -28,12 +28,11 @@
 				<div class="container">
 					<div class="row">
 						{% for value in product_data %}
-							<div class="col-md-4">
-								<div class="card-deck">
-									<div class="card">
+								<div class="card-group col-md-4">
+									<div class="card" style="width: 18rem;">
 										<div class="column flex-direction:row">
 											<div class="card-body">
-												<img class="card-img-top" src="{{APP_DIR}}/shopping/image/sub/{{ attribute(value,'image') }}" alt="title" onerror="this.style.display='none'"/>
+												<img class="card-img-top" src="{{APP_DIR}}/shopping/image/sub/{{ attribute(value,'image') }}" style=" width: 100%;　height: 1０vw;　object-fit: cover;">
 												<p> </p>
 												<div class="row">
 												<div class="col">
@@ -65,15 +64,20 @@
 												<p>・{{ attribute(ctg2,attribute (value,'ctg2'))}}</p>
 												</div>
 												</div>
+												<div class="row">
+												<div class="col">
 												<button type="button" class="btn btn-info" onclick="location.href='{{ENTRY_URL}}/edit_sub.php?id={{ attribute(value,'id') }}'">編集</button>
+												</div>
+												<div class="col">
 												<button type="button" class="btn btn-danger delete" data-id='{{ attribute(value,'id') }}'>削除</button>
 												<form method="POST" action="{{ENTRY_URL}}/delete_sub.php" id="delete_form_{{ attribute(value,'id')}}">
 													<input type="hidden" value='{{ attribute(value,'id') }}' name="id">
 												</form>
+												</div>
+												</div>
 											</div>
 										</div>
 									</div>
-								</div>
 							</div>
 						{% endfor %}
 					</div>
