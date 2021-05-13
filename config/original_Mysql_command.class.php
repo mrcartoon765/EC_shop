@@ -37,9 +37,9 @@ class original_Mysql_command
                 $document_root = $_SERVER['DOCUMENT_ROOT'];
                 if (move_uploaded_file($tmp_name, $document_root . "/shopping/image/" . $table . "/" . $file_name)) {
                     // "アップロード完了,画像保存先のディレクトリは、DBのテーブル名と同じとする"
-                    database::dbh();
+                    $dbh = database::dbh();
                     $sql = "INSERT INTO $table ( `image`, " . $k . " ) VALUES ( " . '"' . $file_name . '"' . ", " . $v .'"'.",NOW());";
-                    $stmt = $GLOBALS['dbh']->prepare($sql);
+                    $stmt = $dbh->prepare($sql);
 
                     $stmt->execute();
 
@@ -86,18 +86,18 @@ class original_Mysql_command
                 $tmp_name = $_FILES["image"]["tmp_name"];
                 if (move_uploaded_file($tmp_name, $GLOBALS['document_root'] . "/shopping/image/" . $table . "/" . $file_name)) {
                     // "アップロード完了"
-                    database::dbh();
+                    $dbh = database::dbh();
                     $file_name = htmlspecialchars($file_name);
                     $delete_id = intval($_POST['id']);
                     //画像更新の前に古い画像データの削除
                     $old_image_delete_sql = 'SELECT image FROM ' . $table . ' WHERE ' . $table . '.id=' . $delete_id;
-                    $old_image_file = $GLOBALS['dbh']->query($old_image_delete_sql);
+                    $old_image_file = $dbh->query($old_image_delete_sql);
                     $old_image_file = $old_image_file->fetch()['image'];
                     $image_dir = $GLOBALS['document_root'] . '/shopping/image/' . $table . '/';
                     file_exists($image_dir . $old_image_file) ?
                     unlink($image_dir . $old_image_file) :
                     '';
-                    $stmt = $GLOBALS['dbh']->prepare("UPDATE ".$table." SET " . $sql .", last_update= NOW(), image=" . "'" . $file_name . "'" . " WHERE " . $table . ".id=" . $delete_id);
+                    $stmt = $dbh->prepare("UPDATE ".$table." SET " . $sql .", last_update= NOW(), image=" . "'" . $file_name . "'" . " WHERE " . $table . ".id=" . $delete_id);
                     // var_dump("UPDATE ".$table." SET " . $sql .", last_update= NOW(), image=" . "'" . $file_name . "'" . " WHERE " . $table . ".id=" . $delete_id);
                     // exit;
 
@@ -126,16 +126,16 @@ class original_Mysql_command
     {
         global $search, $pages, $prev, $page, $next;
         $get_column = isset($_GET[$column]) ? htmlspecialchars($_GET[$column], ENT_QUOTES, 'utf-8') : '';
-        database::dbh();
+        $dbh = database::dbh();
         $rows = $paging;
 
         $page = isset($_GET['page']) ? $_GET['page'] : 1;
         $offset = $rows * ($page - 1);
         if ($get_column == '') {
-            $all_rows = $GLOBALS['dbh']->query("SELECT COUNT(*) FROM " . $table . "")->fetchColumn();
+            $all_rows = $dbh->query("SELECT COUNT(*) FROM " . $table . "")->fetchColumn();
 
         } else {
-            $all_rows_stmt = $GLOBALS['dbh']->prepare("SELECT * FROM " . $table . " WHERE " . $column . " like :search");
+            $all_rows_stmt = $dbh->prepare("SELECT * FROM " . $table . " WHERE " . $column . " like :search");
             $all_rows_stmt->bindValue(":search", '%' . $get_column . '%');
             $all_rows_stmt->execute();
             $all_rows = $all_rows_stmt->rowCount();
@@ -149,9 +149,9 @@ class original_Mysql_command
         $next = ($page + 1 > $pages) ? '' : $page + 1;
         $prev = ($page - 1 < 0) ? '' : $page - 1;
         if ($get_column == '') {
-            $stmt = $GLOBALS['dbh']->prepare("SELECT * FROM " . $table . " limit :offset,:rows");
+            $stmt = $dbh->prepare("SELECT * FROM " . $table . " limit :offset,:rows");
         } else {
-            $stmt = $GLOBALS['dbh']->prepare("SELECT * FROM " . $table . " WHERE " . $column . " like :search limit :offset,:rows");
+            $stmt = $dbh->prepare("SELECT * FROM " . $table . " WHERE " . $column . " like :search limit :offset,:rows");
             $stmt->bindValue(":search", '%' . $get_column . '%');
         }
         $stmt->bindParam(":offset", $offset, \PDO::PARAM_INT);

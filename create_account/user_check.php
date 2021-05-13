@@ -14,19 +14,15 @@ require_once $_SERVER['DOCUMENT_ROOT']."/config/Bootstrap.class.php";
 
 template_twig_files::Prepare_the_template();
 
-$mail = isset($_POST['mail'])? htmlspecialchars($_POST['mail'], ENT_QUOTES, 'utf-8'): '';
-$password = isset($_POST['password'])? htmlspecialchars($_POST['password'], ENT_QUOTES, 'utf-8'): '';
+
+$mail = POST_GET::GET('$mail','mail');
+$password = POST_GET::GET('$password','password');
 
 if($mail ==''|$password==''){
     header('location:./login.php');
 }
 
-try{
-  $dbh = new \PDO($DB_BOOK_EC,"root","root");
-} catch(\PDOException $e){
-  var_dump($e->getMessage());
-  exit;
-}
+database::dbh();
 
 $stmt = $dbh->prepare("SELECT * FROM customer WHERE mail=:mail");
 $stmt->bindParam(':mail',$mail);

@@ -9,9 +9,9 @@ class shopping_cart
 {
     public static function cart_session()
     {
-        $product_title = isset($_POST['title']) ? htmlspecialchars($_POST['title'], ENT_QUOTES, 'utf-8') : '';
-        $product_price = isset($_POST['price']) ? htmlspecialchars($_POST['price'], ENT_QUOTES, 'utf-8') : '';
-        $product_count = isset($_POST['count']) ? htmlspecialchars($_POST['count'], ENT_QUOTES, 'utf-8') : '';
+        $product_title = POST_GET::GET('$product_title','title');
+        $product_price = POST_GET::GET('$product_price','price');
+        $product_count = POST_GET::GET('$product_count','count');
 
         session_start();
 

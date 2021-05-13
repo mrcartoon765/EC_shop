@@ -28,15 +28,15 @@ foreach($Books as $Book_title => $cart_in_Book){
   $subtotal = (int)$cart_in_Book['Book_price']*(int)$cart_in_Book['Book_count'];
   $total += $subtotal;
 }
-$family_name = isset($_POST['family_name'])? htmlspecialchars($_POST['family_name'],ENT_QUOTES,'utf-8'):'';
-$first_name = isset($_POST['first_name'])? htmlspecialchars($_POST['first_name'],ENT_QUOTES,'utf-8'):'';
-$mail = isset($_POST['mail'])? htmlspecialchars($_POST['mail'],ENT_QUOTES,'utf-8'):'';
-$tel1 = isset($_POST['tel1'])? htmlspecialchars($_POST['tel1'],ENT_QUOTES,'utf-8'):'';
-$tel2 = isset($_POST['tel2'])? htmlspecialchars($_POST['tel2'],ENT_QUOTES,'utf-8'):'';
-$tel3 = isset($_POST['tel3'])? htmlspecialchars($_POST['tel3'],ENT_QUOTES,'utf-8'):'';
-$zip1 = isset($_POST['zip1'])? htmlspecialchars($_POST['zip1'],ENT_QUOTES,'utf-8'):'';
-$zip2 = isset($_POST['zip2'])? htmlspecialchars($_POST['zip2'],ENT_QUOTES,'utf-8'):'';
-$address = isset($_POST['address'])? htmlspecialchars($_POST['address'],ENT_QUOTES,'utf-8'):'';
+$family_name = POST_GET::GET('$family_name','family_name');
+$first_name = POST_GET::GET('$first_name','first_name');
+$mail = POST_GET::GET('$mail','mail');
+$tel1 = POST_GET::GET('$tel1','tel1');
+$tel2 = POST_GET::GET('$tel2','tel2');
+$tel3 = POST_GET::GET('$tel3','tel3');
+$zip1 = POST_GET::GET('$zip1','zip1');
+$zip2 = POST_GET::GET('$zip2','zip2');
+$address = POST_GET::GET('$address','address');
 
 $context['family_name']=$family_name;
 $context['first_name']=$first_name;

@@ -351,6 +351,7 @@ class template_twig_files
 
 
 session_start();
+session_regenerate_id(true);
 $context['session'] = $_SESSION;
 $customer_login = $_SESSION['customer_login'];
 $context['login'] = $_SESSION['customer_login'];
@@ -360,6 +361,7 @@ class customer_login
     public static function login_session()
     {
         session_start();
+        session_regenerate_id(true);
         $login = isset($_SESSION['customer_login']) ? $_SESSION['customer_login'] : false;
         if ($login == false) {
             header("Location:" . Bootstrap::APP_URL . "/index.php");
@@ -373,7 +375,7 @@ class customer_login
     }
     public static function login_data()
     {
-        $dbh = new \PDO('mysql:host=' . Bootstrap::DB_HOST . ';dbname=' . Bootstrap::DB_NAME, Bootstrap::DB_USER, Bootstrap::DB_PASS);
+        database::dbh();
         $stmt = $dbh->prepare("SELECT * FROM customer WHERE id=:id");
         $stmt->bindParam(":id", $_SESSION['customer_id']);
         $stmt->execute();
@@ -384,9 +386,22 @@ class customer_login
 
 class POST_GET
 {
-    public static function GET($variable, $column)
+    public static function GET($variable, $columns)
     {
-        $variable = isset($_POST[$column]) ? htmlspecialchars($_POST[column], ENT_QUOTES, 'utf-8') : '';
-        return $column;
+        $variable = isset($_POST[$columns]) ? htmlspecialchars($_POST[$columns], ENT_QUOTES, 'utf-8') : '';
+        return $variable;
     }
 }
+
+
+$a = session_id();
+session_regenerate_id(true);
+$b = session_id();
+
+
+// var_dump($saf);
+
+// var_dump($a);
+// var_dump($b);
+// var_dump($_COOKIE);
+var_dump($_POST);

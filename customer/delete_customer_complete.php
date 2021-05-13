@@ -12,13 +12,4 @@ require_once $_SERVER['DOCUMENT_ROOT']."/config/Bootstrap.class.php";
 
 template_twig_files::Prepare_the_template();
 
-$dbh = database::dbh();
-
-$stmt = $dbh->prepare("SELECT * FROM news ORDER BY id DESC LIMIT 5");
-$stmt->execute();
-$news = $stmt->fetchAll(\PDO::FETCH_ASSOC);
-
-$context['news'] = $news;
-var_dump($_POST);
-var_dump($_SESSION);
 template_twig_files::template_load_front();
