@@ -333,8 +333,6 @@ $context['document_root'] = $document_root;
 $context['APP_ROOT'] = $_SERVER['HTTP_HOST'];
 $context['IMAGE_DIR'] = Bootstrap::IMAGE_DIR;
 $context['icon'] = 'far';
-$now_date_time =date("Y-m-d H:i:s");
-$context['now_date_time'] = $now_date_time;
 // var_dump($now_date_time);
 class template_twig_files
 {

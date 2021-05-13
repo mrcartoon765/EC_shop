@@ -22,7 +22,8 @@ class original_Mysql_command
     {
         foreach ($_POST as $key => $value) {
             $k[] = '`'.$key.'`' . ', ';
-            $v[] = '"' . $value . '", '; // $v[] = $value;
+            $value = str_replace('"',"'",$value);
+            $v[] = '"' . $value . '", ';
         }
         $k = (rtrim(implode($k), ', '));
         $v = rtrim(implode($v), ', "');
@@ -38,8 +39,6 @@ class original_Mysql_command
                     // "アップロード完了,画像保存先のディレクトリは、DBのテーブル名と同じとする"
                     database::dbh();
                     $sql = "INSERT INTO $table ( `image`, " . $k . " ) VALUES ( " . '"' . $file_name . '"' . ", " . $v .'"'.",NOW());";
-                    // var_dump($sql);
-                    // var_dump($v);
                     $stmt = $GLOBALS['dbh']->prepare($sql);
 
                     $stmt->execute();
@@ -71,10 +70,13 @@ class original_Mysql_command
             if ($key == 'id') {
                 continue;
             } else {
-                $k[] = $key . '=' . "'" . $value . "'" . ", ";
+              $value = $value = str_replace('"',"'",$value);
+                $k[] = $key . '=' . '"' . $value . '"' . ", ";
             }
         }
         $sql = (rtrim(implode($k), ', '));
+        // var_dump($sql);
+        // exit;
 
         if (is_uploaded_file($_FILES["image"]["tmp_name"])) {
             // 成功;
@@ -96,6 +98,10 @@ class original_Mysql_command
                     unlink($image_dir . $old_image_file) :
                     '';
                     $stmt = $GLOBALS['dbh']->prepare("UPDATE ".$table." SET " . $sql .", last_update= NOW(), image=" . "'" . $file_name . "'" . " WHERE " . $table . ".id=" . $delete_id);
+                    // var_dump("UPDATE ".$table." SET " . $sql .", last_update= NOW(), image=" . "'" . $file_name . "'" . " WHERE " . $table . ".id=" . $delete_id);
+                    // exit;
+
+
                     $stmt->execute();
                     header("refresh:3;url=" . Bootstrap::ADMIN_URL);
                     template_twig_files::Prepare_the_template();
@@ -152,5 +158,5 @@ class original_Mysql_command
         $stmt->bindParam(":rows", $rows, \PDO::PARAM_INT);
         $stmt->execute();
         $search = $stmt->fetchAll(\PDO::FETCH_ASSOC);
+      }
     }
-}
