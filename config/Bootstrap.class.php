@@ -2,8 +2,6 @@
 
 namespace config;
 
-use DateTime;
-
 date_default_timezone_set('Asia/Tokyo');
 require_once dirname(__FILE__) . '/../vendor/autoload.php';
 
@@ -31,13 +29,6 @@ if ($this_dir !== AppName) {
 }
 //定数AppUrlへドメイン名を代入
 define('AppUrl', (empty($_SERVER['HTTPS']) ? 'http://' : 'https://') . $_SERVER['HTTP_HOST'] . '/');
-
-// $tempdir = $this_dir !== AppName ?
-// $tempdir = Bootstrap::TEMPLATE_DIR:
-// Bootstrap::ROOT_TEMP_DIR;
-
-// 呼び出し元のファイル名を取得
-// $fil = (basename(preg_replace('/.*?\//s'.$filename,'',str_replace($_SERVER['DOCUMENT_ROOT'].'/','',debug_backtrace()[0]["file"])),'.php'));
 
 define('table', str_replace(['/shopping/', '/'], '', $this_dir));
 class Bootstrap
@@ -331,9 +322,10 @@ $context['ENTRY_URL'] = Bootstrap::ENTRY_URL;
 $context['ADMIN_HEADER'] = Bootstrap::ADMIN_HEADER_FILE;
 $context['document_root'] = $document_root;
 $context['APP_ROOT'] = $_SERVER['HTTP_HOST'];
+$context['ADMIN'] =$_SERVER['HTTP_HOST']."/admin/";
 $context['IMAGE_DIR'] = Bootstrap::IMAGE_DIR;
 $context['icon'] = 'far';
-// var_dump($now_date_time);
+
 class template_twig_files
 {
     public static function Prepare_the_template()
@@ -375,7 +367,7 @@ class customer_login
     }
     public static function login_data()
     {
-        database::dbh();
+        $dbh = database::dbh();
         $stmt = $dbh->prepare("SELECT * FROM customer WHERE id=:id");
         $stmt->bindParam(":id", $_SESSION['customer_id']);
         $stmt->execute();
@@ -393,15 +385,4 @@ class POST_GET
     }
 }
 
-
-$a = session_id();
 session_regenerate_id(true);
-$b = session_id();
-
-
-// var_dump($saf);
-
-// var_dump($a);
-// var_dump($b);
-// var_dump($_COOKIE);
-var_dump($_POST);

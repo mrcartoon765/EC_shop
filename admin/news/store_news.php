@@ -22,12 +22,7 @@ $content = isset($_POST['content'])? htmlspecialchars($_POST['content'], ENT_QUO
 $content = strip_tags(nl2br($content));
 
 
-try{
-$dbh = new \PDO($DB_BOOK_EC,"root","root");
-}catch(\PDOException $e){
-var_dump($e->getMessage());
-exit;
-}
+$dbh = database::dbh();
 
 $stmt = $dbh->prepare("INSERT INTO news(
   title,

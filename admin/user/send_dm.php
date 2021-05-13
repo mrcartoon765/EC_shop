@@ -46,13 +46,7 @@ $mail->CharSet = 'utf-8';
 $mail->isHTML(true);
 $mail->CharSet = 'UTF-8'; //文字化け防止
 
-try{
-  $dbh = new \PDO($DB_BOOK_EC,"root","root");
-}catch(\PDOException $e){
-  var_dump($e->getMessage());
-  exit;
-}
-
+$dbh = database::dbh();
 $stmt = $dbh->prepare("SELECT * FROM customer WHERE dm=1");
 $stmt->execute();
 $customers = $stmt->fetchAll(\PDO::FETCH_ASSOC);

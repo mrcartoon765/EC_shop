@@ -21,12 +21,7 @@ if($id==''){
   header('location: ./orders.php');
 }
 
-try{
-  $dbh = new \PDO($DB_BOOK_EC,"root","root");
-}catch(\PDOException $e){
-  var_dump($e->getMessage());
-  exit;
-}
+$dbh = database::dbh();
 
 $sql = ("SELECT id, order_status FROM order_data WHERE id = $id")
 ;

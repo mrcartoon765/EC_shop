@@ -19,6 +19,4 @@ $stmt->execute();
 $news = $stmt->fetchAll(\PDO::FETCH_ASSOC);
 
 $context['news'] = $news;
-var_dump($_POST);
-var_dump($_SESSION);
 template_twig_files::template_load_front();

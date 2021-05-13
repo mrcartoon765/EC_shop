@@ -26,6 +26,5 @@ $context['pages'] = $pages;
 $context['prev'] =  $prev;
 $context['page'] =  $page;
 $context['next'] =  $next;
-$context['want'] =  $want;
 
 template_twig_files::template_load_front();

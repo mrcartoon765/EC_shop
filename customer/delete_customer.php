@@ -14,4 +14,9 @@ customer_login::login_session();
 
 template_twig_files::Prepare_the_template();
 
+($_SESSION['delete_false'])?
+  $context['miss'] = 'ユーザー情報が一致しません':
+  $context['miss'] = '';
+
+  unset($_SESSION['delete_false']);
 template_twig_files::template_load_front();

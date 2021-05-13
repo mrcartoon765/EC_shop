@@ -15,13 +15,7 @@ template_twig_files::Prepare_the_template();
 
 admin_login::login_session();
 
-try{
-  $dbh = new \PDO($DB_BOOK_EC,"root","root");
-}catch(\PDOException $e){
-  var_dump($e->getMessage());
-  exit;
-}
-
+$dbh = database::dbh();
 $stmt = $dbh->prepare("SELECT * FROM order_data");
 $stmt->execute();
 $order_data = $stmt->fetchAll(\PDO::FETCH_ASSOC);

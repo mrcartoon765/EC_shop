@@ -15,18 +15,13 @@ template_twig_files::Prepare_the_template();
 
 admin_login::login_session();
 
-$id = isset($_GET['id'])? htmlspecialchars($_GET['id'],ENT_QUOTES, 'utf-8'):'';
+$id = POST_GET::GET('$id','id');
 
 if($id==''){
   header('location: ./orders.php');
 }
 
-try{
-  $dbh = new \PDO($DB_BOOK_EC,"root","root");
-}catch(\PDOException $e){
-  var_dump($e->getMessage());
-  exit;
-}
+$dbh = database::dbh();
 
 $stmt1 = $dbh->prepare("SELECT * FROM order_data WHERE id=:id");
 $stmt1->bindParam(':id',$id);

@@ -22,7 +22,7 @@ if($mail ==''|$password==''){
     header('location:./login.php');
 }
 
-database::dbh();
+$dbh = database::dbh();
 
 $stmt = $dbh->prepare("SELECT * FROM customer WHERE mail=:mail");
 $stmt->bindParam(':mail',$mail);

@@ -14,3 +14,5 @@ admin_login::login_session();
 database::db_delete('sub');
 
 header('location:' . Bootstrap::ENTRY_URL .'/secondary_products.php');
+
+exit;

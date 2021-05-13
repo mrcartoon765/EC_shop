@@ -1,8 +1,5 @@
 {% include "common/header_admin.html.twig" %}
 
-<button type="button" class="btn btn-info" onclick="location.href='{{ENTRY_URL}}/edit_sub.php?id={{ attribute(value,'id') }}'">編集</button>
-
-
 <form method="POST" action="{{ENTRY_URL}}/delete_sub.php" id="delete_form_{{ attribute(value,'id')}}">
 	<input type="hidden" value='{{ attribute(value,'id') }}' name="id">
 </form>
@@ -32,7 +29,7 @@
 									<div class="card" style="width: 18rem;">
 										<div class="column flex-direction:row">
 											<div class="card-body">
-												<img class="card-img-top" src="{{APP_DIR}}/shopping/image/sub/{{ attribute(value,'image') }}" style=" width: 100%;　height: 1０vw;　object-fit: cover;">
+												<img class="card-img-top img-fluid" src="{{APP_DIR}}/shopping/image/sub/{{ attribute(value,'image') }}" alt="...">
 												<p> </p>
 												<div class="row">
 												<div class="col">

@@ -58,6 +58,7 @@ class database
     }
     public static function db_delete($table)
     {
+        error_reporting(512);
         $dbh = self::dbh();
         $id = $_POST['id'];
         $sql = "SELECT image FROM " . $table . " WHERE id=" . $id;
@@ -65,7 +66,7 @@ class database
         $delete_file_name->execute();
         $delete_file_name = $delete_file_name->fetchAll(\PDO::FETCH_ASSOC);
         $delete_file_name = $delete_file_name[0]['image'];
-        $empty = $GLOBALS['document_root'] . '/shopping/image/' . $table . "/" . $delete_file_name;
+        $empty = $GLOBALS['document_root'] . '/shopping/image/' . $table ."/". $delete_file_name;
         file_exists($empty)?
         unlink($empty):'';
         $stmt = $dbh->prepare("DELETE FROM " . $table . " WHERE id=:id");
@@ -96,9 +97,10 @@ class database
             setcookie(session_name(), '', time() - 3600, "/");
             header('location:../../../customer/delete_customer_complete.php');
         }else{
-            echo 'db検索失敗';
-            // $_POST['delete_false'] = ;
-            // header('location:../../../customer/delete_customer.php');
+            // $_SESSION['delete_false'] = '';
+            $_SESSION['delete_false'] = true;
+            header('location:../../../customer/delete_customer.php');
         }
     }
 }
+
