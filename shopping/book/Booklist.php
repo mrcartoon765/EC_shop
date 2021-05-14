@@ -18,5 +18,8 @@ template_twig_files::Prepare_the_template();
 
 database::data_get('book');
 
+var_dump($this_dir);
+
 $context['product_data'] = $DB_DATA_GET;
+$context['detail'] = $this_dir."detail.php?id=";
 template_twig_files::template_load_front();
