@@ -26,6 +26,8 @@ class database
         $stmt = $dbh->prepare("SELECT * FROM " . $table);
         $stmt->execute();
         $DB_DATA_GET = $stmt->fetchAll(\PDO::FETCH_ASSOC);
+        //idを配列番号にする処理
+        $DB_DATA_GET = (array_column($DB_DATA_GET, null, 'id'));
     }
     public static function get_detail_data($table, $id)
     {
@@ -35,6 +37,7 @@ class database
         $stmt = $dbh->prepare($sql);
         $stmt->execute();
         $detail_data = $stmt->fetchall(\PDO::FETCH_ASSOC);
+        $detail_data = $detail_data[0];
     }
     public static function get_ctg_product($ctg1_or_ctg2, $ctg_id)
     {

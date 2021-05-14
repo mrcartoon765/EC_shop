@@ -22,7 +22,7 @@ $book_ctg_id = array_column($DB_DATA_GET,'title');
 
 $context['book_ctg'] = $book_ctg_id;
 
-$context['sub'] = $detail_data[0];
+$context['sub'] = $detail_data;
 $context['sent_id'] =$_GET['id'];
 
 template_twig_files::template_load_front();

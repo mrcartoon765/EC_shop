@@ -53,3 +53,39 @@ $(function(){
           });
       });
     });
+
+	$(".delete").click(function () {
+    var id = this.dataset.id;
+    if (confirm("ID:" + id + "番のコンテンツを本当に削除していいですか？")) { // OK
+    $("#delete_form_" + id).submit();
+    } else { // キャンセル
+    return false;
+    };
+    });
+
+    $('.slider').slick({
+      autoplay:true,
+      autoplaySpeed:5000,
+      dots:true,
+      slidesToShow:4,
+      responsive:[
+          {
+              breakpoint: 1024,
+              settings:{
+                  slidesToShow:3,
+              }
+          },
+          {
+              breakpoint: 768,
+              settings:{
+                  slidesToShow:2,
+              }
+          },
+          {
+              breakpoint: 480,
+              settings:{
+                  slidesToShow:1,
+              }
+          },
+      ]
+  });
