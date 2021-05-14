@@ -1,4 +1,11 @@
 {% include "common/header.html.twig" %}
+
+
+{% set ctg1 = {1:'食品',2:'サプリ',3:'ガジェット',4:'家具・寝具',5:'美容品'}%}
+{% set ctg2 = {1:'ストレス対策',2:'アンチエイジング',3:'集中力改善',4:'睡眠改善',5:'ダイエット'}%}
+{% set books = {1:'超ストレス解消法',2:'最高の体調',3:'【新装版】一生リバウンドしないパレオダイエットの教科書',4:'ヤバい集中力　１日ブッ通しで頭が冴えわたる神ライフハック45',5:'科学的な適職',6:'不老長寿メソッド　死ぬまで若いは武器になる'}%}
+
+
 <main>
 	<div class="last-wrapper center-block">
 		<div class="container  center-block">
@@ -6,131 +13,85 @@
 				<h1>{{value['title']}}</h1>
 			</div>
 
-		<div class="album py-5 bg-light">
-			<div class="container">
+			<div class="album py-5 bg-light">
+				<div class="container">
 
-				<div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-					<div class="col">
-						<div class="card shadow-sm">
-							<form action="{{APP_URL}}/shopping/cart.php" method="POST">
+					<div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+						<div class="col">
+							<div class="card shadow-sm">
+								<form action="{{APP_URL}}/shopping/cart.php" method="POST">
 									<div class="card">
-                  <img src="{{IMAGE_DIR}}{{ value['image'] }}" class="card-img-top" alt="">
-                  </div>
-								<div class="card-body">
-									<input type="hidden" name="title" value={{value['title']}}>
-									<p class="card-text" style="white-space: pre-wrap;">{{value['detail']}}</p>
-									<div class="text-center">
-									<p class="text-center" style="100%">価格 ￥{{value['price']}}</p>
-									<input type="hidden" name="price" value={{value['price']}}>
-										<div class="btn-group" type='center'>
-											<input type="number" name="count" maxlength="1" step="1" placeholder="数量を入力" style="width:50%;">
-											<button type="submit" class="btn btn-sm btn-outline-secondary" style="width:50%;">カートに入れる</button>
-											{% if login == true %}
-												<section class="post" data-wantname="{{ want_name }}">
-													<div
-														class="btn-want {{active}}">
-														<i class="fa-heart fa-lg px-16 {{icon}}"></i>
-														<span></span>
-													</div>
-												</section>
-												{% else %}
-											{% endif %}
-										</form>
+										<img src="{{IMAGE_DIR}}{{ value['image'] }}" class="card-img-top" alt="">
+									</div>
+									<div class="card-body">
+										<input type="hidden" name="title" value={{value['title']}}>
+										<p class="card-text" style="white-space: pre-wrap;">{{value['detail']}}</p>
+										<div class="text-center">
+											<p class="text-center" style="100%">価格 ￥{{value['price']}}</p>
+											<input type="hidden" name="price" value={{value['price']}}>
+											<div class="btn-group" type='center'>
+												<input type="number" name="count" maxlength="1" step="1" placeholder="数量を入力" style="width:50%;">
+												<button type="submit" class="btn btn-sm btn-outline-secondary" style="width:50%;">カートに入れる</button>
+												{% if login == true %}
+													<section class="post" data-wantname="{{ want_name }}">
+														<div class="btn-want {{active}}">
+															<i class="fa-heart fa-lg px-16 {{icon}}"></i>
+															<span></span>
+														</div>
+													</section>
+													{% else %}
+												{% endif %}
+											</form>
+										</div>
+									</div>
+								</div>
+								<div class="container">
+									<div class="row">
+										<div class="col-md-4 col-xs-6">
+											<a href="{{APP_URL}}/shopping/book/detail.php?id={{book_data['id']}}">
+												<div class="card">
+													<img src="{{APP_URL}}{{book_image}}" class="card-img-top" alt="">
+												</div>
+												<div class="card-title text-center">関連書籍</div>
+												<div class="card-text text-center">書籍名：{{book_data['title']}}</div>
+												<div class="card-text text-center">発売日：{{book_data['date']}}</div>
+												<div class="card-text text-center">価格：￥{{book_data['price']}}</div>
+											</a>
+										</div>
+										<div class="col-md-8 col-xs-6">
+											<div class="row">
+												<h3 class="text-center">あなたにオススメの商品</h3>	<p class="text-center">{{ attribute(ctg2,attribute(value,'ctg2')) }}関連商品</p>
+												<ul class="slider">
+													{% for ctg2 in ctg2_product %}
+														<li>
+															<a href="{{subdetail}}{ctg2["id"]}}"><img class="img-thumbnail" src="{{image_dir}}{{ctg2['image']}}" alt="" srcset=""></a>
+															<p class="text-center">{{ctg2['title']}}</p>
+															<p class="text-center">￥{{ctg2['price']}}</p>
+														</li>
+													{% endfor %}
+												</div>
+												<p class="text-center">{{ attribute(ctg1,attribute(value,'ctg1')) }}関連商品</p>
+												<ul class="slider">
+													{% for ctg1 in ctg1_product %}
+														<li>
+															<a href="{{subdetail}}{ctg1["id"]}}"><img class="img-thumbnail" src="{{image_dir}}{{ctg1['image']}}" alt="" srcset=""></a>
+															<p class="text-center">{{ctg1['title']}}</p>
+															<p class="text-center">￥{{ctg1['price']}}</p>
+														</li>
+													{% endfor %}
+												</ul>
+																						</div>
+										</div>
+
 									</div>
 								</div>
 							</div>
-<div class="container">
-	<div class="row">
-		<div class="col-md-4 col-xs-6">
-									<a href="{{APP_URL}}/shopping/book/detail.php?id={{book_data['id']}}">
-		<div class="card">
-                  <img src="{{APP_URL}}{{book_image}}" class="card-img-top" alt="">
-                  </div>
-
-									</a>
-  </div>
-<div class="col-sm-8 col-xs-6">
-<div class="row">
-<h3 class="text-center">オススメ関連商品</h3>
-			<ul class="slider">
-				<li>
-					<a href="#"><img class="img-thumbnail" alt="画像1" src="../../../shopping/image/chou.jpg"/></a>
-				</li>
-				<li>
-					<a href="#"><img class="img-thumbnail" alt="画像1" src="../../../shopping/image/chou.jpg"/></a>
-				</li>
-				<li>
-					<a href="#"><img class="img-thumbnail" alt="画像1" src="../../../shopping/image/chou.jpg"/></a>
-				</li>
-				<li>
-					<a href="#"><img class="img-thumbnail" alt="画像1" src="../../../shopping/image/chou.jpg"/></a>
-				</li>
-				<li>
-					<a href="#"><img class="img-thumbnail" alt="画像1" src="../../../shopping/image/chou.jpg"/></a>
-				</li>
-				<li>
-					<a href="#"><img class="img-thumbnail" alt="画像1" src="../../../shopping/image/chou.jpg"/></a>
-				</li>
-				<li>
-					<a href="#"><img class="img-thumbnail" alt="画像1" src="../../../shopping/image/chou.jpg"/></a>
-				</li>
-				<li>
-					<a href="#"><img class="img-thumbnail" alt="画像1" src="../../../shopping/image/chou.jpg"/></a>
-				</li>
-				<li>
-					<a href="#"><img class="img-thumbnail" alt="画像1" src="../../../shopping/image/chou.jpg"/></a>
-				</li>
-				<li>
-					<a href="#"><img class="img-thumbnail" alt="画像1" src="../../../shopping/image/chou.jpg"/></a>
-				</li>
-			</ul>
-		</div>
-			<ul class="slider">
-				<li>
-					<a href="#"><img class="img-thumbnail" alt="画像1" src="../../../shopping/image/chou.jpg"/></a>
-				</li>
-				<li>
-					<a href="#"><img class="img-thumbnail" alt="画像1" src="../../../shopping/image/chou.jpg"/></a>
-				</li>
-				<li>
-					<a href="#"><img class="img-thumbnail" alt="画像1" src="../../../shopping/image/chou.jpg"/></a>
-				</li>
-				<li>
-					<a href="#"><img class="img-thumbnail" alt="画像1" src="../../../shopping/image/chou.jpg"/></a>
-				</li>
-				<li>
-					<a href="#"><img class="img-thumbnail" alt="画像1" src="../../../shopping/image/chou.jpg"/></a>
-				</li>
-				<li>
-					<a href="#"><img class="img-thumbnail" alt="画像1" src="../../../shopping/image/chou.jpg"/></a>
-				</li>
-				<li>
-					<a href="#"><img class="img-thumbnail" alt="画像1" src="../../../shopping/image/chou.jpg"/></a>
-				</li>
-				<li>
-					<a href="#"><img class="img-thumbnail" alt="画像1" src="../../../shopping/image/chou.jpg"/></a>
-				</li>
-				<li>
-					<a href="#"><img class="img-thumbnail" alt="画像1" src="../../../shopping/image/chou.jpg"/></a>
-				</li>
-				<li>
-					<a href="#"><img class="img-thumbnail" alt="画像1" src="../../../shopping/image/chou.jpg"/></a>
-				</li>
-			</ul>
-		</div>
-		</div>
-
-	</div>
-	</div>
-	</div>
-	</div>
-	</div>
-	</div>
-</div></div>
-</div>
-
-
+						</div>
+					</div>
+				</div>
 			</div>
-      </div>
-		</main>
-		{% include "common/footer.html.twig" %}
+		</div>
+	</div>
+
+
+</div></div></main>{% include "common/footer.html.twig" %}

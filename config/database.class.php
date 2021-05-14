@@ -9,6 +9,7 @@ require_once $_SERVER['DOCUMENT_ROOT']."/config/Bootstrap.class.php";
 
 class database
 {
+    //DBへ接続する関数
     public static function dbh()
     {
         try {
@@ -19,6 +20,7 @@ class database
         }
         return $dbh;
     }
+    //指定したテーブルのデータを全て配列で取得しidを基準に配列にする関数
     public static function data_get($table)
     {
         $dbh = self::dbh();
@@ -29,6 +31,7 @@ class database
         //idを配列番号にする処理
         $DB_DATA_GET = (array_column($DB_DATA_GET, null, 'id'));
     }
+    //指定したテーブルからidを元にデータを取得する関数
     public static function get_detail_data($table, $id)
     {
         $dbh = self::dbh();
@@ -38,7 +41,9 @@ class database
         $stmt->execute();
         $detail_data = $stmt->fetchall(\PDO::FETCH_ASSOC);
         $detail_data = $detail_data[0];
+        return $detail_data;
     }
+    //商品リストで使う関数
     public static function get_ctg_product($ctg1_or_ctg2, $ctg_id)
     {
         $dbh = self::dbh();
@@ -47,7 +52,9 @@ class database
         $stmt = $dbh->prepare($sql);
         $stmt->execute();
         $ctg_product_data = $stmt->fetchall(\PDO::FETCH_ASSOC);
+        return $ctg_product_data;
     }
+    //副商材のカテゴリ名をctg_idの番号から取得する関数
     public static function get_ctg_name($ctg_no_search, $ctg_no = '1')
     {
         global $ctg_name;
@@ -59,6 +66,7 @@ class database
             $ctg_name = array_search($ctg_no_search, $ctg2_array);
         }
     }
+    //データベースから画像とともにデータを削除する関数
     public static function db_delete($table)
     {
         error_reporting(512);
@@ -76,6 +84,7 @@ class database
         $stmt->bindParam(":id", $_POST['id']);
         $stmt->execute();
     }
+    //退会をする場合に使用する関数
     public static function customer_delete($mail,$password,$id)
     {
         if($mail == ''|$password==''||$id== ''){
@@ -104,6 +113,16 @@ class database
             $_SESSION['delete_false'] = true;
             header('location:../../../customer/delete_customer.php');
         }
+    }
+    //関連商品データを取得する関数
+    public static function Related_Products_Get($table,$ctg,$search)
+    {
+        $dbh = self::dbh();
+        $stmt = $dbh->prepare("SELECT * FROM ".$table." WHERE ".$ctg." =".$search);
+        $stmt->execute();
+        $ctg_product = $stmt->fetchAll(\PDO::FETCH_ASSOC);
+        $ctg_product = array_column($ctg_product, null, 'id');
+        return $ctg_product;
     }
 }
 

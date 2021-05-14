@@ -14,6 +14,9 @@ database::data_get('book');
 $id =  substr($_SERVER['REQUEST_URI'],-1);
 database::get_detail_data('book',$id);
 $book = $detail_data;
-want::want_button();
+
+$sub = database::Related_Products_Get('sub','ctg_id',$book['id']);
 $context['value'] = $book;
+$context['sub_product'] = $sub;
+$context['sub_detail'] = Bootstrap::APP_URL."shopping/sub/detail.php?id=";
 template_twig_files::template_load_front();

@@ -13,7 +13,7 @@
 			{% for value in product_data %}
 					<li>
 					<form action="{{APP_URL}}/shopping/cart.php" method="POST" class="item-form" >
-					<a href="{{APP_URL}}{{detail}}{{value['id']}}">
+					<a href="{{detail}}{{value['id']}}">
 					<img src="{{IMAGE_DIR}}{{ attribute(value,'image') }}" alt="">
 					</a>
 					<div class="item-body">

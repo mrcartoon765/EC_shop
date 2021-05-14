@@ -16,7 +16,7 @@ shopping_cart::cart_session();
 
 template_twig_files::Prepare_the_template();
 
-$ctg_id=mb_substr($GLOBALS['filename'],-1);
+$ctg_id=database::get_detail_data('sub',$_GET['ctg1']);
 
 database::get_ctg_product('ctg1',$ctg_id);
 
@@ -24,4 +24,11 @@ database::get_ctg_name($ctg_id);
 
 $context['product_data'] = $ctg_product_data;
 $context['ctg_title'] = $ctg_name;
+
+$context['this_dir'] = $this_dir;
+$context['pages'] = $pages;
+$context['prev'] =  $prev;
+$context['page'] =  $page;
+$context['next'] =  $next;
+$context['want'] =  $want;
 template_twig_files::template_load_front();

@@ -46,69 +46,15 @@
 <div class="row">
 <h3 class="text-center">オススメ関連商品</h3>
 			<ul class="slider">
+			{% for sub in sub_product %}
 				<li>
-					<a href="#"><img class="img-thumbnail" alt="画像1" src="../../../shopping/image/chou.jpg"/></a>
+					<a href="{{sub_detail}}{{sub["id"]}}"><img class="img-thumbnail" alt="" src="{{APP_URL}}/shopping/image/sub/{{sub['image']}}"/></a>
+					<p>{{sub['title']}}</p>
+					<p>￥{{sub['price']}}</p>
 				</li>
-				<li>
-					<a href="#"><img class="img-thumbnail" alt="画像1" src="../../../shopping/image/chou.jpg"/></a>
-				</li>
-				<li>
-					<a href="#"><img class="img-thumbnail" alt="画像1" src="../../../shopping/image/chou.jpg"/></a>
-				</li>
-				<li>
-					<a href="#"><img class="img-thumbnail" alt="画像1" src="../../../shopping/image/chou.jpg"/></a>
-				</li>
-				<li>
-					<a href="#"><img class="img-thumbnail" alt="画像1" src="../../../shopping/image/chou.jpg"/></a>
-				</li>
-				<li>
-					<a href="#"><img class="img-thumbnail" alt="画像1" src="../../../shopping/image/chou.jpg"/></a>
-				</li>
-				<li>
-					<a href="#"><img class="img-thumbnail" alt="画像1" src="../../../shopping/image/chou.jpg"/></a>
-				</li>
-				<li>
-					<a href="#"><img class="img-thumbnail" alt="画像1" src="../../../shopping/image/chou.jpg"/></a>
-				</li>
-				<li>
-					<a href="#"><img class="img-thumbnail" alt="画像1" src="../../../shopping/image/chou.jpg"/></a>
-				</li>
-				<li>
-					<a href="#"><img class="img-thumbnail" alt="画像1" src="../../../shopping/image/chou.jpg"/></a>
-				</li>
+			{% endfor %}
 			</ul>
 		</div>
-			<ul class="slider">
-				<li>
-					<a href="#"><img class="img-thumbnail" alt="画像1" src="../../../shopping/image/chou.jpg"/></a>
-				</li>
-				<li>
-					<a href="#"><img class="img-thumbnail" alt="画像1" src="../../../shopping/image/chou.jpg"/></a>
-				</li>
-				<li>
-					<a href="#"><img class="img-thumbnail" alt="画像1" src="../../../shopping/image/chou.jpg"/></a>
-				</li>
-				<li>
-					<a href="#"><img class="img-thumbnail" alt="画像1" src="../../../shopping/image/chou.jpg"/></a>
-				</li>
-				<li>
-					<a href="#"><img class="img-thumbnail" alt="画像1" src="../../../shopping/image/chou.jpg"/></a>
-				</li>
-				<li>
-					<a href="#"><img class="img-thumbnail" alt="画像1" src="../../../shopping/image/chou.jpg"/></a>
-				</li>
-				<li>
-					<a href="#"><img class="img-thumbnail" alt="画像1" src="../../../shopping/image/chou.jpg"/></a>
-				</li>
-				<li>
-					<a href="#"><img class="img-thumbnail" alt="画像1" src="../../../shopping/image/chou.jpg"/></a>
-				</li>
-				<li>
-					<a href="#"><img class="img-thumbnail" alt="画像1" src="../../../shopping/image/chou.jpg"/></a>
-				</li>
-				<li>
-					<a href="#"><img class="img-thumbnail" alt="画像1" src="../../../shopping/image/chou.jpg"/></a>
-				</li>
 			</ul>
 		</div>
 		</div>
