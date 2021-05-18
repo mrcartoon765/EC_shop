@@ -16,12 +16,14 @@
 					<img src="{{APP_URL}}/shopping/image/book/{{attribute(value,'image') }}" alt=''>
 					<div class="item-body">
 						<h5>{{ attribute(value,'title') }}</h5>
-						<input type="hidden" name="Book_title" value={{ attribute(value,'title')}}>
+						<input type="hidden" name="Book_title" value="{{ attribute(value,'title')}}">
 						<p>価格　￥{{ attribute(value,'price') }}</p>
-						<input type="hidden" name="Book_price" value={{ attribute(value,'price')}}>
+						<input type="hidden" name="Book_price" value="{{ attribute(value,'price')}}">
 						<p>{{  attribute(value,'detail')|slice(0,40) }}...</p>
+						<input type="hiddn" name="ctg_id" value="{{value['ctg_id']}}">
 						<div class="item-form">
-							<input type="text" value="1" name="Book_count">
+							<input type="number" value="1" name="Book_count">
+
 							<button type="submit" class="btn-sm btn-blue">カートに入れる</button>
 							</form>
 						</div>

@@ -17,7 +17,7 @@
 </div>
 <div class="form-group">
 パスワード<span class="error">*</span>
-<input type="password" name="password" value="{{dataArr.password}}" size="40">
+<input type="current-password" name="password" value="{{dataArr.password}}" size="40">
 {% if errArr.password | length > 0 %}<br><span class="error">{{errArr.password}}</span>{% endif %}
 </div>
 
@@ -107,4 +107,3 @@
 </div>
 </main>
  {% include "common/footer.html.twig" %}
-

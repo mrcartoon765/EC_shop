@@ -1,3 +1,4 @@
+//郵便番号から住所検索
 $(function(){
   $('#address_search').click(function(){
     var zip1 = $('#zip1').val();
@@ -19,13 +20,13 @@ $(function(){
           }
           },
           function(data){
-            alert("読み込みに失敗しました。")
+            alert("読み込みに失敗しました。");
           },
       );
         }
       });
     });
-
+//いいねボタン
     $(function(){
       var $want = $('.btn-want'), //いいねボタンセレクタ
                   wantName; //投稿ID
@@ -53,7 +54,7 @@ $(function(){
           });
       });
     });
-
+//管理者画面削除ボタン
 	$(".delete").click(function () {
     var id = this.dataset.id;
     if (confirm("ID:" + id + "番のコンテンツを本当に削除していいですか？")) { // OK
@@ -62,7 +63,15 @@ $(function(){
     return false;
     };
     });
-
+//pay.jp管理
+    $(".confirm").click(function() {
+    $(".error").empty();
+    var number = $("#card-number").val();
+    var cvc = $("#cvc").val();
+    var exp_month = $("#exp_month").val();
+    var exp_year = $("#exp_year").val();
+     });
+//スライダーアニメーション
     $('.slider').slick({
       autoplay:true,
       autoplaySpeed:5000,
@@ -89,3 +98,61 @@ $(function(){
           },
       ]
   });
+//数量変更ボタン
+$(function(){
+  var arySpinnerCtrl = [];
+  var spin_speed = 20; //変動スピード
+  //長押し押下時
+  $('.btnspinner').on('touchstart mousedown click', function(e){
+      if(arySpinnerCtrl['interval']) return false;
+      var target = $(this).data('target');
+      arySpinnerCtrl['target'] = target;
+      arySpinnerCtrl['timestamp'] = e.timeStamp;
+      arySpinnerCtrl['cal'] = Number($(this).data('cal'));
+      //クリックは単一の処理に留める
+      if(e.type == 'click'){
+          spinnerCal();
+          arySpinnerCtrl = [];
+          return false;
+      }
+      //長押し時の処理
+      setTimeout(function(){
+          //インターバル未実行中 + 長押しのイベントタイプスタンプ一致時に計算処理
+          if(!arySpinnerCtrl['interval'] && arySpinnerCtrl['timestamp'] == e.timeStamp){
+              arySpinnerCtrl['interval'] = setInterval(spinnerCal, spin_speed);
+          }
+      }, 500);
+  });
+  //長押し解除時 画面スクロールも解除に含む
+  $(document).on('touchend mouseup scroll', function(e){
+      if(arySpinnerCtrl['interval']){
+          clearInterval(arySpinnerCtrl['interval']);
+          arySpinnerCtrl = [];
+      }
+  });
+  //変動計算関数
+  function spinnerCal(){
+      var target = $(arySpinnerCtrl['target']);
+      var num = Number(target.val());
+      num = num + arySpinnerCtrl['cal'];
+      if(num > Number(target.data('max'))){
+          target.val(Number(target.data('max')));
+      }else if(Number(target.data('min')) > num){
+          target.val(Number(target.data('min')));
+      }else{
+          target.val(num);
+      }
+  }
+});
+//テーブルソート
+$(function(){
+  $('.sort-table').tablesorter({
+      textExtraction: function(node){
+          var attr = $(node).attr('data-value');
+          if(typeof attr !== 'undefined' && attr !== false){
+              return attr;
+          }
+          return $(node).text();
+      }
+  });
+});

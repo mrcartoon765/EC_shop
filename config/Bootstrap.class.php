@@ -383,6 +383,13 @@ class POST_GET
         $variable = isset($_POST[$columns]) ? htmlspecialchars($_POST[$columns], ENT_QUOTES, 'utf-8') : '';
         return $variable;
     }
+    public static function P_G($values){
+        foreach ($values as $value)
+        {
+            $values = isset($_POST)? htmlspecialchars($values,ENT_QUOTES,'utf-8'):'';
+            return $values;
+        }
+    }
 }
-
 session_regenerate_id(true);
+// var_dump($_SESSION);

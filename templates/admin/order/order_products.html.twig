@@ -1,4 +1,5 @@
     {% include "common/header_admin.html.twig" %}
+{% set books = {1:'超ストレス解消法',2:'最高の体調',3:'【新装版】一生リバウンドしないパレオダイエットの教科書',4:'ヤバい集中力　１日ブッ通しで頭が冴えわたる神ライフハック45',5:'科学的な適職',6:'不老長寿メソッド　死ぬまで若いは武器になる'}%}
 	<main>
             <div class="wrapper">
                 <div class="container">
@@ -19,26 +20,60 @@
                         <tr><th>更新日時</th><td>{{ orders['update_at'] }}</td></tr>
                         <tr><th>注文状況</th><td>
                         {% if  orders['order_status'] == 0 %}
-                        <button type="button" class="btn btn-danger">受付中</button>
-                        <button type="button" class="btn btn-blue" onclick="location.href='../../admin/update_order_status.php?id={{ orders['id'] }}'">発送済みにする</button>
+                        <button class="btn btn-danger">受付中</button>
+                        <button type="button" class="btn btn-blue" onclick="location.href='{{ENTRY_URL}}/update_order_status.php?id={{ orders['id'] }}'">発送済みにする</button>
                         {% else %}
                         <button type="button" class="btn btn-blue">発送済</button>
-                        <button type="button" class="btn btn-danger" onclick="location.href='../../admin/update_order_status.php?id={{ orders['id'] }}'">発送を取り消す</button>
+                        <button type="button" class="btn btn-danger" onclick="location.href='{{ENTRY_URL}}/update_order_status.php?id={{ orders['id'] }}'">発送を取り消す</button>
                         {% endif %}
                         </td></tr>
                         </tbody>
                         </table>
                     </div>
+                <div class="list">
+                <h4>商品詳細</h4>
+                 <table class="sort-table">
+                        <thead>
+                        <tr>
+                        <th>id</th>
+                        <th>注文id</th>
+                        <th>商品名</th>
+                        <th>個数</th>
+                        <th>金額</th>
+                        <th>小計金額</th>
+                        <th>関連書籍</th>
+                        <th>操作</th>
+
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for value in order_detail %}
+                        <tr>
+                        <td>{{ attribute(value,'id') }}</td>
+                        <td>{{ attribute(value,'order_id') }}</td>
+                        <td>{{ attribute(value,'product_title') }}</td>
+                        <td>{{ attribute(value,'num') }}</td>
+                        <td>￥{{ attribute(value,'price') }}</td>
+                        <td>￥{{ attribute(value,'num') * attribute(value,'price') }}</td>
+                        <td>{{ attribute(books,attribute(value,'ctg_id')) }}</td>
+                        <td>
+                        <div class="spinner_area">
+                        <form action="{{APP_URL}}/admin/order/order_products_status.php" method="POST">
+    <input type="number" name="num" value={{value['num']}} class="counter1" data-max="500" data-min="0">
+    <input type="button" value="＋" class="btnspinner" data-cal="1" data-target=".counter1">
+    <input type="button" value="－" class="btnspinner" data-cal="-1" data-target=".counter1">
+    <input type="hidden" name="id" value={{value['id']}}>
+    <input type="hidden" name="order_id" value={{value['order_id']}}>
+    <button type="submit">変更する</button>
+                        </form>
+                        </div>
+                        </td>
+                        {% endfor %}
+                        </tbody>
+                        </table>
+                        </div>
+                </div>
                 </div>
             </div>
         </main>
  {% include "common/footer.html.twig" %}
-         <footer>
-        <div class="container">
-            <p>Copyright @ 2018 SQUARE, inc</p>
-        </div>
-    </footer>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-</body>
-
-</html>

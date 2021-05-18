@@ -1,36 +1,6 @@
-いいねボタンが押された時にその投稿IDを取得。
-投稿IDとは、ここでいう、post_id
+INSERT INTO `orders`( `mail`, `family_name`, `first_name`, `zip1`, `zip2`, `address`, `tel1`, `tel2`, `tel3`, `total`, `created_at`, `updated_at`) VALUES ( 'test1@gmail.com','a','a',027,2211,'a',111,1112,2223,2987, now(), now());
 
-Ajaxで取得した投稿IDをPHPファイルへ渡す。
-post_idをPHPファイルへ渡す
-
-取得された投稿IDと押した本人のID（セッションを使う）を元にいいねされた投稿を格納しているテーブルに挿入。
-post_idとセッションキーに入るidをもとにwantされた投稿を格納しているテーブル
-
-既にいいねテーブルにレコードがあればいいねを取り消す(レコード削除)。
-wantテーブルにレコードがあればwantを取り消してレコードの削除
-
-いいねの総数を取得してAjaxの引数に渡す。
-wantの総数を取得してajax引数に渡す
-
-いいね数を表示・いいねを押した・取り消したでスタイルを変化させる。
-want数を表示、wantを押した、取り消した、で表示の変化をささえる
-
-元々本人がいいねを押している投稿にはそのまま押された場合のスタイルを保持する。
-本人がwantを押した本・副商材にはそのまま押された場合の表示を維持する。
-
-    <div class="btn-want <?php if(isWant($_SESSION['customer_id'], $dbPostData['id'])) echo 'active'; ?>">
-
- <?php
-            if(isWant($_SESSION['customer_id'],$dbPostData['id'])){ //いいね押したらハートが塗りつぶされる
-                echo ' active fas';
-            }else{ //いいねを取り消したらハートのスタイルが取り消される
-                echo ' far';
-            }; ?>">
+INSERT INTO order_products(order_id,product_title,num,price) VALUES(0最高の体調11628)" string(80) "INSERT INTO order_products(order_id,product_title,num,price) VALUES(0Inulin3880)"
 
 
-
-$context['p_id'] = htmlspecialchars($p_id);
-$context['active'] = $active;
-$context['icon'] = $icon;
-$context['WantNum'] = $dbPostWantNum;
+ INSERT INTO order_products(order_id,product_title,num,price) VALUES(4,'超ストレス解消法',1,1540);

@@ -12,7 +12,7 @@
 
 
 メールアドレス<span class="error">*</span>
-<input type="email" name="mail" value={{ customer['mail']}} size="40">
+<input type="email" name="mail" value="{{ customer['mail']}}" size="40">
 {% if errArr.mail | length > 0 %}<br><span class="error">{{errArr.mail}}</span>{% endif %}
 パスワード<span class="error">*</span><br>
 <span class="error">(変更の場合がない場合も再入力をお願いします)</span>

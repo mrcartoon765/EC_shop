@@ -13,7 +13,7 @@ class database
     public static function dbh()
     {
         try {
-            $dbh = new \PDO('mysql:host=' . Bootstrap::DB_HOST . ';dbname=' . Bootstrap::DB_NAME, Bootstrap::DB_USER, Bootstrap::DB_PASS);
+            $dbh = new \PDO('mysql:host=' . Bootstrap::DB_HOST . ';dbname=' . Bootstrap::DB_NAME.';charsrt=utf8;', Bootstrap::DB_USER, Bootstrap::DB_PASS,);
         } catch (\PDOException $e) {
             var_dump($e->getMessage());
             exit;
@@ -42,6 +42,16 @@ class database
         $detail_data = $stmt->fetchall(\PDO::FETCH_ASSOC);
         $detail_data = $detail_data[0];
         return $detail_data;
+    }
+    //複数のデータを１つの配列に多次元配列としてまとめて取得する関数
+    public static function get_data_where($table,$where,$id)
+    {
+        $dbh = self::dbh();
+        $sql = "SELECT * FROM " . $table . " WHERE ".$where." = " . $id;
+        $stmt = $dbh->prepare($sql);
+        $stmt->execute();
+        $data_get_where = $stmt->fetchall(\PDO::FETCH_ASSOC);
+        return $data_get_where;
     }
     //商品リストで使う関数
     public static function get_ctg_product($ctg1_or_ctg2, $ctg_id)
@@ -84,6 +94,14 @@ class database
         $stmt->bindParam(":id", $_POST['id']);
         $stmt->execute();
     }
+    //データベースのテーブルとカラムを指定して削除する場合の関数
+    public static function delete_where($table,$where,$id)
+    {
+        $dbh = self::dbh();
+        $sql = "DELETE FROM " . $table . " WHERE ".$where ."=".$id;
+        $stmt = $dbh->prepare($sql);
+        $stmt->execute();
+    }
     //退会をする場合に使用する関数
     public static function customer_delete($mail,$password,$id)
     {
@@ -124,5 +142,14 @@ class database
         $ctg_product = array_column($ctg_product, null, 'id');
         return $ctg_product;
     }
+    //データの数量を変更する際に使用する関数
+    public static function data_num_update($table,$column,$update_data,$id,$id_no)
+    {
+    $dbh = self::dbh();
+    $sql = "UPDATE `".$table."` SET ".$column." = ".$update_data. " WHERE ".$id."=".$id_no;
+    // var_dump($sql);
+    $stmt = $dbh->prepare($sql);
+    $stmt->execute();
+}
 }
 

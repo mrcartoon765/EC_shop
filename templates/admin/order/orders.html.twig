@@ -9,7 +9,7 @@
                         <table>
                         <thead>
                             <tr>
-                                <th>id</th>
+                                <th>注文ID</th>
                                 <th>氏名</th>
                                 <th>電話番号</th>
                                 <th>合計金額</th>
@@ -36,7 +36,11 @@
                                     {% endif %}
                                 </td>
                                 <td>
-                                   <button type="button" class="btn btn-info" onclick="location.href='../../admin/order_products.php?id={{orders['id']}}'">詳細</button>
+                                   <button type="button" class="btn btn-info" onclick="location.href='{{ENTRY_URL}}/order_products.php?id={{orders['id']}}'">詳細</button>
+<button type="button" class="btn btn-danger delete" data-id='{{ attribute(orders,'id') }}' >注文取り消し</button>
+<form method="POST" action="{{ENTRY_URL}}/delete_order.php" id="delete_form_{{ attribute(orders,'id')}}">
+<input type="hidden" value='{{ attribute(orders,'id') }}'  name="id">
+									</form>
                                 </td>
                             </tr>
                           {% endfor %}

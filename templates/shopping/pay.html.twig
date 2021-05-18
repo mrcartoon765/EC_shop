@@ -27,16 +27,16 @@
        <div class="form-group">
            電話番号 *
            <div class="form-group" style="display:inline-flex">
-           <input type="text" name="tel1" size="6" maxlength="6" required>
-           -<input type="text" name="tel2" size="6" maxlength="6" required>
-           -<input type="text" name="tel3" size="6" maxlength="6" required>
+           <input type="text" name="tel1" size="6" maxlength="6" required  value={{ tel1 }}>
+           -<input type="text" name="tel2" size="6" maxlength="6" required value={{ tel2 }}>
+           -<input type="text" name="tel3" size="6" maxlength="6" required value={{ tel3 }}>
        </div>
        <div class="form-group">
            お届け先 *
            <label>〒</label>
            <div class="form-group" style="display:inline-flex">
-           <input type="text" name="zip1" required>-
-           <input type="text" name="zip2" required>
+           <input type="text" name="zip1" required value={{ zip1 }}>-
+           <input type="text" name="zip2" required value={{ zip2 }}>
            </div>
            <label><br>住所</label><br>
            <input type="text" name="address" required value={{ address }}>

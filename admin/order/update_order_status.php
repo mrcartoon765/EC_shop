@@ -23,24 +23,19 @@ if($id==''){
 
 $dbh = database::dbh();
 
-$sql = ("SELECT id, order_status FROM order_data WHERE id = $id")
+$sql = ("SELECT id, order_status FROM orders WHERE id = $id")
 ;
-
 $res =$dbh->query($sql);
-
 $id_status = $res->fetchAll(\PDO::FETCH_BOTH);
-
 $order_status = (INT)$id_status[0]['order_status'];
-
 if($order_status === 0){
-$stmt = $dbh->prepare("UPDATE order_data SET order_status = 1 WHERE id=:id");
+$stmt = $dbh->prepare("UPDATE orders SET order_status = 1 WHERE id=:id");
 }else{
-$stmt = $dbh->prepare("UPDATE order_data SET order_status = 0 WHERE id=:id"); 
+$stmt = $dbh->prepare("UPDATE orders SET order_status = 0 WHERE id=:id"); 
 }
 $stmt->bindParam(":id",$id);
 $stmt->execute();
 
 header('location:./orders.php');
-
 
 template_twig_files::template_load_front();

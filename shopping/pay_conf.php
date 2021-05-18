@@ -46,4 +46,8 @@ $context['zip2']=$zip2;
 $context['address']=$address;
 $context['payjp_token']=$payjp_token;
 
+echo '<pre>';
+var_dump($_SESSION);
+echo '</pre>';
+
 template_twig_files::template_load_front();

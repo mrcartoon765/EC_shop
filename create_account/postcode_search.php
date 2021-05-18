@@ -7,10 +7,9 @@ $this_dir = basename(__DIR__);
 
 $app_name = explode('/',dirname(__FILE__))[4];
 
-$this_dir === $app_name ?require_once dirname(__FILE__) .'/config/Bootstrap.class.php':
-require_once strstr(__FILE__, $this_dir,true) . 'config/Bootstrap.class.php';
+require_once $_SERVER['DOCUMENT_ROOT']."/config/Bootstrap.class.php";
 
-$db = new \PDO(Bootstrap::DB_HOST, Bootstrap::DB_USER, Bootstrap::DB_PASS, Bootstrap::DB_NAME);
+$dbh = database::dbh();
 
 if(isset($_GET['zip1']) === true && isset($_GET['zip2']) === true){
   $zip1 = $_GET['zip1'];
@@ -22,9 +21,9 @@ if(isset($_GET['zip1']) === true && isset($_GET['zip2']) === true){
   . " FROM "
   . " postcode "
   . " WHERE "
-  . " zip = ". $db->str_quote($zip1 . $zip2)
+  . " zip = ". $dbh->str_quote($zip1 . $zip2)
   . " LIMIT 1 ";
-  $res = $db->select($query);
+  $res = $dbh->select($query);
   echo ($res !== "" && count($res) !== 0) ? $res[0]['pref'] . $res[0]['city'] . $res[0]['town'] : '';
 } else {
   echo "no";

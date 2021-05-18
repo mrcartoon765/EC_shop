@@ -2,7 +2,6 @@
 namespace config;
 
 use shopping;
-
 $app_name = explode('/',dirname(__FILE__))[4];
 
 require_once $_SERVER['DOCUMENT_ROOT']."/config/Bootstrap.class.php";

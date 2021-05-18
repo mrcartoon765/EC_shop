@@ -16,9 +16,13 @@ require_once $_SERVER['DOCUMENT_ROOT']."/config/Bootstrap.class.php";
 template_twig_files::Prepare_the_template();
 
 shopping_cart::cart_session();
-// shopping_cart::cart_sum();
 
-$delete_name = isset($_POST['delete_name'])? htmlspecialchars($_POST['delete_name'], ENT_QUOTES, 'utf-8') : '';
+$delete_name = POST_GET::GET($delete_name,'delete_name');
+
+echo '<pre>';
+var_dump($_SESSION);
+echo '</pre>';
+
 session_start();
 if($delete_name != '') unset($_SESSION['products'][$delete_name]);
 $total = 0;

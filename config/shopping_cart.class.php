@@ -1,17 +1,20 @@
 <?php
 namespace config;
 
+use shopping\lib\shopping_Session;
+
 $app_name = explode('/',dirname(__FILE__))[4];
 
 require_once $_SERVER['DOCUMENT_ROOT']."/config/Bootstrap.class.php";
 
 class shopping_cart
 {
-    public static function cart_session()
+    public static function cart_session()//カートのセッションをつなげる関数
     {
         $product_title = POST_GET::GET('$product_title','title');
         $product_price = POST_GET::GET('$product_price','price');
         $product_count = POST_GET::GET('$product_count','count');
+        $product_ctg_id = POST_GET::GET('$product_ctg_id','ctg_id');
 
         session_start();
 
@@ -27,14 +30,15 @@ class shopping_cart
         if ($product_title != '' && $product_price != '' && $product_count != '') {
             $_SESSION['products'][$product_title] = [
                 'product_title' => $product_title,
-                'product_price' => $product_price,
-                'product_count' => $product_count,
+                'product_price' => (int)$product_price,
+                'product_count' => (int)$product_count,
+                'product_ctg_id' =>(int)$product_ctg_id,
             ];
         }
         $products = isset($_SESSION['products']) ? $_SESSION['products'] : [];
     }
 
-    public static function cart_sum()
+    public static function cart_sum()//カートの合計金額を計算する関数
     {
         customer_login::login_session();
         $customer_login = $_SESSION['customer_login'];
@@ -55,5 +59,6 @@ class shopping_cart
         $_SESSION['total_price'] = $total;
         $context['product_cart'] = $products;
         $context['total'] = $total;
+        return $total;
     }
 }

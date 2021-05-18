@@ -37,9 +37,10 @@
 				<input type="hidden" name="address" value="{{ address }}">
 				  <script src="https://checkout.pay.jp/" 
 					type="text/javascript"
-					class="payjp-button" 
+					class="payjp-button"
 					data-token-name="payjp_token"
-					data-key="*******"
+					{# 公開鍵 #}
+					data-key="***"
 					data-text="カード情報の入力"
 					data-submit-text ="支払い確認画面へ"
 					>
@@ -50,13 +51,3 @@
 	</div>
 </main>
  {% include "common/footer.html.twig" %}
-<footer>
-	<div class="container">
-		<p>Copyright @ 2021  HEALTH KNOWLEGE</p>
-	</div>
-</footer>
-
- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-</script>
-    </body>
-</html>

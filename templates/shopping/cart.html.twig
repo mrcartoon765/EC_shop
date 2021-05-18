@@ -30,13 +30,13 @@
 					<tbody>
 						{% for value in product_cart %}
 							<tr>
-								<td label="商品名:">{{ attribute(value,'product_title') }}</td>
+								<td label="商品名:">{{ attribute(value,"product_title") }}</td>
 								<td label="価格:" class="text-right">￥{{ attribute(value,'product_price') }}</td>
 								<td label="個数:" class="text-right">{{ attribute(value,'product_count') }}</td>
 								<td label="小計:" class="text-right">￥{{ attribute(value,'product_price') * attribute(value,'product_count') }}</td>
 								<td>
 									<form action="../../shopping/cart.php" method="post">
-										<input type="hidden" name='delete_name' value={{ attribute(value,'product_title') }}>
+										<input type="hidden" name='delete_name' value="{{ attribute(value,'product_title') }}">
 										<button type="submit" class="btn btn-danger">削除</button>
 									</form>
 								</td>

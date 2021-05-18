@@ -15,25 +15,20 @@ template_twig_files::Prepare_the_template();
 
 admin_login::login_session();
 
-$id = POST_GET::GET('$id','id');
+$id = $_GET['id'];
 
 if($id==''){
   header('location: ./orders.php');
-}
+}else{
 
 $dbh = database::dbh();
 
-$stmt1 = $dbh->prepare("SELECT * FROM order_data WHERE id=:id");
-$stmt1->bindParam(':id',$id);
-$stmt1->execute();
-$order_data = $stmt1->fetchAll(\PDO::FETCH_ASSOC);
+$order_data = database::get_detail_data('orders',$id);
 
-$stmt2 = $dbh->prepare("SELECT * FROM order_products WHERE order_id=:id");
-$stmt2->bindParam(':id',$id);
-$stmt2->execute();
-$order_products = $stmt2->fetchAll(\PDO::FETCH_ASSOC);
+$order_products = database::get_data_where('order_products','order_id',$id);
 
-$context['orders'] = $order_data[0];
+$context['orders'] = $order_data;
 $context['order_detail'] = $order_products;
 
 template_twig_files::template_load_front();
+}
