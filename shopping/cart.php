@@ -19,11 +19,16 @@ shopping_cart::cart_session();
 
 $delete_name = POST_GET::GET($delete_name,'delete_name');
 
-echo '<pre>';
-var_dump($_SESSION);
-echo '</pre>';
+$product_count = POST_GET::GET($product_count,'product_count');
+
+$cart_in_title = POST_GET::GET($cart_in_title,'cart_in_title');
 
 session_start();
+
+if($product_count != null){
+$_SESSION['products'][$cart_in_title]['product_count'] = $product_count;
+}
+
 if($delete_name != '') unset($_SESSION['products'][$delete_name]);
 $total = 0;
 $products = isset($_SESSION['products'])? $_SESSION['products']:[];
@@ -38,5 +43,6 @@ if($customer_login == true){
 $_SESSION['total_price'] = $total;
 $context['product_cart'] = $products;
 $context['total'] = $total;
+$context['title'] = (string) $_POST['products'];
 
 template_twig_files::template_load_front();

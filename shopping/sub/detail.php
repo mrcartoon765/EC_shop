@@ -16,8 +16,6 @@ database::get_detail_data('sub',$_GET['id']);
 
 database::data_get('sub');
 
-var_dump($detail_data);
-
 $sub = $DB_DATA_GET;
 $product_data = $detail_data;
 $book_id = $product_data['ctg_id'];
@@ -36,8 +34,8 @@ $context['book_image'] = "shopping/image/book/".$book_data['image'];
 want::want_button();
 $context['value'] = $product_data;
 $context['this_dir'] = $this_dir;
-var_dump($this_dir);
 $context['book_data'] = $book_data;
+$context['subdetail'] = "detail.php?id=";
 $context['ctg1_product'] = $ctg1;
 $context['ctg2_product'] = $ctg2;
 $context['image_dir'] = Bootstrap::APP_URL."/shopping/image/sub/";
