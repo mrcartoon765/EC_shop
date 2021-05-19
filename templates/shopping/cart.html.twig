@@ -31,7 +31,7 @@
 								{% set a = 0 %}
 						{% for value in product_cart %}
 							<tr>
-								<td label="商品名:">{{ attribute(value,"product_title")|raw }}</td>
+								<td label="商品名:">{{ attribute(value,"product_title")|e("html") }}</td>
 								<td label="価格:" class="text-right">￥{{ attribute(value,'product_price') }}</td>
 								<td label="個数:" class="text-right">{{ attribute(value,'product_count') }}</td>
 								<td label="小計:" class="text-right">￥{{ attribute(value,'product_price') * attribute(value,'product_count') }}</td>
@@ -57,7 +57,7 @@
 										</form>
 										<div class="col-2">
 											<form action="../../shopping/cart.php" method="post">
-												<input type="hidden" name='delete_name' value="{{ attribute(value,'product_title') }}">
+												<input type="hidden" name='delete_name' value="{{ attribute(value,'product_title')|e("html") }}">
 												<button type="submit" class="btn btn-danger">削除</button>
 											</form>
 										</div>
@@ -87,7 +87,9 @@
 		{% if login == true %}
 			<button type="button" class="btn btn-primary" onclick="location.href='pay.php'">購入手続きへ</button>
 		{% else %}
-			<button type="button" class="btn btn-primary" onclick="location.href='{{APP_URL}}create_account/Login.php'">ログインして購入手続きへ</button>
+		<form action="{{APP_URL}}create_account/login.php" method="POST">
+			<button type="submit" class="btn btn-primary" onclick="location.href='{{APP_URL}}create_account/login.php'" name="login_pay" value=1>ログインして購入手続きへ</button>
+		</form>
 			<button type="button" class="btn btn-primary" onclick="location.href='{{APP_URL}}shopping/pay.php'">ログインせずに購入手続きへ</button>
 		{% endif %}
 	{% endif %}

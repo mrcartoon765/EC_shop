@@ -47,38 +47,28 @@
                         </tr>
                         </thead>
                         <tbody>
-                        {% set a = 0 %}
                         {% for value in order_detail %}
                         <tr>
                         <td>{{ attribute(value,'id') }}</td>
                         <td>{{ attribute(value,'order_id') }}</td>
-                        <td>{{ attribute(value,'product_title')|e("html") }}</td>
+                        <td>{{ attribute(value,'session_start();
+session_regenerate_id(true);')|e("html") }}</td>
                         <td>{{ attribute(value,'num') }}</td>
                         <td>￥{{ attribute(value,'price') }}</td>
                         <td>￥{{ attribute(value,'num') * attribute(value,'price') }}</td>
                         <td>{{ attribute(books,attribute(value,'ctg_id')) }}</td>
                         <td>
-                        <form action="{{APP_URL}}/admin/order/order_products_status.php" method="POST">
                         <div class="spinner_area">
-                        <div class="row">
-                        <div class="col-1">
-    <input type="number" name="num" value={{value['num']}} class="counter{{a}}" data-max="500" data-min="0" style="width:70px">
-                        </div>
-                        <div class="col-1">
-    <input type="button" value="＋" class="btnspinner btn-info" data-cal="1" data-target=".counter{{a}}">
-                        </div>
-                        <div class="col-1">
-    <input type="button" value="－" class="btnspinner" data-cal="-1" data-target=".counter{{a}}">
-                        </div>
+                        <form action="{{APP_URL}}/admin/order/order_products_status.php" method="POST">
+    <input type="number" name="num" value={{value['num']}} class="counter1" data-max="500" data-min="0">
+    <input type="button" value="＋" class="btnspinner" data-cal="1" data-target=".counter1">
+    <input type="button" value="－" class="btnspinner" data-cal="-1" data-target=".counter1">
     <input type="hidden" name="id" value={{value['id']}}>
     <input type="hidden" name="order_id" value={{value['order_id']}}>
-                        <div class="col">
     <button type="submit">変更する</button>
-                        </div>
-                        </div>
                         </form>
+                        </div>
                         </td>
-                        {% set a = a + 1 %}
                         {% endfor %}
                         </tbody>
                         </table>

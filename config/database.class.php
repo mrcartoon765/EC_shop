@@ -147,7 +147,6 @@ class database
     {
     $dbh = self::dbh();
     $sql = "UPDATE `".$table."` SET ".$column." = ".$update_data. " WHERE ".$id."=".$id_no;
-    // var_dump($sql);
     $stmt = $dbh->prepare($sql);
     $stmt->execute();
 }

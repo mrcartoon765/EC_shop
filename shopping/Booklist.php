@@ -31,6 +31,7 @@ $Book_price = isset($_POST['Book_price'])? htmlspecialchars($_POST['Book_price']
 $Book_count = isset($_POST['Book_count'])? htmlspecialchars($_POST['Book_count'], ENT_QUOTES,'utf-8'):'';
 
 session_start();
+session_regenerate_id(true);
 
 if(isset($_SESSION['Books'])){
   $Books = $_SESSION['Books'];

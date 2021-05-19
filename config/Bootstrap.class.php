@@ -344,6 +344,7 @@ class template_twig_files
 
 session_start();
 session_regenerate_id(true);
+session_regenerate_id(true);
 $context['session'] = $_SESSION;
 $customer_login = $_SESSION['customer_login'];
 $context['login'] = $_SESSION['customer_login'];
@@ -353,6 +354,7 @@ class customer_login
     public static function login_session()
     {
         session_start();
+session_regenerate_id(true);
         session_regenerate_id(true);
         $login = isset($_SESSION['customer_login']) ? $_SESSION['customer_login'] : false;
         if ($login == false) {
@@ -391,5 +393,3 @@ class POST_GET
         }
     }
 }
-session_regenerate_id(true);
-// var_dump($_SESSION);

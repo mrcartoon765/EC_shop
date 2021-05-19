@@ -11,6 +11,8 @@ $app_name = explode('/',dirname(__FILE__))[4];
 require_once $_SERVER['DOCUMENT_ROOT']."/config/Bootstrap.class.php";
 
 session_start();
+session_regenerate_id(true);
+session_regenerate_id(true);
 
 if ($_SESSION['admin_login'] == false) {
   header("Location:" . Bootstrap::ENTRY_URL . "/index.php");

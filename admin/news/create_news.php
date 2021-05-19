@@ -14,6 +14,7 @@ template_twig_files::Prepare_the_template();
 
 
 session_start();
+session_regenerate_id(true);
 
   if($_SESSION['admin_login'] == false){
     header("Location:" . Bootstrap::ENTRY_URL . "/index.php");

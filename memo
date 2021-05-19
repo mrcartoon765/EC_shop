@@ -1,6 +1,0 @@
-INSERT INTO `orders`( `mail`, `family_name`, `first_name`, `zip1`, `zip2`, `address`, `tel1`, `tel2`, `tel3`, `total`, `created_at`, `updated_at`) VALUES ( 'test1@gmail.com','a','a',027,2211,'a',111,1112,2223,2987, now(), now());
-
-INSERT INTO order_products(order_id,product_title,num,price) VALUES(0最高の体調11628)" string(80) "INSERT INTO order_products(order_id,product_title,num,price) VALUES(0Inulin3880)"
-
-
- INSERT INTO order_products(order_id,product_title,num,price) VALUES(4,'超ストレス解消法',1,1540);

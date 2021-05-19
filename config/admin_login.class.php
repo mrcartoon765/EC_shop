@@ -11,6 +11,7 @@ class admin_login
     public static function login_session()
     {
         session_start();
+session_regenerate_id(true);
         if ($_SESSION['admin_login'] == false) {
             header("Location:" . Bootstrap::ENTRY_URL . "/index.php");
             exit;

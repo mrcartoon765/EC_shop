@@ -14,16 +14,12 @@ $app_name = explode('/',dirname(__FILE__))[4];
 $this_dir === $app_name ?require_once dirname(__FILE__) .'/config/Bootstrap.class.php':
 require_once strstr(__FILE__, $this_dir,true) . 'config/Bootstrap.class.php';
 
-
-$db = new Book_Database(Bootstrap::DB_HOST, Bootstrap::DB_USER, Bootstrap::DB_PASS, Bootstrap::DB_NAME, Bootstrap::DB_TYPE);
-$ses = new shopping_Session($db);
-$book = new Book($db);
-
 template_twig_files::Prepare_the_template();
 
 shopping_cart::cart_session();
 
 //    session_start();
+session_regenerate_id(true);
 //    $Books = isset($_SESSION['Books'])? $_SESSION['Books']:[];
 
 // foreach($Books as $Book_title => $cart_in_Book){
@@ -50,7 +46,5 @@ $context['tel3']=$tel3;
 $context['zip1']=$zip1;
 $context['zip2']=$zip2;
 $context['address']=$address;
-
-var_dump($_SESSION);
 
 template_twig_files::template_load_front();

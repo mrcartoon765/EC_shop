@@ -21,6 +21,7 @@
 						<input type="hidden" name="title" value={{ attribute(value,'title')}}>
 						<p>価格　￥{{ attribute(value,'price') }}</p>
 						<input type="hidden" name="price" value={{ attribute(value,'price')}}>
+									<input type="hidden" name="cart_in_status" value=1>
 						<p>{{  attribute(value,'detail')|slice(0,40) }}...</p>
 								<input type="hidden" name="ctg_id" value={{ attribute(value,'ctg_id')}}>
 						<div class="item-form">

@@ -23,10 +23,9 @@ $product_count = POST_GET::GET($product_count,'product_count');
 
 $cart_in_title = POST_GET::GET($cart_in_title,'cart_in_title');
 
-session_start();
 
 if($product_count != null){
-$_SESSION['products'][$cart_in_title]['product_count'] = $product_count;
+  $_SESSION['products'][$cart_in_title]['product_count'] = $product_count;
 }
 
 if($delete_name != '') unset($_SESSION['products'][$delete_name]);
@@ -39,10 +38,15 @@ foreach($products as $product_title => $cart_in_product){
 if($customer_login == true){
   $total = intval($total*0.7);
 }
-
 $_SESSION['total_price'] = $total;
 $context['product_cart'] = $products;
 $context['total'] = $total;
 $context['title'] = (string) $_POST['products'];
+
+
+if($_POST["cart_in_status"] == 1){
+$_POST["cart_in_status"] = 0;
+header('Location:'.$_SERVER['HTTP_REFERER']);
+}
 
 template_twig_files::template_load_front();

@@ -18,6 +18,7 @@ function h($s){
 }
 
 session_start();
+session_regenerate_id(true);
 
 if (isset($_SESSION['mail'])) {
   echo 'ようこそ' . h($_SESSION['mail']) . "さん<br>";

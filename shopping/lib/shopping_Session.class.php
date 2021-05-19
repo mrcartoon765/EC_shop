@@ -8,6 +8,7 @@ class shopping_Session
   public function __construct($db)
   {
     session_start();
+session_regenerate_id(true);
     $this->session_key = session_id();
     $this->db = $db;
   }

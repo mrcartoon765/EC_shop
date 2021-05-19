@@ -46,6 +46,7 @@ exit;
 // $customer = $stmt->fetchAll(\PDO::FETCH_ASSOC);
 
 // session_start();
+session_regenerate_id(true);
 // $_SESSION['customer_login']=true;
 // $_SESSION['customer_id']=$customer[0]['id'];
 // $_SESSION['customer_first_name']=$customer[0]['first_name'];

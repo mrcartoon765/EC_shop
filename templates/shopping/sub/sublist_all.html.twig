@@ -18,8 +18,8 @@
 							<img src="{{IMAGE_DIR}}{{ attribute(value,'image') }}" alt="">
 							</a>
 							<div class="item-body text-center">
-								<h5>{{ attribute(value,'title') }}</h5>
-								<input type="hidden" name="title" value="{{ attribute(value,'title')}}">
+								<h5>{{ attribute(value,'tile') }}</h5>
+								<input type="hidden" name="title" value="{{ attribute(value,'title')|e("html")}}">
 								<p>価格　￥{{ attribute(value,'price') }}</p>
 								<input type="hidden" name="price" value={{ attribute(value,'price')}}>
 								<p>{{  attribute(value,'detail')|slice(0,40) }}...</p>
@@ -36,14 +36,13 @@
 </section>
 {% else %}
 									{% endif %}
-									<button type="submit" class="btn 	btn-primary">カートに入れる</button>
+									<button type="submit" name="cart_in_status" value=1 class="btn 	btn-primary">カートに入れる</button>
 								</div>
 							</form>
 						</div>
 					</li>
 				{% endfor %}
 			</ul>
-			
 			<ul class="paging">
 				<li>
 					<a href="{{ENTRY_URL}}sublist_all.php?title={{ title }}">« 最初</a>

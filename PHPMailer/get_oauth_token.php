@@ -61,6 +61,7 @@ if (!isset($_GET['code']) && !isset($_GET['provider'])) {
 require 'vendor/autoload.php';
 
 session_start();
+session_regenerate_id(true);
 
 $providerName = '';
 

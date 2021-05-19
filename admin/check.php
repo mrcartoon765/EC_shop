@@ -24,6 +24,7 @@ if ($password == '') {
 
 if ($email=='admin@admin.com'&&$password=='password01') {
   session_start();
+session_regenerate_id(true);
   $_SESSION["admin_login"] = true;
   header("Location:" . Bootstrap::APP_URL . "admin/dashboard.php");
 } else {

@@ -15,7 +15,11 @@
             <p>パスワード</p>
             <input type="password" name="password" required>
             </div>
-            <button type="submit" class="btn btn-gray">ログイン</button>
+            {% if login_pay == 1 %}
+            <button type="submit" name='login_pay' class="btn btn-info" method="POST" value=1>ログイン</button>
+            {% else %}
+            <button type="submit" class="btn btn-info">ログイン</button>
+            {% endif %}
             </form>
             </div>
             <div class="register">

@@ -31,7 +31,7 @@ class original_Mysql_command
         if (is_uploaded_file($_FILES["image"]["tmp_name"])) {
             // 成功;
             $file_name = date('YmdHis') . "_" . $_FILES["image"]["name"];
-            if (pathinfo($file_name, PATHINFO_EXTENSION) == 'jpg' || pathinfo($file_name, PATHINFO_EXTENSION) == 'png') {
+            if (pathinfo($file_name, PATHINFO_EXTENSION) == 'jpg' || pathinfo($file_name, PATHINFO_EXTENSION) == 'png' || pathinfo($file_name, PATHINFO_EXTENSION) == 'webp') {
                 // 拡張子チェックOK
                 $tmp_name = $_FILES["image"]["tmp_name"];
                 $document_root = $_SERVER['DOCUMENT_ROOT'];
@@ -55,7 +55,7 @@ class original_Mysql_command
                 }
 
             } else {
-                echo "ファイル形式はjpg/pngのみです";
+                echo "ファイル形式はjpg/png/webpのみです";
                 exit;
             }
 
@@ -75,13 +75,11 @@ class original_Mysql_command
             }
         }
         $sql = (rtrim(implode($k), ', '));
-        // var_dump($sql);
-        // exit;
 
         if (is_uploaded_file($_FILES["image"]["tmp_name"])) {
             // 成功;
             $file_name = date('YmdHis') . "_" . $_FILES["image"]["name"];
-            if (pathinfo($file_name, PATHINFO_EXTENSION) == 'jpg' || pathinfo($file_name, PATHINFO_EXTENSION) == 'png') {
+            if (pathinfo($file_name, PATHINFO_EXTENSION) == 'jpg' || pathinfo($file_name, PATHINFO_EXTENSION) == 'png' || pathinfo($file_name, PATHINFO_EXTENSION) == 'webp') {
                 // 拡張子チェックOK
                 $tmp_name = $_FILES["image"]["tmp_name"];
                 if (move_uploaded_file($tmp_name, $GLOBALS['document_root'] . "/shopping/image/" . $table . "/" . $file_name)) {
@@ -98,9 +96,6 @@ class original_Mysql_command
                     unlink($image_dir . $old_image_file) :
                     '';
                     $stmt = $dbh->prepare("UPDATE ".$table." SET " . $sql .", last_update= NOW(), image=" . "'" . $file_name . "'" . " WHERE " . $table . ".id=" . $delete_id);
-                    // var_dump("UPDATE ".$table." SET " . $sql .", last_update= NOW(), image=" . "'" . $file_name . "'" . " WHERE " . $table . ".id=" . $delete_id);
-                    // exit;
-
 
                     $stmt->execute();
                     header("refresh:3;url=" . Bootstrap::ADMIN_URL);
