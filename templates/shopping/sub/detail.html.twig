@@ -5,7 +5,7 @@
 {% set ctg2 = {1:'ストレス対策',2:'アンチエイジング',3:'集中力改善',4:'睡眠改善',5:'ダイエット'}%}
 {% set books = {1:'超ストレス解消法',2:'最高の体調',3:'【新装版】一生リバウンドしないパレオダイエットの教科書',4:'ヤバい集中力　１日ブッ通しで頭が冴えわたる神ライフハック45',5:'科学的な適職',6:'不老長寿メソッド　死ぬまで若いは武器になる'}%}
 
-
+<br><br>
 <main>
 	<div class="last-wrapper center-block">
 		<div class="container  center-block">
@@ -66,7 +66,7 @@
 												<ul class="slider">
 													{% for ctg2 in ctg2_product %}
 														<li>
-															<a href="{{subdetail}}{{ctg2['id']}}"><img class="img-thumbnail" src="{{image_dir}}{{ctg2['image']}}" alt="" srcset=""></a>
+															<a href="{{subdetail}}{{ctg2[sub_id]}}"><img class="img-thumbnail" src="{{image_dir}}{{ctg2['image']}}" alt="" srcset=""></a>
 															<p class="text-center">{{ctg2['title']|e("html")}}</p>
 															<p class="text-center">￥{{ctg2['price']}}</p>
 														</li>
@@ -76,7 +76,7 @@
 												<ul class="slider">
 													{% for ctg1 in ctg1_product %}
 														<li>
-															<a href="{{subdetail}}{{ctg1["id"]}}"><img class="img-thumbnail" src="{{image_dir}}{{ctg1['image']}}" alt="" srcset=""></a>
+															<a href="{{subdetail}}{{ctg1[sub_id]}}"><img class="img-thumbnail" src="{{image_dir}}{{ctg1['image']}}" alt="" srcset=""></a>
 															<p class="text-center">{{ctg1['title']|e("html")}}</p>
 															<p class="text-center">￥{{ctg1['price']}}</p>
 														</li>
@@ -84,7 +84,6 @@
 												</ul>
 																						</div>
 										</div>
-
 									</div>
 								</div>
 							</div>
@@ -94,6 +93,5 @@
 			</div>
 		</div>
 	</div>
-
 
 </div></div></main>{% include "common/footer.html.twig" %}

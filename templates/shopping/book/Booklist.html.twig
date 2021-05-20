@@ -9,30 +9,49 @@
 		</div>
 
 	<div class="itemlist">
-		<ul>
-			{% for value in product_data %}
-					<li>
-					<form action="{{APP_URL}}/shopping/cart.php" method="POST" class="item-form" >
-					<a href="{{detail}}{{value['id']}}">
-					<img src="{{IMAGE_DIR}}{{ attribute(value,'image') }}" alt="">
-					</a>
-					<div class="item-body">
-						<h5>{{ attribute(value,'title') }}</h5>
-						<input type="hidden" name="title" value={{ attribute(value,'title')}}>
-						<p>価格　￥{{ attribute(value,'price') }}</p>
-						<input type="hidden" name="price" value={{ attribute(value,'price')}}>
-									<input type="hidden" name="cart_in_status" value=1>
-						<p>{{  attribute(value,'detail')|slice(0,40) }}...</p>
-								<input type="hidden" name="ctg_id" value={{ attribute(value,'ctg_id')}}>
-						<div class="item-form">
-							<input type="text" value="1" name="count">
-							<button type="submit" class="btn- btn-primary">カートに入れる</button>
+				<div class="container">
+				<div class="row">
+				{% for value in product_data %}
+					<div class="card-group col-md-4">
+									<div class="card" style="width: 18rem;">
+										<div class="column flex-direction:row">
+						<form action="{{APP_URL}}/shopping/cart.php" method="POST">
+
+<a href="{{APP_URL}}shopping/book/detail.php?id={{ attribute(value,'id') }}">
+							<img class="card-img-top img-fluid" src="{{IMAGE_DIR}}{{ attribute(value,'image') }}" alt="">
+							</a>
+							<div class="item-body text-center">
+								<h5>{{ attribute(value,'title') }}</h5>
+								<input type="hidden" name="title" value="{{ attribute(value,'title')}}">
+								<p>価格 ￥{{ attribute(value,'price') }}</p>
+								<input type="hidden" name="price" value={{ attribute(value,'price')}}>
+								<p>{{  attribute(value,'detail')|slice(0,40) }}...</p>
+								<input type="hidden" name="ctg_id" value={{value['ctg_id']}}>
+								</div>
+
+								<div class="text-center">
+									<input type="number" name="count" max="100" min="0" step="1" placeholder="数値を入力" style="width:150px;">
+									{% if login == true %}
+									<section class="post" data-wantName="{{ want_name }}">
+    <div class="btn-want {{active}}">
+        <!-- 自分がいいねした投稿にはハートのスタイルを常に保持する -->
+        <i class="fa-heart fa-lg px-16 {{icon}}"></i><span></span>
+    </div>
+</section>
+{% else %}
+									{% endif %}
+									<div class="center">
+									<button type="submit" class="btn 	btn-primary">カートに入れる</button>
+									</div>
 							</form>
-						</div>
-					</div>
-			</li>
-			{% endfor %}
-		</ul>
+							</div>
+							</div>
+							</div>
+							</div>
+				{% endfor %}
+							</div>
+							</div>
+			
 	</div>
 </main>
  {% include "common/footer.html.twig" %}

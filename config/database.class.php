@@ -149,6 +149,18 @@ class database
     $sql = "UPDATE `".$table."` SET ".$column." = ".$update_data. " WHERE ".$id."=".$id_no;
     $stmt = $dbh->prepare($sql);
     $stmt->execute();
+    }
+    //data_getでデータを全部取得した後idのランダムな値を取得する関数
+    public static function id_no_random_get($array,$id)
+    {
+        $array = 
+        array_rand(
+                array_flip(
+                array_merge(
+                    array_column($array,$id)
+                )
+                )
+            );
+                return $array;
+    }
 }
-}
-

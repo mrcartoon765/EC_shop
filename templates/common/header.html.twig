@@ -20,100 +20,133 @@
 		<link rel="stylesheet" href="{{APP_URL}}/css/slick-theme.css">
 		<link rel="stylesheet" href="{{APP_URL}}/css/responsive.css">
 		<link rel="stylesheet" href="{{APP_URL}}/css/styles.css">
-		<link rel="stylesheet" href="{{APP_URL}}/css/admin/styles.css">
+		<link
+		rel="stylesheet" href="{{APP_URL}}/css/admin/styles.css">
 
 
 		<!-- Bootstrap CSS -->
-		<link
-		rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 
 		<link href="https://use.fontawesome.com/releases/v5.15.2/css/all.css" rel="stylesheet">
 
 	</head>
+	<header>
+		<body>
+			<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+				<div class="container-fluid">
+					<a class="navbar-brand" href="{{APP_URL}}/index.php"><img src="{{APP_URL}}/image/square_logo-1024x192.png" id="logo" style="width:200px;"></a>
+					<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+						<span class="navbar-toggler-icon"></span>
+					</button>
+					<div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+						<ul class="navbar-nav me-auto mb ml-lg-0">
+							<div class="row">
+								<div class="col-6">
+									<li class="nav-item">
+										<a class="nav-link" href="{{APP_URL}}/shopping/book/Booklist.php">書籍一覧</a>
+									</li>
+								</div>
 
-	<body>
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-	<div class="container-fluid">
-		<a class="navbar-brand" href="{{APP_URL}}/index.php"><img src="{{APP_URL}}/image/square_logo-1024x192.png" id="logo" style="width:200px;"></a>
-		<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
-			<span class="navbar-toggler-icon"></span>
-		</button>
-		<div class="collapse navbar-collapse" id="navbarTogglerDemo02">
-      <ul class="navbar-nav me-auto mb ml-lg-0">
-      <div class=row>
-      <div class=col-6>
-				<li class="nav-item">
-					<a class="nav-link" href="{{APP_URL}}/shopping/book/Booklist.php">書籍一覧</a>
-				</li>
-      </div>
+								<div class="col-6">
+									<li class="nav-item">
+										<a class="nav-link" href="{{APP_URL}}/shopping/sub/sublist_all.php">関連商品一覧</a>
+									</li>
+								</div>
 
-      <div class=col-6>
-				<li class="nav-item">
-					<a class="nav-link" href="{{APP_URL}}/shopping/sub/sublist_all.php">関連商品一覧</a>
-				</li>
-      </div>
+								<div class="col">
+									<li class="nav-item dropdown">
+										<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+											関連商品カテゴリ
+										</a>
+										<ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+											<li>
+												<a class="dropdown-item" href="{{APP_URL}}/shopping/sub/sublist_ctg1_1.php">食品</a>
+											</li>
+											<li>
+												<a class="dropdown-item" href="{{APP_URL}}/shopping/sub/sublist_ctg1_2.php">サプリ</a>
+											</li>
+											<li>
+												<a class="dropdown-item" href="{{APP_URL}}/shopping/sub/sublist_ctg1_3.php">ガジェット</a>
+											</li>
+											<li>
+												<a class="dropdown-item" href="{{APP_URL}}/shopping/sub/sublist_ctg1_4.php">家具・寝具</a>
+											</li>
+											<li>
+												<a class="dropdown-item" href="{{APP_URL}}/shopping/sub/sublist_ctg1_5.php">美容品</a>
+											</li>
+										</ul>
+									</li>
+								</div>
 
-      <div class=col>
-				<li class="nav-item dropdown">
-					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-						関連商品カテゴリ
-					</a>
-					<ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-						<li><a class="dropdown-item" href="{{APP_URL}}/shopping/sub/sublist_ctg1_1.php">食品</a></li>
-						<li><a class="dropdown-item" href="{{APP_URL}}/shopping/sub/sublist_ctg1_2.php">サプリ</a></li>
-						<li><a class="dropdown-item" href="{{APP_URL}}/shopping/sub/sublist_ctg1_3.php">ガジェット</a></li>
-						<li><a class="dropdown-item" href="{{APP_URL}}/shopping/sub/sublist_ctg1_4.php">家具・寝具</a></li>
-						<li><a class="dropdown-item" href="{{APP_URL}}/shopping/sub/sublist_ctg1_5.php">美容品</a></li>
-					</ul>
-        </li>
-        </div>
+								<div class="col">
+									<li class="nav-item dropdown">
+										<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+											目的別商品カテゴリ
+										</a>
+										<ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+											<li>
+												<a class="dropdown-item" href="{{APP_URL}}/shopping/sub/sublist_ctg2_1.php">ストレス対策</a>
+											</li>
+											<li>
+												<a class="dropdown-item" href="{{APP_URL}}/shopping/sub/sublist_ctg2_2.php">アンチエイジング</a>
+											</li>
+											<li>
+												<a class="dropdown-item" href="{{APP_URL}}/shopping/sub/sublist_ctg2_3.php">集中力改善</a>
+											</li>
+											<li>
+												<a class="dropdown-item" href="{{APP_URL}}/shopping/sub/sublist_ctg2_4.php">睡眠改善</a>
+											</li>
+											<li>
+												<a class="dropdown-item" href="{{APP_URL}}/shopping/sub/sublist_ctg2_5.php">ダイエット</a>
+											</li>
+										</ul>
+									</li>
+								</div>
 
-      <div class=col>
-         <li class="nav-item dropdown">
-					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-						目的別商品カテゴリ
-            </a>
-            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-            <li><a class="dropdown-item" href="{{APP_URL}}/shopping/sub/sublist_ctg2_1.php">ストレス対策</a></li>
-            <li><a class="dropdown-item" href="{{APP_URL}}/shopping/sub/sublist_ctg2_2.php">アンチエイジング</a></li>
-            <li><a class="dropdown-item" href="{{APP_URL}}/shopping/sub/sublist_ctg2_3.php">集中力改善</a></li>
-            <li><a class="dropdown-item" href="{{APP_URL}}/shopping/sub/sublist_ctg2_4.php">睡眠改善</a></li>
-            <li><a class="dropdown-item" href="{{APP_URL}}/shopping/sub/sublist_ctg2_5.php">ダイエット</a></li>
-            </ul>
-          </li>
-          </div>
+								<div class="col">
+									{% if session['customer_login'] == 1 %}
+										<li class="nav-item dropdown">
+											<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+												会員メニュー</a>
+											<ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+												<li>
+													<a class="dropdown-item" href="{{APP_URL}}/shopping/cart.php">カート確認</a>
+												</li>
+												<li>
+													<a class="dropdown-item" href="{{APP_URL}}/customer/edit_customer.php">ユーザー情報編集</a>
+												</li>
+												<li>
+													<a class="dropdown-item" href="{{APP_URL}}/create_account/logout.php">ログアウト</a>
+												</li>
+												<li>
+													<a class="dropdown-item" href="{{APP_URL}}/customer/delete_customer.php">退会</a>
+												</li>
+											</ul>
+										</li>
+									{% else %}
+										<li>
+											<a href="{{APP_URL}}/create_account/Login.php">ログイン</a>
+										</li>
+									{% endif %}
+								</div>
+							</div>
+							<li>
+								<form class="justify-content-center" type="search" action="{{APP_URL}}shopping/sub/sublist_all.php" method="GET">
+									<input class="form-control me-2" type="search" name="title" placeholder="商品名検索">
+									<button class="btn btn-outline-success" type="submit">
+										<i class="fas fa-search fa-lg"></i>
 
-      <div class=col>
-					{% if session['customer_login'] == 1 %}
-						<li class="nav-item dropdown">
-							<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-								会員メニュー</a>
-							<ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-              <li><a class="dropdown-item" href="{{APP_URL}}/shopping/cart.php">カート確認</a></li>
-              <li><a class="dropdown-item" href="{{APP_URL}}/customer/edit_customer.php">ユーザー情報編集</a></li>
-              <li><a class="dropdown-item" href="{{APP_URL}}/create_account/logout.php">ログアウト</a></li>
-              <li><a class="dropdown-item" href="{{APP_URL}}/customer/delete_customer.php">退会</a></li>
-							</ul>
-						</li>
-					{% else %}
-						<li>
-							<a href="{{APP_URL}}/create_account/Login.php">ログイン</a>
-						</li>
-					{% endif %}
-          </div>
-          </div>
-          <li>
-	<form class="justify-content-center" type="search" action="{{APP_URL}}shopping/sub/sublist_all.php" method="GET">
-						<input class="form-control me-2" type="search" name="title" placeholder="商品名検索">
-						<button class="btn btn-outline-success" type="submit"><i class="fas fa-search fa-lg"></i>
-
-</button>
-					</form>
-          </li>
-            <li><a href="{{APP_URL}}/shopping/cart.php"><i class="fas fa-shopping-cart fa-5x"></i></a></li>
-			</ul>
-	</div>
-</nav>
-
-
-</header>
+									</button>
+								</form>
+							</li>
+							<li>
+								<a href="{{APP_URL}}/shopping/cart.php">
+									<i class="fas fa-shopping-cart fa-5x"></i>
+								</a>
+							</li>
+						</ul>
+					</div>
+					</div>
+				</nav>
+			</header>
+			<br><br>

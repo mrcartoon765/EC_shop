@@ -15,23 +15,16 @@ require_once $_SERVER['DOCUMENT_ROOT']."/config/Bootstrap.class.php";
 
 $Book_data = database::data_get('book');
 
-
-$db = new Book_Database(Bootstrap::DB_HOST, Bootstrap::DB_USER, Bootstrap::DB_PASS, Bootstrap::DB_NAME, Bootstrap::DB_TYPE);
-$ses = new shopping_Session($db);
-$book = new Book($db);
+shopping_cart::cart_session();
 
 template_twig_files::Prepare_the_template();
 
+$ctg_id = POST_GET::GET($ctg_id,'ctg_id');
+$Book_title = POST_GET::GET($Book_title,'Book_title');
+$Book_Price = POST_GET::GET($Book_Price,'Book_Price');
+$Book_count = POST_GET::GET($Book_count,'Book_count');
 
-$ses->checkSession();
-$ctg_id = (isset($_GET['ctg_id']) === true && preg_match('/^[0-9]+$/', $_GET['ctg_id']) === 1)? $_GET['ctg_id'] : '';
 
-$Book_title = isset($_POST['Book_title'])? htmlspecialchars($_POST['Book_title'], ENT_QUOTES,'utf-8'):'';
-$Book_price = isset($_POST['Book_price'])? htmlspecialchars($_POST['Book_price'], ENT_QUOTES,'utf-8'):'';
-$Book_count = isset($_POST['Book_count'])? htmlspecialchars($_POST['Book_count'], ENT_QUOTES,'utf-8'):'';
-
-session_start();
-session_regenerate_id(true);
 
 if(isset($_SESSION['Books'])){
   $Books = $_SESSION['Books'];

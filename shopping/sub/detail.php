@@ -20,6 +20,8 @@ $sub = $DB_DATA_GET;
 $product_data = $detail_data;
 $book_id = $product_data['ctg_id'];
 
+$sub_id = database::id_no_random_get($sub,'id');
+
 database::data_get('book');
 
 $book = $DB_DATA_GET;
@@ -39,4 +41,5 @@ $context['subdetail'] = "detail.php?id=";
 $context['ctg1_product'] = $ctg1;
 $context['ctg2_product'] = $ctg2;
 $context['image_dir'] = Bootstrap::APP_URL."/shopping/image/sub/";
+$context['sub_id'] = $sub_id;
 template_twig_files::template_load_front();
