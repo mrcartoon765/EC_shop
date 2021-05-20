@@ -2,31 +2,34 @@
 <main>
 	<div class="wrapper last-wrapper">
 		<div class="container">
-			<div class="wrapper-title">
+			<div class="text-center">
 				<h3>Health Products</h3>
 				<p>関連商品一覧</p>
 			</div>
-		</div>
 
 		<div class="itemlist">
-			<ul>
+				<div class="container">
+				<div class="row">
 				{% for value in product_data %}
-					<li>
-						<form action="{{APP_URL}}/shopping/cart.php" method="POST" class="item-form">
+					<div class="card-group col-md-4">
+									<div class="card" style="width: 18rem;">
+										<div class="column flex-direction:row">
+						<form action="{{APP_URL}}/shopping/cart.php" method="POST">
 
 <a href="{{APP_URL}}{{this_dir}}detail.php?id={{ attribute(value,'id') }}">
-							<img src="{{IMAGE_DIR}}{{ attribute(value,'image') }}" alt="">
+							<img class="card-img-top img-fluid" src="{{IMAGE_DIR}}{{ attribute(value,'image') }}" alt="">
 							</a>
 							<div class="item-body text-center">
-								<h5>{{ attribute(value,'tile') }}</h5>
-								<input type="hidden" name="title" value="{{ attribute(value,'title')|e("html")}}">
-								<p>価格　￥{{ attribute(value,'price') }}</p>
+								<h5>{{ attribute(value,'title') }}</h5>
+								<input type="hidden" name="title" value="{{ attribute(value,'title')}}">
+								<p>価格 ￥{{ attribute(value,'price') }}</p>
 								<input type="hidden" name="price" value={{ attribute(value,'price')}}>
 								<p>{{  attribute(value,'detail')|slice(0,40) }}...</p>
 								<input type="hidden" name="ctg_id" value={{value['ctg_id']}}>
+								</div>
 
-								<div class="item-form">
-									<input type="number" name="count" maxlength="1000" step="1" placeholder="数値を入力" style="width:150px;">
+								<div class="text-center">
+									<input type="number" name="count" max="100" min="0" step="1" placeholder="数値を入力" style="width:150px;">
 									{% if login == true %}
 									<section class="post" data-wantName="{{ want_name }}">
     <div class="btn-want {{active}}">
@@ -36,13 +39,19 @@
 </section>
 {% else %}
 									{% endif %}
-									<button type="submit" name="cart_in_status" value=1 class="btn 	btn-primary">カートに入れる</button>
-								</div>
+									<div class="center">
+									<button type="submit" class="btn 	btn-primary">カートに入れる</button>
+									</div>
 							</form>
-						</div>
-					</li>
+							</div>
+							</div>
+							</div>
+							</div>
 				{% endfor %}
-			</ul>
+							</div>
+							</div>
+							</div>
+			
 			<ul class="paging">
 				<li>
 					<a href="{{ENTRY_URL}}sublist_all.php?title={{ title }}">« 最初</a>
@@ -69,6 +78,7 @@
 				</li>
 			</ul>
 		</div>
+	</div>
 	</div>
 </main>
 {% include "common/footer.html.twig" %}
