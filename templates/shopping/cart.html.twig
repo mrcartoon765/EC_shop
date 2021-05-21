@@ -1,7 +1,7 @@
 {% include "common/header.html.twig" %}
 <main>
 	<div class="breadcrumbs">
-		<div class="container">
+		<div class="container-fluid">
 			<ul>
 				<li>
 					<a href="{{APP_URL}}index.php">TOP</a>
@@ -10,89 +10,91 @@
 			</ul>
 		</div>
 	</div>
-	<div class="wrapper last-wrapper">
-		<div class="container">
-			<div class="wrapper-title">
-				<h3>MY CART</h3>
-				<p>カート</p>
-			</div>
-			<div class="cartlist">
-				<table class="cart-table">
-					<thead>
+	<div class="container-fluid">
+		<div class="wrapper-title">
+			<h3>MY CART</h3>
+			<p>カート</p>
+		</div>
+		<div class="table">
+			<table class="cart-table">
+				<thead>
+					<tr>
+						<th>商品名</th>
+						<th>価格</th>
+						<th>個数</th>
+						<th>小計</th>
+						<th>数量変更・削除</th>
+					</tr>
+				</thead>
+				<tbody>
+					{% set a = 0 %}
+					{% for value in product_cart %}
 						<tr>
-							<th>商品名</th>
-							<th>価格</th>
-							<th>個数</th>
-							<th>小計</th>
-							<th>数量変更・削除</th>
-						</tr>
-					</thead>
-					<tbody>
-								{% set a = 0 %}
-						{% for value in product_cart %}
-							<tr>
-								<td label="商品名:">{{ attribute(value,"product_title")|e("html") }}</td>
-								<td label="価格:" class="text-right">￥{{ attribute(value,'product_price') }}</td>
-								<td label="個数:" class="text-right">{{ attribute(value,'product_count') }}</td>
-								<td label="小計:" class="text-right">￥{{ attribute(value,'product_price') * attribute(value,'product_count') }}</td>
-								<td>
-									<div class="row">
-										<div class="col-3">
-											<form action="{{APP_URL}}/shopping/cart.php" method="POST">
-												<input type="number" name="product_count" value={{ attribute(value,'product_count') }} class="counter{{ a }}" data-max="500" data-min="1">
-											</div>
+							<td label="商品名:">{{ attribute(value,'product_title')|e("html") }}</td>
+							<td label="価格:" class="text-right">￥{{ attribute(value,'product_price') }}</td>
+							<td label="個数:" class="text-right">{{ attribute(value,'product_count') }}</td>
+							<td label="小計:" class="text-right">￥{{ attribute(value,'product_price') * attribute(value,'product_count') }}</td>
+							<td>
+							<div class="container">
+				<div class='row px-1'>
+				<div class="col px-1">
+									<form action="{{APP_URL}}/shopping/cart.php" method="POST">
+											<input type="button" value="＋" class="btnspinner btn-primary" data-cal="1" data-target=".counter{{ a }}">
+</div>
+				<div class="col px-1">
+											<input type="number" name="product_count" value={{ attribute(value,'product_count') }} class="counter{{ a }}" data-max="500" data-min="1">
+</div>
 
-											<div class="col-2">
-												<input type="button" value="＋" class="btnspinner btn-primary" data-cal="1" data-target=".counter{{ a }}">
-											</div>
-											<div class="col-2">
-												<input type="button" value="－" class="btnspinner btn-primary" data-cal="-1" data-target=".counter{{ a }}">
+				<div class="col px-1">
+											<input type="button" value="－" class="btnspinner btn-primary" data-cal="-1" data-target=".counter{{ a }}">
+</div>
 
-												<input type="hidden" name="cart_in_title" value="{{value['product_title']|e("html")}}">
-												<input type="hidden" name="cart_in_id" value= {{ a }}>
+										<input type="hidden" name="cart_in_title" value="{{value['product_title']|e("html")}}">
+										<input type="hidden" name="cart_in_id" value={{ a }}>
+
+				<div class="col px-1">
+											<button type="submit" class="btn btn-primary">変更する</button>
+							</div>
+									</form>
+										<form action="../../shopping/cart.php" method="post">
+											<input type="hidden" name='delete_name' value="{{ attribute(value,'product_title')|e("html") }}">
+											<div class="text-center">
+											<button type="submit" class="btn btn-danger">削除</button>
 											</div>
-											<div class="col-3">
-												<button type="submit" class="btn btn-primary">変更する</button>
-											</div>
+				</div>
+				</div>
+				</div>
 										</form>
-										<div class="col-2">
-											<form action="../../shopping/cart.php" method="post">
-												<input type="hidden" name='delete_name' value="{{ attribute(value,'product_title')|e("html") }}">
-												<button type="submit" class="btn btn-danger">削除</button>
-											</form>
-										</div>
+							</div>
 									</div>
-								</td>
-							</tr>
-						</div>
-					</tbody>
-				</td>
-			</tr>
-								{% set a = a + 1 %}
-		{% endfor %}
-		<tr class="total">
-			<th colspan="3">合計</th>
-			<td colspan="2">
-				<p>￥{{ total }}</p>
-				{% if login == true %}
-					<span style='color:red'>会員特別価格(30%OFF)</span>
-				{% endif %}
+							</td>
+						</tr>
+					</div>
+				</tbody>
 			</td>
 		</tr>
-	</tbody>
-</table>
-<div class="cart-btn">
+		{% set a = a + 1 %}
+	{% endfor %}
+	<tr class="total">
+		<th colspan="3">合計</th>
+		<td colspan="2">
+			<p>￥{{ total }}</p>
+			{% if login == true %}
+				<span style='color:red'>会員特別価格(30%OFF)</span>
+			{% endif %}
+		</td>
+	</tr>
+</tbody></table><div class="cart-btn">
 
-	{% if product_cart is not empty %}
-		{% if login == true %}
-			<button type="button" class="btn btn-primary" onclick="location.href='pay.php'">購入手続きへ</button>
-		{% else %}
+{% if product_cart is not empty %}
+	{% if login == true %}
+		<button type="button" class="btn btn-primary" onclick="location.href='pay.php'">購入手続きへ</button>
+	{% else %}
 		<form action="{{APP_URL}}create_account/login.php" method="POST">
-			<button type="submit" class="btn btn-primary" onclick="location.href='{{APP_URL}}create_account/login.php'" name="login_pay" value=1>ログインして購入手続きへ</button>
+			<button type="submit" class="btn btn-primary" onclick="location.href='{{APP_URL}}create_account/login.php'" name="login_pay" value="1">ログインして購入手続きへ</button>
 		</form>
-			<button type="button" class="btn btn-primary" onclick="location.href='{{APP_URL}}shopping/pay.php'">ログインせずに購入手続きへ</button>
-		{% endif %}
+		<button type="button" class="btn btn-primary" onclick="location.href='{{APP_URL}}shopping/pay.php'">ログインせずに購入手続きへ</button>
 	{% endif %}
+{% endif %}
 
-	<button type="button" class="btn btn-gray" onclick="location.href='{{APP_URL}}/shopping/book/Booklist.php'">お買い物を続ける</button>
-</div></div></div></main>{% include "common/footer.html.twig" %}
+<button type="button" class="btn btn-gray" onclick="location.href='{{APP_URL}}/shopping/book/Booklist.php'">お買い物を続ける</button></div></div></div></main>{% include "common/footer.html.twig" %}
