@@ -12,19 +12,20 @@
 		<div class="wrapper">
 			<div class="container">
 				<div class="wrapper-title">
-					<h2>NEWS</h2>
+					<h4>NEWS</h4>
 					<p>お知らせ</p>
 				</div>
 				<div class="news-list">
 					{% for value in news %}
 						<ul>
-							<li><h3>
-							{{ attribute(value,'updated_at') }}
+							<li><h7>
+							{{ attribute(value,'updated_at')[0:10] }}
+							<br>
 							<a href="{{APP_URL}}page.php?id={{attribute(value,'id') }}">
 							{{ attribute(value,'title') }}
 							</a>
 							</li>
-							</h3>
+							</h7>
 						</ul>
 					{% endfor %}
 				</div>
@@ -37,9 +38,9 @@
 
     <div class="row featurette">
       <div class="col-md-7">
-        <h2 class="featurette-heading text-center"><span class="text-muted">
-				健康知識に関する書籍</h2></span>
-       <h3>昨今の情勢で高まる世の中の”健康意識”に対して、科学的なアプローチやメタ分析を用いた今日からでも活かせるノウハウが詰また書籍の購入できます。</h3>
+        <h4 class="featurette-heading text-center"><span class="text-muted">
+				健康知識に関する書籍</h4></span>
+       <h7>昨今の情勢で高まる世の中の”健康意識”に対して、科学的なアプローチやメタ分析を用いた今日からでも活かせるノウハウが詰また書籍の購入できます。</h7>
 			 <div class="text-center">
 				        <p><a class="btn btn-secondary " href="{{APP_URL}}/shopping/book/Booklist_a.php" role="button">書籍一覧 &raquo;</a></p>
 			 </div>
@@ -54,9 +55,9 @@
 		<hr class="featurette-divider">
     <div class="row featurette">
       <div class="col-md-7 order-md-2">
-        <h2 class="featurette-heading text-center"><span class="text-muted">関連する商品</span></h2>
-        <h3>書籍にて紹介されている商品の購入が可能です。
-				弊社での取扱い商品はいずれもメーカー直仕入れの正規品でございます。安心してお買い求めいただけるようになっております</h3>
+        <h4 class="featurette-heading text-center"><span class="text-muted">関連する商品</span></h4>
+        <h7>書籍にて紹介されている商品の購入が可能です。
+				弊社での取扱い商品はいずれもメーカー直仕入れの正規品でございます。安心してお買い求めいただけるようになっております</h7>
 			 <div class="text-center">
 				        <p><a class="btn btn-secondary " href="{{APP_URL}}/shopping/sub/sublist_all.php" role="button">関連商材一覧 &raquo;</a></p>
       </div>
@@ -72,8 +73,8 @@
 
     <div class="row featurette">
       <div class="col-md-7">
-        <h2 class="featurette-heading text-center"><span class="text-muted">会員特典</span></h2>
-				<h3 class="text-center">会員登録されたお客様からの購入には定価の３割引でお買い求めいただけます</h3>
+        <h4 class="featurette-heading text-center"><span class="text-muted">会員特典</span></h4>
+				<h7 class="text-center">会員登録されたお客様からの購入には定価の３割引でお買い求めいただけます</h7>
 			 <div class="text-center">
 				 <p><a class="btn btn-secondary text-center" href="{{APP_URL}}/create_account/regist.php" role="button">新規会員登録 &raquo;</a></p>
       </div>
@@ -86,7 +87,7 @@
     <hr class="featurette-divider">
     <div class="row featurette">
       <div class="col-md-7 order-md-2">
-        <h2 class="featurette-heading text-center"><span class="text-muted">会社概要</span></h2>
+        <h4 class="featurette-heading text-center"><span class="text-muted">会社概要</span></h4>
         <p class="lead text-center">会社名:合同会社 HEALTH KNOWLEGE</p>
         <p class="lead text-center">代表者名：田中 正義</p>
         <p class="lead text-center">〒 000-9999</p>
@@ -101,7 +102,7 @@
 
     <div class="row featurette">
       <div class="col-md-7">
-        <h2 class="featurette-heading text-center"><span class="text-muted">お問い合わせ</span></h2>
+        <h4 class="featurette-heading text-center"><span class="text-muted">お問い合わせ</span></h4>
 				<form method="POST" action="{{APP_URL}}/Contact/confirm.php">
         <p class="lead text-left">お名前 *<input type="text" name="name"></p>
         <p class="lead text-left">Email *<input type="email" name="email"></p>
