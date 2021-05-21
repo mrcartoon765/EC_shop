@@ -1,57 +1,69 @@
 {% include "common/header.html.twig" %}
-	<main>
+<main>
 	<div class="wrapper last-wrapper">
-		<div class="container">
+		<div class="container-flluid">
 			<div class="wrapper-title">
-				<h3>BOOK</h3>
-				<p>書籍一覧</p>
+				<h2>BOOKs</h2>
+				<h6>書籍一覧</h6>
 			</div>
-		</div>
-
-	<div class="itemlist">
-				<div class="container">
-				<div class="row">
+		
+			<div class="row">
 				{% for value in product_data %}
-					<div class="card-group col-md-4">
-									<div class="card" style="width: 18rem;">
-										<div class="column flex-direction:row">
-						<form action="{{APP_URL}}/shopping/cart.php" method="POST">
+					<div class="card-group col-6 col-md-4" style="width: 18rem;">
+						<div class="card">
+							<form action="{{APP_URL}}/shopping/cart.php" method="POST">
 
-<a href="{{APP_URL}}shopping/book/detail.php?id={{ attribute(value,'id') }}">
-							<img class="card-img-top img-fluid" src="{{IMAGE_DIR}}{{ attribute(value,'image') }}" alt="">
-							</a>
-							<div class="item-body text-center">
-								<h5>{{ attribute(value,'title') }}</h5>
-								<input type="hidden" name="title" value="{{ attribute(value,'title')}}">
-								<p>価格 ￥{{ attribute(value,'price') }}</p>
-								<input type="hidden" name="price" value={{ attribute(value,'price')}}>
-								<p>{{  attribute(value,'detail')|slice(0,40) }}...</p>
+								<a href="{{APP_URL}}shopping/book/detail.php?id={{ attribute(value,'id') }}">
+									<img class="card-img-top img-fluid" src="{{IMAGE_DIR}}{{ attribute(value,'image') }}" alt="">
+								</a>
+								<div class="card-body">
+								<p class="card-text">
+								{# <div class="card-title"> #}
+									<h5>{{ attribute(value,'title') }}</h5>
+								{# </div> #}
+								{# <p class="card-subtitle mb-2 text-muted"> #}
+									<input type="hidden" name="title" value="{{ attribute(value,'title')}}">
+									<h7>価格 ￥{{ attribute(value,'price') }}</h7>
+									<br>
+									<input type="hidden" name="price" value={{ attribute(value,'price')}}>
+								{# </p> #}
+								{{  attribute(value,'detail')|slice(0,40) }}...
 								<input type="hidden" name="ctg_id" value={{value['ctg_id']}}>
+								</p>
 								</div>
 
-								<div class="text-center">
-									<input type="number" name="count" max="100" min="0" step="1" placeholder="数値を入力" style="width:150px;">
-									{% if login == true %}
-									<section class="post" data-wantName="{{ want_name }}">
-    <div class="btn-want {{active}}">
-        <!-- 自分がいいねした投稿にはハートのスタイルを常に保持する -->
-        <i class="fa-heart fa-lg px-16 {{icon}}"></i><span></span>
-    </div>
-</section>
-{% else %}
-									{% endif %}
-									<div class="center">
-									<button type="submit" class="btn 	btn-primary">カートに入れる</button>
+								<div class="card-footer text-center">
+									<small class="text">
+										<input type="number" name="count" max="100" min="0" step="1" placeholder="数値を入力">
+										{% if login == true %}
+											<section class="post" data-wantname="{{ want_name }}">
+												<div>
+													<class="btn-want{{active}}">
+														<!-- 自分がいいねした投稿にはハートのスタイルを常に保持する -->
+														<i class="fa-heart fa-2x px-16 {{icon}}"></i>
+														<span></span>
+													</div>
+												</section>
+												{% else %}
+											{% endif %}
+											<div class="d-none d-sm-block">
+												<button type="submit" class="btn-primary">カートに入れる</button>
+											</div>
+											<div class="d-block d-sm-none">
+											<button type="submit" class="btn btn-link">
+												<i type="submit" class="fas fa-shopping-cart fa-2x"></i>
+											</button>
+											</div>
+										</small>
+										<input type="hidden" name="cart_in_status" value=1>
 									</div>
-							</form>
+
+								</form>
 							</div>
-							</div>
-							</div>
-							</div>
-				{% endfor %}
-							</div>
-							</div>
-			
-	</div>
+						</div>
+					{% endfor %}
+				</div>
+			</div>
+		</div>
 </main>
- {% include "common/footer.html.twig" %}
+{% include "common/footer.html.twig" %}
