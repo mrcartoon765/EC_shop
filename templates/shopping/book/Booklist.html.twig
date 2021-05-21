@@ -1,69 +1,74 @@
 {% include "common/header.html.twig" %}
 <main>
-	<div class="wrapper last-wrapper">
-		<div class="container-flluid">
-			<div class="wrapper-title">
-				<h2>BOOKs</h2>
-				<h6>書籍一覧</h6>
-			</div>
-		
-			<div class="row">
-				{% for value in product_data %}
-					<div class="card-group col-6 col-md-4" style="width: 18rem;">
-						<div class="card">
-							<form action="{{APP_URL}}/shopping/cart.php" method="POST">
+	<div class="container-flluid">
+		<br><br><br>
+		<div class="wrapper-title">
+			<h2>BOOKs</h2>
+			<h6>書籍一覧</h6>
+		</div>
+		{% set a = 0 %}
+		<div class="row">
+			{% for value in product_data %}
+				<div class="card-group col-6 col-md-4 px-0" style="width: 18rem;">
+					<div class="card">
+						<form action="{{APP_URL}}/shopping/cart.php" method="POST">
 
-								<a href="{{APP_URL}}shopping/book/detail.php?id={{ attribute(value,'id') }}">
-									<img class="card-img-top img-fluid" src="{{IMAGE_DIR}}{{ attribute(value,'image') }}" alt="">
-								</a>
-								<div class="card-body">
+							<a href="{{APP_URL}}shopping/book/detail.php?id={{ attribute(value,'id') }}">
+								<img class="card-img-top img-fluid" src="{{IMAGE_DIR}}{{ attribute(value,'image') }}" alt="">
+							</a>
+							<div class="card-body px-0">
 								<p class="card-text">
-								{# <div class="card-title"> #}
 									<h5>{{ attribute(value,'title') }}</h5>
-								{# </div> #}
-								{# <p class="card-subtitle mb-2 text-muted"> #}
 									<input type="hidden" name="title" value="{{ attribute(value,'title')}}">
 									<h7>価格 ￥{{ attribute(value,'price') }}</h7>
-									<br>
 									<input type="hidden" name="price" value={{ attribute(value,'price')}}>
-								{# </p> #}
-								{{  attribute(value,'detail')|slice(0,40) }}...
-								<input type="hidden" name="ctg_id" value={{value['ctg_id']}}>
+									<br>
+									{{  attribute(value,'detail')|slice(0,40) }}...
+									<input type="hidden" name="ctg_id" value={{value['ctg_id']}}>
 								</p>
-								</div>
-
-								<div class="card-footer text-center">
-									<small class="text">
-										<input type="number" name="count" max="100" min="0" step="1" placeholder="数値を入力">
-										{% if login == true %}
-											<section class="post" data-wantname="{{ want_name }}">
-												<div>
-													<class="btn-want{{active}}">
-														<!-- 自分がいいねした投稿にはハートのスタイルを常に保持する -->
-														<i class="fa-heart fa-2x px-16 {{icon}}"></i>
-														<span></span>
-													</div>
-												</section>
-												{% else %}
-											{% endif %}
-											<div class="d-none d-sm-block">
-												<button type="submit" class="btn-primary">カートに入れる</button>
-											</div>
-											<div class="d-block d-sm-none">
-											<button type="submit" class="btn btn-link">
-												<i type="submit" class="fas fa-shopping-cart fa-2x"></i>
-											</button>
-											</div>
-										</small>
-										<input type="hidden" name="cart_in_status" value=1>
-									</div>
-
-								</form>
 							</div>
-						</div>
-					{% endfor %}
+
+							<div class="card-footer text-center">
+								<small class="text">
+									{% if login == true %}
+										<section class="post" data-wantname="{{ want_name }}">
+											<div
+												class="btn-want{{active}}">
+												<!-- 自分がいいねした投稿にはハートのスタイルを常に保持する -->
+												<i class="fa-heart fa-2x px-16 {{icon}}"></i>
+												<span></span>
+											</div>
+										</section>
+										{% else %}
+									{% endif %}
+									<input type="number" name="count" data-max="100" data-min="0" step="1" placeholder="数値を入力" class="counter{{ a }}">
+									<br><br>
+									<div class="row">
+										<div class="col">
+											<input type="button" value="＋" class="btnspinner btn-success" data-cal="1" data-target=".counter{{ a }}">
+										</div>
+										<div class="col">
+											<input type="button" value="－" class="btnspinner btn-success" data-cal="-1" data-target=".counter{{ a }}">
+											<br><br>
+										</div>
+									</div>
+									<div class="d-none d-sm-block">
+										<button type="submit" class="btn-success">カートに入れる</button>
+									</div>
+									<div class="d-block d-sm-none">
+										<button type="submit" class="btn btn-link">
+											<i type="submit" class="fas fa-shopping-cart fa-2x"></i>
+										</button>
+									</div>
+								</small>
+								<input type="hidden" name="cart_in_status" value="1">
+							</div>
+
+						</form>
+					</div>
 				</div>
-			</div>
+				{% set a = a + 1 %}
+			{% endfor %}
 		</div>
-</main>
-{% include "common/footer.html.twig" %}
+	</div>
+</div></main>{% include "common/footer.html.twig" %}
