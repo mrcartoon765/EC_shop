@@ -1,79 +1,120 @@
 {% include "common/header.html.twig" %}
-<br>
-<br>
+<br><br><br>
 <main>
 	<div class="last-wrapper center-block">
-		<div class="container  center-block">
+		<div class="container-fluid">
 			<div class="wrapper-title  center-block">
 				<h1>{{value['title']}}</h1>
 			</div>
+			<div class="album py-5 bg-light">
+				<div class="container-fluid">
 
-		<div class="album py-5 bg-light">
-			<div class="container">
-
-				<div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-					<div class="col">
-						<div class="card shadow-sm">
-							<form action="{{APP_URL}}/shopping/cart.php" method="POST">
+					<div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+						<div class="col px-0">
+							<div class="card shadow-sm">
+								<form action="{{APP_URL}}/shopping/cart.php" method="POST">
 									<div class="card">
-                  <img src="{{IMAGE_DIR}}{{ value['image'] }}" class="card-img-top" alt="">
-                  </div>
-								<div class="card-body">
-									<input type="hidden" name="title" value={{value['title']}}>
-									<p class="card-text" style="white-space: pre-wrap;">{{value['detail']}}</p>
-									<div class="text-center">
-									<p class="text-center" style="100%">価格 ￥{{value['price']}}</p>
+										<img src="{{IMAGE_DIR}}{{ value['image'] }}" class="card-img-top" alt="">
+									</div>
+									<div class="card-body">
+										<input type="hidden" name="title" value={{value['title']}}>
+										<p class="card-text" style="white-space: pre-wrap;">{{value['detail'][0:50]|nl2br}}..</p>
+										<p>
+											<button type="button" class="btn btn-gray" data-bs-toggle="modal" data-bs-target="#exampleModal">商品詳細の表示</button>
+											<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+												<div class="modal-dialog">
+													<div class="modal-content">
+														<div class="modal-header">
+															<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+														</div>
+														<div class="modal-body h5">
+															{{value['detail']|nl2br}}
+														</div>
+														<div class="modal-footer">
+															<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">閉じる</button>
+														</div>
+													</div>
+												</div>
+											</div>
+										</p>
+									</p>
+								</p>
+								<p></p>
+								<div class="text-center">
+									<h3 class="text-center" style="100%">価格 ￥{{value['price']|number_format}}</h3>
 									<input type="hidden" name="price" value={{value['price']}}>
 									<input type="hidden" name="ctg_id" value={{value['ctg_id']}}>
-									<input type="hidden" name="cart_in_status" value=1>
-										<div class="btn-group" type='center'>
-											<input type="number" name="count" maxlength="1" step="1" placeholder="数量を入力" style="width:50%;">
-											<button type="submit" class="btn btn-sm btn-outline-secondary" style="width:50%;">カートに入れる</button>
-											{% if login == true %}
-												<section class="post" data-wantname="{{ want_name }}">
-													<div
-														class="btn-want {{active}}">
-														<i class="fa-heart fa-lg px-16 {{icon}}"></i>
-														<span></span>
-													</div>
-												</section>
-												{% else %}
-											{% endif %}
-										</form>
+									<input type="hidden" name="cart_in_status" value="1">
 									</div>
-								</div>
-							</div>
-<div class="container">
-	<div class="row">
-		{# <div class="col-md-4 col-xs-6"> #}
-{# <div class="col-sm-8 col-xs-6"> #}
-<div class="row">
-<h3 class="text-center">オススメ関連商品</h3>
-			<ul class="slider">
-			{% for sub in sub_product %}
-				<li>
-					<a href="{{sub_detail}}{{sub["id"]}}"><img class="img-thumbnail" alt="" src="{{APP_URL}}/shopping/image/sub/{{sub['image']}}"/></a>
-					<p>{{sub['title']}}</p>
-					<p>￥{{sub['price']}}</p>
-				</li>
-			{% endfor %}
-			</ul>
-		</div>
-			</ul>
-		</div>
-		</div>
 
+
+										{% if login == true %}
+											<section class="post" data-wantname="{{ want_name }}">
+												<div
+													class="btn-want{{active}}">
+													<!-- 自分がいいねした投稿にはハートのスタイルを常に保持する -->
+													<i class="fa-heart fa-2x px-16 {{icon}}"></i>
+													<span></span>
+												</div>
+											</section>
+											{% else %}
+										{% endif %}
+										<div class="row">
+									<div class="btn-group" type='center'>
+											<div class="col">
+												<input type="button" value="＋" class="btnspinner btn-success" data-cal="1" data-target=".counter">
+											</div>
+											<input type="number" name="count" data-max="100" data-min="0" step="1" placeholder="数値を入力" class="counter text-center" style="width:30%">
+											<br><br>
+											<div class="col">
+												<input type="button" value="－" class="btnspinner btn-success" data-cal="-1" data-target=".counter">
+												<br><br>
+											</div>
+										</div>
+										<div class="d-none d-sm-block">
+											<button type="submit" class="btn-success">カートに入れる</button>
+										</div>
+										<div class="d-block d-sm-none">
+											<button type="submit" class="btn btn-link">
+												<i type="submit" class="fas fa-shopping-cart fa-2x"></i>
+											</button>
+										</div>
+									</small>
+									<input type="hidden" name="cart_in_status" value="1">
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+				</div>
+				<div class="container">
+							<div class="row"> <h3 class="text-center">関連オススメ商品</h3>
+							<ul class="slider">
+								{% for sub in sub_product %}
+									<li>
+										<a href="{{sub_detail}}{{sub["id"]}}"><img class="img-thumbnail" alt="" src="{{APP_URL}}/shopping/image/sub/{{sub['image']}}"/></a>
+										<p class="text-center h4">{{sub['title'][0:20]|e("html")}}</p>
+										<p class="text-center h5">￥{{sub['price']|number_format}}</p>
+									</li>
+								{% endfor %}
+							</ul>
+				</div>
+			</div>
+
+		</div>
 	</div>
+	<div class="text-center">
+	<a href="../../../shopping/book/Booklist.php">
+	<button class="btn btn-gray">書籍一覧へ</button>
+	</a>
 	</div>
-	</div>
-	</div>
-	</div>
-	</div>
-</div></div>
+
+
+</div>
 </div>
 
+</div>
+</div>
+</main>
 
-			</div>
-      </div>
-		</main>
-		{% include "common/footer.html.twig" %}
+{% include "common/footer.html.twig" %}

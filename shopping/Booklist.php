@@ -11,7 +11,7 @@ use config\database;
 
 $app_name = explode('/',dirname(__FILE__))[4];
 
-require_once $_SERVER['DOCUMENT_ROOT']."/config/Bootstrap.class.php";
+require_once $_SERVER['DOCUMENT_ROOT']."/config/Bootstrap .class.php";
 
 $Book_data = database::data_get('book');
 
@@ -45,9 +45,13 @@ if(isset($_SESSION['Books'])){
   }
   $Books = isset($_SESSION['Books'])? $_SESSION['Books']:[];
 
-$cateArr = $book->getCategoryList();
+// $cateArr = $book->getCategoryList();
 
-$Book_data = $book->getBookList($ctg_id);
+database::data_get('book');
+
+$Book_data = $DB_DATA_GET;
+
+// $Book_data = $book->getBookList($ctg_id);
 
 $context['cateArr'] = $cateArr;
 $context['Book_data'] = $Book_data;

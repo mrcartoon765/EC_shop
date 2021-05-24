@@ -18,9 +18,11 @@ template_twig_files::Prepare_the_template();
 
 $ctg_id=mb_substr($GLOBALS['filename'],-1);
 
-database::get_ctg_product('ctg1',$ctg_id);
+$ctg = mb_substr($GLOBALS['filename'],-3,1);
 
-database::get_ctg_name($ctg_id);
+database::get_ctg_product('ctg'.$ctg,$ctg_id);
+
+database::get_ctg_name($ctg_id,$ctg);
 
 $context['product_data'] = $ctg_product_data;
 $context['ctg_title'] = $ctg_name;

@@ -20,7 +20,7 @@
 								<p class="card-text">
 									<h5>{{ attribute(value,'title') }}</h5>
 									<input type="hidden" name="title" value="{{ attribute(value,'title')}}">
-									<h7>価格 ￥{{ attribute(value,'price') }}</h7>
+									<h5 class="red">価格 ￥{{ attribute(value,'price')|number_format }}</h5>
 									<input type="hidden" name="price" value={{ attribute(value,'price')}}>
 									<br>
 									{{  attribute(value,'detail')|slice(0,40) }}...
@@ -32,8 +32,7 @@
 								<small class="text">
 									{% if login == true %}
 										<section class="post" data-wantname="{{ want_name }}">
-											<div
-												class="btn-want{{active}}">
+											<div class="btn-want{{active}}">
 												<!-- 自分がいいねした投稿にはハートのスタイルを常に保持する -->
 												<i class="fa-heart fa-2x px-16 {{icon}}"></i>
 												<span></span>
@@ -41,13 +40,15 @@
 										</section>
 										{% else %}
 									{% endif %}
-									<input type="number" name="count" data-max="100" data-min="0" step="1" placeholder="数値を入力" class="counter{{ a }}">
-									<br><br>
+									<br>
 									<div class="row">
-										<div class="col">
+										<div class="col px-2">
 											<input type="button" value="＋" class="btnspinner btn-success" data-cal="1" data-target=".counter{{ a }}">
 										</div>
-										<div class="col">
+										<div class="col px-2">
+									<input type="number" name="count" data-max="100" data-min="0" step="1" placeholder="数量を入力" class="counter{{ a }}">
+										</div>
+										<div class="col px-2">
 											<input type="button" value="－" class="btnspinner btn-success" data-cal="-1" data-target=".counter{{ a }}">
 											<br><br>
 										</div>

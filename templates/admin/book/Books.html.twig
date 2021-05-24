@@ -28,7 +28,7 @@
 								<td>
 								<span class="d-inline-block text-truncate" style="max-width: 50px;">{{ attribute(value,'detail') }}</span>
 								</td>
-								<td>{{ attribute(value,'price') }}</td>
+								<td>{{ attribute(value,'price')|number_format }}</td>
 								<td><img src="{{APP_URL}}/shopping/image/book/{{ attribute(value,'image') }}" alt=""></td>
 								<td>{{ attribute(value,'date') }}</td>
 								<td>{{ attribute(value,'ctg_id') }}</td>

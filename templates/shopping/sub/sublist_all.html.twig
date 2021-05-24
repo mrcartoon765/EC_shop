@@ -19,7 +19,7 @@
 								<p class="card-text">
 									<h5>{{ attribute(value,'title')|slice(0,30)  }}...</h5>
 									<input type="hidden" name="title" value="{{ attribute(value,'title')}}">
-									<h7>価格 ￥{{ attribute(value,'price') }}</h7>
+									<h5 class="red" >価格 ￥{{ attribute(value,'price')|number_format }}</h5>
 									<input type="hidden" name="price" value={{ attribute(value,'price')}}>
 									<br>
 									{{  attribute(value,'detail')|slice(0,40) }}...

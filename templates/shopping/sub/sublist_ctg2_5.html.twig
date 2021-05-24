@@ -1,36 +1,99 @@
 {% include "common/header.html.twig" %}
-	<main>
-	<div class="wrapper last-wrapper">
-		<div class="container">
-			<div class="wrapper-title">
-				<h3>Health Products</h3>
-				<p>関連商品一覧</p>
-        <h3>{{ctg_title}}</h3>
-			</div>
+<main>
+	<div class="container-fluid">
+		<br><br><br>
+		<div class="wrapper-title">
+			<h2>Health Products</h2>
+			<h3>{{ctg_title}}一覧</h3>
 		</div>
-
-	<div class="itemlist">
-		<ul>
+		{% set a = 0 %}
+		<div class="row">
 			{% for value in product_data %}
-					<li>
-					<form action="{{APP_URL}}/shopping/cart.php" method="POST" class="item-form" >
-					<img src="{{IMAGE_DIR}}{{ attribute(value,'image') }}" alt="">
-					<div class="item-body">
-						<h5>{{ attribute(value,'title') }}</h5>
-						<input type="hidden" name="title" value={{ attribute(value,'title')}}>
-						<p>価格　￥{{ attribute(value,'price') }}</p>
-						<input type="hidden" name="price" value={{ attribute(value,'price')}}>
-						<p>{{  attribute(value,'detail')|slice(0,40) }}...</p>
-						<div class="item-form">
-            <input type="number" name="count" maxlength="1000" step="1" placeholder="購入数量" style="width:150px;">
-            <br>
-							<button type="submit" class="btn btn-primary">カートに入れる</button>
-							</form>
-						</div>
+				<div class="card-group col-6 col-md-4 px-0" style="width: 100%;">
+					<div class="card">
+						<form action="{{APP_URL}}/shopping/cart.php" method="POST">
+							<a href="{{APP_URL}}/shopping/sub/detail.php?id={{ attribute(value,'id') }}">
+								<img class="card-img-top img-fluid" src="{{IMAGE_DIR}}{{ attribute(value,'image') }}" alt="">
+							</a>
+							<div class="card-body px-0">
+								<p class="card-text">
+									<h5>{{ attribute(value,'title')|slice(0,30)  }}...</h5>
+									<input type="hidden" name="title" value="{{ attribute(value,'title')}}">
+									<h7>価格 ￥{{ attribute(value,'price') }}</h7>
+									<input type="hidden" name="price" value={{ attribute(value,'price')}}>
+									<br>
+									{{  attribute(value,'detail')|slice(0,40) }}...
+									<input type="hidden" name="ctg_id" value={{value['ctg_id']}}>
+								</p>
+							</div>
+
+							<div class="card-footer text-center">
+								<small class="text">
+									{% if login == true %}
+										<section class="post" data-wantname="{{ want_name }}">
+											<div
+												class="btn-want {{active}}">
+												<!-- 自分がいいねした投稿にはハートのスタイルを常に保持する -->
+												<i class="fa-heart fa-2x px-16 {{icon}}"></i>
+												<span></span>
+											</div>
+										</section>
+										{% else %}
+									{% endif %}
+									<input type="number" name="count" data-max="100" data-min="0" step="1" placeholder="数値を入力" class="counter{{ a }}">
+									<br><br>
+									<div class="row">
+										<div class="col">
+											<input type="button" value="＋" class="btnspinner btn-success" data-cal="1" data-target=".counter{{ a }}">
+										</div>
+										<div class="col">
+											<input type="button" value="－" class="btnspinner btn-success" data-cal="-1" data-target=".counter{{ a }}">
+											<br><br>
+										</div>
+									</div>
+									<div class="d-none d-sm-block">
+										<button type="submit" class="btn-success">カートに入れる</button>
+									</div>
+									<div class="d-block d-sm-none">
+										<button type="submit" class="btn btn-link">
+											<i type="submit" class="fas fa-shopping-cart fa-2x"></i>
+										</button>
+									</div>
+								</small>
+								<input type="hidden" name="cart_in_status" value=1>
+							</div>
+
+						</form>
 					</div>
-			</li>
+				</div>
+				{% set a = a + 1 %}
 			{% endfor %}
-		</ul>
+		</div>
 	</div>
-</main>
- {% include "common/footer.html.twig" %}
+</div>
+
+<ul class="paging">
+	<li>
+		<a href="{{ENTRY_URL}}sublist_all.php?title={{ title }}">« 最初</a>
+	</li>
+
+	{% if prev != '' %}
+		<li>
+			<a href="{{ENTRY_URL}}sublist_all.php?page={{ prev }}&title={{ title }}" {{ page }} -1="-1">{{ page -1}}</a>
+		</li>
+	{% endif %}
+
+	<li>
+		<span>{{ page }}</span>
+	</li>
+
+	{% if next != '' %}
+		<li>
+			<a href="{{ENTRY_URL}}sublist_all.php?page={{ next }}&title={{ title }}">{{ page +1}}</a>
+		</li>
+	{% endif %}
+
+	<li>
+		<a href="{{ENTRY_URL}}/sublist_all.php?page={{ pages }}&title={{ title }}">最後 »</a>
+	</li>
+</ul></main>{% include "common/footer.html.twig" %}

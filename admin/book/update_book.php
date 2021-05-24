@@ -16,4 +16,4 @@ original_Mysql_command::POST_DATA_UPDATE('book');
 
 database::dbh();
 
-header("location:" . Bootstrap::ENTRY_URL . "/books.php");
+// header("location:" . Bootstrap::ENTRY_URL . "/books.php");
