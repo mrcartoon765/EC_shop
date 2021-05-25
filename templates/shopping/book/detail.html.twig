@@ -18,7 +18,7 @@
 									</div>
 									<div class="card-body">
 										<input type="hidden" name="title" value={{value['title']}}>
-										<p class="card-text" style="white-space: pre-wrap;">{{value['detail'][0:50]|nl2br}}..</p>
+										<h4 class="card-text" style="white-space: pre-wrap;">{{value['detail'][0:50]|raw}}..</h4>
 										<p>
 											<button type="button" class="btn btn-gray" data-bs-toggle="modal" data-bs-target="#exampleModal">商品詳細の表示</button>
 											<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -28,7 +28,7 @@
 															<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 														</div>
 														<div class="modal-body h5">
-															{{value['detail']|nl2br}}
+															{{value['detail']|raw|nl2br}}
 														</div>
 														<div class="modal-footer">
 															<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">閉じる</button>
@@ -41,7 +41,7 @@
 								</p>
 								<p></p>
 								<div class="text-center">
-									<h3 class="text-center" style="100%">価格 ￥{{value['price']|number_format}}</h3>
+									<h3 class="text-center red" style="100%">価格 ￥{{value['price']|number_format}}</h3>
 									<input type="hidden" name="price" value={{value['price']}}>
 									<input type="hidden" name="ctg_id" value={{value['ctg_id']}}>
 									<input type="hidden" name="cart_in_status" value="1">

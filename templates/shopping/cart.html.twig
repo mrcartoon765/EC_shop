@@ -17,22 +17,22 @@
 			<table class="cart-table">
 				<thead>
 					<tr>
-						<th>商品名</th>
-						<th>価格</th>
-						<th>個数</th>
-						<th>小計</th>
-						<th>数量変更・削除</th>
+						<th class="text-center">商品名</th>
+						<th class="text-center">価格</th>
+						<th class="text-center">個数</th>
+						<th class="text-center">小計</th>
+						<th class="text-center">数量変更・削除</th>
 					</tr>
 				</thead>
 				<tbody>
 					{% set a = 0 %}
 					{% for value in product_cart %}
 						<tr>
-							<td label="商品名:">{{ attribute(value,'product_title')|e("html") }}</td>
-							<td label="価格:" class="text-right">￥{{ attribute(value,'product_price')|number_format }}</td>
-							<td label="個数:" class="text-right">{{ attribute(value,'product_count') }}</td>
+							<td label="商品名:" class="text-right h5">{{ attribute(value,'product_title')|raw }}</td>
+							<td label="価格:" class="text-right h5">￥{{ attribute(value,'product_price')|number_format }}</td>
+							<td label="個数:" class="text-right h5">{{ attribute(value,'product_count') }}</td>
 							{% set small_sum =  attribute(value,'product_price') * attribute(value,'product_count') %}
-							<td label="小計:" class="text-right">￥{{small_sum|number_format}}</td>
+							<td label="小計:" class="text-right h5">￥{{small_sum|number_format}}</td>
 							<td>
 								<div class="container">
 									<div class='row px-1'>
@@ -48,7 +48,7 @@
 												<input type="button" value="－" class="btnspinner btn-primary" data-cal="-1" data-target=".counter{{ a }}">
 											</div>
 
-											<input type="hidden" name="cart_in_title" value="{{value['product_title']|e("html")}}">
+											<input type="hidden" name="cart_in_title" value="{{value['product_title']|raw}}">
 											<input type="hidden" name="cart_in_id" value={{ a }}>
 
 											<div class="col px-1">
@@ -56,7 +56,7 @@
 											</div>
 										</form>
 										<form action="../../shopping/cart.php" method="post">
-											<input type="hidden" name='delete_name' value="{{ attribute(value,'product_title')|e("html") }}">
+											<input type="hidden" name='delete_name' value="{{ attribute(value,'product_title')|raw }}">
 											<div class="text-center">
 												<button type="submit" class="btn btn-danger">削除</button>
 											</form>
@@ -69,11 +69,11 @@
 					{% endfor %}
 				</tbody>
 				<tr class="total">
-					<th colspan="3">合計</th>
+					<th class="text-center" colspan="3">合計</th>
 					<td colspan="2">
-						<p>￥{{ total|number_format }}</p>
+						<p class="h3">￥{{ total|number_format }}</p>
 						{% if login == true %}
-							<span style='color:red'>会員特別価格(30%OFF)</span>
+							<span style='color:red h4'>会員特別価格(30%OFF)</span>
 						{% endif %}
 					</td>
 				</tr>
@@ -91,6 +91,12 @@
 			{% endif %}
 		{% endif %}
 		<button type="button" class="btn btn-gray" onclick="location.href='{{APP_URL}}/shopping/book/Booklist.php'">お買い物を続ける</button>
+				{% if product_cart is not empty %}
+			<form action="{{APP_URL}}shopping/cart.php" method="POST">
+					<button type="submit" class="btn btn-danger" onclick="location.href='{{APP_URL}}shopping/cart.php'" name="cart_null" value="1" method="POST">カートの中身を空にする</button>
+				</form>
+			{% else %}
+			{% endif %}
 	</div>
 	</div><br><br>
 </main>

@@ -3,7 +3,6 @@
 namespace config;
 
 use config\template_twig_files;
-use Symfony\Component\VarDumper\VarDumper;
 
 $app_name = explode('/',dirname(__FILE__))[4];
 

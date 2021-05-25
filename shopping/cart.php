@@ -23,7 +23,6 @@ $product_count = POST_GET::GET($product_count,'product_count');
 
 $cart_in_title = POST_GET::GET($cart_in_title,'cart_in_title');
 
-
 if($product_count != null){
   $_SESSION['products'][$cart_in_title]['product_count'] = $product_count;
 }
@@ -47,6 +46,13 @@ $context['title'] = (string) $_POST['products'];
 if($_POST["cart_in_status"] == 1){
 $_POST["cart_in_status"] = 0;
 header('Location:'.$_SERVER['HTTP_REFERER']);
+}
+
+if($_POST["cart_null"] == 1){
+  unset($_SESSION['products']);
+  unset($_SESSION['total_price']);
+  $_POST["cart_null"] = 0;
+  header('Location:./cart.php');
 }
 
 template_twig_files::template_load_front();

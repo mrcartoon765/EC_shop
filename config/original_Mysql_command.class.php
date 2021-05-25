@@ -39,6 +39,7 @@ class original_Mysql_command
                     // "アップロード完了,画像保存先のディレクトリは、DBのテーブル名と同じとする"
                     $dbh = database::dbh();
                     $sql = "INSERT INTO $table ( `image`, " . $k . " ) VALUES ( " . '"' . $file_name . '"' . ", " . $v .'"'.",NOW());";
+                    $stmt = $dbh->quote($sql);
                     $stmt = $dbh->prepare($sql);
 
                     $stmt->execute();
@@ -95,6 +96,7 @@ class original_Mysql_command
                     file_exists($image_dir . $old_image_file) ?
                     unlink($image_dir . $old_image_file) :
                     '';
+                    $stmt = $dbh->quote($sql);
                     $stmt = $dbh->prepare("UPDATE ".$table." SET " . $sql .", last_update= NOW(), image=" . "'" . $file_name . "'" . " WHERE " . $table . ".id=" . $delete_id);
 
                     $stmt->execute();
