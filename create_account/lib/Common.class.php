@@ -1,6 +1,9 @@
 <?php
 
 namespace create_account\lib;
+
+use config\database;
+
 class Common
 {
     private $dataArr = [];
@@ -34,6 +37,10 @@ class Common
     {
         if (preg_match('/^([a-zA-Z0-9])+([a-zA-Z0-9\._-])*@([a-zA-Z0-9_-])+[a-zA-Z0-9\._-]+$/', $this->dataArr['mail']) === 0) {
             $this->errArr['mail'] = 'メールアドレスを正しい形式で入力してください';
+        }
+        $exists_mail = database::get_data_where('Customer','mail',$this->dataArr['mail']);
+        if(($exists_mail[0]['mail'] === $this->dataArr['mail'])){
+            $this->errArr['mail'] = 'このメールアドレスは既に登録されています';
         }
     }
     private function passwordCheck()

@@ -89,4 +89,5 @@ $context['dayArr'] = $dayArr;
 $context['dataArr'] = $dataArr;
 $context['errArr'] = $errArr;
 
-template_twig_files::template_load_front();
+$template = $GLOBALS['twig']->loadTemplate($GLOBALS['this_dir'] .  $template);
+$template->display($GLOBALS['context']);

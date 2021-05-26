@@ -47,7 +47,7 @@ class database
     public static function get_data_where($table,$where,$id)
     {
         $dbh = self::dbh();
-        $sql = "SELECT * FROM " . $table . " WHERE ".$where." = " . $id;
+        $sql = "SELECT * FROM " . $table . " WHERE ".$where." = " . "'".$id."'";
         $stmt = $dbh->prepare($sql);
         $stmt->execute();
         $data_get_where = $stmt->fetchall(\PDO::FETCH_ASSOC);
