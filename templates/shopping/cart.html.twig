@@ -73,7 +73,9 @@
 					<td colspan="2">
 						<p class="h3">￥{{ total|number_format }}</p>
 						{% if login == true %}
-							<span style='color:red h4'>会員特別価格(30%OFF)</span>
+		{% if product_cart is not empty %}
+							<span style='color:red'>会員特別価格(30%OFF)</span>
+						{% endif %}
 						{% endif %}
 					</td>
 				</tr>

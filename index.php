@@ -10,7 +10,7 @@ require_once $_SERVER['DOCUMENT_ROOT']."/config/Bootstrap.class.php";
 
 template_twig_files::Prepare_the_template();
 
-database::data_get('book');
+database::data_get('Book');
 $Book_data = $DB_DATA_GET;
 $Book_id = database::id_no_random_get($Book_data,'id');
 $Book_image = $Book_data[$Book_id]['image'];

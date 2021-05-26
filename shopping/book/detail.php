@@ -8,10 +8,10 @@ require_once $_SERVER['DOCUMENT_ROOT']."/config/Bootstrap.class.php";
 
 shopping_cart::cart_session();
 template_twig_files::Prepare_the_template();
-database::data_get('book');
+database::data_get('Book');
 
 $id =  substr($_SERVER['REQUEST_URI'],-1);
-database::get_detail_data('book',$id);
+database::get_detail_data('Book',$id);
 $book = $detail_data;
 
 $sub = database::Related_Products_Get('sub','ctg_id',$book['id']);

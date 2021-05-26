@@ -16,7 +16,7 @@ shopping_cart::cart_session();
 
 template_twig_files::Prepare_the_template();
 
-database::data_get('book');
+database::data_get('Book');
 
 $context['product_data'] = $DB_DATA_GET;
 $context['detail'] = Bootstrap::APP_URL.$this_dir."detail.php?id=";

@@ -22,7 +22,7 @@ $book_id = $product_data['ctg_id'];
 
 $sub_id = database::id_no_random_get($sub,'id');
 
-database::data_get('book');
+database::data_get('Book');
 
 $book = $DB_DATA_GET;
 $book_data = $book[$book_id];

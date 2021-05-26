@@ -13,7 +13,7 @@ $app_name = explode('/',dirname(__FILE__))[4];
 
 require_once $_SERVER['DOCUMENT_ROOT']."/config/Bootstrap .class.php";
 
-$Book_data = database::data_get('book');
+$Book_data = database::data_get('Book');
 
 shopping_cart::cart_session();
 
@@ -47,7 +47,7 @@ if(isset($_SESSION['Books'])){
 
 // $cateArr = $book->getCategoryList();
 
-database::data_get('book');
+database::data_get('Book');
 
 $Book_data = $DB_DATA_GET;
 
