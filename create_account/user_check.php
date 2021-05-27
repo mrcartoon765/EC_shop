@@ -33,11 +33,10 @@ if(password_verify($password,$pass[2])){
 
 $count = $stmt->rowCount();
 
-if($count==0){
+if($count == 0){
   header('location:./../login.php');
 }else{
 //ログイン完了
-
 $stmt = $dbh->prepare("SELECT * FROM customer WHERE mail=:mail");
 $stmt->bindParam(':mail',$mail);
 $stmt->execute();

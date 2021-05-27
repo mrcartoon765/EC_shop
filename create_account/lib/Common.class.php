@@ -17,8 +17,11 @@ class Common
         $this->dataArr = $dataArr;
         //クラス内のメソッドを読み込む
         $this->createErrorMessage();
+        if(is_null($_POST['edit_customer']))
+        {
         $this->mailCheck();
         $this->passwordCheck();
+        }
         $this->familyNameCheck();
         $this->firstNameCheck();
         $this->birthCheck();

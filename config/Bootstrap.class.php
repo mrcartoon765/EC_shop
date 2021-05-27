@@ -2,6 +2,8 @@
 
 namespace config;
 
+use Contact\lib\error_check;
+
 date_default_timezone_set('Asia/Tokyo');
 require_once dirname(__FILE__) . '/../vendor/autoload.php';
 
@@ -393,3 +395,7 @@ class POST_GET
         }
     }
 }
+// echo '<pre>';
+// var_dump($_POST);
+// var_dump($_SESSION);
+// echo '</pre>';

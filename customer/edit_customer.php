@@ -28,5 +28,8 @@ $context['dayArr'] = $dayArr;
 $context['dataArr'] = $dataArr;
 $context['errArr'] = $errArr;
 $context['customer'] = $customer_logindata;
+$context['year'] =$customer_logindata['year'];
+$context['month'] =$customer_logindata['month'];
+$context['day'] =$customer_logindata['day'];
 
 template_twig_files::template_load_front();

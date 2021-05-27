@@ -1,44 +1,37 @@
 {% include "common/header.html.twig" %}
 	<main>
             <div class="container">
-  <body class="text-center">
-  <div class="wrapper last-wrapper">
+            <body class="text-center">
+            <div class="wrapper last-wrapper">
   <main class="form-signin">
                     <div class="wrapper-title">
-                        <h3>REGISTER</h3>
-                        <p>新規会員登録</p>
+                        <h3>ユーザーデータ編集かきなおし</h3>
+                        <p>個人情報編集</p>
                     </div>
 <form method="POST" action="{{APP_URL}}/create_account/confirm.php">
-メールアドレス<span class="error">*</span>
-<input type="email" name="mail" value="{{dataArr.mail}}" size="40">
-{% if errArr.mail | length > 0 %}<br><span class="error">{{errArr.mail}}</span>{% endif %}
-<br>
-パスワード<span class="error">*</span>
-<input type="current-password" name="password" value="{{dataArr.password}}" size="40">
-{% if errArr.password | length > 0 %}<br><span class="error">{{errArr.password}}</span>{% endif %}
-<br>
 お名前(氏名)<span class="error">*</span>
 <div class="row">
 <div class="col">
-姓<input type="text" name="family_name" value="{{dataArr.family_name}}">
+姓<input class="text-center" type="text" name="family_name" value="{{ dataArr.family_name }}" required>
 {% if errArr.family_name | length > 0 %}<br><span class="error">{{ errArr.family_name }}</span>{% endif %}
 </div>
 <div class="col">
-名<input type="text" name="first_name"  value="{{dataArr.first_name}}">
+名<input  class="text-center" type="text" name="first_name"  value="{{ dataArr.first_name }}" required>
 {% if errArr.first_name | length > 0 %}<br><span class="error">{{ errArr.first_name }}</span>{% endif %}
 </div>
 </div>
 <br>
-お名前(かな)<span class="error">*</span>
+お名前(かな)
 <div class="row">
 <div class="col">
-せい<input type="text" name="family_name_kana" value="{{dataArr.family_name_kana}}">
+せい<input class="text-center" type="text" name="family_name_kana" value="{{ dataArr.family_name_kana }}">
 </div>
 <div class="col">
-めい<input type="text" name="first_name_kana"  value="{{dataArr.first_name_kana}}">
+めい<input class="text-center" type="text" name="first_name_kana"  value="{{ dataArr.first_name_kana }}">
 </div>
 </div>
 <br>
+
 
 生年月日<span class="error">*</span>
 <div class="row">
@@ -50,15 +43,16 @@
 {% for index, label in yearArr %}
 <option value="{{index}}" {% if dataArr.year == index %} selected {% endif %}>{{ label }}</option>
 {% endfor %}
+{% if errArr.year | length > 0 %}<br><span class="error">{{errArr.year}}</span>{% endif %}
 </select>年
 </div>
-
 <div class="col px-0">
 <select name='month'>
 {% for index, label in monthArr %}
 <option value="{{index}}" {% if dataArr.month == index %} selected {% endif %}>{{ label }}</option>
 {% endfor %}
 </select>月
+{% if errArr.month | length > 0 %}<br><span class="error">{{errArr.month}}</span>{% endif %}
 </div>
 
 <div class="col px-0">
@@ -67,8 +61,6 @@
 <option value="{{index}}" {% if dataArr.day == index %} selected {% endif %}>{{ label }}</option>
 {% endfor %}
 </select>日
-{% if errArr.year | length > 0 %}<br><span class="error">{{errArr.year}}</span>{% endif %}
-{% if errArr.month | length > 0 %}<br><span class="error">{{errArr.month}}</span>{% endif %}
 {% if errArr.day | length > 0 %}<br><span class="error">{{errArr.day}}</span>{% endif %}
 </div>
 
@@ -80,40 +72,37 @@
 郵便番号<span class="error">*</span>
 <div class="row">
 <div class="col px-0">
-<input type="text" name="zip1" value="{{dataArr.zip1}}" id="zip1" size="3" maxlength="3">
+<input class="text-center" type="text" name="zip1" value="{{ dataArr.zip1 }}" id="zip1" size="3" maxlength="3" required>
 {% if errArr.zip1 | length > 0 %}<br><span class="error">{{errArr.zip1}}</span>{% endif %}
 </div>
 ー
 <div class="col px-0">
-<input type="text" name="zip2" value="{{dataArr.zip2}}" id="zip2" size="4" maxlength="4">
+<input class="text-center" type="text" name="zip2" value="{{ dataArr.zip2 }}" id="zip2" size="4" maxlength="4" required>
 {% if errArr.zip2 | length > 0 %}<br><span class="error">{{errArr.zip2}}</span>{% endif %}
 </div>
-<input type="hidden" name="entry_url" id="entry_url" value="{{ENTRY_URL}}">
+<input type="hidden" name="entry_url" id="entry_url" value="../create_account/">
 <input type="button" class="btn btn-gray text-center" name="address_search" value="〒から住所を入力" id="address_search">
-
 </div>
 住所<span class="error">*</span>
-<input type="text" name="address" value="{{dataArr.address}}" id="address" size="40">
+<input class="text-center" type="text" name="address" value="{{ dataArr.address }}" id="address" size="40">
 {% if errArr.address | length > 0 %}<br><span class="error">{{errArr.address}}</span>{% endif %}
 <br>
 電話番号<span class="error">*</span>
 <div class="row">
 <div class="col">
-<input type="text" name="tel1" value="{{dataArr.tel1}}" size="6" maxlength="6">
+<input class="text-center" type="number" name="tel1" value="{{ dataArr.tel1 }}" size="1000" max="1000" min="0" required>
 </div>ー
 <div class="col">
-<input type="text" name="tel2" value="{{dataArr.tel2}}" size="6" maxlength="6">
+<input class="text-center" type="number" name="tel2" value="{{ dataArr.tel2 }}" size="1000" max="10000" min="0" required>
 </div>ー
 <div class="col">
-<input type="text" name="tel3" value="{{dataArr.tel3}}" size="6" maxlength="6">
+<input class="text-center" type="number" name="tel3" value="{{ dataArr.tel3 }}" size="1000" max="10000" min="0" >
 </div>
 {% if errArr.tel1 | length > 0 %}<br><span class="error">{{errArr.tel1}}</span>{% endif %}
-{% if errArr.tel2 | length > 0 %}<br><span class="error">{{errArr.tel2}}</span>{% endif %}
-{% if errArr.tel3 | length > 0 %}<br><span class="error">{{errArr.tel3}}</span>{% endif %}
 </div>
 <br>
 備考
-<textarea name="contents">{{dataArr.contents}}</textarea>
+<textarea name="contents" rows="4" cols="40">{{ dataArr.contents }}</textarea>
 
 <p>EC_BOOKからのお知らせを受信しますか？</p>
 <input type="hidden" name="dm" value="受信しない">
@@ -121,11 +110,12 @@
 <span>受信する</span>
 <div class="text-center d-grid gap-2">
 <br>
+<input type="hidden" name="edit_customer" value=1>
 <button type="submit" name="confirm" class="btn btn-submit">内容を確認する</button>
 </div>
 </form>
 </main>
 </div>
-</body>
+            </body>
 </div>
  {% include "common/footer.html.twig" %}
