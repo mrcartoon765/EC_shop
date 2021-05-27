@@ -89,6 +89,7 @@
 <input type="text" name="zip2" value="{{dataArr.zip2}}" id="zip2" size="4" maxlength="4">
 {% if errArr.zip2 | length > 0 %}<br><span class="error">{{errArr.zip2}}</span>{% endif %}
 </div>
+<input type="hidden" ame="entry_url" id="entry_url" value="{{ENTRY_URL}}">
 <input type="button" class="btn btn-gray text-center" name="address_search" value="〒から住所を入力" id="address_search">
 </div>
 

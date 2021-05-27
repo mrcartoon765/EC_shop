@@ -13,7 +13,7 @@ class database
     public static function dbh()
     {
         try {
-            $dbh = new \PDO('mysql:host=' . Bootstrap::DB_HOST . ';dbname=' . Bootstrap::DB_NAME.';charsrt=utf8;', Bootstrap::DB_USER, Bootstrap::DB_PASS,);
+            $dbh = new \PDO('mysql:host=' . Bootstrap::DB_HOST . ';dbname=' . Bootstrap::DB_NAME.';charset=utf8;', Bootstrap::DB_USER, Bootstrap::DB_PASS,);
         } catch (\PDOException $e) {
             var_dump($e->getMessage());
             exit;
