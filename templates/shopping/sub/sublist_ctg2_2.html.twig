@@ -9,6 +9,11 @@
 		{% set a = 0 %}
 		<div class="row">
 			{% for value in product_data %}
+							<input type="hidden" id="for_count0" value={{ a }}>
+									<input type="hidden" id="product_id{{a}}" value=
+									"{{ attribute(value,'id') }}">
+									<input type="hidden" id="table{{a}}" value=
+									"{{ attribute(value,'table_name') }}">
 				<div class="card-group col-6 col-md-4 px-0" style="width: 100%;">
 					<div class="card">
 						<form action="{{APP_URL}}/shopping/cart.php" method="POST">
@@ -30,16 +35,24 @@
 							<div class="card-footer text-center">
 								<small class="text">
 									{% if login == true %}
-										<section class="post" data-wantname="{{ want_name }}">
-											<div
-												class="btn-want {{active}}">
-												<!-- 自分がいいねした投稿にはハートのスタイルを常に保持する -->
-												<i class="fa-heart fa-2x px-16 {{icon}}"></i>
-												<span></span>
+
+										<section class="post" data-want="{{ attribute(value,'id') }}" data-table="{{ attribute(value,'table_name') }}" data-no="{{a}}">
+											<div class="btn-want">
+											<div class="btn_want_status{{a}}"></div>
+											<span></span>
+											<div id="active"></div>
+											<div></div>
+											<i></i>
+
 											</div>
 										</section>
 										{% else %}
 									{% endif %}
+									<br>
+
+									<h5><div id="hosii_sum{{a}}">
+									</div>
+									</h5>
 									<input type="number" name="count" data-max="100" data-min="0" step="1" placeholder="数値を入力" class="counter{{ a }}">
 									<br><br>
 									<div class="row">
@@ -70,6 +83,7 @@
 			{% endfor %}
 		</div>
 	</div>
+			<input type="hidden" id="for_count_end" value={{a}}>
 </div>
 
 <ul class="paging">

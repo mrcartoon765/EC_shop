@@ -31,6 +31,15 @@ class database
         //idを配列番号にする処理
         $DB_DATA_GET = (array_column($DB_DATA_GET, null, 'id'));
     }
+    //データを全て取得しそのままにする
+    public static function data_get_no_array_column($table)
+    {
+        $dbh = self::dbh();
+        global $DB_DATA_GET;
+        $stmt = $dbh->prepare("SELECT * FROM " . $table);
+        $stmt->execute();
+        $DB_DATA_GET = $stmt->fetchAll(\PDO::FETCH_ASSOC);
+    }
     //指定したテーブルからidを元にデータを取得する関数
     public static function get_detail_data($table, $id)
     {

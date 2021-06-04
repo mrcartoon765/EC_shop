@@ -11,8 +11,6 @@ template_twig_files::Prepare_the_template();
 
 original_Mysql_command::search_data_and_paging('sub','title',12);
 
-want::want_button();
-
 $context['product_data'] = $search;
 $context['title'] = $title;
 
