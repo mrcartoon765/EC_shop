@@ -324,9 +324,17 @@ $context['ENTRY_URL'] = Bootstrap::ENTRY_URL;
 $context['ADMIN_HEADER'] = Bootstrap::ADMIN_HEADER_FILE;
 $context['document_root'] = $document_root;
 $context['APP_ROOT'] = $_SERVER['HTTP_HOST'];
-$context['ADMIN'] =$_SERVER['HTTP_HOST']."/admin/";
 $context['IMAGE_DIR'] = Bootstrap::IMAGE_DIR;
 $context['icon'] = 'far';
+$context['ADMIN'] = AppUrl."/admin/";
+$context['shopping'] = AppUrl."/shopping/";
+$context['create_ac'] = AppUrl."/create_account/";
+$context['customer'] = AppUrl."/customer/";
+$context['contact'] = AppUrl."/contact/";
+$context['css'] = AppUrl."/css/";
+$context['js'] = AppUrl."/js/";
+$context['image'] = AppUrl."/image/";
+$context['templates'] = AppUrl."/templates/";
 
 class template_twig_files
 {

@@ -47,11 +47,9 @@ require_once $_SERVER['DOCUMENT_ROOT'] . "/config/Bootstrap.class.php";
         $dbWantData = want::getWant($_POST['table_name'],$_POST['product_id']);
         $data = $_POST;
         $data['sum'] = $dbWantNum;
-        
-        // echo json_encode($want_data);
+
         $active = ($_SESSION['customer_id'] === $dbWantStatus['customer_id']) ? 'active' : '';
         $data['active'] = $active;
-
 
         if($_SESSION['customer_id'] === $Want_status['customer_id']){
             $want  = '<div class="btn-want active">';

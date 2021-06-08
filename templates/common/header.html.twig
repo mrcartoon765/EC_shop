@@ -16,12 +16,12 @@
 
 		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
 
-		<link rel="stylesheet" href="{{APP_URL}}/css/slick.css">
-		<link rel="stylesheet" href="{{APP_URL}}/css/slick-theme.css">
-		<link rel="stylesheet" href="{{APP_URL}}/css/responsive.css">
-		<link rel="stylesheet" href="{{APP_URL}}/css/styles.css">
+		<link rel="stylesheet" href="{{css}}slick.css">
+		<link rel="stylesheet" href="{{css}}slick-theme.css">
+		<link rel="stylesheet" href="{{css}}responsive.css">
+		<link rel="stylesheet" href="{{css}}styles.css">
 		<link
-		rel="stylesheet" href="{{APP_URL}}/css/admin/styles.css">
+		rel="stylesheet" href="{{css}}admin/styles.css">
 
 
 		<!-- Bootstrap CSS -->
@@ -42,13 +42,13 @@
 							<div class="row">
 								<div class="col-6">
 									<li class="nav-item">
-										<a class="nav-link" href="{{APP_URL}}/shopping/book/Booklist.php">書籍一覧</a>
+										<a class="nav-link" href="{{shopping}}book/Booklist.php">書籍一覧</a>
 									</li>
 								</div>
 
 								<div class="col-6">
 									<li class="nav-item">
-										<a class="nav-link" href="{{APP_URL}}/shopping/sub/sublist_all.php">関連商品一覧</a>
+										<a class="nav-link" href="{{shopping}}sub/sublist_all.php">関連商品一覧</a>
 									</li>
 								</div>
 
@@ -59,19 +59,19 @@
 										</a>
 										<ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
 											<li>
-												<a class="dropdown-item" href="{{APP_URL}}/shopping/sub/sublist_ctg1_1.php">食品</a>
+												<a class="dropdown-item" href="{{shopping}}sub/sublist_ctg1_1.php">食品</a>
 											</li>
 											<li>
-												<a class="dropdown-item" href="{{APP_URL}}/shopping/sub/sublist_ctg1_2.php">サプリ</a>
+												<a class="dropdown-item" href="{{shopping}}sub/sublist_ctg1_2.php">サプリ</a>
 											</li>
 											<li>
-												<a class="dropdown-item" href="{{APP_URL}}/shopping/sub/sublist_ctg1_3.php">ガジェット</a>
+												<a class="dropdown-item" href="{{shopping}}sub/sublist_ctg1_3.php">ガジェット</a>
 											</li>
 											<li>
-												<a class="dropdown-item" href="{{APP_URL}}/shopping/sub/sublist_ctg1_4.php">家具・寝具</a>
+												<a class="dropdown-item" href="{{shopping}}sub/sublist_ctg1_4.php">家具・寝具</a>
 											</li>
 											<li>
-												<a class="dropdown-item" href="{{APP_URL}}/shopping/sub/sublist_ctg1_5.php">美容品</a>
+												<a class="dropdown-item" href="{{shopping}}sub/sublist_ctg1_5.php">美容品</a>
 											</li>
 										</ul>
 									</li>
@@ -84,19 +84,19 @@
 										</a>
 										<ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
 											<li>
-												<a class="dropdown-item" href="{{APP_URL}}/shopping/sub/sublist_ctg2_1.php">ストレス対策</a>
+												<a class="dropdown-item" href="{{shopping}}sub/sublist_ctg2_1.php">ストレス対策</a>
 											</li>
 											<li>
-												<a class="dropdown-item" href="{{APP_URL}}/shopping/sub/sublist_ctg2_2.php">アンチエイジング</a>
+												<a class="dropdown-item" href="{{shopping}}sub/sublist_ctg2_2.php">アンチエイジング</a>
 											</li>
 											<li>
-												<a class="dropdown-item" href="{{APP_URL}}/shopping/sub/sublist_ctg2_3.php">集中力改善</a>
+												<a class="dropdown-item" href="{{shopping}}sub/sublist_ctg2_3.php">集中力改善</a>
 											</li>
 											<li>
-												<a class="dropdown-item" href="{{APP_URL}}/shopping/sub/sublist_ctg2_4.php">睡眠改善</a>
+												<a class="dropdown-item" href="{{shopping}}sub/sublist_ctg2_4.php">睡眠改善</a>
 											</li>
 											<li>
-												<a class="dropdown-item" href="{{APP_URL}}/shopping/sub/sublist_ctg2_5.php">ダイエット</a>
+												<a class="dropdown-item" href="{{shopping}}sub/sublist_ctg2_5.php">ダイエット</a>
 											</li>
 										</ul>
 									</li>
@@ -109,28 +109,31 @@
 												会員メニュー</a>
 											<ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
 												<li>
-													<a class="dropdown-item" href="{{APP_URL}}/shopping/cart.php">カート確認</a>
+													<a class="dropdown-item" href="{{shopping}}/cart.php">カート確認</a>
 												</li>
 												<li>
-													<a class="dropdown-item" href="{{APP_URL}}/customer/edit_customer.php">ユーザー情報編集</a>
+													<a class="dropdown-item" href="{{customer}}want_list.php">欲しい！リスト一覧</a>
 												</li>
 												<li>
-													<a class="dropdown-item" href="{{APP_URL}}/create_account/logout.php">ログアウト</a>
+													<a class="dropdown-item" href="{{customer}}edit_customer.php">ユーザー情報編集</a>
 												</li>
 												<li>
-													<a class="dropdown-item" href="{{APP_URL}}/customer/delete_customer.php">退会</a>
+													<a class="dropdown-item" href="{{create_ac}}logout.php">ログアウト</a>
+												</li>
+												<li>
+													<a class="dropdown-item" href="{{customer}}delete_customer.php">退会</a>
 												</li>
 											</ul>
 										</li>
 									{% else %}
 										<li>
-											<a href="{{APP_URL}}/create_account/login.php">ログイン</a>
+											<a href="{{create_ac}}login.php">ログイン</a>
 										</li>
 									{% endif %}
 								</div>
 							</div>
 							<li>
-								<form class="justify-content-center" type="search" action="{{APP_URL}}shopping/sub/sublist_all.php" method="GET">
+								<form class="justify-content-center" type="search" action="{{shopping}}sub/sublist_all.php" method="GET">
 									<input class="form-control me-2" type="search" name="title" placeholder="商品名検索">
 									<button class="btn btn-outline-success" type="submit">
 										<i class="fas fa-search fa-lg"></i>
@@ -140,7 +143,7 @@
 							</li>
 							<li>
 									<div class="text-center">
-								<a href="{{APP_URL}}/shopping/cart.php">
+								<a href="{{shopping}}cart.php">
 									<i class="fas fa-shopping-cart fa-5x"></i>
 								</a>
 							</li>
@@ -150,4 +153,4 @@
 					</div>
 				</nav>
 			</header>
-			<br><br>
+			<br><br><br>

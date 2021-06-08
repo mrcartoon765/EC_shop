@@ -3,18 +3,16 @@
 	<div class="container-flluid">
 		<br><br><br>
 		<div class="wrapper-title">
+
 			<h2>BOOKs</h2>
 			<h6>書籍一覧</h6>
 		</div>
 		{% set a = 0 %}
 		<div class="row">
 			{% for value in product_data %}
-			{# for_count0は繰り返しの回数 #}
-									<input type="hidden" id="for_count0" value={{ a }}>
-									<input type="hidden" id="product_id{{a}}" value=
-									"{{ attribute(value,'id') }}">
-									<input type="hidden" id="table{{a}}" value=
-									"{{ attribute(value,'table_name') }}">
+
+				{% include "common/shopping/hidden_input.html.twig" %}
+
 				<div class="card-group col-6 col-md-4 px-0" style="width: 18rem;">
 					<div class="card">
 						<form action="{{APP_URL}}/shopping/cart.php" method="POST">
@@ -34,50 +32,9 @@
 								</p>
 							</div>
 
-							<div class="card-footer text-center">
-								<small class="text">
-									{% if login == true %}
+							{% include "common/shopping/want_button.html.twig" %}
 
-										<section class="post" data-want="{{ attribute(value,'id') }}" data-table="{{ attribute(value,'table_name') }}" data-no="{{a}}">
-											<div class="btn-want">
-											<div class="btn_want_status{{a}}"></div>
-											<div id="active"></div>
-											<div></div>
-											<i></i>
-
-											</div>
-										</section>
-										{% else %}
-									{% endif %}
-									<br>
-
-									<h5><div id="hosii_sum{{a}}">
-									</div>
-									</h5>
-
-									<div class="row">
-										<div class="col px-2">
-											<input type="button" value="＋" class="btnspinner btn-success" data-cal="1" data-target=".counter{{ a }}">
-										</div>
-										<div class="col px-2">
-									<input type="number" name="count" data-max="100" data-min="0" step="1" placeholder="数量を入力" class="counter{{ a }}">
-										</div>
-										<div class="col px-2">
-											<input type="button" value="－" class="btnspinner btn-success" data-cal="-1" data-target=".counter{{ a }}">
-											<br><br>
-										</div>
-									</div>
-									<div class="d-none d-sm-block">
-										<button type="submit" class="btn-success">カートに入れる</button>
-									</div>
-									<div class="d-block d-sm-none">
-										<button type="submit" class="btn btn-link">
-											<i type="submit" class="fas fa-shopping-cart fa-2x"></i>
-										</button>
-									</div>
-								</small>
-								<input type="hidden" name="cart_in_status" value=1>
-							</div>
+							{% include "common/cart_btn.html.twig" %}
 
 						</form>
 					</div>
@@ -86,5 +43,6 @@
 			{% endfor %}
 		</div>
 	</div>
-	<input type="hidden" id="for_count_end" value={{a}}>
-</div></main>{% include "common/footer.html.twig" %}
+	{% include "common/shopping/hidden_input_end.html.twig" %}
+	
+	{% include "common/footer.html.twig" %}

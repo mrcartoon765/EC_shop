@@ -52,6 +52,22 @@ class database
         $detail_data = $detail_data[0];
         return $detail_data;
     }
+
+    // select count(*) from want WHERE `table_name` = 'book' AND `product_id` = '1';
+    //wantテーブルから、テーブルと商品idをもとに合計数量をカウントする関数
+    public static function get_want_list_sum($table_name,$product_id)
+    {
+        $dbh = self::dbh();
+        $sql = "SELECT * FROM `want`  WHERE `table_name` = '" . $table_name . "' AND `product_id` = '" . $product_id ."'";
+        $stmt = $dbh->prepare($sql);
+        // var_dump($sql);
+        $stmt->execute();
+        $get_want_list_sum = $stmt->fetchAll(\PDO::FETCH_ASSOC);
+        // var_dump($get_want_list_sum);
+        $get_want_list_sum = count($get_want_list_sum);
+        return $get_want_list_sum;
+        // var_dump($get_want_list_sum);
+            }
     //複数のデータを１つの配列に多次元配列としてまとめて取得する関数
     public static function get_data_where($table,$where,$id)
     {

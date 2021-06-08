@@ -1,0 +1,22 @@
+<div class="row">
+	<div class="col px-2">
+		<input type="button" value="＋" class="btnspinner btn-success" data-cal="1" data-target=".counter{{ a }}">
+	</div>
+	<div class="col px-2">
+		<input type="number" name="count" data-max="100" data-min="0" step="1" placeholder="数量を入力" class="counter{{ a }}">
+	</div>
+	<div class="col px-2">
+		<input type="button" value="－" class="btnspinner btn-success" data-cal="-1" data-target=".counter{{ a }}">
+		<br><br>
+	</div>
+</div>
+
+<div class="d-none d-sm-block">
+	<button type="submit" class="btn-success">カートに入れる</button>
+</div>
+<div class="d-block d-sm-none">
+	<button type="submit" class="btn btn-link">
+		<i type="submit" class="fas fa-shopping-cart fa-2x"></i>
+	</button>
+	<input type="hidden" name="cart_in_status" value="1">
+</div>

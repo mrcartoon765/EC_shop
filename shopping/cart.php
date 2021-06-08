@@ -55,4 +55,13 @@ if($_POST["cart_null"] == 1){
   header('Location:./cart.php');
 }
 
+
+echo '<pre>';
+var_dump(
+  $_SESSION
+);
+echo '</pre>';
+
+
+
 template_twig_files::template_load_front();

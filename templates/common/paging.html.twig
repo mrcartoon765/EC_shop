@@ -1,0 +1,25 @@
+<ul class="paging">
+				<li>
+					<a href="{{ENTRY_URL}}sublist_all.php?title={{ title }}">« 最初</a>
+				</li>
+
+				{% if prev != '' %}
+					<li>
+						<a href="{{ENTRY_URL}}sublist_all.php?page={{ prev }}&title={{ title }}" {{ page }} -1="-1">{{ page -1}}</a>
+					</li>
+				{% endif %}
+
+				<li>
+					<span>{{ page }}</span>
+				</li>
+
+				{% if next != '' %}
+					<li>
+						<a href="{{ENTRY_URL}}sublist_all.php?page={{ next }}&title={{ title }}">{{ page +1}}</a>
+					</li>
+				{% endif %}
+
+				<li>
+					<a href="{{ENTRY_URL}}/sublist_all.php?page={{ pages }}&title={{ title }}">最後 »</a>
+				</li>
+			</ul>

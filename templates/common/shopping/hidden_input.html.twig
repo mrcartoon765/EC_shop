@@ -1,0 +1,41 @@
+{# ajaxに繰り返しの回数を送る #}
+<input type="hidden" id="for_count0" value={{ a }}>
+
+
+{# ajaxに繰り返しproduct_idを送る #}
+<input type="hidden" id="product_id{{a}}" value="{{ attribute(value,'id') }}">
+
+{# ajaxに繰り返しの商品IDを送る #}
+<input type="hidden" id="product_id{{a}}" value="{{ attribute(value,'product_id') }}">
+
+
+{# ajaxに繰り返しのテーブル名を送る #}
+<input type="hidden" id="table{{a}}" value="{{ attribute(value,'table_name') }}">
+
+
+{# ajaxに繰り返し欲しいリストの商品idを送る #}
+<input type="hidden" id="want_list_id{{a}}" value={{ attribute(value,'product_id')}}>
+
+
+{# ajaxに繰り返し欲しいリストのカウント数を送る #}
+<input type="hidden" id="want_list_count0" value={{ a }}>
+
+
+{# ajaxに繰り返し欲しいリストのテーブル名を送る #}
+<input type="hidden" id="want_list_table{{a}}" value={{ attribute(value,'table_name')}}>
+
+
+{# ajaxに繰り返し欲しいリストのカウントを送る #}
+<input type="hidden" id="want_list_count_no{{a}}" value={{a}}>
+
+
+{# ajaxに繰り返し欲しいリストの商品画像ファイル名を送る #}
+<input type="hidden" id="img_dir" value={{img}}>
+
+
+{# ajaxに繰り返し欲しいリストの商品名を送る #}
+<input type="hidden" id="title" value="{{ attribute(value,'title')}}">
+
+
+{# ajaxに繰り返し欲しいリストの商品価格を送る #}
+<input type="hidden" name="price" value={{ attribute(value,'price')}}>

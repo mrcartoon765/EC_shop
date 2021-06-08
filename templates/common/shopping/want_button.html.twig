@@ -1,0 +1,23 @@
+<div class="card-footer text-center">
+	<small class="text">
+		{% if login == true %}
+
+			<section class="post" data-want="{{ attribute(value,'id') }}" data-table="{{ attribute(value,'table_name') }}" data-no="{{a}}">
+				<div class="btn-want">
+					<div class="btn_want_status{{a}}"></div>
+					<span></span>
+					<div id="active"></div>
+					<div></div>
+					<i></i>
+
+				</div>
+			</section>
+			{% else %}
+		{% endif %}
+		<br>
+
+		<h5>
+			<div id="hosii_sum{{a}}"></div>
+		</h5>
+	</small>
+</div>

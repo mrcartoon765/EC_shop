@@ -33,7 +33,6 @@ $ctg2 = database::Related_Products_Get('sub','ctg2',$detail_data['ctg2']);
 
 $context['book_detail'] = "";
 $context['book_image'] = "shopping/image/book/".$book_data['image'];
-want::want_button();
 $context['value'] = $product_data;
 $context['this_dir'] = $this_dir;
 $context['book_data'] = $book_data;

@@ -9,15 +9,10 @@
 		{% set a = 0 %}
 		<div class="row">
 			{% for value in product_data %}
-			{# for_count0は繰り返しの回数 #}
-				<input type="hidden" id="for_count0" value={{ a }}>
-									<input type="hidden" id="product_id{{a}}" value=
-									"{{ attribute(value,'id') }}">
-									<input type="hidden" id="table{{a}}" value=
-									"{{ attribute(value,'table_name') }}">
+				{% include "common/shopping/hidden_input.html.twig" %}
 				<div class="card-group col-6 col-md-4 px-0" style="width: 100%;">
 					<div class="card">
-						<form action="{{APP_URL}}/shopping/cart.php" method="POST">
+						<form action="{{shopping}}cart.php" method="POST">
 							<a href="{{APP_URL}}{{this_dir}}detail.php?id={{ attribute(value,'id') }}">
 								<img class="card-img-top img-fluid" src="{{IMAGE_DIR}}{{ attribute(value,'image') }}" alt="">
 							</a>
@@ -25,7 +20,7 @@
 								<p class="card-text">
 									<h5>{{ attribute(value,'title')|slice(0,30)  }}...</h5>
 									<input type="hidden" name="title" value="{{ attribute(value,'title')}}">
-									<h5 class="red" >価格 ￥{{ attribute(value,'price')|number_format }}</h5>
+									<h5 class="red">価格 ￥{{ attribute(value,'price')|number_format }}</h5>
 									<input type="hidden" name="price" value={{ attribute(value,'price')}}>
 									<br>
 									{{  attribute(value,'detail')|slice(0,40) }}...
@@ -33,84 +28,26 @@
 								</p>
 							</div>
 
-							<div class="card-footer text-center">
-								<small class="text">
-									{% if login == true %}
+							{% include "common/shopping/want_button.html.twig" %}
 
-										<section class="post" data-want="{{ attribute(value,'id') }}" data-table="{{ attribute(value,'table_name') }}" data-no="{{a}}">
-											<div class="btn-want">
-											<div class="btn_want_status{{a}}"></div>
-											<span></span>
-											<div id="active"></div>
-											<div></div>
-											<i></i>
 
-											</div>
-										</section>
-										{% else %}
-									{% endif %}
-									<br>
+							{% include "common/cart_btn.html.twig" %}
 
-									<h5><div id="hosii_sum{{a}}">
-									</div>
-									</h5>
 
-									<input type="number" name="count" data-max="100" data-min="0" step="1" placeholder="数値を入力" class="counter{{ a }}">
-									<br><br>
+						</div>
 
-									<div class="row">
-										<div class="col">
-											<input type="button" value="＋" class="btnspinner btn-success" data-cal="1" data-target=".counter{{ a }}">
-										</div>
-										<div class="col">
-											<input type="button" value="－" class="btnspinner btn-success" data-cal="-1" data-target=".counter{{ a }}">
-											<br><br>
-										</div>
-									</div>
-									<div class="d-none d-sm-block">
-										<button type="submit" class="btn-success">カートに入れる</button>
-									</div>
-									<div class="d-block d-sm-none">
-										<button type="submit" class="btn btn-link">
-											<i type="submit" class="fas fa-shopping-cart fa-2x"></i>
-										</button>
-									</div>
-								</small>
-								<input type="hidden" name="cart_in_status" value=1>
-							</div>
-
-						</form>
-					</div>
+					</form>
 				</div>
-				{% set a = a + 1 %}
-			{% endfor %}
-		</div>
+			</div>
+			{% set a = a + 1 %}
+		{% endfor %}
 	</div>
-		<input type="hidden" id="for_count_end" value={{a}}>
 </div>
 
-<ul class="paging">
-	<li>
-		<a href="{{ENTRY_URL}}sublist_all.php?title={{ title }}">« 最初</a>
-	</li>
+{% include "common/paging.html.twig" %}
 
-	{% if prev != '' %}
-		<li>
-			<a href="{{ENTRY_URL}}sublist_all.php?page={{ prev }}&title={{ title }}" {{ page }} -1="-1">{{ page -1}}</a>
-		</li>
-	{% endif %}
+{% include "common/shopping/hidden_input_end.html.twig" %}
 
-	<li>
-		<span>{{ page }}</span>
-	</li>
+</main>
 
-	{% if next != '' %}
-		<li>
-			<a href="{{ENTRY_URL}}sublist_all.php?page={{ next }}&title={{ title }}">{{ page +1}}</a>
-		</li>
-	{% endif %}
-
-	<li>
-		<a href="{{ENTRY_URL}}/sublist_all.php?page={{ pages }}&title={{ title }}">最後 »</a>
-	</li>
-</ul></main>{% include "common/footer.html.twig" %}
+{% include "common/footer.html.twig" %}

@@ -8,7 +8,7 @@
                         <h3>REGISTER</h3>
                         <p>新規会員登録</p>
                     </div>
-<form method="POST" action="{{APP_URL}}/create_account/confirm.php">
+<form method="POST" action="{{create_ac}}confirm.php">
 メールアドレス<span class="error">*</span>
 <input type="email" name="mail" value="{{dataArr.mail}}" size="40">
 {% if errArr.mail | length > 0 %}<br><span class="error">{{errArr.mail}}</span>{% endif %}

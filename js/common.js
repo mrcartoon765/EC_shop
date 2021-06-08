@@ -27,193 +27,239 @@ $(function () {
   });
 });
 
-//いいねボタン
+//欲しい！ボタン
 $(function () {
-  for_count = $("#for_count0").val();
-  for_count_end = $("#for_count_end").val();
-  count_array = new Array();
-  var $want = $('.btn-want' + for_count), //いいねボタンセレクタ
-    id;
-  var $this = $(this);
-  for (let i = 0; i < for_count_end; i++) {
-    $.ajax({
-      type: 'POST',
-      url: '../../config/want_status.php',
-      dataType: 'json',
-      async: false, //データ同期
-      // frequency: 2,
-      data: {
-        product_id: $("#product_id" + for_count).val(),
-        table_name: $("#table" + for_count).val(),
-      }
-    }).done(function (data) {
-      console.log('success');
-      $('.btn_want_status' + for_count).toggleClass(data.want);
-      $('.btn_want_status' + for_count).html(data.icon);
-      $('#hosii_sum' + for_count).text(data.sum + ' 欲しい！');
-      for_count++;
-    }).fail(function (jqXHR, textStatus, errorThrown) {
-      // 通信失敗時の処理
-      alert('ファイルの取得に失敗しました。');
-      console.log("ajax通信に失敗しました");
-      console.log("jqXHR          : " + jqXHR.status); // HTTPステータスが取得
-      console.log("textStatus     : " + textStatus); // タイムアウト、パースエラー
-      console.log("errorThrown    : " + errorThrown.message); // 例外情報
-      console.log("URL            : " + url);
-    });
-  };
-  $('.btn-want').on('click', function (e) {
-    e.stopPropagation();
-    var $this = $(this);
-    id = $this.parents('.post').data('want');
-    table = $this.parents('.post').data('table');
-    no = $this.parents('.post').data('no');
-    $.ajax({
-      type: 'POST',
-      url: '../../config/want-function.php', //post送信を受けとるphpファイル
-      dataType: 'json',
-      data: {
-        product_id: id, // //商品IDキー:商品id
-        table_name: table,
-        count_no: no
-      } //テーブル名キー:テーブル名}
-    }).done(function (data) {
-      console.log('Ajax Success');
-      console.log(data);
-      console.log(data.sum);
-      console.log($this.children('btn_want_status' + data.count_no))
-      // いいねの総数を表示
-      $('#hosii_sum' + data.count_no).text(data.sum + ' 欲しい！');
-      // いいね取り消しのスタイル
-      $('.btn_want_status' + data.count_no).children('i').toggleClass('far'); //空洞ハート
-      $('.btn_want_status' + data.count_no).children('i').toggleClass('fas'); //ハート
-      // いいね押した時のスタイル
-      $('.btn_want_status' + data.count_no).toggleClass('active'); //赤か黒
-    }).fail(function (jqXHR, textStatus, errorThrown) {
-      // 通信失敗時の処理
-      alert('ファイルの取得に失敗しました。');
-      console.log("ajax通信に失敗しました");
-      console.log("jqXHR          : " + jqXHR.status); // HTTPステータスが取得
-      console.log("textStatus     : " + textStatus); // タイムアウト、パースエラー
-      console.log("errorThrown    : " + errorThrown.message); // 例外情報
-      console.log("URL            : " + url);
-    });
-  });
-});
+      for_count = $("#for_count0").val();
+      for_count_end = $("#for_count_end").val();
+      var $want = '.btn_want_status', //欲しい！ボタンセレクタ
+        id;
+      var $hosii = '#hosii_sum'
+      var $this = $(this);
+      for (let i = 0; i < for_count_end; i++) {
+        $.ajax({
+          type: 'POST',
+          url: '/config/want_status.php',
+          dataType: 'json',
+          async: false, //データ同期
+          // frequency: 2,
+          data: {
+            product_id: $("#product_id" + for_count).val(),
+            table_name: $("#table" + for_count).val(),
+          }
+        }).done(function (data) {
+          console.log('success');
+          $($want + for_count).toggleClass(data.want);
+          $($want + for_count).html(data.icon);
+          $($hosii + for_count).text(data.sum + ' 欲しい！');
+          console.log(data);
+          for_count++;
+        }).fail(function (jqXHR, textStatus, errorThrown) {
+          // 通信失敗時の処理
+          alert('ファイルの取得に失敗しました。');
+          console.log("ajax通信に失敗しました");
+          console.log("jqXHR          : " + jqXHR.status); // HTTPステータスが取得
+          console.log("textStatus     : " + textStatus); // タイムアウト、パースエラー
+          console.log("errorThrown    : " + errorThrown.message); // 例外情報
+          console.log("URL            : " + url);
+        });
+      }; //押下した時の色変化と欲しい！状態の変更
+      $('.btn-want').on('click', function (e) {
+        e.stopPropagation();
+        var $this = $(this);
+        id = $this.parents('.post').data('want');
+        table = $this.parents('.post').data('table');
+        no = $this.parents('.post').data('no');
+        $.ajax({
+          type: 'POST',
+          url: '/config/want-function.php', //post送信を受けとるphpファイル
+          dataType: 'json',
+          data: {
+            product_id: id, // //商品IDキー:商品id
+            table_name: table,
+            count_no: no
+          } //テーブル名キー:テーブル名}
+        }).done(function (data) {
+          console.log('Ajax Success');
+          console.log(data);
+          console.log(data.sum);
+          console.log($this.children('btn_want_status' + data.count_no))
+          // いいねの総数を増減させる
+          $($hosii + data.count_no).text(data.sum + ' 欲しい！');
+          // いいね取り消しのスタイル
+          $($want + data.count_no).children('i').toggleClass('far'); //空洞ハート
+          $($want + data.count_no).children('i').toggleClass('fas'); //ハート
+          // いいね押した時のスタイル
+          $($want + data.count_no).toggleClass('active'); //赤か黒
+        }).fail(function (jqXHR, textStatus, errorThrown) {
+          // 通信失敗時の処理
+          alert('ファイルの取得に失敗しました。');
+          console.log("ajax通信に失敗しました");
+          console.log("jqXHR          : " + jqXHR.status); // HTTPステータスが取得
+          console.log("textStatus     : " + textStatus); // タイムアウト、パースエラー
+          console.log("errorThrown    : " + errorThrown.message); // 例外情報
+          console.log("URL            : " + url);
+        });
+      });//欲しい！商品リスト一覧取得
+      $(function () {
+        w_l_c = $("#want_list_count0").val();
+        w_l_e = $("#want_list_end").val();
+        var $w_l = '#want_list', //欲しい！ボタンセレクタ
+        id;
+        var $img_dir = $("#img_dir").val();
+        img_tag_src = '<img style="width: 100%;" src='+ $img_dir;
+        img_tag_alt = ' alt="product_img">';
+        for (let i = 0; i < w_l_e; i++) {
+          $.ajax({
+            type: 'POST',
+            url: '/customer/want_list-function.php',
+            dataType: 'json',
+            async: false, //データ同期
+            // frequency: 2,
+            data: {
+              want_list_product_id: $($w_l+"_id" + w_l_c).val(),
+              want_list_table_name: $($w_l+"_table" + w_l_c).val(),
+              want_list_count_no: $($w_l+"_count_no" + w_l_c).val(),
+            }
+          }).done(function(data){
+            console.log('success');
+            $($w_l+'_title' + w_l_c).text(data.title);
+            $($w_l+'_price' + w_l_c).text('￥'+data.price);
+            $($w_l+'_img' + w_l_c).html(img_tag_src+data.table_name+'/'+ data.image + '>');
+            $($w_l+'_want_sum' + w_l_c).text(data.want_list_sum + ' 欲しい！');
+              // console.log(data);
+              // console.log(data.table_name);
+              console.log(data.id);
+              console.log(data.want_list_sum);
+            w_l_c++;
 
-$(function () {
-  //管理者画面削除ボタン
-  $(".delete").click(function () {
-    var id = this.dataset.id;
-    if (confirm("ID:" + id + "番のコンテンツを本当に削除していいですか？")) { // OK
-      $("#delete_form_" + id).submit();
-    } else { // キャンセル
-      return false;
-    };
-  });
-  //pay.jp管理
-  $(".confirm").click(function () {
-    $(".error").empty();
-    var number = $("#card-number").val();
-    var cvc = $("#cvc").val();
-    var exp_month = $("#exp_month").val();
-    var exp_year = $("#exp_year").val();
-  });
-  //詳細ページスライダーアニメーション
-  $('.slider').slick({
-    Infinity: true,
-    autoplay: true,
-    autoplaySpeed: 5000,
-    dots: true,
-    slidesToShow: 4,
-    responsive: [{
-        breakpoint: 1024,
-        settings: {
-          slidesToShow: 3,
-        }
-      },
-      {
-        breakpoint: 768,
-        settings: {
-          slidesToShow: 2,
-        }
-      },
-      {
-        breakpoint: 480,
-        settings: {
-          slidesToShow: 1,
-        }
-      },
-    ]
-  });
-  //インデックストップページスライダー画面
-  $(document).on('ready', function () {
-    $(".full-screen").slick({
-      centerMode: true,
-      centerPadding: '5%',
-      dots: true,
-      autoplay: true,
-      autoplaySpeed: 3000,
-      speed: 1000,
-      infinite: true,
+          }).fail(function (jqXHR, textStatus, errorThrown) {
+            // 通信失敗時の処理
+            alert('ファイルの取得に失敗しました。');
+            console.log("ajax通信に失敗しました");
+            console.log("jqXHR          : " + jqXHR.status); // HTTPステータスが取得
+            console.log("textStatus     : " + textStatus); // タイムアウト、パースエラー
+            console.log("errorThrown    : " + errorThrown.message); // 例外情報
+            console.log("URL            : " + url);
+          });
+        };
+      });
     });
-  });
-  //数量変更ボタン
-  $(function () {
-    var arySpinnerCtrl = [];
-    var spin_speed = 20; //変動スピード
-    //長押し押下時
-    $('.btnspinner').on('touchstart mousedown click', function (e) {
-      if (arySpinnerCtrl['interval']) return false;
-      var target = $(this).data('target');
-      arySpinnerCtrl['target'] = target;
-      arySpinnerCtrl['timestamp'] = e.timeStamp;
-      arySpinnerCtrl['cal'] = Number($(this).data('cal'));
-      //クリックは単一の処理に留める
-      if (e.type == 'click') {
-        spinnerCal();
-        arySpinnerCtrl = [];
-        return false;
-      }
-      //長押し時の処理
-      setTimeout(function () {
-        //インターバル未実行中 + 長押しのイベントタイプスタンプ一致時に計算処理
-        if (!arySpinnerCtrl['interval'] && arySpinnerCtrl['timestamp'] == e.timeStamp) {
-          arySpinnerCtrl['interval'] = setInterval(spinnerCal, spin_speed);
-        }
-      }, 500);
-    });
-    //長押し解除時 画面スクロールも解除に含む
-    $(document).on('touchend mouseup scroll', function (e) {
-      if (arySpinnerCtrl['interval']) {
-        clearInterval(arySpinnerCtrl['interval']);
-        arySpinnerCtrl = [];
-      }
-    });
-    //変動計算関数
-    function spinnerCal() {
-      var target = $(arySpinnerCtrl['target']);
-      var num = Number(target.val());
-      num = num + arySpinnerCtrl['cal'];
-      if (num > Number(target.data('max'))) {
-        target.val(Number(target.data('max')));
-      } else if (Number(target.data('min')) > num) {
-        target.val(Number(target.data('min')));
-      } else {
-        target.val(num);
-      }
-    }
-  });
-  //テーブルソート
-  $(function () {
-    $('.sort-table').tablesorter({
-      textExtraction: function (node) {
-        var attr = $(node).attr('data-value');
-        if (typeof attr !== 'undefined' && attr !== false) {
-          return attr;
-        }
-        return $(node).text();
-      }
-    });
-  });
-});
+
+
+
+      $(function () {
+        //管理者画面削除ボタン
+        $(".delete").click(function () {
+          var id = this.dataset.id;
+          if (confirm("ID:" + id + "番のコンテンツを本当に削除していいですか？")) { // OK
+            $("#delete_form_" + id).submit();
+          } else { // キャンセル
+            return false;
+          };
+        });
+        //pay.jp管理
+        $(".confirm").click(function () {
+          $(".error").empty();
+          var number = $("#card-number").val();
+          var cvc = $("#cvc").val();
+          var exp_month = $("#exp_month").val();
+          var exp_year = $("#exp_year").val();
+        });
+        //詳細ページスライダーアニメーション
+        $('.slider').slick({
+          Infinity: true,
+          autoplay: true,
+          autoplaySpeed: 5000,
+          dots: true,
+          slidesToShow: 4,
+          responsive: [{
+              breakpoint: 1024,
+              settings: {
+                slidesToShow: 3,
+              }
+            },
+            {
+              breakpoint: 768,
+              settings: {
+                slidesToShow: 2,
+              }
+            },
+            {
+              breakpoint: 480,
+              settings: {
+                slidesToShow: 1,
+              }
+            },
+          ]
+        });
+        //インデックストップページスライダー画面
+        $(document).on('ready', function () {
+          $(".full-screen").slick({
+            centerMode: true,
+            centerPadding: '5%',
+            dots: true,
+            autoplay: true,
+            autoplaySpeed: 3000,
+            speed: 1000,
+            infinite: true,
+          });
+        });
+        //数量変更ボタン
+        $(function () {
+          var arySpinnerCtrl = [];
+          var spin_speed = 20; //変動スピード
+          //長押し押下時
+          $('.btnspinner').on('touchstart mousedown click', function (e) {
+            if (arySpinnerCtrl['interval']) return false;
+            var target = $(this).data('target');
+            arySpinnerCtrl['target'] = target;
+            arySpinnerCtrl['timestamp'] = e.timeStamp;
+            arySpinnerCtrl['cal'] = Number($(this).data('cal'));
+            //クリックは単一の処理に留める
+            if (e.type == 'click') {
+              spinnerCal();
+              arySpinnerCtrl = [];
+              return false;
+            }
+            //長押し時の処理
+            setTimeout(function () {
+              //インターバル未実行中 + 長押しのイベントタイプスタンプ一致時に計算処理
+              if (!arySpinnerCtrl['interval'] && arySpinnerCtrl['timestamp'] == e.timeStamp) {
+                arySpinnerCtrl['interval'] = setInterval(spinnerCal, spin_speed);
+              }
+            }, 500);
+          });
+          //長押し解除時 画面スクロールも解除に含む
+          $(document).on('touchend mouseup scroll', function (e) {
+            if (arySpinnerCtrl['interval']) {
+              clearInterval(arySpinnerCtrl['interval']);
+              arySpinnerCtrl = [];
+            }
+          });
+          //変動計算関数
+          function spinnerCal() {
+            var target = $(arySpinnerCtrl['target']);
+            var num = Number(target.val());
+            num = num + arySpinnerCtrl['cal'];
+            if (num > Number(target.data('max'))) {
+              target.val(Number(target.data('max')));
+            } else if (Number(target.data('min')) > num) {
+              target.val(Number(target.data('min')));
+            } else {
+              target.val(num);
+            }
+          }
+        });
+        //テーブルソート
+        $(function () {
+          $('.sort-table').tablesorter({
+            textExtraction: function (node) {
+              var attr = $(node).attr('data-value');
+              if (typeof attr !== 'undefined' && attr !== false) {
+                return attr;
+              }
+              return $(node).text();
+            }
+          });
+        });
+      });
