@@ -17,24 +17,9 @@ customer_login::login_session();
 
 template_twig_files::Prepare_the_template();
 
-$want_list  = database::get_data_where('want','customer_id',$_SESSION['customer_id']);
+$want_list  = want::get_db_want_products();
 
-foreach ($want_list as $key => $value){
-  $id[$key] = $value['created_date'];
-}
-
-array_multisort($id, SORT_DESC, $want_list);
-
-
-if (isset($_POST['id']) && ($_POST['delete'] == 'YES' )){
-  database::delete_where('want','id',$_POST['id']);
-  unset($_POST['id'],$_POST['delete']);
-  header('Location:./want_list.php');
-}
-
-var_dump($_POST);
-
-
+want::want_list_delete();
 
 $context['product_data'] = $want_list;
 $context['title'] = $title;

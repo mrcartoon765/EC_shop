@@ -45,4 +45,21 @@ class want
                     error_log('エラー発生：' . $e->getMessage());
            }
         }
+        public static function get_db_want_products()//欲しい済みの商品をデータベースから取得し降順(最新順)に並べ替える処理
+        {
+          $want_list = database::get_data_where('want','customer_id',$_SESSION['customer_id']);
+          foreach ($want_list as $key => $value){
+            $id[$key] = $value['created_date'];
+          }
+          array_multisort($id, SORT_DESC, $want_list);
+          return $want_list;
+        }
+        public static function want_list_delete()//欲しいリストの商品を削除する処理
+        {
+          if (isset($_POST['id']) && ($_POST['delete'] == 'YES' )){
+            database::delete_where('want','id',$_POST['id']);
+            unset($_POST['id'],$_POST['delete']);
+            header('Location:./want_list.php');
+          }
+        }
     }

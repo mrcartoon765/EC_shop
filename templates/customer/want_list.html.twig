@@ -11,56 +11,58 @@
 			{% for value in product_data %}
 				<div class='text-center'>
 
-						{% include "common/shopping/hidden_input.html.twig" %}
+					{% include "common/shopping/hidden_input.html.twig" %}
 
-						<div class="card" style="max-width: 100%;">
-							<div class="row g-0">
-								<div class="col-4">
-									<div id="want_list_img{{a}}"></div>
+					<div class="card" style="max-width: 100%;">
+						<div class="row g-0">
+							<div class="col-4">
+								<div id="want_list_img{{a}}"></div>
 
-									<form action = "{{customer}}want_list.php" method = "POST">
-<input type = "hidden" name = "id" value="{{ attribute(value,'id') }}">
-<input type = "hidden" name = "delete" value="YES">
-<input type = "submit" value = "削除する">
-									</form>
+								<form action="{{customer}}want_list.php" method="POST">
+									<input type="hidden" name="id" value="{{ attribute(value,'id') }}">
+									<input type="hidden" name="delete" value="YES">
+									<button class="btn btn-danger">削除する</button>
+								</form>
 
-
-								</div>
-								<div class="col-8">
-									<div class="card-body">
-										<a href="{{shopping}}{{attribute(value,'table_name')}}/detail.php?id={{attribute(value,'product_id')}}">
-											<h4 class="card-title">
-												<div id="want_list_title{{a}}"></h4>
-											</a>
-											<div class="row">
-												<div class="col">
-													<p class="card-text">
-														<h4 class="red">
-															<div id="want_list_price{{a}}"></div>
-														</h4>
-													</p>
-												</div>
-												<div class="col">
-													<p class="card-text">
-														<small class="text-muted">
-															<h3>
-																<div id="want_list_want_sum{{a}}"></div>
-															</h3>
-														</small>
-													</p>
-												</div>
+							</div>
+							<div class="col-8">
+								<div class="card-body">
+									<a href="{{shopping}}{{attribute(value,'table_name')}}/detail.php?id={{attribute(value,'product_id')}}">
+										<h4 class="card-title">
+											<div id="want_list_title{{a}}"></h4>
+										</a>
+										<div class="row">
+											<div class="col">
+												<p class="card-text">
+													<h4 class="red">
+														<div id="want_list_price{{a}}"></div>
+													</h4>
+												</p>
 											</div>
-											<small class="text">
-
-					<form action="{{shopping}}cart.php" method="POST">
-												{% include "common/cart_btn.html.twig" %}
-						</form>
-
-											</small>
+											<div class="col">
+												<p class="card-text">
+													<small class="text-muted">
+														<h3>
+															<div id="want_list_want_sum{{a}}"></div>
+														</h3>
+													</small>
+												</p>
+											</div>
 										</div>
+										<small class="text">
+
+											<form action="{{shopping}}cart.php" method="POST">
+												{% include "common/cart_btn.html.twig" %}
+
+												<input type="hidden" name="want_list_table" value="{{ attribute(value,'table_name')}}">
+												<input type="hidden" name="want_list_id" value={{ attribute(value,'product_id')}}>
+											</form>
+
+										</small>
 									</div>
 								</div>
 							</div>
+						</div>
 
 					</div>
 				</div>

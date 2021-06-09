@@ -35,19 +35,18 @@
 
 
 						</div>
+					</div>
 
-					</form>
-				</div>
-			</div>
-			{% set a = a + 1 %}
-		{% endfor %}
+				</form>
+				{% set a = a + 1 %}
+			{% endfor %}
+
+			{% include "common/paging.html.twig" %}
+
+			{% include "common/shopping/hidden_input_end.html.twig" %}
+
+		</div>
 	</div>
-</div>
-
-{% include "common/paging.html.twig" %}
-
-{% include "common/shopping/hidden_input_end.html.twig" %}
-
 </main>
 
 {% include "common/footer.html.twig" %}

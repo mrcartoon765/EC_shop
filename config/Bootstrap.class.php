@@ -387,7 +387,7 @@ class customer_login
 
 class POST_GET
 {
-    public static function GET($variable, $columns)
+    public static function GET($variable='$_POST', $columns)
     {
         $variable = isset($_POST[$columns]) ? htmlspecialchars($_POST[$columns], ENT_QUOTES, 'utf-8') : '';
         return $variable;
