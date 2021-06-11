@@ -45,7 +45,7 @@ customer_login::login_session();
      $address     = '';
   }
    shopping_cart::cart_session();
-   shopping_cart::cart_sum();
+   shopping_cart::cart_product_sum();
 
 $context['family_name'] = $family_name;
 $context['first_name'] = $first_name;

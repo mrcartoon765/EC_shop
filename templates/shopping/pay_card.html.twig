@@ -4,16 +4,16 @@
 		<div class="container">
 			<ul>
 				<li>
-					<a href="../../index.php">TOP</a>
+					<a href="{{APP_URL}}index.php">TOP</a>
 				</li>
 				<li>
-					<a href="../../shopping/Booklist.php">商品一覧</a>
+					<a href="{{shopping}}Booklist.php">商品一覧</a>
 				</li>
 				<li>
-					<a href="../../shopping/cart.php">カート</a>
+					<a href="{{shopping}}cart.php">カート</a>
 				</li>
 				<li>
-					<a href="../../shopping/pay.php">ご購入者情報</a>
+					<a href="{{shopping}}pay.php">ご購入者情報</a>
 				</li>
 				<li>決済カード情報</li>
 			</ul>
@@ -25,7 +25,7 @@
 				<h3>決済カード情報</h3>
 				<span class="error"></span>
 			</div>
-			<form class="pay-form" action="../../shopping/pay_conf.php" method="POST">
+			<form class="pay-form" action="{{shopping}}/pay_conf.php" method="POST">
 				<input type="hidden" name="family_name" value="{{ family_name }}">
 				<input type="hidden" name="first_name" value="{{ first_name }}">
 				<input type="hidden" name="mail" value="{{ mail }}">

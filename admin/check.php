@@ -10,24 +10,32 @@ $app_name = explode('/',dirname(__FILE__))[4];
 
 require_once $_SERVER['DOCUMENT_ROOT']."/config/Bootstrap.class.php";
 
-$email = isset($_POST['email'])? htmlspecialchars($_POST['email'], ENT_QUOTES, 'utf-8') : '';
-$password = isset($_POST['password'])? htmlspecialchars($_POST['password'], ENT_QUOTES, 'utf-8'): '';
 
-if ($email == '') {
-  header("Location:" . Bootstrap::APP_URL . "admin/index.php");
-    exit;
-}
-if ($password == '') {
-  header("Location:" . Bootstrap::APP_URL . "admin/index.php");
-    exit;
+$email = POST_GET::GET('$email','email');
+$password = POST_GET::GET('$password','password');
+
+$dbh = database::dbh();
+
+$stmt = $dbh->prepare("SELECT * FROM admin");
+$stmt->execute();
+
+$pass = $stmt->fetch();
+
+if($email ==''|$password==''){
+    header('location:./index.php');
 }
 
-if ($email=='admin@admin.com'&&$password=='password01') {
+if(password_verify($email,$pass['mail'])) {
+if(password_verify($password,$pass['password'])) {
   session_start();
 session_regenerate_id(true);
   $_SESSION["admin_login"] = true;
   header("Location:" . Bootstrap::APP_URL . "admin/dashboard.php");
-} else {
-  header("Location:". Bootstrap::APP_URL . "admin/index.php");
-exit;
+}else{
+    header( "refresh:3;url=./index.php" );
+    echo 'パスワードが違います。';
+}
+}else{
+    header( "refresh:3;url=./index.php" );
+    echo 'メールアドレスが違います。';
 }
