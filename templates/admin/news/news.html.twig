@@ -1,44 +1,45 @@
-    {% include "common/header_admin.html.twig" %}
-    <main>
-        <div class="wrapper">
-            <div class="container">
-                <div class="wrapper-title">
-                    <h3>記事管理</h3>
-                </div>
-                <button type="button" class="btn btn-blue" onclick="location.href='create_news.php'">投稿する</button>
-                <div class="list">
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>id</th>
-                                <th>タイトル</th>
-                                <th>本文</th>
-                                <th>更新日時</th>
-                                <th>作成日時</th>
-                                <th>操作</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                          {% for value in news %}
-                            <tr>
-                            <td>{{ attribute(value,'id') }}</td>
-                            <td>{{ attribute(value,'title') }}</td>
-                            <td>{{ attribute(value,'content') }}</td>
-                            <td>{{ attribute(value,'updated_at') }}</td>
-                            <td>{{ attribute(value,'created_at') }}</td>
-                            <td>
-                            <button type="button" class="btn btn-info" onclick="location.href='{{ENTRY_URL}}edit_news.php?id={{ attribute(value,'id') }}'">編集</button>
-                            <button type="button" class="btn btn-danger delete" data-id='{{ attribute(value,'id') }}' >削除</button>
-                            <form method="POST" action="{{ENTRY_URL}}delete_news.php" id="delete_form_{{ attribute(value,'id')}}">
-                            <input type="hidden" value='{{ attribute(value,'id') }}' name="id">
-                            </form>
-                            </td>
-                            </tr>
-                          {% endfor %}
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
-    </main>
-     {% include "common/footer.html.twig" %}
+{% include "common/header_admin.html.twig" %}
+<main>
+	<div class="wrapper">
+		<div class="container">
+			<div class="wrapper-title text-center">
+				<h3>記事管理</h3>
+			</div>
+			<div class="text-center">
+				<button type="button" class="btn btn-blue" onclick="location.href='create_news.php'">新規投稿する</button>
+			</div>
+			<table class="table table-bordered sort-table">
+				<div class="text-center">
+					<thead>
+						<tr>
+							<th class="text-center">id</th>
+							<th class="text-center">タイトル</th>
+							<th class="text-center">本文</th>
+							<th class="text-center">更新日時</th>
+							<th class="text-center">作成日時</th>
+							<th class="text-center">操作</th>
+						</tr>
+					</thead>
+					<tbody>
+						{% for value in news %}
+							<tr>
+								<td class="text-center">{{ attribute(value,'id') }}</td>
+								<td class="text-center">{{ attribute(value,'title') }}</td>
+								<td class="text-center">{{ attribute(value,'content') }}</td>
+								<td class="text-center">{{ attribute(value,'updated_at') }}</td>
+								<td class="text-center">{{ attribute(value,'created_at') }}</td>
+								<td class="text-center">
+									<button type="button" class="btn btn-info" onclick="location.href='{{ENTRY_URL}}edit_news.php?id={{ attribute(value,'id') }}'">編集</button>
+									<button type="button" class="btn btn-danger delete" data-id='{{ attribute(value,'id') }}'>削除</button>
+									<form method="POST" action="{{ENTRY_URL}}delete_news.php" id="delete_form_{{ attribute(value,'id')}}">
+										<input type="hidden" value='{{ attribute(value,'id') }}' name="id">
+									</form>
+								</td>
+							</tr>
+						{% endfor %}
+					</tbody>
+				</div>
+			</table>
+		</div>
+	</div>
+</div></div></div></main>{% include "common/footer.html.twig" %}

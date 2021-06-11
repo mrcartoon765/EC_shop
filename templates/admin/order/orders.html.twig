@@ -2,44 +2,44 @@
 	<main>
             <div class="wrapper">
                 <div class="container">
-                    <div class="wrapper-title">
+                    <div class="wrapper-title text-center">
                         <h3>受注管理</h3>
                     </div>
                     <div class="list">
-                        <table>
+                        <table class="sort-table">
                         <thead>
                             <tr>
-                                <th>注文ID</th>
-                                <th>氏名</th>
-                                <th>電話番号</th>
-                                <th>合計金額</th>
-                                <th>注文日時</th>
-                                <th>更新日時</th>
-                                <th>注文ステータス</th>
-                                <th>操作</th>
+                                <th class="text-center">注文ID</th>
+                                <th class="text-center">氏名</th>
+                                <th class="text-center">電話番号</th>
+                                <th class="text-center">合計金額</th>
+                                <th class="text-center">注文日時</th>
+                                <th class="text-center">更新日時</th>
+                                <th class="text-center">注文ステータス</th>
+                                <th class="text-center">操作</th>
                             </tr>
                         </thead>
                         <tbody>
                           {% for orders in order_data %}
                           <tr>
-                            <td>{{ orders['id'] }}</td>
-                            <td>{{ orders['family_name'] }} {{ orders['first_name'] }}</td>
-                            <td>{{ orders['tel1'] }}-{{ orders['tel2'] }}-{{ orders['tel3'] }}</td>
-                            <td>{{ orders['total'] }}</td>
-                            <td>{{ orders['created_at'] }}</td>
-                            <td>{{ orders['update_at'] }}</td>
-                                <td>
+                            <td class="text-center">{{ orders['id'] }}</td>
+                            <td class="text-center">{{ orders['family_name'] }} {{ orders['first_name'] }}</td>
+                            <td class="text-center">{{ orders['tel1'] }}-{{ orders['tel2'] }}-{{ orders['tel3'] }}</td>
+                            <td class="text-center">￥{{ orders['total']|number_format }}</td>
+                            <td class="text-center">{{ orders['created_at'] }}</td>
+                            <td class="text-center">{{ orders['updated_at'] }}</td>
+                                <td class="text-center">
                                     {% if orders['order_status'] == 0 %}
                                     <button type="button" class="btn btn-danger">受付中</button>
                                     {% else %}
                                     <button type="button" class="btn btn-blue">発送済</a></button>
                                     {% endif %}
                                 </td>
-                                <td>
+                                <td class="text-center">
                                    <button type="button" class="btn btn-info" onclick="location.href='{{ENTRY_URL}}/order_products.php?id={{orders['id']}}'">詳細</button>
 <button type="button" class="btn btn-danger delete" data-id='{{ attribute(orders,'id') }}' >注文取り消し</button>
-<form method="POST" action="{{ENTRY_URL}}/delete_order.php" id="delete_form_{{ attribute(orders,'id')}}">
-<input type="hidden" value='{{ attribute(orders,'id') }}'  name="id">
+<form method="POST" action="{{ENTRY_URL}}/orders.php" id="delete_form_{{ attribute(orders,'id')}}" value='1'>
+<input type="hidden" name="order_delete" value='{{ attribute(orders,'id') }}'  name="id">
 									</form>
                                 </td>
                             </tr>
@@ -47,6 +47,7 @@
                         </tbody>
                         </table>
                     </div>
+                {% include "common/paging.html.twig" %}
                 </div>
             </div>
         </main>

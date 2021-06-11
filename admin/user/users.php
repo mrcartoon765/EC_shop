@@ -14,15 +14,17 @@ template_twig_files::Prepare_the_template();
 
 admin_login::login_session();
 
-original_Mysql_command::search_data_and_paging('customer','first_name',50);
+original_Mysql_command::search_data_and_paging('customer','first_name',20);
+
+if (isset($_GET['mail'])){
+  original_Mysql_command::search_data_and_paging('customer','mail',20);
+}
 
 $customer = $GLOBALS['search'];
 
 $context['customer']=$customer;
 $context['first_name'] = $_GET['first_name'];
-$context['pages'] = $GLOBALS['pages'];
-$context['prev'] =  $GLOBALS['prev'];
-$context['page'] =  $GLOBALS['page'];
-$context['next'] =  $GLOBALS['next'];
+
+include_once(AppDir.'/common/paging_context.php');
 
 template_twig_files::template_load_front();

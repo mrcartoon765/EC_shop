@@ -4,14 +4,10 @@
 	<input type="hidden" value='{{ attribute(value,'id') }}' name="id">
 </form>
 
-												{% set ctg1 = {1:'食品',2:'サプリ',3:'ガジェット',4:'家具・寝具',5:'美容品'}%}
-												{% set ctg2 = {1:'ストレス対策',2:'アンチエイジング',3:'集中力改善',4:'睡眠改善',5:'ダイエット'}%}
-												{% set books = {1:'超ストレス解消法',2:'最高の体調',3:'【新装版】一生リバウンドしないパレオダイエットの教科書',4:'ヤバい集中力　１日ブッ通しで頭が冴えわたる神ライフハック45',5:'科学的な適職',6:'不老長寿メソッド　死ぬまで若いは武器になる'}%}
-
 <main>
 	<div class="wrapper last-wrapper">
 		<div class="container">
-			<div class="wrapper-title">
+			<div class="wrapper-title text-center">
 				<h3>副商材編集</h3>
 				<p>{{file_name}}</p>
 			</div>
@@ -25,85 +21,90 @@
 				<div class="container">
 					<div class="row">
 						{% for value in product_data %}
-								<div class="card-group col-md-4">
-									<div class="card" style="width: 18rem;">
-										<div class="column flex-direction:row">
-											<div class="card-body">
-												<img class="card-img-top img-fluid" src="{{APP_DIR}}/shopping/image/sub/{{ attribute(value,'image') }}" alt="...">
-												<p> </p>
+							{% set id = attribute(value,'id') %}
+							{% set ctg_id = attribute(value,'ctg_id') %}
+							{% set ctg1 = attribute(value,'ctg1') %}
+							{% set ctg2 = attribute(value,'ctg2') %}
+							<div
+								class="card-group col-md-4 col-sm-12">
+								{# <div class="card" style="width: 18rem;"> #}aa
+								<div class="card" style="height:100%;">
+									<div class="column flex-direction:row">
+										<div class="card-body">
+											<img class="card-img-top img-fluid" src="{{APP_DIR}}/shopping/image/sub/{{ attribute(value,'image') }}" alt="...">
+											<p></p>
+											<div class="border-top border-bottom border-info">
 												<div class="row">
-												<div class="col">
-												<p>商品ID:{{attribute (value,'id')}}</p>
+													<div class="col">
+														<h5>商品ID:{{attribute (value,'id')}}</h5>
+													</div>
+													<div class="col">
+														<h5>価格:￥{{attribute (value,'price')|number_format}}</h5>
+													</div>
 												</div>
-												<div class="col">
-												<p>価格:￥{{attribute (value,'price')|number_format}}</p>
-												</div>
-												</div>
-												<p></p>
-												<h8 class="card-title">商品名</h8>
-												<p class="card-text">{{attribute (value,'title')}}</p>
-												<h8 class="card-title">商品説明</h8>
-												<p class="card-text">{{attribute (value,'detail')|slice(0,40)}}...</p>
-												<h8 class="card-title">発売日</h8>
-												<p class="card-text">{{attribute (value,'date')}}</p>
-												<h8 class="card-title">最終更新日時</h8>
-												<p class="card-text">{{attribute (value,'last_update')}}</p>
+											</div>
+											<p></p>
+											<div class="border-bottom border-info">
 
+												<h5 class="card-title">商品名:{{attribute (value,'title')|slice(0,30)}}</h5>
+											</div>
+											<div class="border-bottom border-info">
+
+												<h5 class="card-title">商品説明:{{attribute (value,'detail')|slice(0,40)}}...</h5>
+											</div>
+											<div class="border-bottom border-info">
+												<h5 class="card-title">発売日:{{attribute (value,'date')}}</h5>
+											</div>
+											<h8></h8>
+											<div class="border-bottom border-info">
 												<h8 class="card-title">関連書籍</h8>
-												<p class="card-text">・{{ attribute(books,attribute (value,'ctg1'))}}</p>
+												:{{ attribute(ctg_id_array,ctg_id)['name'] }}
+											</div>
+											<div class="row">
+												<div class="col">
+													<div class="border-right border-info">
+														<p class="text-center">関連カテゴリ</p>
+														<p class="text-center">
+															{{ attribute(ctg1_array,ctg1)['name'] }}
+														</p>
+													</div>
+												</div>
+												<div class="col">
+													<p class="text-center">目的カテゴリ</p>
+													<p class="text-center">
+														{{ attribute(ctg2_array,ctg2)['name'] }}
+													</p>
+												</div>
+											</div>
+											<div class="card-footer">
 												<div class="row">
-												<div class="col">
-												<p>関連カテゴリ</p>
-												<p>・{{ attribute(ctg1,attribute (value,'ctg1'))}}</p>
+													<div class="col">
+														<div class="text-center">
+															<button type="button" class="btn btn-info btn-lg" onclick="location.href='{{ENTRY_URL}}/edit_sub.php?id={{ attribute(value,'id') }}'">編集</button>
+														</div>
+													</div>
+													<div class="col">
+														<div class="text-center">
+															<button type="button" class="btn btn-danger btn-lg delete" data-id='{{ attribute(value,'id') }}'>削除</button>
+															<form method="POST" action="{{ENTRY_URL}}/delete_sub.php" id="delete_form_{{ attribute(value,'id')}}">
+																<input type="hidden" value='{{ attribute(value,'id') }}' name="id">
+															</form>
+														</div>
+													</div>
 												</div>
-												<div class="col">
-												<p>目的別カテゴリ</p>
-												<p>・{{ attribute(ctg2,attribute (value,'ctg2'))}}</p>
-												</div>
-												</div>
-												<div class="row">
-												<div class="col">
-												<button type="button" class="btn btn-info" onclick="location.href='{{ENTRY_URL}}/edit_sub.php?id={{ attribute(value,'id') }}'">編集</button>
-												</div>
-												<div class="col">
-												<button type="button" class="btn btn-danger delete" data-id='{{ attribute(value,'id') }}'>削除</button>
-												<form method="POST" action="{{ENTRY_URL}}/delete_sub.php" id="delete_form_{{ attribute(value,'id')}}">
-													<input type="hidden" value='{{ attribute(value,'id') }}' name="id">
-												</form>
-												</div>
+												<div class="text-center">
+													<h8 class="card-title">最終更新日時<br>
+														<h8 class="card-text">{{attribute (value,'last_update')}}</h8>
+													</div>
 												</div>
 											</div>
 										</div>
 									</div>
-							</div>
-						{% endfor %}
+								</div>
+							{% endfor %}
+						</div>
 					</div>
-				</div>
-
-				<ul class="paging">
-					<li>
-						<a href="{{ENTRY_URL}}secondary_products.php?title={{ title }}">« 最初</a>
-					</li>
-
-					{% if prev != '' %}
-						<li>
-							<a href="{{ENTRY_URL}}secondary_products.php?page={{ prev }}&title={{ title }}" {{ page }} -1="-1">{{ page -1}}</a>
-						</li>
-					{% endif %}
-
-					<li>
-						<span>{{ page }}</span>
-					</li>
-
-					{% if next != '' %}
-						<li>
-							<a href="{{ENTRY_URL}}secondary_products.php?page={{ next }}&title={{ title }}">{{ page +1}}</a>
-						</li>
-					{% endif %}
-
-					<li>
-						<a href="{{ENTRY_URL}}/secondary_products.php?page={{ pages }}&title={{ title }}">最後 »</a>
-					</li>
+					{% include "common/paging.html.twig" %}
 				</ul>
 			</div>
 		</div>

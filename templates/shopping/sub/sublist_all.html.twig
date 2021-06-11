@@ -1,10 +1,13 @@
 {% include "common/header.html.twig" %}
+
 <main>
 	<div class="container-fluid">
 		<br><br><br>
 		<div class="wrapper-title">
 			<h2>Health Products</h2>
+			{% block title %}
 			<h6>関連商品一覧</h6>
+			{% endblock %}
 		</div>
 		{% set a = 0 %}
 		<div class="row">
@@ -17,26 +20,29 @@
 								<img class="card-img-top img-fluid" src="{{IMAGE_DIR}}{{ attribute(value,'image') }}" alt="">
 							</a>
 							<div class="card-body px-0">
-								<p class="card-text">
-									<h5>{{ attribute(value,'title')|slice(0,30)  }}...</h5>
-									<input type="hidden" name="title" value="{{ attribute(value,'title')}}">
-									<h5 class="red">価格 ￥{{ attribute(value,'price')|number_format }}</h5>
-									<input type="hidden" name="price" value={{ attribute(value,'price')}}>
+								<div class="card-text">
+									<div class="border-bottom border-info">
+										<h3>{{ attribute(value,'title')|length > 30 ? attribute(value,'title')|slice(0,30) ~ '...': attribute(value,'title')}}</h3>
+										<input type="hidden" name="title" value="{{ attribute(value,'title')}}">
+									</div>
 									<br>
-									{{  attribute(value,'detail')|slice(0,40) }}...
+									<div class="border-bottom border-info">
+										<h3 class="red">価格 ￥{{ attribute(value,'price')|number_format }}</h3>
+										<input type="hidden" name="price" value={{ attribute(value,'price')}}>
+										<br>
+									</div>
+									<h5>{{ attribute(value,'detail')|length > 40 ? attribute(value,'detail')|slice(0,40) ~ '...': attribute(value,'detail')}}</h5>
 									<input type="hidden" name="ctg_id" value={{value['ctg_id']}}>
-								</p>
+								</div>
 							</div>
 
 							{% include "common/shopping/want_button.html.twig" %}
 
-
 							{% include "common/cart_btn.html.twig" %}
-
+							<br><br>
 
 						</div>
 					</div>
-
 				</form>
 				{% set a = a + 1 %}
 			{% endfor %}

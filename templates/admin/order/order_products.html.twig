@@ -1,90 +1,122 @@
-    {% include "common/header_admin.html.twig" %}
-{% set books = {1:'超ストレス解消法',2:'最高の体調',3:'【新装版】一生リバウンドしないパレオダイエットの教科書',4:'ヤバい集中力　１日ブッ通しで頭が冴えわたる神ライフハック45',5:'科学的な適職',6:'不老長寿メソッド　死ぬまで若いは武器になる'}%}
-	<main>
-            <div class="wrapper">
-                <div class="container">
-                    <div class="wrapper-title">
-                        <h3>受注明細</h3>
-                    </div>
-                    <div class="list">
-                    <h4>購入者情報</h4>
-                        <table>
-                        <tbody>
-                        <tr><th>氏名</th><td>{{ orders['first_name'] }}</td></tr>
-                        <tr><th>郵便番号</th><td>{{ orders['zip1'] }}-{{ orders['zip2'] }}</td></tr>
-                        <tr><th>住所</th><td>{{ orders['address'] }}</td></tr>
-                        <tr><th>メールアドレス</th><td>{{ orders['mail'] }}</td></tr>
-                        <tr><th>電話番号</th><td>{{ orders['tel1'] }}-{{ orders['tel2'] }}-{{ orders['tel3'] }}</td></tr>
-                        <tr><th>合計金額</th><td>￥{{ orders['total'] }}</td></tr>
-                        <tr><th>受注日時</th><td>{{ orders['created_at'] }}</td></tr>
-                        <tr><th>更新日時</th><td>{{ orders['update_at'] }}</td></tr>
-                        <tr><th>注文状況</th><td>
-                        {% if  orders['order_status'] == 0 %}
-                        <button class="btn btn-danger">受付中</button>
-                        <button type="button" class="btn btn-blue" onclick="location.href='{{ENTRY_URL}}/update_order_status.php?id={{ orders['id'] }}'">発送済みにする</button>
-                        {% else %}
-                        <button type="button" class="btn btn-blue">発送済</button>
-                        <button type="button" class="btn btn-danger" onclick="location.href='{{ENTRY_URL}}/update_order_status.php?id={{ orders['id'] }}'">発送を取り消す</button>
-                        {% endif %}
-                        </td></tr>
-                        </tbody>
-                        </table>
-                    </div>
-                <div class="list">
-                <h4>商品詳細</h4>
-                 <table class="sort-table">
-                        <thead>
-                        <tr>
-                        <th>id</th>
-                        <th>注文id</th>
-                        <th>商品名</th>
-                        <th>個数</th>
-                        <th>金額</th>
-                        <th>小計金額</th>
-                        <th>関連書籍</th>
-                        <th>操作</th>
+{% include "common/header_admin.html.twig" %}
 
-                        </tr>
-                        </thead>
-                        <tbody>
-                        {% set a = 0 %}
-                        {% for value in order_detail %}
-                        <tr>
-                        <td>{{ attribute(value,'id') }}</td>
-                        <td>{{ attribute(value,'order_id') }}</td>
-                        <td>{{ attribute(value,'product_title')|e("html") }}</td>
-                        <td>{{ attribute(value,'num') }}</td>
-                        <td>￥{{ attribute(value,'price') }}</td>
-                        <td>￥{{ attribute(value,'num') * attribute(value,'price') }}</td>
-                        <td>{{ attribute(books,attribute(value,'ctg_id')) }}</td>
-                        <td>
-                        <form action="{{APP_URL}}/admin/order/order_products_status.php" method="POST">
-                        <div class="spinner_area">
-                        <div class="row">
-                        <div class="col-1">
-    <input type="number" name="num" value={{value['num']}} class="counter{{a}}" data-max="500" data-min="0" style="width:70px">
-                        </div>
-                        <div class="col-1">
-    <input type="button" value="＋" class="btnspinner btn-info" data-cal="1" data-target=".counter{{a}}">
-                        </div>
-                        <div class="col-1">
-    <input type="button" value="－" class="btnspinner" data-cal="-1" data-target=".counter{{a}}">
-                        </div>
-    <input type="hidden" name="id" value={{value['id']}}>
-    <input type="hidden" name="order_id" value={{value['order_id']}}>
-                        <div class="col">
-    <button type="submit">変更する</button>
-                        </div>
-                        </div>
-                        </form>
-                        </td>
-                        {% set a = a + 1 %}
-                        {% endfor %}
-                        </tbody>
-                        </table>
-                        </div>
-                </div>
-                </div>
-            </div>
-        </main>
- {% include "common/footer.html.twig" %}
+<br>
+<main>
+	<div class="wrapper">
+		<div class="container">
+			<div class="wrapper-title text-center">
+				<h3>受注明細</h3>
+			</div>
+			<div class="list">
+				<h4>購入者情報</h4>
+				<table>
+					<tbody>
+						<tr>
+							<th>氏名</th>
+							<td>{{ orders['first_name'] }}</td>
+						</tr>
+						<tr>
+							<th>郵便番号</th>
+							<td>{{ orders['zip1'] }}-{{ orders['zip2'] }}</td>
+						</tr>
+						<tr>
+							<th>住所</th>
+							<td>{{ orders['address'] }}</td>
+						</tr>
+						<tr>
+							<th>メールアドレス</th>
+							<td>{{ orders['mail'] }}</td>
+						</tr>
+						<tr>
+							<th>電話番号</th>
+							<td>{{ orders['tel1'] }}-{{ orders['tel2'] }}-{{ orders['tel3'] }}</td>
+						</tr>
+						<tr>
+							<th>合計金額</th>
+							<td>￥{{ orders['total'] }}</td>
+						</tr>
+						<tr>
+							<th>受注日時</th>
+							<td>{{ orders['created_at'] }}</td>
+						</tr>
+						<tr>
+							<th>更新日時</th>
+							<td>{{ orders['updated_at'] }}</td>
+						</tr>
+						<tr>
+							<th>注文状況</th>
+							<td>
+								{% if  orders['order_status'] == 0 %}
+									<button class="btn btn-danger">受付中</button>
+									<button type="button" class="btn btn-blue" onclick="location.href='{{ENTRY_URL}}/update_order_status.php?id={{ orders['id'] }}'">発送済みにする</button>
+								{% else %}
+									<button type="button" class="btn btn-blue">発送済</button>
+									<button type="button" class="btn btn-danger" onclick="location.href='{{ENTRY_URL}}/update_order_status.php?id={{ orders['id'] }}'">発送を取り消す</button>
+								{% endif %}
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+            <br><br>
+			<div class="list">
+				<h4 class="text-center">商品詳細</h4>
+                <br>
+				<table class="sort-table">
+					<thead>
+						<tr>
+							<th class="text-center">id</th>
+							<th class="text-center">注文id</th>
+							<th class="text-center">商品名</th>
+							<th class="text-center">個数</th>
+							<th class="text-center">金額</th>
+							<th class="text-center">小計金額</th>
+							<th class="text-center">関連書籍</th>
+							<th class="text-center">操作</th>
+
+						</tr>
+					</thead>
+					<tbody>
+						{% set a = 0 %}
+						{% for value in order_detail %}
+							{% set b = attribute(value,'ctg_id') %}{% set small_sum = attribute(value,'num')* attribute(value,'price') %}
+							<tr>
+								<td class="text-center">{{ attribute(value,'id') }}</td>
+								<td class="text-center">{{ attribute(value,'order_id') }}</td>
+								<td class="text-center">{{ attribute(value,'product_title')|e("html") }}</td>
+								<td class="text-center">{{ attribute(value,'num') }}</td>
+								<td class="text-center">￥{{ attribute(value,'price')|number_format() }}</td>
+								<td class="text-center">￥{{ small_sum |number_format() }}</td>
+								<td class="text-center">{{book_title[b]['title']}}</td>
+								<td class="text-center">
+									<form action="{{APP_URL}}/admin/order/order_products_status.php" method="POST">
+										{# <div class="spinner_area"> #}
+											<div class="row">
+												<div class="col-12">
+                                                <input type="button" value="＋" class="btnspinner btn-info" data-cal="1" data-target=".counter{{a}}">
+
+												</div>
+												<div class="col-12">
+													<input type="number" name="num" value={{value['num']}} class="counter{{a}}" data-max="500" data-min="0" style="width:70px">
+												</div>
+												<div class="col-12">
+													<input type="button" value="－" class="btnspinner btn-info" data-cal="-1" data-target=".counter{{a}}">
+												{# </div> #}
+												<input type="hidden" name="id" value={{value['id']}}>
+												<input type="hidden" name="order_id" value={{value['order_id']}}>
+												<div class="col">
+													<button type="submit" class="btn">変更する</button>
+												</div>
+											</div>
+										</form>
+									</td>
+									{% set a = a + 1 %}
+								{% endfor %}
+							</tr>
+						</tbody>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+</div></main>{% include "common/footer.html.twig" %}

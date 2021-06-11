@@ -42,7 +42,6 @@ class shopping_cart
 
     {
         customer_login::login_session();
-        $customer_login = $_SESSION['customer_login'];
         $delete_name = isset($_POST['delete_name']) ? htmlspecialchars($_POST['delete_name'], ENT_QUOTES, 'utf-8') : '';
         session_start();
         if ($delete_name != '') {
@@ -60,7 +59,7 @@ class shopping_cart
             $subtotal = (int) $cart_in_product['product_price'] * (int) $cart_in_product['product_count'];
             $total += $subtotal;
         }
-        if ($customer_login == true) {
+        if ($_SESSION['customer_login'] == true) {
             $total = intval($total * 0.7);
         }
         $_SESSION['total_price'] = $total;

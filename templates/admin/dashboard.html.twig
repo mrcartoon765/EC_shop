@@ -1,38 +1,38 @@
 {% include "common/header_admin.html.twig" %}
-	<main>
+<main>
 	<div class="wrapper">
 		<div class="container">
 			<div class="wrapper-title">
 				<h3>ダッシュボード</h3>
 			</div>
-			<div class="container">
-			<div class="boxs">
-													<div class="column flex-direction:row">
-				<a href="{{APP_URL}}admin/news/news.php" class="box">
+			<div class="text-center">
+				<a href="{{admin}}news/news.php" class="box col-6 col-md-3">
+					<br>
 					<i class="far fa-newspaper icon"></i>
 					<p>記事管理</p>
 				</a>
-				<a href="{{APP_URL}}admin/user/users.php" class="box">
+				<a href="{{admin}}user/users.php" class="box col-6 col-md-3">
+					<br>
 					<i class="fas fa-users icon"></i>
 					<p>会員管理</p>
 				</a>
-				<a href="{{APP_URL}}admin/order/orders.php" class="box">
+				<a href="{{admin}}order/orders.php" class="box col-6 col-md-3">
+					<br>
 					<i class="fas fa-ambulance icon"></i>
 					<p>受注管理</p>
-					<a href="{{APP_URL}}admin/book/Books.php" class="box">
-						<i class="fas fa-book-open icon"></i>
-						<p>書籍管理</p>
-					</a>
-					<a href="{{APP_URL}}admin/sub/secondary_products.php" class="box">
-						<i class="fas fa-book-open icon"></i>
-						<p>副商材管理</p>
-					</a>
+				</a>
+				<a href="{{admin}}book/Books.php" class="box col-6 col-md-3">
+					<br>
+					<i class="fas fa-book-open icon"></i>
+					<p>書籍管理</p>
+				</a>
+				<a href="{{admin}}sub/secondary_products.php" class="box col-6 col-md-3">
+					<br>
+					<i class="fas fa-book-open icon"></i>
+					<p>副商材管理</p>
 				</a>
 			</div>
-			</div>
-			</div>
 		</div>
-			</div>
 	</div>
 </main>
- {% include "common/footer.html.twig" %}
+{% include "common/footer.html.twig" %}

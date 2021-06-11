@@ -1,39 +1,50 @@
 {% include "common/header_admin.html.twig" %}
 <main>
-	<div class="wrapper">
+<div class="wrapper">
 		<div class="container">
-			<div class="wrapper-title">
+			<div class="wrapper-title text-center">
 				<h3>会員管理</h3>
 			</div>
 			<button type="button" class='btn btn-primary' onclick="location.href='{{ENTRY_URL}}create_dm.php'">メルマガ配信</button>
 			<button type="button" class="btn btn-secondary" onclick="location.href='{{ENTRY_URL}}download.php'">CSV出力</button>
+			<br><p></p><br>
+			<div class="row">
+			<div class="col-6">
 			<form class="serch" action="{{ENTRY_URL}}users.php" method="GET">
-				<input type="text" name="first_name" placeholder="名前検索">
-				<button type="submit" class="btn btn-primary">検索</button>
+				<input type="text" name="first_name" placeholder="名前検索"><br><br>
+				<button type="submit" class="btn btn-primary">名前検索</button>
 			</form>
+			</div>
+			<div class="col-6">
+			<form class="serch" action="{{ENTRY_URL}}users.php" method="GET">
+				<input type="text" name="mail" placeholder="メールアドレス検索"><br><br>
+				<button type="submit" class="btn btn-primary">アドレス検索</button>
+			</form>
+			</div>
+			</div>
 			<div class="list">
-				<table>
+				<table class="sort-table">
 					<thead>
 						<tr>
-							<th>id</th>
-							<th>名前</th>
-							<th>メールアドレス</th>
-							<th>DM配信</th>
-							<th>操作</th>
+							<th class="text-center">id</th>
+							<th class="text-center">名前</th>
+							<th class="text-center">メールアドレス</th>
+							<th class="text-center">DM配信</th>
+							<th class="text-center">操作</th>
 						</tr>
 					</thead>
 					<tbody>
 						{% for value in customer %}
 							<tr>
-								<td>{{ attribute(value,'id') }}</td>
-								<td>{{ attribute(value,'first_name') }}</td>
-								<td>{{ attribute(value,'mail') }}</td>
+								<td class="text-center">{{ attribute(value,'id') }}</td>
+								<td class="text-center">{{ attribute(value,'first_name') }}</td>
+								<td class="text-center">{{ attribute(value,'mail') }}</td>
 								{% if attribute(value, 'dm') == 1 %}
-									<td>受信する</td>
+									<td class="text-center">受信する</td>
 								{% else %}
-									<td>受信しない</td>
+									<td class="text-center">受信しない</td>
 								{% endif %}
-								<td>
+								<td class="text-center">
 									<button type="button" class="btn btn-info" onclick="location.href='{{ENTRY_URL}}edit_user.php?id={{ attribute(value,'id') }}'">編集</button>
 									<button type="button" class="btn btn-danger delete" data-id='{{ attribute(value,'id') }}' >削除</button>
 									<form method="POST" action="{{ENTRY_URL}}/delete_user.php" id="delete_form_{{ attribute(value,'id')}}">
@@ -46,31 +57,8 @@
 				</table>
 			</div>
 
-			<ul class="paging">
-				<li>
-					<a href="{{ENTRY_URL}}users.php?first_name={{ first_name }}">« 最初</a>
-				</li>
+{% include "common/paging.html.twig" %}
 
-				{% if prev != '' %}
-					<li>
-						<a href="{{ENTRY_URL}}users.php?page={{ prev }}&first_name={{ first_name }}" {{ page }} -1="-1">{{ page -1}}</a>
-					</li>
-				{% endif %}
-
-				<li>
-					<span>{{ page }}</span>
-				</li>
-
-				{% if next != '' %}
-					<li>
-						<a href="{{ENTRY_URL}}users.php?page={{ next }}&first_name={{ first_name }}">{{ page +1}}</a>
-					</li>
-				{% endif %}
-
-				<li>
-					<a href="{{ENTRY_URL}}/users.php?page={{ pages }}&first_name={{ first_name }}">最後 »</a>
-				</li>
-			</ul>
 		</div>
 	</div>
 </div></main>{% include "common/footer.html.twig" %}

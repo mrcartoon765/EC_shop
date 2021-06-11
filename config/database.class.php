@@ -52,8 +52,6 @@ class database
         $detail_data = $detail_data[0];
         return $detail_data;
     }
-
-    // select count(*) from want WHERE `table_name` = 'book' AND `product_id` = '1';
     //wantテーブルから、テーブルと商品idをもとに合計数量をカウントする関数
     public static function get_want_list_sum($table_name,$product_id)
     {
@@ -178,7 +176,7 @@ class database
     //data_getでデータを全部取得した後idのランダムな値を取得する関数
     public static function id_no_random_get($array,$id)
     {
-        $array = 
+        $array =
         array_rand(
                 array_flip(
                 array_merge(

@@ -8,7 +8,7 @@ require_once $_SERVER['DOCUMENT_ROOT']."/config/Bootstrap.class.php";
 
 class original_Mysql_command
 {
-    public static function customer_data_update($table)
+    public static function customer_data_update($table)//ユーザー情報を自分で更新する場合に使用する処理
     {
         foreach ($_POST as $key => $value) {
             $key_value[] = $key . ' = ' . '"' . $value . '"' . ',';
@@ -18,7 +18,7 @@ class original_Mysql_command
         $sql = "UPDATE " . $table . " SET " . $key_value . " WHERE id =" . $ses . ';';
         return $sql;
     }
-    public static function POST_DATA_INSERT($table)
+    public static function POST_DATA_INSERT($table)//管理画面で新しくデータを登録する際に使用する処理
     {
         foreach ($_POST as $key => $value) {
             $k[] = '`'.$key.'`' . ', ';
@@ -65,7 +65,7 @@ class original_Mysql_command
             exit;
         }
     }
-    public static function POST_DATA_UPDATE($table)
+    public static function POST_DATA_UPDATE($table)//管理画面で商品詳細などの更新をする際の処理
     {
         foreach ($_POST as $key => $value) {
             if ($key == 'id') {
@@ -119,7 +119,7 @@ class original_Mysql_command
         }
         database::dbh();
     }
-    public static function search_data_and_paging($table, $column,$paging=10)
+    public static function search_data_and_paging($table, $column,$paging=10)//商品名やユーザー検索をする際に使用する処理とページングの表示数
     {
         global $search, $pages, $prev, $page, $next;
         $get_column = isset($_GET[$column]) ? htmlspecialchars($_GET[$column], ENT_QUOTES, 'utf-8') : '';

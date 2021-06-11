@@ -8,11 +8,10 @@ $this_dir = basename(__DIR__);
 
 $app_name = explode('/', dirname(__FILE__))[4];
 
-require_once $_SERVER['DOCUMENT_ROOT']."/config/Bootstrap.class.php";
+require_once $_SERVER['DOCUMENT_ROOT'] . "/config/Bootstrap.class.php";
 
 use create_account\lib\Common;
 use create_account\master\initMaster;
-use PDOException;
 
 template_twig_files::Prepare_the_template();
 
@@ -20,9 +19,9 @@ $db = new account_DB(Bootstrap::DB_HOST, Bootstrap::DB_USER, Bootstrap::DB_PASS,
 
 //テンプレートディレクトリ設定
 $a = $_SERVER["HTTP_REFERER"];
-$b = $_SERVER["HTTP_ORIGIN"].'//';
-$c = str_replace($b,'',$a);
-$confirm_temp_dir = '/'.(strstr($c,'/',true)).'/';
+$b = $_SERVER["HTTP_ORIGIN"] . '//';
+$c = str_replace($b, '', $a);
+$confirm_temp_dir = '/' . (strstr($c, '/', true)) . '/';
 
 $common = new Common();
 if (isset($_POST['confirm']) === true) {
@@ -46,18 +45,17 @@ switch ($mode) {
 
         $err_check = $common->getErrorFlg();
 
-        if(isset($_POST['edit_customer'])){
+        if (isset($_POST['edit_customer'])) {
 
-        if( $_POST['edit_customer'] == 1 && $err_check === true)
-            {
-            $_POST['edit_customer'] = 0;
-            $confirm_temp_dir = '/customer/';
-            $template = 'confirm.html.twig';
-            break;
-        } else {
-        $confirm_temp_dir = '/customer/';
-        $template = 'edit_customer_rewrite.html.twig';
-        break;}
+            if ($_POST['edit_customer'] == 1 && $err_check === true) {
+                $_POST['edit_customer'] = 0;
+                $confirm_temp_dir = '/customer/';
+                $template = 'confirm.html.twig';
+                break;
+            } else {
+                $confirm_temp_dir = '/customer/';
+                $template = 'edit_customer_rewrite.html.twig';
+                break;}
         }
 
         $template = ($err_check === true) ? 'confirm.html.twig' : 'regist.html.twig';
@@ -80,9 +78,9 @@ switch ($mode) {
         foreach ($dataArr as $key => $value) {
             $errArr[$key] = '';
         }
-        if($_POST['edit_customer'] == 1){
-        $confirm_temp_dir = '/customer/';
-        $template = 'edit_customer_rewrite.html.twig';
+        if ($_POST['edit_customer'] == 1) {
+            $confirm_temp_dir = '/customer/';
+            $template = 'edit_customer_rewrite.html.twig';
             break;
         }
         $template = 'regist.html.twig';
@@ -97,21 +95,21 @@ switch ($mode) {
         $dataArr['password'] = password_hash($dataArr['password'], PASSWORD_DEFAULT);
         $dataArr['dm'] = ($dataArr['dm'] === '受信する') ? intval(1) : intval(0);
 
-        if( $_POST['edit_customer'] == 1 ){
+        if ($_POST['edit_customer'] == 1) {
             unset($dataArr['edit_customer']);
             $_POST['edit_customer'] = 0;
 
-        foreach ($dataArr as $key => $value) {
-            $column .= "`".$key . "` = '" .$value."', " ;
-          $query= "UPDATE customer SET ".$column
-          ."update_date = NOW() ". "WHERE id = " .$_SESSION['customer_id'];
-        }
+            foreach ($dataArr as $key => $value) {
+                $column .= "`" . $key . "` = '" . $value . "', ";
+                $query = "UPDATE customer SET " . $column
+                    . "update_date = NOW() " . "WHERE id = " . $_SESSION['customer_id'];
+            }
 
-          $res = $db->execute($query);
+            $res = $db->execute($query);
 
-        if ($res === true) {
-            header('Location:' . Bootstrap::ENTRY_URL . '/complete.php');
-            exit();}
+            if ($res === true) {
+                header('Location:' . Bootstrap::ENTRY_URL . '/complete.php');
+                exit();}
         }
 
         foreach ($dataArr as $key => $value) {
@@ -120,7 +118,7 @@ switch ($mode) {
         }
 
         $query = "INSERT INTO Customer("
-            . $column . "regist_date" . ") VALUES (" . $insData . " NOW()" ." );";
+            . $column . "regist_date" . ") VALUES (" . $insData . " NOW()" . " );";
 
         $res = $db->execute($query);
 
@@ -128,16 +126,16 @@ switch ($mode) {
             header('Location:' . Bootstrap::ENTRY_URL . '/complete.php');
             exit();
         } else {
-            if($_POST['edit_customer'] == 1){
+            if ($_POST['edit_customer'] == 1) {
                 $template = 'edit_customer_rewrite.html.twig';
-            foreach ($dataArr as $key => $value) {
-                $errArr[$key] = '';
-            }
-            }else{
-            $template = 'regist.html.twig';
-            foreach ($dataArr as $key => $value) {
-                $errArr[$key] = '';
-            }}
+                foreach ($dataArr as $key => $value) {
+                    $errArr[$key] = '';
+                }
+            } else {
+                $template = 'regist.html.twig';
+                foreach ($dataArr as $key => $value) {
+                    $errArr[$key] = '';
+                }}
         }
         break;
 }
@@ -149,5 +147,5 @@ $context['dayArr'] = $dayArr;
 $context['dataArr'] = $dataArr;
 $context['errArr'] = $errArr;
 
-$template = $GLOBALS['twig']->loadTemplate($confirm_temp_dir .  $template);
+$template = $GLOBALS['twig']->loadTemplate($confirm_temp_dir . $template);
 $template->display($GLOBALS['context']);

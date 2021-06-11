@@ -1,3 +1,4 @@
+
 //郵便番号から住所検索
 $(function () {
   $('#address_search').click(function () {
@@ -51,7 +52,6 @@ $(function () {
           $($want + for_count).toggleClass(data.want);
           $($want + for_count).html(data.icon);
           $($hosii + for_count).text(data.sum + ' 欲しい！');
-          console.log(data);
           for_count++;
         }).fail(function (jqXHR, textStatus, errorThrown) {
           // 通信失敗時の処理
@@ -80,9 +80,6 @@ $(function () {
           } //テーブル名キー:テーブル名}
         }).done(function (data) {
           console.log('Ajax Success');
-          console.log(data);
-          console.log(data.sum);
-          console.log($this.children('btn_want_status' + data.count_no))
           // いいねの総数を増減させる
           $($hosii + data.count_no).text(data.sum + ' 欲しい！');
           // いいね取り消しのスタイル
@@ -121,15 +118,10 @@ $(function () {
               want_list_count_no: $($w_l+"_count_no" + w_l_c).val(),
             }
           }).done(function(data){
-            console.log('success');
             $($w_l+'_title' + w_l_c).text(data.title);
             $($w_l+'_price' + w_l_c).text('￥'+data.price);
             $($w_l+'_img' + w_l_c).html(img_tag_src+data.table_name+'/'+ data.image + '>');
             $($w_l+'_want_sum' + w_l_c).text(data.want_list_sum + ' 欲しい！');
-              // console.log(data);
-              // console.log(data.table_name);
-              console.log(data.id);
-              console.log(data.want_list_sum);
             w_l_c++;
 
           }).fail(function (jqXHR, textStatus, errorThrown) {
@@ -140,11 +132,11 @@ $(function () {
             console.log("textStatus     : " + textStatus); // タイムアウト、パースエラー
             console.log("errorThrown    : " + errorThrown.message); // 例外情報
             console.log("URL            : " + url);
+
           });
         };
       });
     });
-
 
 
       $(function () {

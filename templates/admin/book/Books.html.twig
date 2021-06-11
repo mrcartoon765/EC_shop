@@ -2,51 +2,53 @@
 <main>
 	<div class="wrapper">
 		<div class="container">
-			<div class="wrapper-title">
+			<div class="wrapper-title text-center">
 				<h3>書籍管理</h3>
 			</div>
+			<br>
 			<button type="button" class="btn btn-primary" onclick="location.href='create_Book_list.php'">書籍を新規登録する</button>
-			<div class="list">
-				<table>
-					<thead>
-						<tr>
-							<th>書籍ID</th>
-							<th>タイトル</th>
-							<th>説明文</th>
-							<th>価格</th>
-							<th>画像</th>
-							<th>発売日</th>
-							<th>関連商材ID</th>
-							<th>操作</th>
-						</tr>
-					</thead>
-					<tbody>
+			<br><br>
 						{% for value in Books %}
-							<tr>
-								<td>{{ attribute(value,'id') }}</td>
-								<td>{{ attribute(value,'title') }}</td>
-								<td>
-								<span class="d-inline-block text-truncate" style="max-width: 50px;">{{ attribute(value,'detail') }}</span>
-								</td>
-								<td>{{ attribute(value,'price')|number_format }}</td>
-								<td><img src="{{APP_URL}}/shopping/image/book/{{ attribute(value,'image') }}" alt=""></td>
-								<td>{{ attribute(value,'date') }}</td>
-								<td>{{ attribute(value,'ctg_id') }}</td>
-								<td>
-									<button type="button" class="btn btn-info" onclick="location.href='{{ENTRY_URL}}/edit_book.php?id={{ attribute(value,'id') }}'">編集</button>
+<div class="card">
+  <div class="row g-0">
+    <div class="col-md-4 text-center">
+      <img src="{{APP_URL}}/shopping/image/book/{{ attribute(value,'image') }}" style="height:300px;width:230px;" alt="">
+    </div>
+    <div class="col-md-8">
+      <div class="card-body">
+        <h5 class="card-title">書籍名</h5>
+        <h5 class="card-title">{{ attribute(value,'title') }}</h5>
+        <h5 class="card-title">価格:￥{{ attribute(value,'price')|number_format }}</h5>
+        <h5 class="card-title"></h5>
+        <h5 class="card-title">説明文</h5>
+				<p class="card-text">{{ attribute(value,'detail')|slice(0,40) }}</p>
+        <p class="card-text">発売日:{{ attribute(value,'date') }}</p>
+        <p class="card-text">関連商材ID:{{ attribute(value,'ctg_id') }}</p>
+      </div>
+    </div>
+    </div>
+			    <div class="card-footer">
+		<div class="container">
+		<div class="row">
+		<div class="text-center col">
+									<button type="button" class="btn btn-info btn-lg" onclick="location.href='{{ENTRY_URL}}/edit_book.php?id={{ attribute(value,'id') }}'">編集</button>
+		</div>
 
-									<button type="button" class="btn btn-danger delete" data-id='{{ attribute(value,'id') }}'>削除</button>
+		<div class="text-center col">
+									<button type="button" class="btn btn-danger delete btn-lg" data-id='{{ attribute(value,'id') }}'>削除</button>
 
 									<form method="POST" action="{{ENTRY_URL}}/delete_Books.php" id="delete_form_{{ attribute(value,'id')}}">
 										<input type="hidden" value='{{ attribute(value,'id') }}' name="id">
 									</form>
-								</td>
-							</tr>
-						{% endfor %}
-					</tbody>
-				</table>
+		</div>
 			</div>
 		</div>
+					</div>
+					</div>
+						{% endfor %}
+		</div>
+		</div>
 	</div>
+		</div>
 </main>
 {% include "common/footer.html.twig" %}

@@ -335,7 +335,7 @@ $context['css'] = AppUrl."/css/";
 $context['js'] = AppUrl."/js/";
 $context['image'] = AppUrl."/image/";
 $context['templates'] = AppUrl."/templates/";
-
+$context['filename'] = $filename;
 class template_twig_files
 {
     public static function Prepare_the_template()

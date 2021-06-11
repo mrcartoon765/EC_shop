@@ -14,44 +14,59 @@
   <meta property"og:description" content="健康知識に関する本のサイトです" />
 
 
-     <link rel="stylesheet" href="{{APP_URL}}/css/admin/styles.css">
-    <link rel="stylesheet" href="{{APP_URL}}/css/responsive.css">
+     <link rel="stylesheet" href="{{css}}admin/styles.css">
+    {# <link rel="stylesheet" href="{{css}}responsive.css"> #}
+    <link href="{{css}}css-buttons-master/styles/bootstrap.min.css" rel="stylesheet">
+<link href="{{css}}css-buttons-master/styles/buttons.css" rel="stylesheet">
 
     <!-- Bootstrap CSS -->
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 <link href="https://use.fontawesome.com/releases/v5.15.2/css/all.css" rel="stylesheet">
 
 </head>
-
 <body>
 <header>
 <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #20c997;">
   <div class="container-fluid">
-    <a class="navbar-brand" href="{{APP_URL}}/admin/dashboard.php">管理画面トップ</a>
+    <a class="navbar-brand" href="{{APP_URL}}/admin/dashboard.php"> <button class="btn-secondary btn-radius"><h3>管理画面トップ</h3></button></a>
     <button class="navbar-toggler" type="button button-red" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav">
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="{{APP_URL}}admin/news/news.php">記事管理</a>
+        <li class="nav-item text-center">
+          <a class="nav-link active" aria-current="page" href="{{APP_URL}}admin/news/news.php">
+          <button class="btn btn-dark">記事管理</button>
+          </a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="{{APP_URL}}admin/user/users.php">会員管理</a>
+        <li class="nav-item text-center">
+          <a class="nav-link active" aria-current="page" href="{{APP_URL}}admin/user/users.php">
+          <button class="btn btn-dark">会員管理</button>
+          </a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="{{APP_URL}}admin/order/orders.php">受注管理</a>
+        <li class="nav-item text-center">
+          <a class="nav-link active" aria-current="page" href="{{APP_URL}}admin/order/orders.php">
+          <button class="btn btn-dark">受注管理</button>
+          </a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="{{APP_URL}}admin/book/books.php">書籍管理</a>
+        <li class="nav-item text-center">
+          <a class="nav-link active" aria-current="page" href="{{APP_URL}}/admin/book/books.php">
+          <button class="btn btn-dark">書籍管理</button>
+          </a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="{{APP_URL}}admin/sub/secondary_products.php">副商材管理</a>
+        <li class="nav-item text-center">
+          <a class="nav-link active" aria-current="page" href="{{APP_URL}}/admin/sub/secondary_products.php">
+          <button class="btn btn-dark">副商材管理</button>
+          </a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="{{APP_URL}}index.php">サイトトップページへ</a>
-				<li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="{{APP_URL}}admin/logout.php">管理画面からログアウト</a>
+        <li class="nav-item text-center">
+          <a class="nav-link active" aria-current="page" href="{{APP_URL}}index.php">
+          <button class="btn btn-dark">サイトトップページへ</button>
+          </a>
+				<li class="nav-item text-center">
+          <a class="nav-link active" aria-current="page" href="{{APP_URL}}/admin/logout.php">
+          <button class="btn btn-danger">管理画面からログアウト</button>
+          </a>
         </li>
       </ul>
     </div>

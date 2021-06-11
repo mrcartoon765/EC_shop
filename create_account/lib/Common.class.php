@@ -9,7 +9,7 @@ class Common
     private $dataArr = [];
     private $errArr = [];
     // 初期化
-        public function __construct()
+    public function __construct()
     {
     }
     public function errorCheck($dataArr)
@@ -17,10 +17,9 @@ class Common
         $this->dataArr = $dataArr;
         //クラス内のメソッドを読み込む
         $this->createErrorMessage();
-        if(is_null($_POST['edit_customer']))
-        {
-        $this->mailCheck();
-        $this->passwordCheck();
+        if (is_null($_POST['edit_customer'])) {
+            $this->mailCheck();
+            $this->passwordCheck();
         }
         $this->familyNameCheck();
         $this->firstNameCheck();
@@ -41,8 +40,8 @@ class Common
         if (preg_match('/^([a-zA-Z0-9])+([a-zA-Z0-9\._-])*@([a-zA-Z0-9_-])+[a-zA-Z0-9\._-]+$/', $this->dataArr['mail']) === 0) {
             $this->errArr['mail'] = 'メールアドレスを正しい形式で入力してください';
         }
-        $exists_mail = database::get_data_where('Customer','mail',$this->dataArr['mail']);
-        if(($exists_mail[0]['mail'] === $this->dataArr['mail'])){
+        $exists_mail = database::get_data_where('Customer', 'mail', $this->dataArr['mail']);
+        if (($exists_mail[0]['mail'] === $this->dataArr['mail'])) {
             $this->errArr['mail'] = 'このメールアドレスは既に登録されています';
         }
     }
@@ -100,9 +99,9 @@ class Common
     private function telCheck()
     {
         if (preg_match('/^\d{1,6}$/', $this->dataArr['tel1']) === 0 ||
-  preg_match('/^\d{1,6}$/', $this->dataArr['tel2']) === 0 ||
-  preg_match('/^\d{1,6}$/', $this->dataArr['tel3']) === 0 ||
-  strlen($this->dataArr['tel1'] . $this->dataArr['tel2'] . $this->dataArr['tel3']) >= 12) {
+            preg_match('/^\d{1,6}$/', $this->dataArr['tel2']) === 0 ||
+            preg_match('/^\d{1,6}$/', $this->dataArr['tel3']) === 0 ||
+            strlen($this->dataArr['tel1'] . $this->dataArr['tel2'] . $this->dataArr['tel3']) >= 12) {
             $this->errArr['tel1'] = '電話番号は、半角数字で11桁以内で入力してください';
         }
     }

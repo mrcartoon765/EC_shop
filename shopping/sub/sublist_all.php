@@ -15,10 +15,7 @@ $context['product_data'] = $search;
 $context['title'] = $title;
 
 $context['this_dir'] = $this_dir;
-$context['pages'] = $pages;
-$context['prev'] =  $prev;
-$context['page'] =  $page;
-$context['next'] =  $next;
+include_once(AppDir.'/common/paging_context.php');
 $context['want'] =  $want;
 
 template_twig_files::template_load_front();
