@@ -1,7 +1,9 @@
-{# {% include "common/header.html.twig" %} #}
-
 {% extends "shopping/sub/sublist_all.html.twig" %}
 
 {% block title %}
 			<h3>{{ctg_title}}一覧</h3>
+{% endblock %}
+{% block order_prodcuts %}
+<input type="common/shopping/hidden_input_order_products.html.twig">
+{# <input type="hidden" name="product_image" value={{ value['image'] }}> #}
 {% endblock %}

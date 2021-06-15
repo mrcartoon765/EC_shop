@@ -12,6 +12,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . "/config/Bootstrap.class.php";
             $product_id = $_POST['product_id'];
             $table = $_POST['table_name'];
             $customer_id = $_SESSION['customer_id'];
+            $image = $_POST['image'];
 
             try {
               $dbh = database::dbh();
@@ -32,9 +33,9 @@ require_once $_SERVER['DOCUMENT_ROOT'] . "/config/Bootstrap.class.php";
                     $stmt->execute($data);
                 } else {
                     // レコードを挿入する
-                    $sql = 'INSERT INTO `want` ( customer_id, table_name, product_id, created_date ) VALUES ( :c_id, :t_n, :p_i, :date )';
-                    $data = array(':c_id' => $customer_id, ':t_n' => $table, ':p_i' => $product_id, ':date' => date('Y-m-d H:i:s'));
-                //     // クエリ実行
+                    $sql = 'INSERT INTO `want` ( customer_id, table_name, product_id, want_product_image, created_date ) VALUES ( :c_id, :t_n, :p_i, :w_p_i, :date )';
+                    $data = array(':c_id' => $customer_id, ':t_n' => $table, ':p_i' => $product_id, ':w_p_i' =>$image, ':date' => date('Y-m-d H:i:s'));
+                    // クエリ実行
                     $stmt = $dbh->prepare($sql);
                     $stmt = $stmt->execute($data);
                 }

@@ -117,7 +117,7 @@ switch ($mode) {
             $insData .= $db->str_quote($value) . ',';
         }
 
-        $query = "INSERT INTO Customer("
+        $query = "INSERT INTO customer("
             . $column . "regist_date" . ") VALUES (" . $insData . " NOW()" . " );";
 
         $res = $db->execute($query);

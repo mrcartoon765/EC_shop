@@ -13,9 +13,11 @@
 
 				{% include "common/shopping/hidden_input.html.twig" %}
 
+
 				<div class="card-group col-6 col-md-4 px-0" style="width: 18rem;">
 					<div class="card">
 						<form action="{{APP_URL}}/shopping/cart.php" method="POST">
+				{% include "common/shopping/hidden_input_order_products.html.twig" %}
 
 							<a href="{{APP_URL}}shopping/book/detail.php?id={{ attribute(value,'id') }}">
 								<img class="card-img-top img-fluid" src="{{IMAGE_DIR}}{{ attribute(value,'image') }}" alt="">
@@ -27,7 +29,6 @@
 										<input type="hidden" name="title" value="{{ attribute(value,'title')}}">
 									</p>
 								</div>
-
 								<div class="border-bottom border-info">
 									<br>
 									<h5 class="red text-center">価格 ￥{{ attribute(value,'price')|number_format }}</h5>
@@ -36,7 +37,7 @@
 								</div>
 								<div class="border-bottom border-info">
 									{{  attribute(value,'detail')|slice(0,40) }}...
-									<input type="hidden" name="ctg_id" value={{value['ctg_id']}}>
+									{% include "common/shopping/hidden_input_cart_in.html.twig" %}
 								</div>
 							</div>
 

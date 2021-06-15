@@ -34,7 +34,7 @@ $context['product_data'] = $want_list;
 $context['title'] = $title;
 $context['this_dir'] = $this_dir;
 $context['image_directory'] = 'shopping/image/'.$want_list['table_name'].'/';
-$img = AppUrl.'//shopping/image/';
+$img = AppUrl.'/shopping/image/';
 $context['img'] = $img;
 
 include_once(AppDir.'/common/paging_context.php');

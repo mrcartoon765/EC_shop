@@ -6,9 +6,9 @@ $this_dir = basename(__DIR__);
 $app_name = explode('/', dirname(__FILE__))[4];
 
 require_once $_SERVER['DOCUMENT_ROOT'] . "/config/Bootstrap.class.php";
-// class want
-// {
-    // public static function want_button(){
+class want
+{
+    public static function want_button(){
 // postがある場合
         if (isset($_POST['product_id']) && isset($_POST['table_name'])) {
             $product_id = $_POST['product_id'];
@@ -67,5 +67,5 @@ require_once $_SERVER['DOCUMENT_ROOT'] . "/config/Bootstrap.class.php";
         //いいねを取り消したらハートのスタイルが取り消される
         $icon = ' far';
 
-//     }
-// }
+    }
+}

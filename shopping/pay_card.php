@@ -18,14 +18,7 @@ template_twig_files::Prepare_the_template();
 
 shopping_cart::cart_session();
 
-//    session_start();
 session_regenerate_id(true);
-//    $Books = isset($_SESSION['Books'])? $_SESSION['Books']:[];
-
-// foreach($Books as $Book_title => $cart_in_Book){
-//   $subtotal = (int)$cart_in_Book['Book_price']*(int)$cart_in_Book['Book_count'];
-//   $total += $subtotal;
-// }
 
 $family_name = POST_GET::GET('$family_name','family_name');
 $first_name = POST_GET::GET('$first_name','first_name');

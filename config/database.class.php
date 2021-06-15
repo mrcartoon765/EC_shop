@@ -58,19 +58,26 @@ class database
         $dbh = self::dbh();
         $sql = "SELECT * FROM `want`  WHERE `table_name` = '" . $table_name . "' AND `product_id` = '" . $product_id ."'";
         $stmt = $dbh->prepare($sql);
-        // var_dump($sql);
         $stmt->execute();
         $get_want_list_sum = $stmt->fetchAll(\PDO::FETCH_ASSOC);
-        // var_dump($get_want_list_sum);
         $get_want_list_sum = count($get_want_list_sum);
         return $get_want_list_sum;
-        // var_dump($get_want_list_sum);
             }
     //複数のデータを１つの配列に多次元配列としてまとめて取得する関数
     public static function get_data_where($table,$where,$id)
     {
         $dbh = self::dbh();
         $sql = "SELECT * FROM " . $table . " WHERE ".$where." = " . "'".$id."'";
+        $stmt = $dbh->prepare($sql);
+        $stmt->execute();
+        $data_get_where = $stmt->fetchall(\PDO::FETCH_ASSOC);
+        return $data_get_where;
+    }
+    //配列のキーを指定してデータ取得する
+    public static function get_data_once($select,$table,$where,$id)
+    {
+        $dbh = self::dbh();
+        $sql = "SELECT .$select. FROM " . $table . " WHERE ".$where." = " . "'".$id."'";
         $stmt = $dbh->prepare($sql);
         $stmt->execute();
         $data_get_where = $stmt->fetchall(\PDO::FETCH_ASSOC);

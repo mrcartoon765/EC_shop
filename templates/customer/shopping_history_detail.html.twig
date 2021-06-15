@@ -1,0 +1,39 @@
+{% include "common/header.html.twig" %}
+<br><br><br>
+<br><br><br>
+<body>
+
+	<main>
+		<div class="container">
+			<div class="wrapper-title"><h3>
+			購入日時：{{date}}</h3></div>
+			<br>
+			{% for order in order_detail %}
+				<div class="card mb-3" style="max-width: 540px;">
+					<div class="row g-0">
+						<div class="col-4">
+							<img class="card-img" src="{{shopping}}image/{{order['table_name']}}/{{order['product_image']}}" alt="img">
+						</div>
+						<div class="col-8">
+							<div class="card-body">
+					<h5 class="card-title">商品名：{{order['product_title']}}</h5>
+								<h6 class="card-text">
+								商品単価：￥{{order['price']|number_format()}}
+								<br>
+								購入個数：{{order['num']}}</h6>
+								<a href="{{shopping}}{{order['table_name']}}/detail.php?id={{order['product_id']}}">
+								<button class="btn btn-dark">商品詳細画面へ</button>
+								</a>
+							</div>
+						</div>
+					</div>
+				</div>
+
+
+				{% endfor %}
+				<a href="{{customer}}shopping_history.php">
+				<button class="btn btn-info">購入履歴ページへ戻る</button>
+				</a>
+			</div>
+		<br><br></div>
+</body></main>{% include "common/shopping/hidden_input_end.html.twig" %}{% include "common/footer.html.twig" %}

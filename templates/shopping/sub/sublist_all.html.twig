@@ -16,6 +16,10 @@
 				<div class="card-group col-6 col-md-4 px-0" style="width: 100%;">
 					<div class="card">
 						<form action="{{shopping}}cart.php" method="POST">
+					{% block order_products %}
+								<input type="common/shopping/hidden_input_order_products.html.twig">
+								<input type="hidden" name="product_image" value={{ value['image'] }}>
+					{% endblock %}
 							<a href="{{APP_URL}}{{this_dir}}detail.php?id={{ attribute(value,'id') }}">
 								<img class="card-img-top img-fluid" src="{{IMAGE_DIR}}{{ attribute(value,'image') }}" alt="">
 							</a>
@@ -32,9 +36,10 @@
 										<br>
 									</div>
 									<h5>{{ attribute(value,'detail')|length > 40 ? attribute(value,'detail')|slice(0,40) ~ '...': attribute(value,'detail')}}</h5>
-									<input type="hidden" name="ctg_id" value={{value['ctg_id']}}>
+								{% include "common/shopping/hidden_input_cart_in.html.twig" %}
 								</div>
-							</div>
+
+								</div>
 
 							{% include "common/shopping/want_button.html.twig" %}
 

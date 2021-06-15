@@ -68,6 +68,7 @@ $(function () {
         var $this = $(this);
         id = $this.parents('.post').data('want');
         table = $this.parents('.post').data('table');
+        image = $this.parents('.post').data('image');
         no = $this.parents('.post').data('no');
         $.ajax({
           type: 'POST',
@@ -76,16 +77,18 @@ $(function () {
           data: {
             product_id: id, // //商品IDキー:商品id
             table_name: table,
-            count_no: no
+            count_no: no,
+            image: image
           } //テーブル名キー:テーブル名}
         }).done(function (data) {
           console.log('Ajax Success');
-          // いいねの総数を増減させる
+          console.log(data);
+          // 欲しい！の総数を増減させる
           $($hosii + data.count_no).text(data.sum + ' 欲しい！');
-          // いいね取り消しのスタイル
+          // 欲しい！取り消しのスタイル
           $($want + data.count_no).children('i').toggleClass('far'); //空洞ハート
           $($want + data.count_no).children('i').toggleClass('fas'); //ハート
-          // いいね押した時のスタイル
+          // 欲しい！押した時のスタイル
           $($want + data.count_no).toggleClass('active'); //赤か黒
         }).fail(function (jqXHR, textStatus, errorThrown) {
           // 通信失敗時の処理
@@ -120,7 +123,7 @@ $(function () {
           }).done(function(data){
             $($w_l+'_title' + w_l_c).text(data.title);
             $($w_l+'_price' + w_l_c).text('￥'+data.price);
-            $($w_l+'_img' + w_l_c).html(img_tag_src+data.table_name+'/'+ data.image + '>');
+            // $($w_l+'_img' + w_l_c).html(img_tag_src+data.table_name+'/'+ data.image + '>');
             $($w_l+'_want_sum' + w_l_c).text(data.want_list_sum + ' 欲しい！');
             w_l_c++;
 

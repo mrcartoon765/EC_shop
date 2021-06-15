@@ -17,7 +17,7 @@ $first_name = POST_GET::GET('$first_name','first_name');
 $mail = POST_GET::GET('$mail','mail');
 
 $dbh = database::dbh();
-$stmt = $dbh->prepare("UPDATE Customer SET first_name=:first_name, mail=:mail, update_date=now() WHERE Customer.id=:id");
+$stmt = $dbh->prepare("UPDATE customer SET first_name=:first_name, mail=:mail, update_date=now() WHERE customer.id=:id");
 $stmt->bindParam(":first_name",$first_name);
 $stmt->bindParam(":mail",$mail);
 $stmt->bindParam(":id",$id);

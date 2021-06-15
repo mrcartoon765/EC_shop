@@ -16,11 +16,11 @@
 					<div class="card" style="max-width: 100%;">
 						<div class="row g-0">
 							<div class="col-4">
-								<div id="want_list_img{{a}}"></div>
-
+									<img class="card-img" src="{{shopping}}/image/{{attribute(value,'table_name')}}/{{attribute(value,'want_product_image')}}" alt="img">
 								<form action="{{customer}}want_list.php" method="POST">
 									<input type="hidden" name="id" value="{{ attribute(value,'id') }}">
 									<input type="hidden" name="delete" value="YES">
+									{% include "common/shopping/hidden_input_order_products.html.twig" %}
 									<button class="btn btn-danger">削除する</button>
 								</form>
 
@@ -51,12 +51,15 @@
 													</small>
 												</p>
 											</div>
+											<h1>{{value['table_name']}}</h1>
 										</div>
 										<small class="text">
 
 											<form action="{{shopping}}cart.php" method="POST">
 												{% include "common/cart_btn.html.twig" %}
-
+												<input type="hidden" name="product_id" value={{ value['product_id'] }}>
+												<input type="hidden" name="product_image" value={{ value['want_product_image'] }}>
+												<input type="hidden" name="table_name" value={{value['table_name']}}>
 												<input type="hidden" name="want_list_table" value="{{ attribute(value,'table_name')}}">
 												<input type="hidden" name="want_list_id" value={{ attribute(value,'product_id')}}>
 											</form>

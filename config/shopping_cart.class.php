@@ -7,13 +7,16 @@ require_once $_SERVER['DOCUMENT_ROOT'] . "/config/Bootstrap.class.php";
 
 class shopping_cart
 {
-    public static function cart_session($title = 'title', $price = 'price', $count = 'count', $ctg_id = 'ctg_id') //カートのに入った商品を配列別に分別しセッションをつなげる関数
+    public static function cart_session($title = 'title', $price = 'price', $count = 'count', $ctg_id = 'ctg_id',$table_name = 'table_name',$product_id = 'product_id',$product_image ='product_image') //カートのに入った商品を配列別に分別しセッションをつなげる関数
 
     {
         $product_title = POST_GET::GET('$product_title', $title);
         $product_price = POST_GET::GET('$product_price', $price);
         $product_count = POST_GET::GET('$product_count', $count);
         $product_ctg_id = POST_GET::GET('$product_ctg_id', $ctg_id);
+        $product_table_name = POST_GET::GET('$product_table_name', $table_name);
+        $product_id = POST_GET::GET('$product_id', $product_id);
+        $product_image = POST_GET::GET('$product_image',$product_image);
 
         session_start();
 
@@ -32,6 +35,9 @@ class shopping_cart
                 'product_price' => (int) $product_price,
                 'product_count' => (int) $product_count,
                 'product_ctg_id' => (int) $product_ctg_id,
+                'product_table_name' => $product_table_name,
+                'product_id' => $product_id,
+                'product_image' => $product_image,
             ];
         }
         $products = isset($_SESSION['products']) ? $_SESSION['products'] : [];

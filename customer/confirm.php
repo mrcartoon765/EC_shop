@@ -70,7 +70,7 @@ switch ($mode) {
         }
         // array_splice($key_value,-1);
         $key_value = rtrim(implode($key_value), '`, ');
-        $table = 'Customer';
+        $table = 'customer';
         $ses = $_SESSION['customer_id'];
         $sql = "UPDATE ".$table. " SET " .$key_value." WHERE id =".$ses.';';
 

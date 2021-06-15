@@ -36,10 +36,6 @@ class want
           $stmt = $dbh->prepare($sql);
           $stmt->execute($data);
           $wantStatus = $stmt->fetchAll();
-          // var_dump($data);
-          // $wantStatus = 'active':
-          // $wantStatus = '';
-          // var_dump($wantStatus[0]['customer_id']);
           return $wantStatus[0];
          } catch (\Exception $e) {
                     error_log('エラー発生：' . $e->getMessage());

@@ -15,6 +15,8 @@
 						<div class="col px-0">
 							<div class="card shadow-sm">
 								<form action="{{shopping}}/cart.php" method="POST">
+								<input type="common/shopping/hidden_input_order_products.html.twig">
+								<input type="hidden" name="product_image" value={{ value['image'] }}>
 									<div class="text-center">
 										<img src="{{IMAGE_DIR}}{{ value['image'] }}" class="text-center" style="width: 40%;" alt="">
 									</div>
@@ -45,8 +47,8 @@
 									<h3 class="text-center red" style="100%">価格 ￥{{value['price']|number_format}}</h3>
 									<input type="hidden" name="title" value="{{value['title']}}">
 									<input type="hidden" name="price" value={{value['price']}}>
-									<input type="hidden" name="ctg_id" value={{value['ctg_id']}}>
 									<input type="hidden" name="cart_in_status" value="1">
+									{% include "common/shopping/hidden_input_cart_in.html.twig" %}
 								</div>
 
 
