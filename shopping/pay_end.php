@@ -7,6 +7,7 @@ use config\template_twig_files;
 use shopping\lib\book;
 use shopping\lib\Cart;
 use shopping\lib\shopping_Session;
+use config\pay_end;
 
 $this_dir = basename(__DIR__);
 
@@ -24,7 +25,7 @@ $total = shopping_cart::cart_price_sum();
 require_once '../vendor/payjp/payjp-php/init.php';
 
 //テスト秘密鍵
-\Payjp\Payjp::setApiKey("*********");
+\Payjp\Payjp::setApiKey("sk_test_d601a9b04db20305df25d973");
 
 
 $mail = POST_GET::GET($mail,'mail');
@@ -57,37 +58,11 @@ $res = \Payjp\Charge::create([
     $result_title = '購入完了';
   }
 
-  $dbh = database::dbh();
-
-  $stmt1 = $dbh->prepare("INSERT INTO orders(mail, zip1, zip2, address, tel1, tel2, tel3, total, customer_id, created_at, updated_at) VALUES(:mail, :zip1, :zip2, :address, :tel1, :tel2, :tel3, :total, :customer_id, now(), now())");
-
-$stmt1->bindParam(':mail', $mail);
-$stmt1->bindParam(':zip1',$zip1);
-$stmt1->bindParam(':zip2',$zip2);
-$stmt1->bindParam(':address',$address);
-$stmt1->bindParam(':tel1',$tel1);
-$stmt1->bindParam(':tel2',$tel2);
-$stmt1->bindParam(':tel3',$tel3);
-$stmt1->bindParam(':total',$total);
-$stmt1->bindParam(':customer_id',$customer_id);
-$stmt1->execute();
-$order_id = $dbh->lastInsertId();
-
-foreach($products as $key => $product){
-$stmt2 = $dbh->prepare("INSERT INTO order_products(order_id,product_title,num,price,ctg_id,customer_id,table_name,product_id,product_image) VALUES(:order_id,:product_title,:num,:price,:ctg_id,:customer_id,:table_name,:product_id,:product_image)");
-
-$stmt2->bindParam(':order_id',$order_id);
-$stmt2->bindParam(':product_title',$key);
-$stmt2->bindParam(':num',$product['product_count']);
-$stmt2->bindParam(':price',$product['product_price']);
-$stmt2->bindParam(':ctg_id',$product['product_ctg_id']);
-$stmt2->bindParam(':customer_id',$customer_id);
-$stmt2->bindParam(':table_name',$product['product_table_name']);
-$stmt2->bindParam(':product_id',$product['product_id']);
-$stmt2->bindParam(':product_image',$product['product_image']);
-
-$stmt2->execute();
-}
+  if ($_SESSION['customer_login'] == true){
+    pay_end::login_pay_end($mail,$zip1,$zip2,$address,$tel1,$tel2,$tel3,$total,$customer_id,$products);
+   } else {
+     pay_end::no_login_pay_end($mail,$zip1,$zip2,$address,$tel1,$tel2,$tel3,$total,$products);
+   }
 
 unset($_SESSION['products']);
 unset($_SESSION['total_price']);

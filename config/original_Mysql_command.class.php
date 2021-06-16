@@ -6,6 +6,8 @@ $app_name = explode('/',dirname(__FILE__))[4];
 
 require_once $_SERVER['DOCUMENT_ROOT']."/config/Bootstrap.class.php";
 
+database::dbh();
+
 class original_Mysql_command
 {
     public static function customer_data_update($table)//ユーザー情報を自分で更新する場合に使用する処理

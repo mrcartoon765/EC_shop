@@ -1,50 +1,77 @@
- {% include "common/header.html.twig" %}
-	<main>
-        <div class="breadcrumbs">
-            <div class="container">
-                <ul>
-                    <li><a href="{{APP_URL}}index.php">TOP</a></li>
-                    <li><a href="cart.php">カート</a></li>
-                    <li>ご購入者情報</li>
-                </ul>
-            </div>
-        </div>
-        <div class="wrapper last-wrapper">
-            <div class="container">
-                <div class="wrapper-title">
-                    <h3>ご購入者情報</h3>
-   <form class="pay-form"  action="../../shopping/pay_card.php" method="POST">
-       <div class="form-group">
-           <p class="form-title">お名前 *</p>
-           <div class="form-group">
-           姓<input type="text" name="family_name" required value={{ family_name }}>
-           名<input type="text" name="first_name" required value={{ first_name }}>
-       </div>
-       <div class="form-group">
-           <p class="form-title">メールアドレス *</p>
-           <input type="email" name="mail" required value={{ mail }}>
-       </div>
-       <div class="form-group">
-           電話番号 *
-           <div class="form-group" style="display:inline-flex">
-           <input type="text" name="tel1" size="6" maxlength="6" required  value={{ tel1 }}>
-           -<input type="text" name="tel2" size="6" maxlength="6" required value={{ tel2 }}>
-           -<input type="text" name="tel3" size="6" maxlength="6" required value={{ tel3 }}>
-       </div>
-       <div class="form-group">
-           お届け先 *
-           <label>〒</label>
-           <div class="form-group" style="display:inline-flex">
-           <input type="text" name="zip1" required value={{ zip1 }}>-
-           <input type="text" name="zip2" required value={{ zip2 }}>
-           </div>
-           <label><br>住所</label><br>
-           <input type="text" name="address" required value={{ address }}>
-       </div>
-       <button type="submit" class="btn btn-blue">決済情報を入力する</button>
-   </form>
-                    </div>
-            </div>
-        </div>
-    </main>
- {% include "common/footer.html.twig" %}
+{% include "common/header.html.twig" %}
+<main>
+	<div class="breadcrumbs">
+		<ul>
+			<li>
+				<a href="{{APP_URL}}index.php">TOP</a>
+			</li>
+			<li>
+				<a href="cart.php">カート</a>
+			</li>
+			<li>ご購入者情報</li>
+		</ul>
+	</div>
+	{# <div class="wrapper last-wrapper"> #}
+	<div class="container-flluid">
+		<div class="wrapper-title">
+			<h3>ご購入者情報</h3>
+			<form class="pay-form" action="{{shopping}}pay_card.php" method="POST">
+				<div class="text-center">
+					<div class="form-group">
+						<p class="form-title">お名前 *</p>
+						<div class="form-group">
+							姓<input type="text" name="family_name" required value={{ family_name }}>
+							名<input type="text" name="first_name" required value={{ first_name }}>
+						</div>
+						<div class="form-group">
+							<p class="form-title">メールアドレス *</p>
+							<input type="email" name="mail" required value={{ mail }}>
+						</div>
+						<div class="form-group">
+							電話番号 *
+							<div class="form-group" style="display:inline-flex">
+								<input type="text" name="tel1" size="6" maxlength="6" required value={{ tel1 }}>
+								-<input type="text" name="tel2" size="6" maxlength="6" required value={{ tel2 }}>
+								-<input type="text" name="tel3" size="6" maxlength="6" required value={{ tel3 }}>
+							</div><br>
+							{% if login == true %}
+
+								<div class="form-group">
+									お届け先 *
+									<label>〒</label>
+									<div class="form-group" style="display:inline-flex">
+										<input type="text" name="zip1" required value={{ zip1 }}>-
+										<input type="text" name="zip2" required value={{ zip2 }}>
+									</div>
+									<br>
+								{% else %}
+									郵便番号<span class="error">*</span>
+									<div class="row">
+										<div class="col px-0">
+											<input type="text" name="zip1" value="{{dataArr.zip1}}" id="zip1" size="3" maxlength="3">
+										</div>
+										ー
+										<div class="col px-0">
+											<input type="text" name="zip2" value="{{dataArr.zip2}}" id="zip2" size="4" maxlength="4">
+										</div>
+										<input type="hidden" name="entry_url" id="entry_url" value="{{ENTRY_URL}}">
+										<input type="button" class="btn btn-gray text-center" name="address_search" value="〒から住所を入力" id="address_search">
+
+									{% endif %}
+
+									<label>住所</label>
+									{% if login == true %}
+										<input type="text" name="address" required value={{ address }}>
+									{% endif %}
+									<input type="text" name="address" value="{{dataArr.address}}" id="address" size="40">
+
+								</div>
+								<button type="submit" class="btn btn-blue">決済情報を入力する</button>
+							</div>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</div></main>{% include "common/footer.html.twig" %}

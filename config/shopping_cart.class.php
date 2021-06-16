@@ -47,7 +47,6 @@ class shopping_cart
     public static function cart_product_sum() //カートの商品を種類ごとにを合計する関数
 
     {
-        customer_login::login_session();
         $delete_name = isset($_POST['delete_name']) ? htmlspecialchars($_POST['delete_name'], ENT_QUOTES, 'utf-8') : '';
         session_start();
         if ($delete_name != '') {
