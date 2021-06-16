@@ -1,5 +1,5 @@
     {% include "common/header_admin.html.twig" %}
-{% set books = {1:'超ストレス解消法',2:'最高の体調',3:'【新装版】一生リバウンドしないパレオダイエットの教科書',4:'ヤバい集中力　１日ブッ通しで頭が冴えわたる神ライフハック45',5:'科学的な適職',6:'不老長寿メソッド　死ぬまで若いは武器になる'}%}
+{% set Books = {1:'超ストレス解消法',2:'最高の体調',3:'【新装版】一生リバウンドしないパレオダイエットの教科書',4:'ヤバい集中力　１日ブッ通しで頭が冴えわたる神ライフハック45',5:'科学的な適職',6:'不老長寿メソッド　死ぬまで若いは武器になる'}%}
 	<main>
             <div class="wrapper">
                 <div class="container">
@@ -56,7 +56,7 @@ session_regenerate_id(true);')|e("html") }}</td>
                         <td>{{ attribute(value,'num') }}</td>
                         <td>￥{{ attribute(value,'price') }}</td>
                         <td>￥{{ attribute(value,'num') * attribute(value,'price') }}</td>
-                        <td>{{ attribute(books,attribute(value,'ctg_id')) }}</td>
+                        <td>{{ attribute(Books,attribute(value,'ctg_id')) }}</td>
                         <td>
                         <div class="spinner_area">
                         <form action="{{APP_URL}}/admin/order/order_products_status.php" method="POST">

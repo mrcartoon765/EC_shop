@@ -12,8 +12,8 @@ require_once $_SERVER['DOCUMENT_ROOT']."/config/Bootstrap.class.php";
 
 admin_login::login_session();
 
-original_Mysql_command::POST_DATA_UPDATE('book');
+original_Mysql_command::POST_DATA_UPDATE('Book');
 
 database::dbh();
 
-// header("location:" . Bootstrap::ENTRY_URL . "/books.php");
+// header("location:" . Bootstrap::ENTRY_URL . "/Books.php");

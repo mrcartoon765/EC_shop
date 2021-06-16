@@ -18,24 +18,24 @@ database::data_get('sub');
 
 $sub = $DB_DATA_GET;
 $product_data = $detail_data;
-$book_id = $product_data['ctg_id'];
+$Book_id = $product_data['ctg_id'];
 
 $sub_id = database::id_no_random_get($sub,'id');
 
 database::data_get('Book');
 
-$book = $DB_DATA_GET;
-$book_data = $book[$book_id];
+$Book = $DB_DATA_GET;
+$Book_data = $Book[$Book_id];
 
 $ctg1 = database::Related_Products_Get('sub','ctg1',$detail_data['ctg1']);
 
 $ctg2 = database::Related_Products_Get('sub','ctg2',$detail_data['ctg2']);
 
-$context['book_detail'] = "";
-$context['book_image'] = "shopping/image/book/".$book_data['image'];
+$context['Book_detail'] = "";
+$context['Book_image'] = "shopping/image/Book/".$Book_data['image'];
 $context['value'] = $product_data;
 $context['this_dir'] = $this_dir;
-$context['book_data'] = $book_data;
+$context['Book_data'] = $Book_data;
 $context['subdetail'] = "detail.php?id=";
 $context['ctg1_product'] = $ctg1;
 $context['ctg2_product'] = $ctg2;

@@ -12,10 +12,10 @@ database::data_get('Book');
 
 $id =  substr($_SERVER['REQUEST_URI'],-1);
 database::get_detail_data('Book',$id);
-$book = $detail_data;
+$Book = $detail_data;
 
-$sub = database::Related_Products_Get('sub','ctg_id',$book['id']);
-$context['value'] = $book;
+$sub = database::Related_Products_Get('sub','ctg_id',$Book['id']);
+$context['value'] = $Book;
 $context['sub_product'] = $sub;
 $context['sub_detail'] = Bootstrap::APP_URL."shopping/sub/detail.php?id=";
 template_twig_files::template_load_front();

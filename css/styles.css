@@ -84,13 +84,13 @@ h4 {
 .wrapper-body{
     text-align: center;
 }
-        
+
 .news-list,
 form {
     width: 80%;
     margin: 0 auto;
 }
-        
+
 .btn-submit {
     background-color: #4c586f;
     border: 1px solid #4c586f;
@@ -124,7 +124,7 @@ header {
     height: 60px;
     background-color: #4c586f;
     position: fixed;
-    z-index: 1; 
+    z-index: 1;
     width: 100%;
 }
 
@@ -167,7 +167,7 @@ header {
 /* top-img */
 .top-img {
     height: 600px;
-    background-image: url("../image/back_book.jpeg");
+    background-image: url("../image/back_Book.jpeg");
     background-size: cover;
     background-position: center;
     position: relative;
@@ -231,31 +231,31 @@ header {
 form  {
     text-align: center;
 }
-    
+
 .form-group {
     margin-bottom: 20px;
     text-align: left;
 }
-    
+
 input,
 textarea {
     width: 100%;
     border: 1px solid #ebeced;
 }
-    
+
     input {
         height: 25px;
     }
-    
+
     textarea {
         height: 200px;
     }
-    
+
 .error {
     font-size: 12px;
     color: #d84950;
 }
-    
+
 
 /* footer */
 footer {
@@ -274,7 +274,7 @@ footer {
     border-bottom: 1px solid #ddd;
     padding: 20px 0 10px;
 }
-    
+
 .page-text {
     padding: 20px 0 80px;
 }
@@ -290,7 +290,7 @@ footer {
     background-color: #ebeced;
     padding: 80px 0;
 }
-    
+
     .thanks h4 {
         margin-bottom: 10px;
     }
@@ -434,7 +434,7 @@ footer {
         margin: 0;
     }
 
-    .total td{ 
+    .total td{
         text-align: center;
     }
 

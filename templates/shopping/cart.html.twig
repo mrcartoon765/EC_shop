@@ -92,7 +92,7 @@
 				<button type="button" class="btn btn-primary" onclick="location.href='{{shopping}}/pay.php'">ログインせずに購入手続きへ</button>
 			{% endif %}
 		{% endif %}
-		<button type="button" class="btn btn-gray" onclick="location.href='{{shopping}}/book/Booklist.php'">お買い物を続ける</button>
+		<button type="button" class="btn btn-gray" onclick="location.href='{{shopping}}/Book/Booklist.php'">お買い物を続ける</button>
 				{% if product_cart is not empty %}
 			<form action="{{shopping}}cart.php" method="POST">
 					<button type="submit" class="btn btn-danger" onclick="location.href='{{shopping}}/cart.php'" name="cart_null" value="1" method="POST">カートの中身を空にする</button>

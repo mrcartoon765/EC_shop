@@ -12,7 +12,7 @@
 <input type="hidden" name="entry_url" value="{{ constant('config\\Bootstrap::ENTRY_URL') }}" id="entry_url">
 <div id="wrapper">
 {% include "category_menu.html.twig" %}
-<div id="book_detail">
+<div id="Book_detail">
 <div class="image">
 <img src="{{ constant('config\\Bootstrap::ENTRY_URL') }}image/{{ BookData.image }}" alt="{{ BookData.title }}">
 </div>
@@ -24,7 +24,7 @@
 <dd>{{ BookData.detail }}</dd>
 <dt>価格</dt>
 <dd>&yen;{{ BookData.price|number_format(0, '.', ',') }}</dd>
-<input type="hidden" name="book_id"="book_id" value="{{ BookData.book_id }}">
+<input type="hidden" name="Book_id"="Book_id" value="{{ BookData.Book_id }}">
 </dl>
 </div>
 <form action="cart.php" method="post">

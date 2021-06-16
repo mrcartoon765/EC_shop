@@ -26,7 +26,7 @@ $ctg_data = database::get_data_where('sub',$ctg,$ctg_id);
 $ctg_name = database::get_data_where($ctg,'id',$ctg_id);
 
 //ページングを表示させるためのダミー処理
-original_Mysql_command::search_data_and_paging('book','id');
+original_Mysql_command::search_data_and_paging('Book','id');
 
 $context['this_dir'] = $this_dir;
 

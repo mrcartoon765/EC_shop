@@ -14,11 +14,11 @@ template_twig_files::Prepare_the_template();
 
 admin_login::login_session();
 
-database::data_get('book');
+database::data_get('Book');
 
-database::get_detail_data('book',$_GET['id']);
+database::get_detail_data('Book',$_GET['id']);
 
-$context['book'] = $detail_data;
+$context['Book'] = $detail_data;
 $context['sent_id'] =$_GET['id'];
 
 template_twig_files::template_load_front();

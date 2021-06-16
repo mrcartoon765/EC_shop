@@ -18,7 +18,7 @@ $Book_data = database::data_get('Book');
 
 $db = new Book_Database(Bootstrap::DB_HOST, Bootstrap::DB_USER, Bootstrap::DB_PASS, Bootstrap::DB_NAME, Bootstrap::DB_TYPE);
 $ses = new shopping_Session($db);
-$book = new Book($db);
+$Book = new Book($db);
 
 template_twig_files::Prepare_the_template();
 
@@ -52,9 +52,9 @@ if(isset($_SESSION['Books'])){
   }
   $Books = isset($_SESSION['Books'])? $_SESSION['Books']:[];
 
-$cateArr = $book->getCategoryList();
+$cateArr = $Book->getCategoryList();
 
-$Book_data = $book->getBookList($ctg_id);
+$Book_data = $Book->getBookList($ctg_id);
 
 $context['cateArr'] = $cateArr;
 $context['Book_data'] = $Book_data;

@@ -61,7 +61,7 @@ class LocalizationCollector extends DataCollector implements Renderable
     {
         return array(
             'domain' => array(
-                'icon' => 'bookmark',
+                'icon' => 'Bookmark',
                 'map'  => 'localization.domain',
             ),
             'locale' => array(

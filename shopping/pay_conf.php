@@ -16,7 +16,7 @@ require_once strstr(__FILE__, $this_dir,true) . 'config/Bootstrap.class.php';
 
 $db = new Book_Database(Bootstrap::DB_HOST, Bootstrap::DB_USER, Bootstrap::DB_PASS, Bootstrap::DB_NAME, Bootstrap::DB_TYPE);
 $ses = new shopping_Session($db);
-$book = new Book($db);
+$Book = new Book($db);
 
 template_twig_files::Prepare_the_template();
 

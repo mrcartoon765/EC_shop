@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 namespace shopping\lib;
 class Book{
@@ -27,7 +27,7 @@ class Book{
   public function getDetailData($Book_id)
   {
   $table = ' Book ';
-  $col = ' book_id, title, detail, price, image, ctg_id ';
+  $col = ' Book_id, title, detail, price, image, ctg_id ';
   $where = ($Book_id !=='')? 'Book_id = ?' : '';
   $arrVal = ($Book_id !== '') ? [$Book_id] : [];
   $res = $this->db->select($table, $col, $where, $arrVal);
