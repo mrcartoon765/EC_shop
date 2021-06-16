@@ -25,8 +25,4 @@ $context['product_data'] = $DB_DATA_GET;
 
 $context['detail'] = Bootstrap::APP_URL.$this_dir."detail.php?id=";
 
-<<<<<<< HEAD
 template_twig_files::template_load_front();
-=======
-template_twig_files::template_load_front();
->>>>>>> 732ea3bdaf05bbc353e0af5acc3c8e6fa8cc0161
