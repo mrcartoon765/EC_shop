@@ -62,8 +62,9 @@
 									<label>住所</label>
 									{% if login == true %}
 										<input type="text" name="address" required value={{ address }}>
-									{% endif %}
+                                        {% else %}
 									<input type="text" name="address" value="{{dataArr.address}}" id="address" size="40">
+									{% endif %}
 
 								</div>
 								<button type="submit" class="btn btn-blue">決済情報を入力する</button>
