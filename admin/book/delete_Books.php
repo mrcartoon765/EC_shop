@@ -11,6 +11,6 @@ require_once $_SERVER['DOCUMENT_ROOT']."/config/Bootstrap.class.php";
 
 admin_login::login_session();
 
-database::db_delete('Book');
+database::db_delete('book');
 
-header('location:' . Bootstrap::ENTRY_URL .'/Books.php');
+header('location:' . Bootstrap::ENTRY_URL .'/books.php');

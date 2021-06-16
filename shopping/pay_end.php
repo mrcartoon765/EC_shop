@@ -4,7 +4,7 @@ namespace config;
 
 use config\template_twig_files;
 
-use shopping\lib\Book;
+use shopping\lib\book;
 use shopping\lib\Cart;
 use shopping\lib\shopping_Session;
 

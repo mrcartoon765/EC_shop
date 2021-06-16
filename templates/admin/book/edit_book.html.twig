@@ -5,31 +5,31 @@
                 <div class="wrapper-title">
                     <h3>書籍編集</h3>
                 </div>
-                <form class="edit-form" action="{{constant('config\\Bootstrap::ENTRY_URL')}}/update_Book.php" method="POST" enctype="multipart/form-data">
+                <form class="edit-form" action="{{constant('config\\Bootstrap::ENTRY_URL')}}/update_book.php" method="POST" enctype="multipart/form-data">
                     <input type="hidden" name='id' value="{{ sent_id }}">
                     <div class="form-group">
                         <p>タイトル</p>
-                        <input type='text' name='title' value="{{ Book['title'] }}">
+                        <input type='text' name='title' value="{{ book['title'] }}">
                     </div>
                     <div class="form-group">
                         <p>説明文</p>
-                        <textarea name='detail'>{{ Book['detail'] }}</textarea>
+                        <textarea name='detail'>{{ book['detail'] }}</textarea>
                     </div>
                     <div class="form-group">
                         <p>価格</p>
-                        <input type='text' name='price' value="{{ Book['price'] }}" required>
+                        <input type='text' name='price' value="{{ book['price'] }}" required>
                     </div>
                     <div class="form-group">
                         <p>画像</p>
-                        <input type='file' name='image'  class="imgform" value="{{ Book['image'] }}" required>
+                        <input type='file' name='image'  class="imgform" value="{{ book['image'] }}" required>
                     </div>
                     <div class="form-group">
                         <p>発売日</p>
-                        <input type='text' name='date' value="{{ Book['date'] }}" required>
+                        <input type='text' name='date' value="{{ book['date'] }}" required>
                     </div>
                     <div class="form-group">
                         <p>関連商材ID</p>
-                        <input type='text' name='ctg_id' value="{{ Book['ctg_id'] }}" required>
+                        <input type='text' name='ctg_id' value="{{ book['ctg_id'] }}" required>
                     </div>
                     <button type="submit" class="btn btn-primary">更新する</button>
                 </form>

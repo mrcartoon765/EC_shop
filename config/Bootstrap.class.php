@@ -120,7 +120,7 @@ class account_DB
         mysqli_close($this->db_con);
     }
 }
-class Book_Database
+class book_Database
 {
     private $dbh = null;
     private $db_host = '';

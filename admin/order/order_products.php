@@ -26,13 +26,13 @@ $order_data = database::get_detail_data('orders',$id);
 
 $order_products = database::get_data_where('order_products','order_id',$id);
 
-database::data_get('Book');
+database::data_get('book');
 
-$Book_title = $DB_DATA_GET;
+$book_title = $DB_DATA_GET;
 
 $context['orders'] = $order_data;
 $context['order_detail'] = $order_products;
-$context['Book_title'] = $Book_title;
+$context['book_title'] = $book_title;
 $context['small_sum'] = $order_products['num']*$order_products['price'];
 
 template_twig_files::template_load_front();

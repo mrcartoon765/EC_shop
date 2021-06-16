@@ -14,13 +14,13 @@ template_twig_files::Prepare_the_template();
 
 admin_login::login_session();
 
-database::data_get('Book');
+database::data_get('book');
 
 database::get_detail_data('sub',$_GET['id']);
 
-$Book_ctg_id = array_column($DB_DATA_GET,'title');
+$book_ctg_id = array_column($DB_DATA_GET,'title');
 
-$context['Book_ctg'] = $Book_ctg_id;
+$context['book_ctg'] = $book_ctg_id;
 
 $context['sub'] = $detail_data;
 $context['sent_id'] =$_GET['id'];

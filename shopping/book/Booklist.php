@@ -3,7 +3,7 @@ namespace config;
 
 use config\template_twig_files;
 
-use shopping\lib\Book;
+use shopping\lib\book;
 use shopping\lib\shopping_Session;
 use config\template;
 use config\database;
@@ -19,7 +19,7 @@ shopping_cart::cart_session();
 
 template_twig_files::Prepare_the_template();
 
-database::data_get('Book');
+database::data_get('book');
 
 $context['product_data'] = $DB_DATA_GET;
 

@@ -3,7 +3,7 @@ namespace config;
 
 use config\template_twig_files;
 
-use shopping\lib\Book;
+use shopping\lib\book;
 use shopping\lib\shopping_Session;
 use config\template;
 use config\database;
@@ -26,7 +26,7 @@ $ctg_data = database::get_data_where('sub',$ctg,$ctg_id);
 $ctg_name = database::get_data_where($ctg,'id',$ctg_id);
 
 //ページングを表示させるためのダミー処理
-original_Mysql_command::search_data_and_paging('Book','id');
+original_Mysql_command::search_data_and_paging('book','id');
 
 $context['this_dir'] = $this_dir;
 

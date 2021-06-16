@@ -87,7 +87,7 @@
 								<td class="text-center">{{ attribute(value,'num') }}</td>
 								<td class="text-center">￥{{ attribute(value,'price')|number_format() }}</td>
 								<td class="text-center">￥{{ small_sum |number_format() }}</td>
-								<td class="text-center">{{Book_title[b]['title']}}</td>
+								<td class="text-center">{{book_title[b]['title']}}</td>
 								<td class="text-center">
 									<form action="{{APP_URL}}/admin/order/order_products_status.php" method="POST">
 										{# <div class="spinner_area"> #}

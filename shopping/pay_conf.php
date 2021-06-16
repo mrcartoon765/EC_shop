@@ -4,7 +4,7 @@ namespace config;
 
 use config\template_twig_files;
 
-use shopping\lib\Book;
+use shopping\lib\book;
 use shopping\lib\shopping_Session;
 
 $this_dir = basename(__DIR__);
@@ -14,9 +14,9 @@ $app_name = explode('/',dirname(__FILE__))[4];
 $this_dir === $app_name ?require_once dirname(__FILE__) .'/config/Bootstrap.class.php':
 require_once strstr(__FILE__, $this_dir,true) . 'config/Bootstrap.class.php';
 
-$db = new Book_Database(Bootstrap::DB_HOST, Bootstrap::DB_USER, Bootstrap::DB_PASS, Bootstrap::DB_NAME, Bootstrap::DB_TYPE);
+$db = new book_Database(Bootstrap::DB_HOST, Bootstrap::DB_USER, Bootstrap::DB_PASS, Bootstrap::DB_NAME, Bootstrap::DB_TYPE);
 $ses = new shopping_Session($db);
-$Book = new Book($db);
+$book = new book($db);
 
 template_twig_files::Prepare_the_template();
 

@@ -14,8 +14,8 @@ template_twig_files::Prepare_the_template();
 
 admin_login::login_session();
 
-admin_login::DB_data_get('Book');
+admin_login::DB_data_get('book');
 
-$context['Books'] = $Book;
+$context['books'] = $book;
 
 template_twig_files::template_load_front();

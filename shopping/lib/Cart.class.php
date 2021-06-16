@@ -13,19 +13,19 @@ class Cart
   {
     $this->db = $db;
   }
-  public function insCartData($customer_no, $Book_id)
+  public function insCartData($customer_no, $book_id)
   {
     $table = ' cart ';
     $insData = [
       'customer_no' => $customer_no,
-      'Book_id' => $Book_id
+      'book_id' => $book_id
     ];
     return $this->db->insert($table, $insData);
   }
   public function getCartData($customer_no)
   {
-    $table = ' Cart C LEFT JOIN Book B ON C.Book_id = B.Book_id ';
-    $column = ' C.crt_id, B.Book_id, B.title, B.price, B.image ';
+    $table = ' Cart C LEFT JOIN book B ON C.book_id = B.book_id ';
+    $column = ' C.crt_id, B.book_id, B.title, B.price, B.image ';
     $where = ' C.customer_no = > AND C.delete_flg = ?';
     $arrVal = [$customer_no, 0];
     return $this->db->select($table, $column, $where, $arrVal);
@@ -40,7 +40,7 @@ class Cart
   }
   public function getItemAndSumPrice($customer_no)
   {
-    $table = " cart C LEFT JOIN Book B ON C.Book_id = B.Book_id ";
+    $table = " cart C LEFT JOIN book B ON C.book_id = B.book_id ";
     $column = " SUM( B.price ) AS totalPrice ";
     $where = ' C.customer_no = ? AND C.delete_flg = ?';
     $arrWhereVal = [$customer_no, 0];

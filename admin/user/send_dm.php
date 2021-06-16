@@ -4,7 +4,7 @@ namespace config;
 
 use config\template_twig_files;
 
-use shopping\lib\Book;
+use shopping\lib\book;
 
 $this_dir = basename(__DIR__);
 

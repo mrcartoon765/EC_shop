@@ -167,7 +167,7 @@ header {
 /* top-img */
 .top-img {
     height: 600px;
-    background-image: url("../image/back_Book.jpeg");
+    background-image: url("../image/back_book.jpeg");
     background-size: cover;
     background-position: center;
     position: relative;

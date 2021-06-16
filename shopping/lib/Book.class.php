@@ -1,7 +1,7 @@
 <?php
 
 namespace shopping\lib;
-class Book{
+class book{
   public $cateArr = [];
   public $db = null;
   public function __construct($db)
@@ -15,21 +15,21 @@ class Book{
     $res = $this->db->select($table, $col);
     return $res;
   }
-  public function getBookList($ctg_id)
+  public function getbookList($ctg_id)
   {
-    $table = ' Book ';
+    $table = ' book ';
     $col = ' id, title, detail, price, image, date, ctg_id ';
     $where = ($ctg_id !== '')? 'ctg_id = ? ' : '';
     $arrVal = ($ctg_id !== '') ? [$ctg_id] : [];
     $res = $this->db->select($table, $col, $where, $arrVal);
     return ($res !== false && count($res) !== 0)? $res : false;
   }
-  public function getDetailData($Book_id)
+  public function getDetailData($book_id)
   {
-  $table = ' Book ';
-  $col = ' Book_id, title, detail, price, image, ctg_id ';
-  $where = ($Book_id !=='')? 'Book_id = ?' : '';
-  $arrVal = ($Book_id !== '') ? [$Book_id] : [];
+  $table = ' book ';
+  $col = ' book_id, title, detail, price, image, ctg_id ';
+  $where = ($book_id !=='')? 'book_id = ?' : '';
+  $arrVal = ($book_id !== '') ? [$book_id] : [];
   $res = $this->db->select($table, $col, $where, $arrVal);
   return ($res !== false && count($res) !== 0)? $res : false;
 }
