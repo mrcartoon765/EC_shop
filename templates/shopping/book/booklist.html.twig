@@ -1,0 +1,57 @@
+{% include "common/header.html.twig" %}
+<main>
+	<div class="container-flluid">
+		<br><br><br>
+		<div class="wrapper-title">
+
+			<h2>BOOKs</h2>
+			<h6>書籍一覧</h6>
+		</div>
+		{% set a = 0 %}
+		<div class="row">
+			{% for value in product_data %}
+
+				{% include "common/shopping/hidden_input.html.twig" %}
+
+
+				<div class="card-group col-6 col-md-4 px-0" style="width: 18rem;">
+					<div class="card">
+						<form action="{{APP_URL}}/shopping/cart.php" method="POST">
+				{% include "common/shopping/hidden_input_order_products.html.twig" %}
+
+							<a href="{{APP_URL}}shopping/book/detail.php?id={{ attribute(value,'id') }}">
+								<img class="card-img-top img-fluid" src="{{IMAGE_DIR}}{{ attribute(value,'image') }}" alt="">
+							</a>
+							<div class="card-body px-0">
+								<div class="border-bottom border-info">
+									<p class="card-text">
+										<h5>{{ attribute(value,'title') }}</h5>
+										<input type="hidden" name="title" value="{{ attribute(value,'title')}}">
+									</p>
+								</div>
+								<div class="border-bottom border-info">
+									<br>
+									<h5 class="red text-center">価格 ￥{{ attribute(value,'price')|number_format }}</h5>
+									<input type="hidden" name="price" value={{ attribute(value,'price')}}>
+									<br>
+								</div>
+								<div class="border-bottom border-info">
+									{{  attribute(value,'detail')|slice(0,40) }}...
+									{% include "common/shopping/hidden_input_cart_in.html.twig" %}
+								</div>
+							</div>
+
+							{% include "common/shopping/want_button.html.twig" %}
+
+							{% include "common/cart_btn.html.twig" %}
+
+						</form>
+						<br>
+					</div>
+				</div>
+				{% set a = a + 1 %}
+			{% endfor %}
+		</div>
+	</div>
+	<br><br>
+</div></main>{% include "common/shopping/hidden_input_end.html.twig" %}{% include "common/footer.html.twig" %}

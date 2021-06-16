@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+
+<body>
+	{% include "common/header.html.twig" %}
+	<main>
+		<div class="wrapper last-wrapper">
+			<div class="container">
+				<div class="wrapper-title">
+					<h3>SEND</h3>
+					<p>お問い合わせ送信</p>
+				</div>
+				<div class="wrapper-body">
+					<div class="thanks">
+						<h4>{{ result }}</h4>
+					</div>
+					<button type="button" class="btn btn-gray" onclick="location.href=" {{ constant ('confirm\\Bootstrap::APP_URL') }}>トップページに戻る</button>
+				</div>
+			</div>
+		</div>
+	</main>
+ {% include "common/footer.html.twig" %}
+</body>
+</html>
