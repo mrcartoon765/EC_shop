@@ -18,7 +18,7 @@ if($orders){
         $id[$key] = $value['created_at'];
     }
     array_multisort($id, SORT_DESC, $orders);
-    }}else{
+    }else{
         $context['no_history'] = "現在購入履歴はありません";
     }
 
