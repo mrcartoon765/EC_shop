@@ -12,11 +12,11 @@
 お名前(氏名)<span class="error">*</span>
 <div class="row">
 <div class="col">
-姓<input class="text-center" type="text" name="family_name" value="{{ customer['family_name'] }}" required>
+姓<input class="text-center border-4 border-info" type="text" name="family_name" value="{{ customer['family_name'] }}" required>
 {% if errArr.family_name | length > 0 %}<br><span class="error">{{ errArr.family_name }}</span>{% endif %}
 </div>
 <div class="col">
-名<input  class="text-center" type="text" name="first_name"  value="{{ customer['first_name'] }}" required>
+名<input  class="text-center border-4 border-info" type="text" name="first_name"  value="{{ customer['first_name'] }}" required>
 {% if errArr.first_name | length > 0 %}<br><span class="error">{{ errArr.first_name }}</span>{% endif %}
 </div>
 </div>
@@ -24,10 +24,10 @@
 お名前(かな)
 <div class="row">
 <div class="col">
-せい<input class="text-center" type="text" name="family_name_kana" value="{{customer['family_name_kana']}}">
+せい<input class="text-center border-4 border-info" type="text" name="family_name_kana" value="{{customer['family_name_kana']}}">
 </div>
 <div class="col">
-めい<input class="text-center" type="text" name="first_name_kana"  value="{{customer['first_name_kana']}}">
+めい<input class="text-center border-4 border-info" type="text" name="first_name_kana"  value="{{customer['first_name_kana']}}">
 </div>
 </div>
 <br>
@@ -39,7 +39,7 @@
 <div class="col-2"></div>
 
 <div class="col px-0">
-<select name="year" >
+<select name="year" class="border-4 border-info">
 {% for index, label in yearArr %}
 <option value="{{index}}" {% if year == index %} selected {% endif %}>{{ label }}</option>
 {% endfor %}
@@ -47,7 +47,7 @@
 </div>
 
 <div class="col px-0">
-<select name='month'>
+<select name='month' class="border-4 border-info">
 {% for index, label in monthArr %}
 <option value="{{index}}" {% if month == index %} selected {% endif %}>{{ label }}</option>
 {% endfor %}
@@ -55,7 +55,7 @@
 </div>
 
 <div class="col px-0">
-<select name='day'>
+<select name='day' class="border-4 border-info">
 {% for index, label in dayArr %}
 <option value="{{index}}" {% if day == index %} selected {% endif %}>{{ label }}</option>
 {% endfor %}
@@ -73,38 +73,38 @@
 郵便番号<span class="error">*</span>
 <div class="row">
 <div class="col px-0">
-<input type="number" name="zip1" class="text-center" value="{{customer['zip1']}}" id="zip1" size="3" maxlength="1000"  required>
+<input type="number" name="zip1" class="text-center border-4 border-info" value="{{customer['zip1']}}" id="zip1" size="3" maxlength="1000"  required>
 {% if errArr.zip1 | length > 0 %}<br><span class="error">{{errArr.zip1}}</span>{% endif %}
 </div>
 ー
 <div class="col px-0">
-<input type="number" name="zip2" class="text-center" value="{{customer['zip2']}}" id="zip2" size="4" maxlength="10000"  required>
+<input type="number" name="zip2" class="text-center border-4 border-info" value="{{customer['zip2']}}" id="zip2" size="4" maxlength="10000"  required>
 {% if errArr.zip2 | length > 0 %}<br><span class="error">{{errArr.zip2}}</span>{% endif %}
 </div>
 <input type="hidden" name="entry_url" id="entry_url" value="../create_account/">
-<input type="button" class="btn btn-gray text-center" name="address_search" value="〒から住所を入力" id="address_search">
+<button type="button" class="btn btn-submit btn-gray" name="address_search" id="address_search">〒から住所を入力</button>
 
 </div>
 住所<span class="error">*</span>
-<input type="text" name="address" class="text-center" value="{{customer['address']}}" id="address" size="40"  required>
+<input type="text" name="address" class="text-center border-4 border-info" value="{{customer['address']}}" id="address" size="40"  required>
 {% if errArr.address | length > 0 %}<br><span class="error">{{errArr.address}}</span>{% endif %}
 <br>
 電話番号<span class="error">*</span>
 <div class="row">
 <div class="col">
-<input class="text-center" type="text" name="tel1" value="{{customer['tel1']}}" size="6" maxlength="6"  required>
+<input class="text-center border-4 border-info" type="text" name="tel1" value="{{customer['tel1']}}" size="6" maxlength="6"  required>
 </div>ー
 <div class="col">
-<input class="text-center" type="text" name="tel2" value="{{customer['tel2']}}" size="6" maxlength="6"  required>
+<input class="text-center border-4 border-info" type="text" name="tel2" value="{{customer['tel2']}}" size="6" maxlength="6"  required>
 </div>ー
 <div class="col">
-<input class="text-center" type="text" name="tel3" value="{{customer['tel3']}}" size="6" maxlength="6"  required>
+<input class="text-center border-4 border-info" type="text" name="tel3" value="{{customer['tel3']}}" size="6" maxlength="6"  required>
 </div>
 {% if errArr.tel1 | length > 0 %}<br><span class="error">{{errArr.tel1}}</span>{% endif %}
 </div>
 <br>
 備考
-<textarea name="contents" rows="4" cols="40">{{customer['contents']}}</textarea>
+<textarea class="border-4 border-info" name="contents" rows="4" cols="40">{{customer['contents']}}</textarea>
 
 <p>EC_BOOKからのお知らせを受信しますか？</p>
 <input type="hidden" name="dm" value="受信しない">

@@ -11,6 +11,10 @@ template_twig_files::Prepare_the_template();
 
 original_Mysql_command::search_data_and_paging('sub','title',12);
 
+empty($search)?
+$context['no_product'] = '検索に一致する商品はありませんでした。':
+'';
+
 $context['product_data'] = $search;
 $context['title'] = $title;
 

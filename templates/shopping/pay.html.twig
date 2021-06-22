@@ -20,19 +20,19 @@
 					<div class="form-group">
 						<p class="form-title">お名前 *</p>
 						<div class="form-group">
-							姓<input type="text" name="family_name" required value={{ family_name }}>
-							名<input type="text" name="first_name" required value={{ first_name }}>
+							姓<input class="border-4 border-info"  type="text" name="family_name" required value={{ family_name }}>
+							名<input class="border-4 border-info"  type="text" name="first_name" required value={{ first_name }}>
 						</div>
 						<div class="form-group">
 							<p class="form-title">メールアドレス *</p>
-							<input type="email" name="mail" required value={{ mail }}>
+							<input class="border-4 border-info"  type="email" name="mail" required value={{ mail }}>
 						</div>
 						<div class="form-group">
 							電話番号 *
 							<div class="form-group" style="display:inline-flex">
-								<input type="text" name="tel1" size="6" maxlength="6" required value={{ tel1 }}>
-								-<input type="text" name="tel2" size="6" maxlength="6" required value={{ tel2 }}>
-								-<input type="text" name="tel3" size="6" maxlength="6" required value={{ tel3 }}>
+								<input class="border-4 border-info"  type="text" name="tel1" size="6" maxlength="6" required value={{ tel1 }}>
+								-<input class="border-4 border-info"  type="text" name="tel2" size="6" maxlength="6" required value={{ tel2 }}>
+								-<input class="border-4 border-info"  type="text" name="tel3" size="6" maxlength="6" required value={{ tel3 }}>
 							</div><br>
 							{% if login == true %}
 
@@ -40,15 +40,15 @@
 									お届け先 *
 									<label>〒</label>
 									<div class="form-group" style="display:inline-flex">
-										<input type="text" name="zip1" required value={{ zip1 }}>-
-										<input type="text" name="zip2" required value={{ zip2 }}>
+										<input class="border-4 border-info"  type="text" name="zip1" required value={{ zip1 }}>-
+										<input class="border-4 border-info"  type="text" name="zip2" required value={{ zip2 }}>
 									</div>
 									<br>
 								{% else %}
 									郵便番号<span class="error">*</span>
 									<div class="row">
 										<div class="col px-0">
-											<input type="text" name="zip1" value="{{dataArr.zip1}}" id="zip1" size="3" maxlength="3">
+											<input class="border-4 border-info"  type="text" name="zip1" value="{{dataArr.zip1}}" id="zip1" size="3" maxlength="3">
 										</div>
 										ー
 										<div class="col px-0">
@@ -61,8 +61,8 @@
 
 									<label>住所</label>
 									{% if login == true %}
-										<input type="text" name="address" required value={{ address }}>
-                                        {% else %}
+										<input class="border-4 border-info"  type="text" name="address" required value={{ address }}>
+								{% else %}
 									<input type="text" name="address" value="{{dataArr.address}}" id="address" size="40">
 									{% endif %}
 

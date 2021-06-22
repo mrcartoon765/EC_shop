@@ -10,21 +10,21 @@
                     </div>
 <form method="POST" action="{{create_ac}}confirm.php">
 メールアドレス<span class="error">*</span>
-<input type="email" name="mail" value="{{dataArr.mail}}" size="40">
+<input class="border-4 border-info" type="email" name="mail" value="{{dataArr.mail}}" size="40">
 {% if errArr.mail | length > 0 %}<br><span class="error">{{errArr.mail}}</span>{% endif %}
 <br>
 パスワード<span class="error">*</span>
-<input type="current-password" name="password" value="{{dataArr.password}}" size="40">
+<input class="border-4 border-info"  type="current-password" name="password" value="{{dataArr.password}}" size="40">
 {% if errArr.password | length > 0 %}<br><span class="error">{{errArr.password}}</span>{% endif %}
 <br>
 お名前(氏名)<span class="error">*</span>
 <div class="row">
 <div class="col">
-姓<input type="text" name="family_name" value="{{dataArr.family_name}}">
+姓<input class="border-4 border-info"  type="text" name="family_name" value="{{dataArr.family_name}}">
 {% if errArr.family_name | length > 0 %}<br><span class="error">{{ errArr.family_name }}</span>{% endif %}
 </div>
 <div class="col">
-名<input type="text" name="first_name"  value="{{dataArr.first_name}}">
+名<input class="border-4 border-info"  type="text" name="first_name"  value="{{dataArr.first_name}}">
 {% if errArr.first_name | length > 0 %}<br><span class="error">{{ errArr.first_name }}</span>{% endif %}
 </div>
 </div>
@@ -32,10 +32,10 @@
 お名前(かな)<span class="error">*</span>
 <div class="row">
 <div class="col">
-せい<input type="text" name="family_name_kana" value="{{dataArr.family_name_kana}}">
+せい<input class="border-4 border-info"  type="text" name="family_name_kana" value="{{dataArr.family_name_kana}}">
 </div>
 <div class="col">
-めい<input type="text" name="first_name_kana"  value="{{dataArr.first_name_kana}}">
+めい<input class="border-4 border-info"  type="text" name="first_name_kana"  value="{{dataArr.first_name_kana}}">
 </div>
 </div>
 <br>
@@ -46,7 +46,7 @@
 <div class="col-2"></div>
 
 <div class="col px-0">
-<select name="year" >
+<select class="border-4 border-info"  name="year" >
 {% for index, label in yearArr %}
 <option value="{{index}}" {% if dataArr.year == index %} selected {% endif %}>{{ label }}</option>
 {% endfor %}
@@ -54,7 +54,7 @@
 </div>
 
 <div class="col px-0">
-<select name='month'>
+<select class="border-4 border-info"  name='month'>
 {% for index, label in monthArr %}
 <option value="{{index}}" {% if dataArr.month == index %} selected {% endif %}>{{ label }}</option>
 {% endfor %}
@@ -62,7 +62,7 @@
 </div>
 
 <div class="col px-0">
-<select name='day'>
+<select class="border-4 border-info"  name='day'>
 {% for index, label in dayArr %}
 <option value="{{index}}" {% if dataArr.day == index %} selected {% endif %}>{{ label }}</option>
 {% endfor %}
@@ -80,32 +80,32 @@
 郵便番号<span class="error">*</span>
 <div class="row">
 <div class="col px-0">
-<input type="text" name="zip1" value="{{dataArr.zip1}}" id="zip1" size="3" maxlength="3">
+<input class="border-4 border-info"  type="text" name="zip1" value="{{dataArr.zip1}}" id="zip1" size="3" maxlength="3">
 {% if errArr.zip1 | length > 0 %}<br><span class="error">{{errArr.zip1}}</span>{% endif %}
 </div>
 ー
 <div class="col px-0">
-<input type="text" name="zip2" value="{{dataArr.zip2}}" id="zip2" size="4" maxlength="4">
+<input class="border-4 border-info"  type="text" name="zip2" value="{{dataArr.zip2}}" id="zip2" size="4" maxlength="4">
 {% if errArr.zip2 | length > 0 %}<br><span class="error">{{errArr.zip2}}</span>{% endif %}
 </div>
 <input type="hidden" name="entry_url" id="entry_url" value="{{ENTRY_URL}}">
-<input type="button" class="btn btn-gray text-center" name="address_search" value="〒から住所を入力" id="address_search">
+<button type="button" class="btn btn-submit btn-gray" name="address_search" id="address_search">〒から住所を入力</button>
 
 </div>
 住所<span class="error">*</span>
-<input type="text" name="address" value="{{dataArr.address}}" id="address" size="40">
+<input class="border-4 border-info"  type="text" name="address" value="{{dataArr.address}}" id="address" size="40">
 {% if errArr.address | length > 0 %}<br><span class="error">{{errArr.address}}</span>{% endif %}
 <br>
 電話番号<span class="error">*</span>
 <div class="row">
 <div class="col">
-<input type="text" name="tel1" value="{{dataArr.tel1}}" size="6" maxlength="6">
+<input class="border-4 border-info"  type="text" name="tel1" value="{{dataArr.tel1}}" size="6" maxlength="6">
 </div>ー
 <div class="col">
-<input type="text" name="tel2" value="{{dataArr.tel2}}" size="6" maxlength="6">
+<input class="border-4 border-info"  type="text" name="tel2" value="{{dataArr.tel2}}" size="6" maxlength="6">
 </div>ー
 <div class="col">
-<input type="text" name="tel3" value="{{dataArr.tel3}}" size="6" maxlength="6">
+<input class="border-4 border-info"  type="text" name="tel3" value="{{dataArr.tel3}}" size="6" maxlength="6">
 </div>
 {% if errArr.tel1 | length > 0 %}<br><span class="error">{{errArr.tel1}}</span>{% endif %}
 {% if errArr.tel2 | length > 0 %}<br><span class="error">{{errArr.tel2}}</span>{% endif %}
@@ -113,7 +113,7 @@
 </div>
 <br>
 備考
-<textarea name="contents">{{dataArr.contents}}</textarea>
+<textarea class="border-4 border-info"  name="contents">{{dataArr.contents}}</textarea>
 
 <p>EC_BOOKからのお知らせを受信しますか？</p>
 <input type="hidden" name="dm" value="受信しない">
