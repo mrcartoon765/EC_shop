@@ -1,46 +1,32 @@
 {% include "common/header_admin.html.twig" %}
 <main>
 	<div class="wrapper">
-		<div class="container">
+		<div class="container-flluid">
 			<div class="wrapper-title">
-				<h3>関連商品編集</h3>
+				<div class="text-center">
+					<h3>関連商品編集</h3>
+				</div>
 			</div>
-			<form class="edit-form" action="{{constant('config\\Bootstrap::ENTRY_URL')}}/update_sub.php" method="POST" enctype="multipart/form-data">
+			<form action="{{constant('config\\Bootstrap::ENTRY_URL')}}/update_sub.php" method="POST" enctype="multipart/form-data">
 				<input type="hidden" name='id' value="{{ sent_id }}">
-				<div class="form-group">
-					<p>商品名</p>
-					<input type='text' name='title' value="{{ sub['title'] }}">
-				</div>
-				<div class="form-group">
-					<p>説明文</p>
-					<textarea name='detail'>{{ sub['detail'] }}</textarea>
-				</div>
-				<div class="container">
-					<div class="row">
-						<div class="col-2">
-							<div class="form-group">
-								<p>価格</p>
-								<input type='text' name='price' value="{{ sub['price'] }}" required>
-							</div>
-						</div>
-						<div class="col-10">
-							<div class="form-group">
-								<p>画像</p>
-								<img src="{{APP_URL}}/shopping/image/sub/{{sub['image']}}" style="height:130px" alt="">
-								<input type='file' name='image' class="imgform" value="{{ sub['image'] }}" required>
-							</div>
-						</div>
-						<div class="col-2">
-							<div class="form-group">
-								<p>発売日</p>
-								<input type='text' name='date' value="{{ sub['date'] }}" required>
-							</div>
-						</div>
+				<h3 class="text-center">商品名</h3>
+				<input class="text-center border border-3 border-info" type='text' name='title' value="{{ sub['title'] }}">
+				<p></p><br>
+				<h3 class="text-center">説明文</h3>
+				<textarea class="border border-3 border-info" name='detail'>{{ sub['detail'] }}</textarea>
+				<div class="row">
+					<h3 class="text-center">価格</h3>
+					<input class="text-center border border-3 border-info" type='text' name='price' value="{{ sub['price'] }}" required>
+					<h3 class="text-center">
+						画像</h3>
+					<div class="text-center">
+						<img src="{{APP_URL}}/shopping/image/sub/{{sub['image']}}" style="height:130px" alt="">
+						<input class="border border-3 border-info" type='file' name='image' class="imgform" value="{{ sub['image'] }}" required>
 					</div>
-				</div>
-				<div class="form-group">
-					<p>関連商材名</p>
-					<select name="ctg_id">
+					<h3 class="text-center">発売日</h3>
+					<input class="text-center border border-3 border-info" type='text' name='date' value="{{ sub['date'] }}" required>
+					<h3 class="text-center">関連商材名</h3>
+					<select class="text-center" name="ctg_id">
 						<option value="1">{{book_ctg[0]}}</option>
 						<option value="2">{{book_ctg[1]}}</option>
 						<option value="3">{{book_ctg[2]}}</option>
@@ -50,33 +36,33 @@
 					</select>
 					<div class="row">
 						<div class="col">
-							<div class="form-group">
-								<p>カテゴリ1</p>
-								<select name="ctg1">
-									<option value="1">食品</option>
-									<option value="2">サプリ</option>
-									<option value="3">ガジェット</option>
-									<option value="4">家具・寝具</option>
-									<option value="5">美容品</option>
-								</select>
-							</div>
+							<p>カテゴリ1</p>
+							<select name="ctg1">
+								<option value="1">食品</option>
+								<option value="2">サプリ</option>
+								<option value="3">ガジェット</option>
+								<option value="4">家具・寝具</option>
+								<option value="5">美容品</option>
+							</select>
 						</div>
 						<div class="col">
-							<div class="form-group">
-								<p>カテゴリ2</p>
-								<select name="ctg2">
-									<option value="1">ストレス対策</option>
-									<option value="2">アンチエイジング</option>
-									<option value="3">集中力改善</option>
-									<option value="4">睡眠改善</option>
-									<option value="5">ダイエット</option>
-								</select>
-							</div>
+							<p>カテゴリ2</p>
+							<select name="ctg2">
+								<option value="1">ストレス対策</option>
+								<option value="2">アンチエイジング</option>
+								<option value="3">集中力改善</option>
+								<option value="4">睡眠改善</option>
+								<option value="5">ダイエット</option>
+							</select>
 						</div>
-						{# <input type="hidden" name="last_update"> #}
+						<input type="hidden" name="last_update">
+					</div>
+					<div class="text-center">
 						<button type="submit" class="btn btn-info">更新する</button>
-					</form>
+					</div>
 				</div>
-			</div>
-		</main>
-		{% include "common/footer.html.twig" %}
+			</form>
+		</div>
+	</div>
+</main>
+{% include "common/footer.html.twig" %}

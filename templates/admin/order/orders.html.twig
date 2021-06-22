@@ -10,7 +10,6 @@
                         <thead>
                             <tr>
                                 <th class="text-center">注文ID</th>
-                                <th class="text-center">氏名</th>
                                 <th class="text-center">電話番号</th>
                                 <th class="text-center">合計金額</th>
                                 <th class="text-center">注文日時</th>
@@ -23,7 +22,6 @@
                           {% for orders in order_data %}
                           <tr>
                             <td class="text-center">{{ orders['id'] }}</td>
-                            <td class="text-center">{{ orders['family_name'] }} {{ orders['first_name'] }}</td>
                             <td class="text-center">{{ orders['tel1'] }}-{{ orders['tel2'] }}-{{ orders['tel3'] }}</td>
                             <td class="text-center">￥{{ orders['total']|number_format }}</td>
                             <td class="text-center">{{ orders['created_at'] }}</td>
