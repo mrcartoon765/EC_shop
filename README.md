@@ -43,7 +43,7 @@ phpフルスクラッチECサイト
 ・開発環境 M1 mac mini
 ・dockerコンテナのみで作成(Linux,Apache,Mysql 5.7,Php)<br>
 ・AWSのEC2内のdockerコンテナのみでssl化してデプロイ<br>
-.t2microの無料枠内のでなるべく抑えるためEC2のスワップメモリを4GB作成<br>
+・t2microの無料枠内のでなるべく抑えるためEC2のスワップメモリを4GB作成<br>
 ・コンテナ内容<br>
 ・mysql 5.7<br>
 ・php 7.4.12<br>
