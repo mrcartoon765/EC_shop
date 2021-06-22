@@ -30,7 +30,11 @@ if ($this_dir !== AppName) {
     define('ThisDir', '');
 }
 //定数AppUrlへドメイン名を代入
-define('AppUrl', (empty($_SERVER['HTTPS']) ? 'http://' : 'https://') . $_SERVER['HTTP_HOST'] . '/');
+
+isset($_SERVER['HTTP_X_FORWARDED_PROTO'])?
+    define('AppUrl', $_SERVER['HTTP_X_FORWARDED_PROTO'].'://'. $_SERVER['HTTP_HOST'] . '/'):
+    define('AppUrl', 'http://'.$_SERVER['HTTP_HOST']);
+
 
 define('table', str_replace(['/shopping/', '/'], '', $this_dir));
 class Bootstrap
