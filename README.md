@@ -1,5 +1,7 @@
 # portforio
 
+https://mrcartoon.work/
+
 phpフルスクラッチECサイト
 
 パレオな男　鈴木裕著の本購入サイトとそれに付随した商品の購入サイト
@@ -36,4 +38,8 @@ phpフルスクラッチECサイト
 <h2>インフラ</h2>
 ・開発環境 M1 mac mini
 ・dockerコンテナのみで作成(Linux,Apache,Mysql 5.7,Php)<br>
-・AWSのEC2内のdockerコンテナのみで稼働
+・AWSのEC2内のdockerコンテナのみでssl化してデプロイ<br>
+・コンテナ内容<br>
+・mysql 5.7<br>
+・php 7.4.12<br>
+・https-portal<br>
