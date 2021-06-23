@@ -1,10 +1,4 @@
-
-![スクリーンショット 2021-06-22 10 28 09](https://user-images.githubusercontent.com/50896241/122848493-979fc800-d344-11eb-9870-412f44ea6250.png)
-
-
 # portforio
-
-https://mrcartoon.work/
 
 phpフルスクラッチECサイト
 
@@ -42,14 +36,4 @@ phpフルスクラッチECサイト
 <h2>インフラ</h2>
 ・開発環境 M1 mac mini
 ・dockerコンテナのみで作成(Linux,Apache,Mysql 5.7,Php)<br>
-・AWSのEC2内のdockerコンテナのみでssl化してデプロイ<br>
-・t2microの無料枠内のでなるべく抑えるためEC2のスワップメモリを4GB作成<br>
-・コンテナ内容<br>
-・mysql 5.7<br>
-・php 7.4.12<br>
-・https-portal<br>
-
-
-![スクリーンショット 2021-06-22 10 26 00](https://user-images.githubusercontent.com/50896241/122848436-79d26300-d344-11eb-9069-325823abdef5.png)
-
-
+・AWSのEC2内のdockerコンテナのみで稼働

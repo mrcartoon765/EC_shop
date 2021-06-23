@@ -13,21 +13,23 @@
 			<h3>MY CART</h3>
 			<p>カート</p>
 		</div>
-		<div class="table">
-			<table class="cart-table">
+		<div class="table-responsive">
+			<table class="cart-table table-responsive">
 				<thead>
 					<tr>
-						<th class="text-center">商品名</th>
-						<th class="text-center">価格</th>
-						<th class="text-center">個数</th>
-						<th class="text-center">小計</th>
-						<th class="text-center">数量変更・削除</th>
+						<th class="text-center text-nowrap"></th>
+						<th class="text-center text-nowrap">商品名</th>
+						<th class="text-center text-nowrap">価格</th>
+						<th class="text-center text-nowrap">個数</th>
+						<th class="text-center text-nowrap">小計</th>
+						<th class="text-center text-nowrap">数量変更・削除</th>
 					</tr>
 				</thead>
 				<tbody>
 					{% set a = 0 %}
 					{% for value in product_cart %}
 						<tr>
+					<td class="text-center"><img src="{{shopping}}image/{{attribute(value,'product_table_name')}}/{{attribute(value,'product_image')}}" style="width:10rem"></td>
 							<td label="商品名:" class="text-right h5">{{ attribute(value,'product_title')|raw }}</td>
 							<td label="価格:" class="text-right h5">￥{{ attribute(value,'product_price')|number_format }}</td>
 							<td label="個数:" class="text-right h5">{{ attribute(value,'product_count') }}</td>

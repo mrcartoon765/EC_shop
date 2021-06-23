@@ -2,19 +2,19 @@
 	<main>
         <div class="wrapper">
             <div class="container">
-                <div class="wrapper-title">
+                <div class="wrapper-title text-center">
                     <h3>新規作成</h3>
                 </div>
                         <form class="edit-form" method="POST" action="{{constant('config\\Bootstrap::ENTRY_URL')}}/store_news.php">
                     <div class="form-group">
                         <p>タイトル</p>
-                        <input type="text" name="title" required>
+                        <input class="border border-3 border-info" type="text" name="title" required>
                     </div>
                     <div class="form-group">
                         <p>本文</p>
-                        <textarea name="content"></textarea>
+                        <textarea class="border border-3 border-info" name="content"></textarea>
                     </div>
-                    <button type="submit" class="btn btn-blue">公開する</button>
+                    <button type="submit" class="btn btn-success">公開する</button>
                 </form>
             </div>
         </div>

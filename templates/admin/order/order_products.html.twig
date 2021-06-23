@@ -7,72 +7,72 @@
 			<div class="wrapper-title text-center">
 				<h3>受注明細</h3>
 			</div>
-			<div class="list">
-				<h4>購入者情報</h4>
-				<table>
+				<h4 class="text-center">購入者情報</h4>
+			<div class="table-responsive">
+
+				<table class="table">
 					<tbody>
-						<tr>
-							<th>氏名</th>
-							<td>{{ orders['first_name'] }}</td>
+						<tr class="border border-3 border-info">
+							<th class="border border-3 border-info table-primary text-nowrap ">氏名</th>
+							<td>{{orders['family_name']}} {{ orders['first_name'] }}</td>
 						</tr>
-						<tr>
-							<th>郵便番号</th>
+						<tr class="border border-3 border-info">
+							<th class="border border-3 border-info table-primary text-nowrap">郵便番号</th>
 							<td>{{ orders['zip1'] }}-{{ orders['zip2'] }}</td>
 						</tr>
-						<tr>
-							<th>住所</th>
+						<tr class="border border-3 border-info">
+							<th class="border border-3 border-info table-primary text-nowrap">住所</th>
 							<td>{{ orders['address'] }}</td>
 						</tr>
-						<tr>
-							<th>メールアドレス</th>
+						<tr class="border border-3 border-info">
+							<th class="border border-3 border-info table-primary text-nowrap">メールアドレス</th>
 							<td>{{ orders['mail'] }}</td>
 						</tr>
-						<tr>
-							<th>電話番号</th>
+						<tr class="border border-3 border-info">
+							<th class="border border-3 border-info table-primary text-nowrap">電話番号</th>
 							<td>{{ orders['tel1'] }}-{{ orders['tel2'] }}-{{ orders['tel3'] }}</td>
 						</tr>
-						<tr>
-							<th>合計金額</th>
-							<td>￥{{ orders['total'] }}</td>
+						<tr class="border border-3 border-info">
+							<th class="border border-3 border-info table-primary text-nowrap">合計金額</th>
+							<td>￥{{ orders['total']|number_format }}</td>
 						</tr>
-						<tr>
-							<th>受注日時</th>
+						<tr class="border border-3 border-info">
+							<th class="border border-3 border-info table-primary text-nowrap">受注日時</th>
 							<td>{{ orders['created_at'] }}</td>
 						</tr>
-						<tr>
-							<th>更新日時</th>
+						<tr class="border border-3 border-info">
+							<th class="border border-3 border-info table-primary text-nowrap">更新日時</th>
 							<td>{{ orders['updated_at'] }}</td>
 						</tr>
-						<tr>
-							<th>注文状況</th>
+						<tr class="border border-3 border-info">
+							<th class="border border-3 border-info table-primary text-nowrap">注文状況</th>
 							<td>
 								{% if  orders['order_status'] == 0 %}
 									<button class="btn btn-danger">受付中</button>
-									<button type="button" class="btn btn-blue" onclick="location.href='{{ENTRY_URL}}/update_order_status.php?id={{ orders['id'] }}'">発送済みにする</button>
+									<button type="button" class="btn btn-info" onclick="location.href='{{ENTRY_URL}}/update_order_status.php?id={{ orders['id'] }}'">発送済みにする</button>
 								{% else %}
-									<button type="button" class="btn btn-blue">発送済</button>
+									<button type="button" class="btn btn-info">発送済</button>
 									<button type="button" class="btn btn-danger" onclick="location.href='{{ENTRY_URL}}/update_order_status.php?id={{ orders['id'] }}'">発送を取り消す</button>
 								{% endif %}
 							</td>
 						</tr>
 					</tbody>
 				</table>
-			</div>
-            <br><br>
-			<div class="list">
+				</div>
+            <br><p></p><br>
 				<h4 class="text-center">商品詳細</h4>
-                <br>
+				<div class="list table-responsive">
 				<table class="sort-table">
 					<thead>
 						<tr>
-							<th class="text-center">id</th>
-							<th class="text-center">注文id</th>
-							<th class="text-center">商品名</th>
-							<th class="text-center">個数</th>
-							<th class="text-center">金額</th>
-							<th class="text-center">小計金額</th>
-							<th class="text-center">関連書籍</th>
-							<th class="text-center">操作</th>
+							<th class="text-center text-nowrap border border-3 border-info bg-secondary">　i d　</th>
+							<th class="text-center text-nowrap border border-3 border-info bg-secondary">注文 id</th>
+							<th class="text-center text-nowrap border border-3 border-info bg-secondary">商 品 名</th>
+							<th class="text-center text-nowrap border border-3 border-info bg-secondary">個　　数</th>
+							<th class="text-center text-nowrap border border-3 border-info bg-secondary">金　　額</th>
+							<th class="text-center text-nowrap border border-3 border-info bg-secondary">小計金額</th>
+							<th class="text-center text-nowrap border border-3 border-info bg-secondary">関連書籍</th>
+							<th class="text-center text-nowrap border border-3 border-info bg-secondary">操　　作</th>
 
 						</tr>
 					</thead>
@@ -81,42 +81,41 @@
 						{% for value in order_detail %}
 							{% set b = attribute(value,'ctg_id') %}{% set small_sum = attribute(value,'num')* attribute(value,'price') %}
 							<tr>
-								<td class="text-center">{{ attribute(value,'id') }}</td>
-								<td class="text-center">{{ attribute(value,'order_id') }}</td>
-								<td class="text-center">{{ attribute(value,'product_title')|e("html") }}</td>
-								<td class="text-center">{{ attribute(value,'num') }}</td>
-								<td class="text-center">￥{{ attribute(value,'price')|number_format() }}</td>
-								<td class="text-center">￥{{ small_sum |number_format() }}</td>
-								<td class="text-center">{{book_title[b]['title']}}</td>
-								<td class="text-center">
+								<td class="text-center border border-3 border-info">{{ attribute(value,'id') }}</td>
+								<td class="text-center border border-3 border-info">{{ attribute(value,'order_id') }}</td>
+								<td class="text-center border border-3 border-info">{{ attribute(value,'product_title')|e("html") }}</td>
+								<td class="text-center border border-3 border-info">{{ attribute(value,'num') }}</td>
+								<td class="text-center border border-3 border-info">￥{{ attribute(value,'price')|number_format() }}</td>
+								<td class="text-center border border-3 border-info">￥{{ small_sum |number_format() }}</td>
+								<td class="text-center border border-3 border-info">{{book_title[b]['title']}}</td>
+								<td class="text-center border border-3 border-info">
 									<form action="{{APP_URL}}/admin/order/order_products_status.php" method="POST">
-										{# <div class="spinner_area"> #}
+									<br>
 											<div class="row">
 												<div class="col-12">
-                                                <input type="button" value="＋" class="btnspinner btn-info" data-cal="1" data-target=".counter{{a}}">
+                                                						<input type="button" value="＋" class="btnspinner btn-info" data-cal="1" data-target=".counter{{a}}">
 
 												</div>
 												<div class="col-12">
-													<input type="number" name="num" value={{value['num']}} class="counter{{a}}" data-max="500" data-min="0" style="width:70px">
+													<input type="number" name="num" value={{value['num']}} class="counter{{a}} text-center" data-max="500" data-min="0" style="width:70px">
 												</div>
 												<div class="col-12">
 													<input type="button" value="－" class="btnspinner btn-info" data-cal="-1" data-target=".counter{{a}}">
-												{# </div> #}
 												<input type="hidden" name="id" value={{value['id']}}>
 												<input type="hidden" name="order_id" value={{value['order_id']}}>
 												<div class="col">
-													<button type="submit" class="btn">変更する</button>
+													<button type="submit" class="btn btn-danger">変更する</button>
 												</div>
+											</div>
 											</div>
 										</form>
 									</td>
 									{% set a = a + 1 %}
 								{% endfor %}
 							</tr>
-						</tbody>
 					</tbody>
 				</table>
-			</div>
-		</div>
-	</div>
+				</table>
+				</div>
+				</div>
 </div></main>{% include "common/footer.html.twig" %}

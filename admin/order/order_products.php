@@ -30,6 +30,17 @@ database::data_get('book');
 
 $book_title = $DB_DATA_GET;
 
+if ($order_data['customer_id'] != 'not member') {
+  $customer_id = $order_data['customer_id'];
+  $customer = database::get_data_where('customer','id',$customer_id);
+  $customer_name =$customer[0]["family_name"]." ".$customer[0]['first_name'];
+}
+
+echo '<pre>';
+var_dump($customer_name);
+echo '</pre>';
+
+
 $context['orders'] = $order_data;
 $context['order_detail'] = $order_products;
 $context['book_title'] = $book_title;

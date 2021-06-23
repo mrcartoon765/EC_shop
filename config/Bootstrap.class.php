@@ -35,7 +35,6 @@ isset($_SERVER['HTTP_X_FORWARDED_PROTO'])?
     define('AppUrl', $_SERVER['HTTP_X_FORWARDED_PROTO'].'://'. $_SERVER['HTTP_HOST'] . '/'):
     define('AppUrl', 'http://'.$_SERVER['HTTP_HOST']);
 
-
 define('table', str_replace(['/shopping/', '/'], '', $this_dir));
 class Bootstrap
 {

@@ -3,6 +3,7 @@
 namespace config;
 
 use config\template_twig_files;
+use config\original_Mysql_command;
 
 $this_dir = basename(__DIR__);
 
@@ -12,15 +13,8 @@ require_once $_SERVER['DOCUMENT_ROOT']."/config/Bootstrap.class.php";
 
 admin_login::login_session();
 
-$id = POST_GET::GET('$id','id');
-$first_name = POST_GET::GET('$first_name','first_name');
-$mail = POST_GET::GET('$mail','mail');
+$id = $_POST['customer_id'];
 
-$dbh = database::dbh();
-$stmt = $dbh->prepare("UPDATE customer SET first_name=:first_name, mail=:mail, update_date=now() WHERE customer.id=:id");
-$stmt->bindParam(":first_name",$first_name);
-$stmt->bindParam(":mail",$mail);
-$stmt->bindParam(":id",$id);
-$stmt->execute();
+original_Mysql_command::user_data_update('customer',$id);
 
 header("location:" . Bootstrap::ENTRY_URL . "/users.php");

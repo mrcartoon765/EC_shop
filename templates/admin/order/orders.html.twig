@@ -5,35 +5,35 @@
                     <div class="wrapper-title text-center">
                         <h3>受注管理</h3>
                     </div>
-                    <div class="list">
+                    <div class="table-responsive">
                         <table class="sort-table">
-                        <thead>
+                        <thead class="border border-3 border-info table-primary" >
                             <tr>
-                                <th class="text-center">注文ID</th>
-                                <th class="text-center">電話番号</th>
-                                <th class="text-center">合計金額</th>
-                                <th class="text-center">注文日時</th>
-                                <th class="text-center">更新日時</th>
-                                <th class="text-center">注文ステータス</th>
-                                <th class="text-center">操作</th>
+                                <th class="text-center text-nowrap border border-3 border-info  bg-secondary">　注文ID　　</th>
+                                <th class="text-center text-nowrap border border-3 border-info  bg-secondary">　電話番号　</th>
+                                <th class="text-center text-nowrap border border-3 border-info  bg-secondary">　合計金額　</th>
+                                <th class="text-center text-nowrap border border-3 border-info  bg-secondary">　注文日時　</th>
+                                <th class="text-center text-nowrap border border-3 border-info  bg-secondary">　更新日時　</th>
+                                <th class="text-center text-nowrap border border-3 border-info  bg-secondary">注文ステータス</th>
+                                <th class="text-center text-nowrap border border-3 border-info  bg-secondary">　操　作　</th>
                             </tr>
                         </thead>
-                        <tbody>
+                        <tbody class="border border-3 border-info">
                           {% for orders in order_data %}
                           <tr>
-                            <td class="text-center">{{ orders['id'] }}</td>
-                            <td class="text-center">{{ orders['tel1'] }}-{{ orders['tel2'] }}-{{ orders['tel3'] }}</td>
-                            <td class="text-center">￥{{ orders['total']|number_format }}</td>
-                            <td class="text-center">{{ orders['created_at'] }}</td>
-                            <td class="text-center">{{ orders['updated_at'] }}</td>
-                                <td class="text-center">
+                            <td class="text-center border border-3 border-info">{{ orders['id'] }}</td>
+                            <td class="text-center border border-3 border-info">{{ orders['tel1'] }}-{{ orders['tel2'] }}-{{ orders['tel3'] }}</td>
+                            <td class="text-center border border-3 border-info">￥{{ orders['total']|number_format }}</td>
+                            <td class="text-center border border-3 border-info">{{ orders['created_at'] }}</td>
+                            <td class="text-center border border-3 border-info">{{ orders['updated_at'] }}</td>
+                                <td class="text-center border border-3 border-info">
                                     {% if orders['order_status'] == 0 %}
                                     <button type="button" class="btn btn-danger">受付中</button>
                                     {% else %}
                                     <button type="button" class="btn btn-blue">発送済</a></button>
                                     {% endif %}
                                 </td>
-                                <td class="text-center">
+                                <td class="text-center border border-3 border-info">
                                    <button type="button" class="btn btn-info" onclick="location.href='{{ENTRY_URL}}/order_products.php?id={{orders['id']}}'">詳細</button>
 <button type="button" class="btn btn-danger delete" data-id='{{ attribute(orders,'id') }}' >注文取り消し</button>
 <form method="POST" action="{{ENTRY_URL}}/orders.php" id="delete_form_{{ attribute(orders,'id')}}" value='1'>

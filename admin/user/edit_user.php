@@ -3,6 +3,7 @@
 namespace config;
 
 use config\template_twig_files;
+use create_account\master\initMaster;
 
 $this_dir = basename(__DIR__);
 
@@ -21,12 +22,23 @@ if($id == ''){
   exit;
 }
 
-   $dbh = database::dbh();
-   $stmt = $dbh->prepare("SELECT * FROM customer WHERE id=:id");
-   $stmt->bindParam(":id",$id);
-   $stmt->execute();
-   $user = $stmt->fetchAll(\PDO::FETCH_ASSOC);
+//GETからIDを取得する
+$id = (substr(strstr($_SERVER['REQUEST_URI'],'?id='),4));
 
-$context['user'] = $user;
+$user = database::get_data_where('customer','id',$id);
+
+list($yearArr, $monthArr, $dayArr) = initMaster::getDate();
+
+$context['customer'] = $user[0];
+
+$context['yearArr'] = $yearArr;
+$context['monthArr'] = $monthArr;
+$context['dayArr'] = $dayArr;
+$context['dataArr'] = $dataArr;
+$context['errArr'] = $errArr;
+$context['year'] =$user[0]['year'];
+$context['month'] =$user[0]['month'];
+$context['day'] =$user[0]['day'];
+$context['id'] = $id;
 
 template_twig_files::template_load_front();

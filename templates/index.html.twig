@@ -10,7 +10,7 @@
 		</div>
 	</div>
 	<div class="wrapper">
-		<div class="container">
+		<div class="container-flluid">
 			<div class="wrapper-title">
 				<h1>NEWS</h1>
 				<h3>お知らせ</h3>
@@ -104,7 +104,7 @@
 			<h4 class="featurette-heading text-center">
 				<span class="text-muted">会社概要</span>
 			</h4>
-			<p class="lead text-center">会社名:合同会社 HEALTH KNOWLEGE</p>
+			<p class="lead text-center">会社名：合同会社 <br>HEALTH KNOWLEGE</p>
 			<p class="lead text-center">代表者名：田中 正義</p>
 			<p class="lead text-center">〒 000-9999</p>
 			<p class="lead text-center">東京都千代田区丸の内 架空ビル32階</p>
@@ -122,12 +122,12 @@
 				<span class="text-muted">お問い合わせ</span>
 			</h4>
 			<form method="POST" action="{{APP_URL}}/Contact/confirm.php">
-				<p class="lead text-left">お名前 *<input type="text" name="name"></p>
-				<p class="lead text-left">Email *<input type="email" name="email"></p>
+				<p class="lead text-left">お名前 *<input type="text" class="border-4 border-info" name="name"></p>
+				<p class="lead text-left">Email *<input type="email" class="border-4 border-info" name="email"></p>
 			</div>
 			<div class="col-md-5">
 				<p>お問合せ内容 *</p>
-				<textarea name="text"></textarea>
+				<textarea class="border-4 border-info" name="text"></textarea>
 				<button type="submit" class="btn btn-primary ">内容を確認する</button>
 			</div>
 		</div>

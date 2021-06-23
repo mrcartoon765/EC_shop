@@ -25,12 +25,12 @@ $total = shopping_cart::cart_price_sum();
 require_once '../vendor/payjp/payjp-php/init.php';
 
 //テスト秘密鍵
-\Payjp\Payjp::setApiKey("sk_test_d601a9b04db20305df25d973");
+\Payjp\Payjp::setApiKey("sk_test_ec1560afda48afd19ce7f670");
 
 
 $mail = POST_GET::GET($mail,'mail');
-$family_name = POST_GET::GET($family_name ,'family_name ');
-$first_name  = POST_GET::GET($first_name ,'first_name ');
+$family_name = POST_GET::GET($family_name ,'family_name');
+$first_name  = POST_GET::GET($first_name ,'first_name');
 $zip1  = POST_GET::GET($zip1 ,'zip1');
 $zip2  = POST_GET::GET($zip2 ,'zip2');
 $address  = POST_GET::GET($address ,'address');
@@ -59,9 +59,9 @@ $res = \Payjp\Charge::create([
   }
 
   if ($_SESSION['customer_login'] == true){
-    pay_end::login_pay_end($mail,$zip1,$zip2,$address,$tel1,$tel2,$tel3,$total,$customer_id,$products);
+    pay_end::login_pay_end($mail,$zip1,$zip2,$address,$tel1,$tel2,$tel3,$total,$customer_id,$family_name,$first_name,$products);
    } else {
-     pay_end::no_login_pay_end($mail,$zip1,$zip2,$address,$tel1,$tel2,$tel3,$total,$products);
+     pay_end::no_login_pay_end($mail,$zip1,$zip2,$address,$tel1,$tel2,$tel3,$total,$family_name,$first_name,$products);
    }
 
 unset($_SESSION['products']);

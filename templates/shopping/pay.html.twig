@@ -52,10 +52,10 @@
 										</div>
 										ー
 										<div class="col px-0">
-											<input type="text" name="zip2" value="{{dataArr.zip2}}" id="zip2" size="4" maxlength="4">
+											<input class="border-4 border-info" type="text" name="zip2" value="{{dataArr.zip2}}" id="zip2" size="4" maxlength="4">
 										</div>
 										<input type="hidden" name="entry_url" id="entry_url" value="{{ENTRY_URL}}">
-										<input type="button" class="btn btn-gray text-center" name="address_search" value="〒から住所を入力" id="address_search">
+										<button type="button" class="btn btn-submit btn-gray" name="address_search" id="address_search">〒から住所を入力</button>
 
 									{% endif %}
 

@@ -5,19 +5,146 @@
                 <div class="wrapper-title">
                     <h3>ユーザー編集</h3>
                 </div>
-                <form class="edit-form" action="{{constant('config\\Bootstrap::ENTRY_URL')}}/update_user.php" method="POST">
-                    <input type="hidden" name="id" value="{{ user[0]['id'] }}">
-                    <div class="form-group">
-                        <p>名前</p>
-                        <input type='text' name='first_name' value="{{ user[0]['first_name'] }}">
-                    </div>
-                    <div class="form-group">
-                        <p>メールアドレス</p>
-                        <textarea name="mail">{{ user[0]['mail'] }}</textarea>
-                    </div>
-                    <button type="submit" class="btn btn-blue">更新する</button>
-                </form>
-            </div>
-        </div>
-    </main>
+                <form class="edit-form" action="{{ADMIN}}/user/update_user.php" method="POST">
+
+<h3>
+お名前(氏名)
+</h3>
+<br>
+<div class="row">
+<div class="col">
+<h4>姓</h4><input class="text-center border-4 border-info" type="text" name="family_name" value="{{ customer['family_name'] }}" required>
+</div>
+<div class="col">
+<h4>名</h4><input  class="text-center border-4 border-info" type="text" name="first_name"  value="{{ customer['first_name'] }}" required>
+</div>
+</div>
+<br>
+<h3>
+お名前(かな)
+</h3>
+<br>
+<div class="row">
+<div class="col">
+<h4>
+せい
+</h4>
+<input class="text-center border-4 border-info" type="text" name="family_name_kana" value="{{customer['family_name_kana']}}">
+</div>
+<div class="col">
+<h4>
+めい
+</h4>
+<input class="text-center border-4 border-info" type="text" name="first_name_kana"  value="{{customer['first_name_kana']}}">
+</div>
+</div>
+<br>
+
+
+<h3>
+生年月日*
+</h3>
+<div class="row">
+
+<div class="col-2"></div>
+
+<div class="col px-0">
+<select name="year" class="border-4 border-info">
+{% for index, label in yearArr %}
+<option value="{{index}}" {% if year == index %} selected {% endif %}>{{ label }}</option>
+{% endfor %}
+</select>年
+</div>
+
+<div class="col px-0">
+<select name='month' class="border-4 border-info">
+{% for index, label in monthArr %}
+<option value="{{index}}" {% if month == index %} selected {% endif %}>{{ label }}</option>
+{% endfor %}
+</select>月
+</div>
+
+<div class="col px-0">
+<select name='day' class="border-4 border-info">
+{% for index, label in dayArr %}
+<option value="{{index}}" {% if day == index %} selected {% endif %}>{{ label }}</option>
+{% endfor %}
+</select>日
+{% if errArr.year | length > 0 %}<br><span class="error">{{errArr.year}}</span>{% endif %}
+{% if errArr.month | length > 0 %}<br><span class="error">{{errArr.month}}</span>{% endif %}
+{% if errArr.day | length > 0 %}<br><span class="error">{{errArr.day}}</span>{% endif %}
+</div>
+
+<div class="col-2"></div>
+
+</div>
+
+<br>
+<h3>
+郵便番号*
+</h3>
+<div class="row">
+<div class="col px-0">
+<input type="number" name="zip1" class="text-center border-4 border-info" value="{{customer['zip1']}}" id="zip1" size="3" maxlength="1000"  required>
+{% if errArr.zip1 | length > 0 %}<br><span class="error">{{errArr.zip1}}</span>{% endif %}
+</div>
+ー
+<div class="col px-0">
+<input type="number" name="zip2" class="text-center border-4 border-info" value="{{customer['zip2']}}" id="zip2" size="4" maxlength="10000"  required>
+{% if errArr.zip2 | length > 0 %}<br><span class="error">{{errArr.zip2}}</span>{% endif %}
+</div>
+<input type="hidden" name="entry_url" id="entry_url" value="{{APP_URL}}/create_account/">
+<br><p></p>
+<button type="button" class="btn btn-submit btn-primary" name="address_search" id="address_search">〒から住所を入力</button>
+
+</div>
+<h3>
+住所*
+</h3>
+<input type="text" name="address" class="text-center border-4 border-info" value="{{customer['address']}}" id="address" size="40"  required>
+{% if errArr.address | length > 0 %}<br><span class="error">{{errArr.address}}</span>{% endif %}
+<br><p></p>
+<h3>
+電話番号*
+</h3>
+<div class="row">
+<div class="col">
+<input class="text-center border-4 border-info" type="text" name="tel1" value="{{customer['tel1']}}" size="6" maxlength="6"  required>
+</div>ー
+<div class="col">
+<input class="text-center border-4 border-info" type="text" name="tel2" value="{{customer['tel2']}}" size="6" maxlength="6"  required>
+</div>ー
+<div class="col">
+<input class="text-center border-4 border-info" type="text" name="tel3" value="{{customer['tel3']}}" size="6" maxlength="6"  required>
+</div>
+{% if errArr.tel1 | length > 0 %}<br><span class="error">{{errArr.tel1}}</span>{% endif %}
+</div>
+<br>
+<h3>
+備考
+</h3>
+<textarea class="border-4 border-info" name="contents" rows="4" cols="40">{{customer['contents']}}</textarea>
+
+<h5 class="text-center">EC_BOOKからのお知らせを受信しますか？</h5>
+<br><p></p>
+<div class="row">
+<div class="col">
+<h5 class="text-center">受信する</h5>
+</div>
+<div class="col">
+<input type="hidden" name="dm" value="0">
+<input type="checkbox" class="checkbox" name="dm" value="1" checked>
+</div>
+</div>
+
+<div class="text-center d-grid gap-2">
+<br>
+<input type="hidden" name="customer_id" method="POST" value="{{id}}">
+
+<button type="submit" class="btn btn-submit btn-success">更新する</button>
+</div>
+</form>
+</div>
+</div>
+</main>
  {% include "common/footer.html.twig" %}

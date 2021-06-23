@@ -20,6 +20,19 @@ class original_Mysql_command
         $sql = "UPDATE " . $table . " SET " . $key_value . " WHERE id =" . $ses . ';';
         return $sql;
     }
+    public static function user_data_update($table,$ses)//ユーザー情報を管理者側で更新する処理
+    {
+        unset($_POST['entry_url'],$_POST['customer_id']);
+        foreach ($_POST as $key => $value) {
+            $key_value[] = $key . ' = ' . '"' . $value . '"' . ',';
+        }
+        $key_value = rtrim(implode($key_value), ',');
+        $sql = "UPDATE " . $table . " SET " . $key_value . " WHERE id =" . $ses . ';';
+        $dbh = database::dbh();
+        $stmt = $dbh->prepare($sql);
+        $stmt->execute();
+        return $sql;
+    }
     public static function POST_DATA_INSERT($table)//管理画面で新しくデータを登録する際に使用する処理
     {
         foreach ($_POST as $key => $value) {

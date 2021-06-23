@@ -12,10 +12,10 @@
 				<p>{{file_name}}</p>
 			</div>
 			<form class="d-flex" type="search" action="{{APP_URL}}admin/sub/secondary_products.php" method="GET">
-				<input class="form-control me-2" type="search" name="title" placeholder="全商品名から検索">
-				<button class="btn btn-outline-success" type="submit">Search</button>
+				<input class="form-control me-2 border-4 border-info" type="search" name="title" placeholder="全商品名から検索">
+				<button class="btn btn-success" type="submit">Search</button>
 			</form>
-			<button type="button" class="btn btn-blue" onclick="location.href='{{ENTRY_URL}}/create_sub.php'">副商材を新規登録する</button>
+			<button type="button" class="btn btn-primary" onclick="location.href='{{ENTRY_URL}}/create_sub.php'">副商材を新規登録する</button>
 
 			<div class="itemlist">
 				<div class="container">
@@ -27,7 +27,7 @@
 							{% set ctg2 = attribute(value,'ctg2') %}
 							<div
 								class="card-group col-md-4 col-sm-12">
-								<div class="card" style="height:100%;">
+								<div class="card border-4 border-info" style="height:100%;">
 									<div class="column flex-direction:row">
 										<div class="card-body">
 											<img class="card-img-top img-fluid" src="{{APP_DIR}}/shopping/image/sub/{{ attribute(value,'image') }}" alt="...">

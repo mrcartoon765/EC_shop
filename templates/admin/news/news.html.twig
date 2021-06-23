@@ -1,34 +1,35 @@
 {% include "common/header_admin.html.twig" %}
 <main>
 	<div class="wrapper">
-		<div class="container-flluid">
+		<div class="container">
 			<div class="wrapper-title text-center">
 				<h3>記事管理</h3>
 			</div>
 			<div class="text-center">
-				<button type="button" class="btn btn-blue" onclick="location.href='create_news.php'">新規投稿する</button>
+				<button type="button" class="btn btn-info" onclick="location.href='create_news.php'">新規投稿する</button>
 			</div>
-			<div class="table-responsive" style="overflow: auto;">
-				<table class="table sort-table">
-					<thead>
+			<div class="list">
+			<div class="table-responsive">
+				<table class="table sort-table border border-3 border-info">
+					<thead class="border border-3 border-info table-primary">
 						<tr>
-							<th scope="col" class="text-center">id</th>
-							<th scope="col" class="text-center">タイトル</th>
-							<th scope="col" class="text-center">本文</th>
-							<th scope="col" class="text-center">更新日時</th>
-							<th scope="col" class="text-center">作成日時</th>
-							<th scope="col" class="text-center">操作</th>
+							<th scope="col" class="text-center border border-3 border-info bg-secondary text-light">　id　</th>
+							<th scope="col" class="text-center border border-3 border-info bg-secondary text-light">タイトル</th>
+							<th scope="col" class="text-center border border-3 border-info bg-secondary text-light">　本文　</th>
+							<th scope="col" class="text-center border border-3 border-info bg-secondary text-light">更新日時</th>
+							<th scope="col" class="text-center border border-3 border-info bg-secondary text-light">作成日時</th>
+							<th scope="col" class="text-center border border-3 border-info bg-secondary text-light">　操作　</th>
 						</tr>
 					</thead>
 					<tbody>
 						{% for value in news %}
 							<tr>
-								<td class="text-center">{{ attribute(value,'id') }}</td>
-								<td class="text-center">{{ attribute(value,'title') }}</td>
-								<td class="text-center">{{ attribute(value,'content')[0:100] }}</td>
-								<td class="text-center">{{ attribute(value,'updated_at') }}</td>
-								<td class="text-center">{{ attribute(value,'created_at') }}</td>
-								<td class="text-center">
+								<td class="border border-3 border-info text-center">{{ attribute(value,'id') }}</td>
+								<td class="border border-3 border-info text-center">{{ attribute(value,'title') }}</td>
+								<td class="border border-3 border-info text-center">{{ attribute(value,'content')[0:50] }}</td>
+								<td class="border border-3 border-info text-center">{{ attribute(value,'updated_at') }}</td>
+								<td class="border border-3 border-info text-center">{{ attribute(value,'created_at') }}</td>
+								<td class="border border-3 border-info text-center">
 									<button type="button" class="btn btn-info" onclick="location.href='{{ENTRY_URL}}edit_news.php?id={{ attribute(value,'id') }}'">編集</button>
 									<button type="button" class="btn btn-danger delete" data-id='{{ attribute(value,'id') }}'>削除</button>
 									<form method="POST" action="{{ENTRY_URL}}delete_news.php" id="delete_form_{{ attribute(value,'id')}}">
@@ -39,6 +40,7 @@
 						{% endfor %}
 					</tbody>
 				</table>
+			</div>
 			</div>
 		</div>
 	</div>

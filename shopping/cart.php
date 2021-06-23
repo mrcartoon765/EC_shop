@@ -33,6 +33,10 @@ shopping_cart::cart_status_check();
 
 shopping_cart::cart_empty();
 
+// echo '<pre>';
+// var_dump($products);
+// echo '</pre>';
+
 $_SESSION['total_price'] = $total;
 $context['product_cart'] = $products;
 $context['total'] = $total;
