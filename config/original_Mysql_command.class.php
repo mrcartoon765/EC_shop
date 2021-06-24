@@ -82,6 +82,7 @@ class original_Mysql_command
     }
     public static function POST_DATA_UPDATE($table)//管理画面で商品詳細などの更新をする際の処理
     {
+
         foreach ($_POST as $key => $value) {
             if ($key == 'id') {
                 continue;
@@ -112,9 +113,12 @@ class original_Mysql_command
                     unlink($image_dir . $old_image_file) :
                     '';
                     $stmt = $dbh->quote($sql);
-                    $stmt = $dbh->prepare("UPDATE ".$table." SET " . $sql .", last_update= NOW(), image=" . "'" . $file_name . "'" . " WHERE " . $table . ".id=" . $delete_id);
+                    $stmt = $dbh->prepare("UPDATE ".$table." SET " . $sql .
+                    ", last_update= NOW(), image=" .
+                     "'" . $file_name . "'" . " WHERE " . $table . ".id=" . $delete_id);
 
                     $stmt->execute();
+
                     header("refresh:3;url=" . Bootstrap::ADMIN_URL);
                     template_twig_files::Prepare_the_template();
                     $context[''] = '';

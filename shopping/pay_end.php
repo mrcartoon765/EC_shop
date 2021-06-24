@@ -25,7 +25,7 @@ $total = shopping_cart::cart_price_sum();
 require_once '../vendor/payjp/payjp-php/init.php';
 
 //テスト秘密鍵
-\Payjp\Payjp::setApiKey("sk_test_ec1560afda48afd19ce7f670");
+\Payjp\Payjp::setApiKey("sk_test_48545b5e0d50c059f9d7ed36");
 
 
 $mail = POST_GET::GET($mail,'mail');

@@ -161,32 +161,51 @@ $(function () {
           var exp_year = $("#exp_year").val();
         });
         //詳細ページスライダーアニメーション
-        $('.slider').slick({
+        // $(window).load(function(){
+        $('.slider').each(function(){
+         var sliderCount =$(this).children('li').length;
+         var randomStart =Math.floor(Math.random() * sliderCount);
+        $(this).slick({
+          initialSlide: randomStart,
           Infinity: true,
           autoplay: true,
-          autoplaySpeed: 5000,
-          dots: true,
+          adaptiveHeight: true,
+          autoplaySpeed: 2000,
+          dots: false,
+          swipe: true,
+          swipeToSlide: true,
+          cssEase: 'linear',
           slidesToShow: 4,
+          centerMode: true,
+          centerPadding: '10%',
           responsive: [{
               breakpoint: 1024,
               settings: {
                 slidesToShow: 3,
+                centerMode: true,
+                centerPadding: '15%',
               }
             },
             {
               breakpoint: 768,
               settings: {
                 slidesToShow: 2,
+                centerMode: true,
+                centerPadding: '15%',
               }
             },
             {
               breakpoint: 480,
               settings: {
-                slidesToShow: 1,
+                slidesToShow: 2,
+                centerMode: true,
+                centerPadding: '15%',
               }
             },
           ]
         });
+        });
+        // });
         //インデックストップページスライダー画面
         $(document).on('ready', function () {
           $(".full-screen").slick({
@@ -194,7 +213,7 @@ $(function () {
             centerPadding: '5%',
             dots: true,
             autoplay: true,
-            autoplaySpeed: 3000,
+            autoplaySpeed: 1000,
             speed: 1000,
             infinite: true,
           });

@@ -1,15 +1,14 @@
 {% include "common/header.html.twig" %}
-<br><br><br>
 <main>
 	{% set a = 0 %}
 	{% include "common/shopping/hidden_input.html.twig" %}
 	<div class="last-wrapper center-block">
-		<div class="container-fluid">
-			<div class="wrapper-title  center-block">
-				<h1>{{value['title']}}</h1>
+		<div class="container-fluid" style="margin-top:7rem;">
+			<div class="wrapper-title center-block" >
+				<h2>{{value['title']}}</h2>
 			</div>
 			<div class="album py-5 bg-light">
-				<div class="container-fluid">
+				<div class="container">
 
 					<div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
 						<div class="col px-0">
@@ -17,10 +16,10 @@
 								<form action="{{shopping}}/cart.php" method="POST">
 								<input type="hidden" name="product_image" value={{ value['image'] }}>
 									<div class="text-center">
-										<img src="{{IMAGE_DIR}}{{ value['image'] }}" class="text-center" style="width: 40%;" alt="">
+										<img src="{{IMAGE_DIR}}{{ value['image'] }}" class="text-center" style="width: 60%;" alt="">
 									</div>
 									<div class="card-body">
-										<h4 class="card-text">{{value['detail'][0:50]|raw}}..</h4>
+										<h5 class="card-text">{{value['detail'][0:50]|raw}}..</h5>
 										<p>
 											<button type="button" class="btn btn-gray" data-bs-toggle="modal" data-bs-target="#exampleModal">商品詳細の表示</button>
 											<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -49,11 +48,13 @@
 									<input type="hidden" name="cart_in_status" value="1">
 									{% include "common/shopping/hidden_input_cart_in.html.twig" %}
 								</div>
+								<div class="card-footer">
 
 
 								{% include "common/shopping/want_button.html.twig" %}
 
 
+								</div>
 								{% include "common/cart_btn.html.twig" %}
 
 							</div>
@@ -67,16 +68,18 @@
 		{% block pickup %}
 			<div class="container">
 				<div class="row">
-					<h3 class="text-center">関連オススメ商品</h3>
+					<h3 class="text-center">オススメ関連商品</h3>
 					<br>
 						<p></p>
 						<br>
 						<ul class="slider">
 							{% for sub in sub_product %}
 								<li>
-									<a href="{{sub_detail}}{{sub["id"]}}"><img class="img-thumbnail" alt="" src="{{shopping}}/image/sub/{{sub['image']}}"/></a>
-									<p class="text-center h4">{{sub['title'][0:20]|e("html")}}</p>
-									<p class="text-center h5">￥{{sub['price']|number_format}}</p>
+									<a href="{{sub_detail}}{{sub["id"]}}">
+									<img class="img-thumbnail" alt="" src="{{shopping}}/image/sub/{{sub['image']}}">
+									</a>
+									<h4 class="text-center">{{sub['title']|length > 30 ? sub['title']|slice(0,30) ~ '...': sub['title']}}</h4>
+									<h5 class="text-center">￥{{sub['price']|number_format}}</h5>
 								</li>
 							{% endfor %}
 						</ul>
