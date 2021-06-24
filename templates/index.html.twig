@@ -3,137 +3,138 @@
 	<div class="top-img">
 		<div class="container">
 			<div class="top-text">
-				<h1 class="text-nowrap">Bringing <h1>
-				<h1 class="text-nowrap">Health Knowledge</h1>
-				<h1 class="text-nowrap">to you.</h1>
+				<h1 class="text-nowrap">Bringing
+					<h1>
+						<h1 class="text-nowrap">Health Knowledge</h1>
+						<h1 class="text-nowrap">to you.</h1>
+					</div>
+				</div>
 			</div>
-		</div>
-	</div>
-	<div class="wrapper">
-		<div class="container-flluid">
-			<div class="wrapper-title">
-				<h1>NEWS</h1>
-				<h3>お知らせ</h3>
-			</div>
-			<div class="news-list">
-				{% for value in news %}
-					<ul>
-						<li>
-							<h7>
-								{{ attribute(value,'updated_at')[0:10] }}
-								<br>
-								<a href="{{APP_URL}}page.php?id={{attribute(value,'id') }}">
-									{{ attribute(value,'title') }}
-								</a>
+			<div class="container-flluid" style="margin-top:10rem; margin-bottom:10rem">
+				<div class="wrapper-title">
+					<h1>NEWS</h1>
+					<h3>お知らせ</h3>
+				</div>
+				<div class="news-list">
+					{% for value in news %}
+						<ul>
+							<li>
+								<h5>
+									{{ attribute(value,'updated_at')[0:10] }}
+									<br>
+									<a href="{{APP_URL}}page.php?id={{attribute(value,'id') }}">
+										{{ attribute(value,'title') }}
+									</a>
+								</li>
 							</li>
-						</li>
-					</h7>
-				</ul>
-			{% endfor %}
-		</div>
-	</div>
-</div>
-
-<div class="container">
-
-	<hr class="featurette-divider">
-
-	<div class="row featurette">
-		<div class="col-md-7">
-			<h4 class="featurette-heading text-center">
-				<span class="text-muted">
-					健康知識に関する書籍</h4>
-			</span>
-			<h7>昨今の情勢で高まる世の中の”健康意識”に対して、科学的なアプローチやメタ分析を用いた今日からでも実践しながら活かせるノウハウが詰まった書籍の購入ができます。</h7>
-			<div class="text-center">
-				<p>
-					<a class="btn btn-secondary " href="{{APP_URL}}/shopping/book/booklist.php" role="button">書籍一覧 &raquo;</a>
-				</p>
+						</h7>
+					</ul>
+				{% endfor %}
 			</div>
 		</div>
-		<div class="col-md-5">
-			<a href="{{APP_URL}}/shopping/book/detail.php?id={{book_id}}">
-				<img class="rounded-circle d-block mx-auto" src="{{IMAGE_DIR}}book/{{book_image}}" alt="Generic placeholder image" width="200" height="200">
-			</a>
-		</div>
 	</div>
 
-	<hr class="featurette-divider">
-	<div class="row featurette">
-		<div class="col-md-7 order-md-2">
-			<h4 class="featurette-heading text-center">
-				<span class="text-muted">関連する商品</span>
-			</h4>
-			<h7>書籍にて紹介されている商品の購入が可能です。
-								弊社での取扱い商品はいずれもメーカー直仕入れの正規品でございます。安心してお買い求めいただけるようになっております</h7>
-			<div class="text-center">
-				<p>
-					<a class="btn btn-secondary " href="{{APP_URL}}/shopping/sub/sublist_all.php" role="button">関連商材一覧 &raquo;</a>
-				</p>
-			</div>
-		</div>
-		<div class="col-md-5 order-md-1">
-			<a href="{{APP_URL}}/shopping/sub/detail.php?id={{sub_id}}">
-				<img class="rounded-circle d-block mx-auto" src="{{IMAGE_DIR}}sub/{{sub_image}}" alt="Generic placeholder image" width="200" height="200">
-			</a>
-		</div>
-	</div>
+	<div class="container">
 
-	<hr class="featurette-divider">
+		<hr class="featurette-divider">
 
-	<div class="row featurette">
-		<div class="col-md-7">
-			<h4 class="featurette-heading text-center">
-				<span class="text-muted">会員特典</span>
-			</h4>
-			<h7 class="text-center">会員登録いただいたお客様からの購入は定価の３割引でお買い求めいただけます</h7>
-			<div class="text-center">
-				<p>
-					<a class="btn btn-secondary text-center" href="{{APP_URL}}/create_account/regist.php" role="button">新規会員登録 &raquo;</a>
-				</p>
-			</div>
-		</div>
-		<div class="col-md-5">
-			<img class="rounded-circle d-block mx-auto" src="{{APP_URL}}/image/unnamed.jpeg" alt="Generic placeholder image" width="200" height="200">
-		</div>
-	</div>
+		<div class="row featurette">
 
-	<hr class="featurette-divider">
-	<div class="row featurette">
-		<div class="col-md-7 order-md-2">
-			<h4 class="featurette-heading text-center">
-				<span class="text-muted">会社概要</span>
-			</h4>
-			<p class="lead text-center">会社名：合同会社 <br>HEALTH KNOWLEGE</p>
-			<p class="lead text-center">代表者名：田中 正義</p>
-			<p class="lead text-center">〒 000-9999</p>
-			<p class="lead text-center">東京都千代田区丸の内 架空ビル32階</p>
-		</div>
-		<div class="col-md-5 order-md-1">
-			<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d6481.717639851197!2d139.7609893778801!3d35.680478120777906!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60188bfbcd794975%3A0x239c242b7b27f6c9!2z5pel5pys44CB44CSMTAwLTAwMDUg5p2x5Lqs6YO95Y2D5Luj55Sw5Yy65Li444Gu5YaF!5e0!3m2!1sja!2sus!4v1621490719685!5m2!1sja!2sus" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
-		</div>
-	</div>
-
-	<hr class="featurette-divider">
-
-	<div class="row featurette">
-		<div class="col-md-7">
-			<h4 class="featurette-heading text-center">
-				<span class="text-muted">お問い合わせ</span>
-			</h4>
-			<form method="POST" action="{{APP_URL}}/Contact/confirm.php">
-				<p class="lead text-left">お名前 *<input type="text" class="border-4 border-info" name="name"></p>
-				<p class="lead text-left">Email *<input type="email" class="border-4 border-info" name="email"></p>
-			</div>
 			<div class="col-md-5">
-				<p>お問合せ内容 *</p>
-				<textarea class="border-4 border-info" name="text"></textarea>
-				<button type="submit" class="btn btn-primary ">内容を確認する</button>
+				<a href="{{APP_URL}}/shopping/book/detail.php?id={{book_id}}">
+					<img class="rounded-circle d-block mx-auto" src="{{IMAGE_DIR}}book/{{book_image}}" alt="Generic placeholder image" width="200" height="200">
+				</a>
+			</div>
+			<div class="col-md-7">
+				<h4 class="featurette-heading text-center">
+					<span class="text-muted">
+						健康知識に関する書籍
+					</span>
+				</h4>
+				<h7>昨今の情勢で高まる世の中の”健康意識”に対して、科学的なアプローチやメタ分析を用いた今日からでも実践しながら活かせるノウハウが詰まった書籍の購入ができます。</h7>
+				<div class="text-center">
+					<p>
+						<a class="btn btn-secondary " href="{{APP_URL}}/shopping/book/booklist.php" role="button">書籍一覧 &raquo;</a>
+					</p>
+				</div>
 			</div>
 		</div>
+
+		<hr class="featurette-divider">
+		<div class="row featurette">
+			<div class="col-md-5 order-md-1">
+				<a href="{{APP_URL}}/shopping/sub/detail.php?id={{sub_id}}">
+					<img class="rounded-circle d-block mx-auto" src="{{IMAGE_DIR}}sub/{{sub_image}}" alt="Generic placeholder image" width="200" height="200">
+				</a>
+			</div>
+			<div class="col-md-7 order-md-2">
+				<h4 class="featurette-heading text-center">
+					<span class="text-muted">関連する商品</span>
+				</h4>
+				<h7>書籍にて紹介されている商品の購入が可能です。弊社での取扱い商品はいずれもメーカー直仕入れの正規品でございます。安心してお買い求めいただけるようになっております</h7>
+				<div class="text-center">
+					<p>
+						<a class="btn btn-secondary " href="{{APP_URL}}/shopping/sub/sublist_all.php" role="button">関連商材一覧 &raquo;</a>
+					</p>
+				</div>
+			</div>
+		</div>
+
+		<hr class="featurette-divider">
+
+		<div class="row featurette">
+			<div class="col-md-5">
+				<img class="rounded-circle d-block mx-auto" src="{{APP_URL}}/image/unnamed.jpeg" alt="Generic placeholder image" width="200" height="200">
+			</div>
+			<div class="col-md-7">
+				<h4 class="featurette-heading text-center">
+					<span class="text-muted">会員特典</span>
+				</h4>
+				<h7 class="text-center">会員登録いただいたお客様からの購入は定価の３割引でお買い求めいただけます</h7>
+				<div class="text-center">
+					<p>
+						<a class="btn btn-secondary text-center" href="{{APP_URL}}/create_account/regist.php" role="button">新規会員登録 &raquo;</a>
+					</p>
+				</div>
+			</div>
+		</div>
+
+		<hr class="featurette-divider">
+		<div class="row featurette">
+			<div class="col-md-7 order-md-2">
+				<h4 class="featurette-heading text-center">
+					<span class="text-muted">会社概要</span>
+				</h4>
+				<p class="lead text-center text-nowrap">会社名：合同会社 HEALTH KNOWLEGE</p>
+				<p class="lead text-center text-nowrap">代表者名：田中 正義</p>
+				<p class="lead text-center text-nowrap">〒 000-9999</p>
+				<p class="lead text-center text-nowrap">東京都千代田区丸の内 架空ビル32階</p>
+			</div>
+			<div class="col-md-5 order-md-1">
+				<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d6481.717639851197!2d139.7609893778801!3d35.680478120777906!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60188bfbcd794975%3A0x239c242b7b27f6c9!2z5pel5pys44CB44CSMTAwLTAwMDUg5p2x5Lqs6YO95Y2D5Luj55Sw5Yy65Li444Gu5YaF!5e0!3m2!1sja!2sus!4v1621490719685!5m2!1sja!2sus" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+			</div>
+		</div>
+
+		<hr class="featurette-divider">
+
+		<div class="row featurette">
+			<div class="col-md-7">
+				<h4 class="featurette-heading text-center">
+					<span class="text-muted">お問い合わせ</span>
+				</h4>
+				<form method="POST" action="{{APP_URL}}/Contact/confirm.php">
+					<p class="lead text-left">お名前 *<input type="text" class="border-4 border-info" name="name"></p>
+					<p class="lead text-left">Email *<input type="email" class="border-4 border-info" name="email"></p>
+				</div>
+				<div class="col-md-5">
+					<p>お問合せ内容 *</p>
+					<textarea class="border-4 border-info" name="text"></textarea>
+					<button type="submit" class="btn btn-primary ">内容を確認する</button>
+				</div>
+			</div>
+		</div>
+
+		<hr class="featurette-divider">
 	</div>
 
-	<hr class="featurette-divider">
-</div>
-
-{% include "common/footer.html.twig" %}
+	{% include "common/footer.html.twig" %}
