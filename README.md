@@ -1,11 +1,9 @@
 # portforio
 
-
-<img src="/image/image-top.png">
-
 phpフルスクラッチECサイト
 
 パレオな男　鈴木裕著の本購入サイトとそれに付随した商品の購入サイト
+
 
 # EC_shop
 
@@ -37,9 +35,5 @@ phpフルスクラッチECサイト
 
 <h2>インフラ</h2>
 ・開発環境 M1 mac mini
-・dockerコンテナのみで作成(Linux,Apache,Mysql 5.7,Php,https-portal)<br>
-・AWSのEC2内のdockerコンテナのみで稼働<br>
-・無料枠でなるべく収まるように、EC2のスワップファイル4GBを拡張<br>
-
-
-<img src="/image/image-aws.png">
+・dockerコンテナのみで作成(Linux,Apache,Mysql 5.7,Php)<br>
+・AWSのEC2内のdockerコンテナのみで稼働

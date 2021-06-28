@@ -12,8 +12,9 @@ template_twig_files::Prepare_the_template();
 
 database::data_get('book');
 $book_data = $DB_DATA_GET;
-$book_id = database::id_no_random_get($book_data,'id');
-$book_image = $book_data[$book_id]['image'];
+
+// $book_id = database::id_no_random_get($book_data,'id');
+// $book_image = $book_data[$book_id]['image'];
 
 database::data_get('sub');
 $sub = $DB_DATA_GET;
@@ -27,9 +28,18 @@ $stmt = $dbh->prepare("SELECT * FROM news ORDER BY id DESC LIMIT 5");
 $stmt->execute();
 $news = $stmt->fetchAll(\PDO::FETCH_ASSOC);
 
+$book_image = database::get_column_all('book','image');
+
 $context['news'] = $news;
+$context['book'] = $book_data;
 $context['book_id'] = $book_id;
 $context['book_image'] = $book_image;
+$context['sub'] = $sub;
+
+// echo '<pre>';
+// var_dump($sub);
+// echo '</pre>';
+
 $context['sub_id'] = $sub_id;
 $context['sub_image'] = $sub_image;
 template_twig_files::template_load_front();

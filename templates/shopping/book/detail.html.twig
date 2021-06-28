@@ -53,9 +53,10 @@
 
 								{% include "common/shopping/want_button.html.twig" %}
 
-
 								</div>
+
 								{% include "common/cart_btn.html.twig" %}
+								{% include "common/shopping/share_button.html.twig" %}
 
 							</div>
 						</form>
@@ -75,11 +76,17 @@
 						<ul class="slider">
 							{% for sub in sub_product %}
 								<li>
+								<div class="card">
+							<div class="text-center">
 									<a href="{{sub_detail}}{{sub["id"]}}">
-									<img class="img-thumbnail" alt="" src="{{shopping}}/image/sub/{{sub['image']}}">
+									<img class="img-thumbnail card-img-top" alt="" src="{{shopping}}/image/sub/{{sub['image']}}"
+									style="width:10rem; height:8rem"
+									>
 									</a>
-									<h4 class="text-center">{{sub['title']|length > 30 ? sub['title']|slice(0,30) ~ '...': sub['title']}}</h4>
-									<h5 class="text-center">￥{{sub['price']|number_format}}</h5>
+									<h4>{{sub['title']|length > 30 ? sub['title']|slice(0,30) ~ '...': sub['title']}}</h4>
+									<h5 class="card-body text-nowrap">￥{{sub['price']|number_format}}</h5>
+								</div>
+							</div>
 								</li>
 							{% endfor %}
 						</ul>

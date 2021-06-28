@@ -28,7 +28,7 @@
 											<ul class="slider">
 												{% for ctg2 in ctg2_product %}
 													<li>
-														<a href="{{subdetail}}{{ctg2['id']}}"><img class="img-thumbnail" src="{{image_dir}}{{ctg2['image']}}" alt="" srcset=""></a>
+														<a href="{{subdetail}}{{ctg2['id']}}"><img class="img-thumbnail" src="{{image_dir}}{{ctg2['image']}}" style="width:8rem; height:8rem;"></a>
 														<p class="text-center">{{ctg2['title']|length > 30 ? ctg2['title']|slice(0,30) ~ '...': ctg2['title']}}</p>
 														<p class="text-center">￥{{ctg2['price']|number_format}}</p>
 													</li>
@@ -39,7 +39,7 @@
 											<ul class="slider">
 												{% for ctg1 in ctg1_product %}
 													<li>
-														<a href="{{subdetail}}{{ctg1['id']}}"><img class="img-thumbnail" src="{{image_dir}}{{ctg1['image']}}" alt="" srcset=""></a>
+														<a href="{{subdetail}}{{ctg1['id']}}"><img class="img-thumbnail" src="{{image_dir}}{{ctg1['image']}}" style="width:8rem; height:8rem;"></a>
 														<p class="text-center">{{ctg1['title']|length > 30 ? ctg1['title']|slice(0,30) ~ '...': ctg1['title']}}</p>
 														<p class="text-center">￥{{ctg1['price']|number_format}}</p>
 													</li>

@@ -52,6 +52,16 @@ class database
         $detail_data = $detail_data[0];
         return $detail_data;
     }
+    //テーブルとカラムを指定して、全てのデータを取得する
+    public static function get_column_all($table, $column)
+    {
+        $dbh = self::dbh();
+        $sql = "SELECT $column FROM " . $table;
+        $stmt = $dbh->prepare($sql);
+        $stmt->execute();
+        $detail_data = $stmt->fetchall(\PDO::FETCH_ASSOC);
+        return $detail_data;
+    }
     //wantテーブルから、テーブルと商品idをもとに合計数量をカウントする関数
     public static function get_want_list_sum($table_name,$product_id)
     {

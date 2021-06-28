@@ -62,7 +62,10 @@ $(function () {
           console.log("errorThrown    : " + errorThrown.message); // 例外情報
           console.log("URL            : " + url);
         });
-      }; //押下した時の色変化と欲しい！状態の変更
+      };
+    });
+
+      //押下した時の色変化と欲しい！状態の変更
       $('.btn-want').on('click', function (e) {
         e.stopPropagation();
         var $this = $(this);
@@ -99,7 +102,9 @@ $(function () {
           console.log("errorThrown    : " + errorThrown.message); // 例外情報
           console.log("URL            : " + url);
         });
-      });//欲しい！商品リスト一覧取得
+      });
+
+      //欲しい！商品リスト一覧取得
       $(function () {
         w_l_c = $("#want_list_count0").val();
         w_l_e = $("#want_list_end").val();
@@ -139,11 +144,9 @@ $(function () {
           });
         };
       });
-    });
 
-
+    //管理者画面削除ボタン
       $(function () {
-        //管理者画面削除ボタン
         $(".delete").click(function () {
           var id = this.dataset.id;
           if (confirm("ID:" + id + "番のコンテンツを本当に削除していいですか？")) { // OK
@@ -152,6 +155,8 @@ $(function () {
             return false;
           };
         });
+        });
+
         //pay.jp管理
         $(".confirm").click(function () {
           $(".error").empty();
@@ -160,8 +165,8 @@ $(function () {
           var exp_month = $("#exp_month").val();
           var exp_year = $("#exp_year").val();
         });
+
         //詳細ページスライダーアニメーション
-        // $(window).load(function(){
         $('.slider').each(function(){
          var sliderCount =$(this).children('li').length;
          var randomStart =Math.floor(Math.random() * sliderCount);
@@ -205,19 +210,53 @@ $(function () {
           ]
         });
         });
-        // });
+
         //インデックストップページスライダー画面
-        $(document).on('ready', function () {
-          $(".full-screen").slick({
-            centerMode: true,
-            centerPadding: '5%',
-            dots: true,
-            autoplay: true,
-            autoplaySpeed: 1000,
-            speed: 1000,
-            infinite: true,
-          });
-        });
+        // $('.index').each(function(){
+        $('.slider-index').each(function(){
+          var sliderCount =$(this).children('li').length;
+          var randomStart =Math.floor(Math.random() * sliderCount);
+         $('.slider-index').slick({
+           initialSlide: randomStart,
+           Infinity: true,
+           autoplay: true,
+           adaptiveHeight: true,
+           autoplaySpeed: 2000,
+           dots: false,
+           swipe: true,
+           swipeToSlide: true,
+           cssEase: 'linear',
+           slidesToShow:  4,
+           centerMode: true,
+           centerPadding: '10%',
+           responsive: [{
+               breakpoint: 1024,
+               settings: {
+                 slidesToShow: 3,
+                 centerMode: true,
+                 centerPadding: '15%',
+               }
+             },
+             {
+               breakpoint: 768,
+               settings: {
+                 slidesToShow: 2,
+                 centerMode: true,
+                 centerPadding: '15%',
+               }
+             },
+             {
+               breakpoint: 480,
+               settings: {
+                 slidesToShow: 2,
+                 centerMode: true,
+                 centerPadding: '15%',
+               }
+             },
+           ]
+         });
+         });
+        //  });
         //数量変更ボタン
         $(function () {
           var arySpinnerCtrl = [];
@@ -276,4 +315,3 @@ $(function () {
             }
           });
         });
-      });

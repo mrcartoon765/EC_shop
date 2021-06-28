@@ -339,6 +339,9 @@ $context['js'] = AppUrl."/js/";
 $context['image'] = AppUrl."/image/";
 $context['templates'] = AppUrl."/templates/";
 $context['filename'] = $filename;
+$context['this_url'] = AppUrl.$_SERVER["REQUEST_URI"];
+
+
 class template_twig_files
 {
     public static function Prepare_the_template()
