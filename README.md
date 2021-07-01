@@ -7,8 +7,7 @@ phpフルスクラッチECサイト
 
 デプロイ先は<a href="https://mrcartoon.work/">こちら</a>
 
-<h3 style="color:red;">画像ファイルを全てWebpにしておりますのでChromiumのブラウザで閲覧をお願いします</h3>
-
+<h2>画像ファイルを全てwebpにしておりますのでChromiumのブラウザで閲覧をお願いします</h2>
 
 <img src="image/top-img.png" alt="">
 
@@ -43,15 +42,16 @@ phpフルスクラッチECサイト
 ・副商材商品データ新規作成・編集・削除　機能<br>
 
 <h2>インフラ</h2>
-・開発環境 M1 mac mini
+・開発環境 M1 mac mini<br>
 ・dockerコンテナのみで作成(Linux,Apache,Mysql 5.7,php)<br>
 ・https-portalを使用した,SSL化での稼働<br>
 ・AWSのEC2内のdockerコンテナのみで稼働<br>
+・EC2のスワップメモリを4GB設定中<br>
 
 
 <img src="image/aws.png" alt="">
 <h2>オプション</h2>
-・ServiceWorkerを使用して、簡易的なPWAの設定（デスクトップ。ホーム画面追加）
+・ServiceWorkerを使用して、簡易的なPWAの設定（デスクトップ、ホーム画面追加）
 
 
 <img src="image/PWA.png" alt="">
