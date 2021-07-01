@@ -5,18 +5,20 @@ phpフルスクラッチECサイト
 パレオな男　鈴木裕著の本購入サイトとそれに付随した商品の購入サイト
 
 
+<img src="image/top-img.png" alt="">
+
 # EC_shop
 
 
-作成機能（会員側）<br>
+<h3>作成機能（会員側）<br></h3>
 ・会員登録<br>
 ・会員削除機能<br>
 ・会員情報編集<br>
 ・住所登録の際の郵便番号から住所検索(ajax)<br>
 ・カート機能<br>
 ・カート内商品数量変更機能（jquery）<br>
-・商品一覧画面<br>
 ・欲しい！（いいね）機能（ajax,jquery）<br>
+・商品一覧画面<br>
 ・購入履歴機能（商品別詳細、個数、単価）<br>
 ・商品購入数量変更ボタン(jquery)<br>
 ・ページング機能<br>
@@ -26,7 +28,9 @@ phpフルスクラッチECサイト
 ・問い合わせ機能<br>
 ・全商品から商品名での検索機能<br>
 
-作成機能（管理側側）<br>
+
+<h3>作成機能（管理側側）<br></h3>
+
 ・記事（トップニュース）管理機能<br>
 ・会員管理機能<br>
 ・受注管理、明細表示機能<br>
@@ -35,5 +39,14 @@ phpフルスクラッチECサイト
 
 <h2>インフラ</h2>
 ・開発環境 M1 mac mini
-・dockerコンテナのみで作成(Linux,Apache,Mysql 5.7,Php)<br>
-・AWSのEC2内のdockerコンテナのみで稼働
+・dockerコンテナのみで作成(Linux,Apache,Mysql 5.7,php)<br>
+・https-portalを使用した,SSL化での稼働<br>
+・AWSのEC2内のdockerコンテナのみで稼働<br>
+
+
+<img src="image/aws.png" alt="">
+<h2>オプション</h2>
+・ServiceWorkerを使用して、簡易的なPWAの設定（デスクトップ。ホーム画面追加）
+
+
+<img src="image/PWA.png" alt="">

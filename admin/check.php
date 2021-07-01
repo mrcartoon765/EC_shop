@@ -11,8 +11,7 @@ $app_name = explode('/',dirname(__FILE__))[4];
 require_once $_SERVER['DOCUMENT_ROOT']."/config/Bootstrap.class.php";
 
 
-$email = POST_GET::GET('$email','email');
-$password = POST_GET::GET('$password','password');
+POST_GET::array_escape();
 
 $dbh = database::dbh();
 

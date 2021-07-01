@@ -25,20 +25,11 @@ $total = shopping_cart::cart_price_sum();
 require_once '../vendor/payjp/payjp-php/init.php';
 
 //テスト秘密鍵
-\Payjp\Payjp::setApiKey("sk_test_48545b5e0d50c059f9d7ed36");
+\Payjp\Payjp::setApiKey("*********");
 
+POST_GET::array_escape();
 
-$mail = POST_GET::GET($mail,'mail');
-$family_name = POST_GET::GET($family_name ,'family_name');
-$first_name  = POST_GET::GET($first_name ,'first_name');
-$zip1  = POST_GET::GET($zip1 ,'zip1');
-$zip2  = POST_GET::GET($zip2 ,'zip2');
-$address  = POST_GET::GET($address ,'address');
-$tel1 = POST_GET::GET($tel1 ,'tel1');
-$tel2 = POST_GET::GET($tel2,'tel2');
-$tel3 = POST_GET::GET($tel3,'tel3');
 $customer_id = $_SESSION['customer_id'];
-$payjp_token = POST_GET::GET($payjp_token,'payjp_token');
 
 $products = isset($_SESSION['products'])? $_SESSION['products']:[];
 

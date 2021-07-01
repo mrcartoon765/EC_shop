@@ -19,7 +19,8 @@
 										<img src="{{IMAGE_DIR}}{{ value['image'] }}" class="text-center" style="width: 60%;" alt="">
 									</div>
 									<div class="card-body">
-										<h5 class="card-text">{{value['detail'][0:50]|raw}}..</h5>
+										<h5 class="card-text">{{value['detail']|length > 50 ? value['detail']|slice(0,50) ~ '...'|raw: value['detail']|raw}}
+
 										<p>
 											<button type="button" class="btn btn-gray" data-bs-toggle="modal" data-bs-target="#exampleModal">商品詳細の表示</button>
 											<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">

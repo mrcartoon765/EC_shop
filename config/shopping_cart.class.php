@@ -7,9 +7,10 @@ require_once $_SERVER['DOCUMENT_ROOT'] . "/config/Bootstrap.class.php";
 
 class shopping_cart
 {
-    public static function cart_session($title = 'title', $price = 'price', $count = 'count', $ctg_id = 'ctg_id',$table_name = 'table_name',$product_id = 'product_id',$product_image ='product_image') //カートのに入った商品を配列別に分別しセッションをつなげる関数
+    public static function cart_session($title = 'title', $price = 'price', $count = 'count', $ctg_id = 'ctg_id',$table_name = 'table_name',$product_id = 'product_id',$product_image ='product_image') //カートに入った商品を配列別に分別しセッションをつなげる関数
 
     {
+
         $product_title = POST_GET::GET('$product_title', $title);
         $product_price = POST_GET::GET('$product_price', $price);
         $product_count = POST_GET::GET('$product_count', $count);
@@ -79,6 +80,7 @@ class shopping_cart
             $want_list_id = POST_GET::GET('$want_list_id', 'want_list_id');
             $want_list_count = POST_GET::GET('$want_list_count', 'count');
             $want_list_ctgid = POST_GET::GET('$want_list_id', 'want_list_id');
+
             $data_get = database::get_data_where($want_list_table, 'id', $want_list_id);
             $cart_in_title = $data_get[0]['title'];
             $_POST['title'] = $cart_in_title;

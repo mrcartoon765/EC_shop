@@ -18,7 +18,6 @@
 					<div class="card">
 						<form action="{{shopping}}cart.php" method="POST">
 					{% block order_products %}
-								<input type="common/shopping/hidden_input_order_products.html.twig">
 								<input type="hidden" name="product_image" value={{ value['image'] }}>
 					{% endblock %}
 							<a href="{{APP_URL}}{{this_dir}}detail.php?id={{ attribute(value,'id') }}">

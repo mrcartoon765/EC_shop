@@ -23,16 +23,7 @@ template_twig_files::Prepare_the_template();
 session_start();
 session_regenerate_id(true);
 
-$family_name = POST_GET::GET('$family_name','family_name');
-$first_name = POST_GET::GET('$first_name','first_name');
-$mail = POST_GET::GET('$mail','mail');
-$tel1 = POST_GET::GET('$tel1','tel1');
-$tel2 = POST_GET::GET('$tel2','tel2');
-$tel3 = POST_GET::GET('$tel3','tel3');
-$zip1 = POST_GET::GET('$zip1','zip1');
-$zip2 = POST_GET::GET('$zip2','zip2');
-$address = POST_GET::GET('$address','address');
-$payjp_token = POST_GET::GET('$payjp_token','payjp_token');
+POST_GET::array_escape();
 
 $context['family_name']=$family_name;
 $context['first_name']=$first_name;

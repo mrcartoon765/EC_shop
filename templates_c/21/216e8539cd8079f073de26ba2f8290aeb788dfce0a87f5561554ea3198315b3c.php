@@ -40,16 +40,18 @@ class __TwigTemplate_a9d77b69684f7551d64c294428258028c7e90a55e6813567101b5b032d1
 \t\t<p>Copyright @ 2021  HEALTH KNOWLEGE</p>
 \t</div>
 </footer>
-
-<script src=\"https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js\"></script>
+<script src=\"https://code.jquery.com/jquery-3.6.0.min.js\" integrity=\"sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=\" crossorigin=\"anonymous\"></script>
 <script src=\"https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js\" integrity=\"sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW\" crossorigin=\"anonymous\"></script>
-<script type=\"text/javascript\" src=\"//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js\"></script>
+<script type=\"text/javascript\" src=\"https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js\"></script>
 <script src=\"https://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.31.1/js/jquery.tablesorter.min.js\"></script>
+<script src=\"";
+        // line 11
+        echo twig_escape_filter($this->env, ($context["APP_URL"] ?? null), "html", null, true);
+        echo "/js/common.js\"></script>
 <script src=\"";
         // line 12
         echo twig_escape_filter($this->env, ($context["APP_URL"] ?? null), "html", null, true);
-        echo "js/common.js\"></script>
-
+        echo "sw.js\"></script>
 </body>
 </html>";
     }
@@ -66,7 +68,7 @@ class __TwigTemplate_a9d77b69684f7551d64c294428258028c7e90a55e6813567101b5b032d1
 
     public function getDebugInfo()
     {
-        return array (  50 => 12,  37 => 1,);
+        return array (  53 => 12,  49 => 11,  37 => 1,);
     }
 
     public function getSourceContext()

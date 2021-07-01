@@ -12,9 +12,8 @@ require_once $_SERVER['DOCUMENT_ROOT']."/config/Bootstrap.class.php";
 
 admin_login::login_session();
 
-$nums = POST_GET::GET($nums,'num');
-$id = POST_GET::GET($id,'id');
-$order_id = POST_GET::GET($order_id,'order_id');
+POST_GET::array_escape();
+
 if($id==''||$num=''){
   header('location: ./order_products.php?id='.$order_id);
 }

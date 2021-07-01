@@ -11,22 +11,21 @@
 	</div>
 		<div class="container-flluid" style="margin-top:10rem; margin-bottom:10rem">
 			<div class="wrapper-title">
-				<h1>NEWS</h1>
+				<h2>NEWS</h2>
 				<h3>お知らせ</h3>
 			</div>
 			<div class="news-list">
 				{% for value in news %}
 					<ul>
 						<li>
-							<h5>
-								{{ attribute(value,'updated_at')[0:10] }}
+							<li>
+								<h4>{{ attribute(value,'updated_at')[0:10] }}</h4>
 								<br>
 								<a href="{{APP_URL}}page.php?id={{attribute(value,'id') }}">
 									{{ attribute(value,'title') }}
 								</a>
 							</li>
 						</li>
-					</h7>
 				</ul>
 			{% endfor %}
 		</div>
@@ -67,7 +66,7 @@
 								<li>
 			<a href="{{APP_URL}}/shopping/sub/detail.php?id={{attribute(sub,'id')}}">
 			<div >
-				<img class="img-thumbnail rounded-circle auto" src="{{IMAGE_DIR}}sub/{{attribute(sub,'image')}}" alt="image"
+				<img class="img-thumbnail rounded-circle d-block mx-auto" src="{{IMAGE_DIR}}sub/{{attribute(sub,'image')}}" alt="image"
 				style="width:10rem; height:10rem">
 				<div>
 			</a>
@@ -113,7 +112,9 @@
 			<p class="lead text-center text-nowrap">東京都千代田区丸の内 架空ビル32階</p>
 		</div>
 		<div class="col-md-5 order-md-1">
-			<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d6481.717639851197!2d139.7609893778801!3d35.680478120777906!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60188bfbcd794975%3A0x239c242b7b27f6c9!2z5pel5pys44CB44CSMTAwLTAwMDUg5p2x5Lqs6YO95Y2D5Luj55Sw5Yy65Li444Gu5YaF!5e0!3m2!1sja!2sus!4v1621490719685!5m2!1sja!2sus" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+			<iframe  title="company_address" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d6481.717639851197!2d139.7609893778801!3d35.680478120777906!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60188bfbcd794975%3A0x239c242b7b27f6c9!2z5pel5pys44CB44CSMTAwLTAwMDUg5p2x5Lqs6YO95Y2D5Luj55Sw5Yy65Li444Gu5YaF!5e0!3m2!1sja!2sus!4v1621490719685!5m2!1sja!2sus" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy">
+			<div></div>
+			</iframe>
 		</div>
 	</div>
 
@@ -125,13 +126,14 @@
 				<span class="text-muted">お問い合わせ</span>
 			</h4>
 			<form method="POST" action="{{APP_URL}}/Contact/confirm.php">
-				<p class="lead text-left">お名前 *<input type="text" class="border-4 border-info" name="name"></p>
-				<p class="lead text-left">Email *<input type="email" class="border-4 border-info" name="email"></p>
+				<label for="name" class="lead text-left">お名前 *</label><input id="name" type="text" class="border-4 border-info" name="name">
+				<label for="email" class="lead text-left">Email*</label><input id="email" type="email" class="border-4 border-info" name="email">
 			</div>
 			<div class="col-md-5">
-				<p>お問合せ内容 *</p>
-				<textarea class="border-4 border-info" name="text"></textarea>
+				<label for="main">お問合せ内容 *</label>
+				<textarea id='main' class="textarea border-4 border-info" name="text"></textarea>
 				<button type="submit" class="btn btn-primary ">内容を確認する</button>
+				</form>
 			</div>
 		</div>
 	</div>

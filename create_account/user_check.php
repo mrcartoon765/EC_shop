@@ -14,8 +14,7 @@ require_once $_SERVER['DOCUMENT_ROOT']."/config/Bootstrap.class.php";
 
 template_twig_files::Prepare_the_template();
 
-$mail = POST_GET::GET('$mail','mail');
-$password = POST_GET::GET('$password','password');
+POST_GET::array_escape();
 
 if($mail ==''|$password==''){
     header('location:./login.php');

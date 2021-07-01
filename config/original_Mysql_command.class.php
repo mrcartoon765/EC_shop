@@ -83,6 +83,38 @@ class original_Mysql_command
     public static function POST_DATA_UPDATE($table)//管理画面で商品詳細などの更新をする際の処理
     {
 
+        //画像更新がある場合とない場合の分岐　ない場合
+        if($_FILES['image']["size"] == 0){
+
+            foreach ($_POST as $key => $value) {
+                if ($key == 'id') {
+                    continue;
+                } else {
+                  $value = $value = str_replace('"',"'",$value);
+                    $k[] = $key . '=' . '"' . $value . '"' . ", ";
+                }
+            }
+            $sql = (rtrim(implode($k), ', '));
+
+            $dbh = database::dbh();
+
+            $id = intval($_POST['id']);
+
+            $stmt = $dbh->quote($sql);
+                    $stmt = $dbh->prepare("UPDATE ".$table." SET " . $sql .
+                    ", last_update = NOW() "
+                     . " WHERE " . $table . ".id=" . $id);
+
+                    $stmt->execute();
+
+                    header("refresh:3;url=" . Bootstrap::ADMIN_URL);
+                    template_twig_files::Prepare_the_template();
+                    $context[''] = '';
+                    $template = $GLOBALS['twig']->loadTemplate($GLOBALS['this_dir'] . $GLOBALS['filename'] . "complete.html.twig");
+                    $template->display($context);
+
+            exit;
+        }else{//画像更新がある場合
         foreach ($_POST as $key => $value) {
             if ($key == 'id') {
                 continue;
@@ -103,9 +135,9 @@ class original_Mysql_command
                     // "アップロード完了"
                     $dbh = database::dbh();
                     $file_name = htmlspecialchars($file_name);
-                    $delete_id = intval($_POST['id']);
+                    $id = intval($_POST['id']);
                     //画像更新の前に古い画像データの削除
-                    $old_image_delete_sql = 'SELECT image FROM ' . $table . ' WHERE ' . $table . '.id=' . $delete_id;
+                    $old_image_delete_sql = 'SELECT image FROM ' . $table . ' WHERE ' . $table . '.id=' . $id;
                     $old_image_file = $dbh->query($old_image_delete_sql);
                     $old_image_file = $old_image_file->fetch()['image'];
                     $image_dir = $GLOBALS['document_root'] . '/shopping/image/' . $table . '/';
@@ -115,7 +147,7 @@ class original_Mysql_command
                     $stmt = $dbh->quote($sql);
                     $stmt = $dbh->prepare("UPDATE ".$table." SET " . $sql .
                     ", last_update= NOW(), image=" .
-                     "'" . $file_name . "'" . " WHERE " . $table . ".id=" . $delete_id);
+                     "'" . $file_name . "'" . " WHERE " . $table . ".id=" . $id);
 
                     $stmt->execute();
 
@@ -138,6 +170,8 @@ class original_Mysql_command
         }
         database::dbh();
     }
+}
+
     public static function search_data_and_paging($table, $column,$paging=10)//商品名やユーザー検索をする際に使用する処理とページングの表示数
     {
         global $search, $pages, $prev, $page, $next;

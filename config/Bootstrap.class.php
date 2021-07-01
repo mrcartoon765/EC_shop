@@ -365,7 +365,7 @@ $context['login'] = $_SESSION['customer_login'];
 
 class customer_login
 {
-    public static function login_session()
+    public static function login_session()//ユーザーがログインしていない場合にトップページへ戻す処理
     {
         session_start();
         session_regenerate_id(true);
@@ -380,7 +380,7 @@ class customer_login
         }
         return $login;
     }
-    public static function login_data()
+    public static function login_data()//ログインしているユーザーの情報を取得する処理
     {
         $dbh = database::dbh();
         $stmt = $dbh->prepare("SELECT * FROM customer WHERE id=:id");
@@ -393,16 +393,16 @@ class customer_login
 
 class POST_GET
 {
-    public static function GET($variable='$_POST', $columns)
+    public static function GET($variable='$_POST', $columns)//$_POSTで受け取った値を変数名を指定してエスケープする処理
     {
         $variable = isset($_POST[$columns]) ? htmlspecialchars($_POST[$columns], ENT_QUOTES, 'utf-8') : '';
         return $variable;
     }
-    public static function P_G($values){
-        foreach ($values as $value)
-        {
-            $values = isset($_POST)? htmlspecialchars($values,ENT_QUOTES,'utf-8'):'';
-            return $values;
-        }
+    public static function array_escape()//$_POSTで取得した値を全てエスケープ処理する関数
+    {
+    foreach($_POST as $key => $value){
+        ${$key} = $key;
+        $GLOBALS[${$key}] = isset($key) ? htmlspecialchars($value, ENT_QUOTES, 'utf-8') : '';
     }
+}
 }

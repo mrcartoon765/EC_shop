@@ -1,4 +1,26 @@
 
+// window.addEventListener('load', () => {
+//   if ('serviceWorker' in navigator) {
+//     navigator.serviceWorker.register('sw.js').then(function(registration) {
+//         console.log('ServiceWorker registration successful with scope: ', registration.scope);
+//     }).catch(function(err) {
+//         console.log('ServiceWorker registration failed: ', err);
+//     });
+//     }
+// });
+
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', function() {
+    navigator.serviceWorker.register('/sw.js').then(function(registration) {
+      // Registration was successful
+      console.log('ServiceWorker registration successful with scope: ', registration.scope);
+    }, function(err) {
+      // registration failed :(
+      console.log('ServiceWorker registration failed: ', err);
+    });
+  });
+  };
+
 //郵便番号から住所検索
 $(function () {
   $('#address_search').click(function () {
@@ -29,7 +51,7 @@ $(function () {
 });
 
 //欲しい！ボタン
-$(function () {
+$(function() {
       for_count = $("#for_count0").val();
       for_count_end = $("#for_count_end").val();
       var $want = '.btn_want_status', //欲しい！ボタンセレクタ
@@ -42,7 +64,7 @@ $(function () {
           url: '/config/want_status.php',
           dataType: 'json',
           async: false, //データ同期
-          // frequency: 2,
+          frequency: 2,
           data: {
             product_id: $("#product_id" + for_count).val(),
             table_name: $("#table" + for_count).val(),
@@ -57,13 +79,12 @@ $(function () {
           // 通信失敗時の処理
           alert('ファイルの取得に失敗しました。');
           console.log("ajax通信に失敗しました");
-          console.log("jqXHR          : " + jqXHR.status); // HTTPステータスが取得
+          console.log("jqXHR          : " + jqXHR.status); // HTTPステータス取得
           console.log("textStatus     : " + textStatus); // タイムアウト、パースエラー
           console.log("errorThrown    : " + errorThrown.message); // 例外情報
           console.log("URL            : " + url);
         });
       };
-    });
 
       //押下した時の色変化と欲しい！状態の変更
       $('.btn-want').on('click', function (e) {
@@ -140,10 +161,11 @@ $(function () {
             console.log("textStatus     : " + textStatus); // タイムアウト、パースエラー
             console.log("errorThrown    : " + errorThrown.message); // 例外情報
             console.log("URL            : " + url);
-
           });
         };
       });
+    });
+
 
     //管理者画面削除ボタン
       $(function () {
@@ -170,13 +192,15 @@ $(function () {
         $('.slider').each(function(){
          var sliderCount =$(this).children('li').length;
          var randomStart =Math.floor(Math.random() * sliderCount);
-        $(this).slick({
+        $(this).not('.slick-initialized').slick({
           initialSlide: randomStart,
           Infinity: true,
           autoplay: true,
           adaptiveHeight: true,
           autoplaySpeed: 2000,
           dots: false,
+          prevArrow: false,
+          nextArrow: false,
           swipe: true,
           swipeToSlide: true,
           cssEase: 'linear',
@@ -206,23 +230,23 @@ $(function () {
                 centerMode: true,
                 centerPadding: '15%',
               }
-            },
-          ]
+            }]
         });
         });
 
         //インデックストップページスライダー画面
-        // $('.index').each(function(){
         $('.slider-index').each(function(){
           var sliderCount =$(this).children('li').length;
           var randomStart =Math.floor(Math.random() * sliderCount);
-         $('.slider-index').slick({
+         $('.slider-index').not('.slick-initialized').slick({
            initialSlide: randomStart,
            Infinity: true,
            autoplay: true,
            adaptiveHeight: true,
            autoplaySpeed: 2000,
            dots: false,
+           prevArrow: false,
+           nextArrow: false,
            swipe: true,
            swipeToSlide: true,
            cssEase: 'linear',
@@ -256,7 +280,7 @@ $(function () {
            ]
          });
          });
-        //  });
+
         //数量変更ボタン
         $(function () {
           var arySpinnerCtrl = [];

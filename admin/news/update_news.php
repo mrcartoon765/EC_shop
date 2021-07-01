@@ -12,9 +12,9 @@ require_once $_SERVER['DOCUMENT_ROOT']."/config/Bootstrap.class.php";
 
 admin_login::login_session();
 
-$id = POST_GET::GET('$id','id');
-$title = POST_GET::GET('$title','title');
-$content = POST_GET::GET('$content ','content');
+
+POST_GET::array_escape();
+
 $content = strip_tags(nl2br($content));
 
 $dbh = database::dbh();
