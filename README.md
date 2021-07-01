@@ -4,6 +4,8 @@ phpフルスクラッチECサイト
 
 パレオな男　鈴木裕著の本購入サイトとそれに付随した商品の購入サイト
 
+デプロイ先は<a href="https://mrcartoon.work/">こちら</a>
+
 
 <img src="image/top-img.png" alt="">
 
