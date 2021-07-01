@@ -7,7 +7,7 @@ phpフルスクラッチECサイト
 
 デプロイ先は<a href="https://mrcartoon.work/">こちら</a>
 
-<h3 style="red">画像ファイルを全てWebpにしておりますのでChromiumのブラウザで閲覧をお願いします</h3>
+<h3 style="color:red;">画像ファイルを全てWebpにしておりますのでChromiumのブラウザで閲覧をお願いします</h3>
 
 
 <img src="image/top-img.png" alt="">
