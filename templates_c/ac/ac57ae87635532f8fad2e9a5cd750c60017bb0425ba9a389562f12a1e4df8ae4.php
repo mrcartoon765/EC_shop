@@ -38,7 +38,7 @@ class __TwigTemplate_0161d0bfa87509241b87502e3a008ff69399389ce6ad4f9dfbc25a20306
         // line 2
         echo "
 
-<body>
+<body style=\"padding-top: 20rem\">
 
 \t";
         // line 6
@@ -46,7 +46,7 @@ class __TwigTemplate_0161d0bfa87509241b87502e3a008ff69399389ce6ad4f9dfbc25a20306
         $context['_seq'] = twig_ensure_traversable(range(0, ($context["a"] ?? null)));
         foreach ($context['_seq'] as $context["_key"] => $context["n"]) {
             // line 7
-            echo "\t\t<div class=\"container-fluid\" style=\"padding-top: 2rem\" id=\"img_one_loop\"></div>
+            echo "\t\t<div class=\"container-fluid\" id=\"img_one_loop\"></div>
 \t";
         }
         $_parent = $context['_parent'];
@@ -55,15 +55,15 @@ class __TwigTemplate_0161d0bfa87509241b87502e3a008ff69399389ce6ad4f9dfbc25a20306
         // line 9
         echo "\t<br/>
 \t<br/>
-</body>
 
 
-<script src=\"https://code.jquery.com/jquery-3.6.0.min.js\" integrity=\"sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=\" crossorigin=\"anonymous\"></script>
-<script src=\"https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js\" integrity=\"sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW\" crossorigin=\"anonymous\"></script>
-<script src=\"";
-        // line 16
+\t<script src=\"https://code.jquery.com/jquery-3.6.0.min.js\" integrity=\"sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=\" crossorigin=\"anonymous\"></script>
+\t<script src=\"https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js\" integrity=\"sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW\" crossorigin=\"anonymous\"></script>
+\t<script src=\"";
+        // line 15
         echo twig_escape_filter($this->env, ($context["APP_URL"] ?? null), "html", null, true);
         echo "/js/eye.js\"></script>
+</body>
 ";
     }
 
@@ -79,7 +79,7 @@ class __TwigTemplate_0161d0bfa87509241b87502e3a008ff69399389ce6ad4f9dfbc25a20306
 
     public function getDebugInfo()
     {
-        return array (  65 => 16,  56 => 9,  49 => 7,  45 => 6,  39 => 2,  37 => 1,);
+        return array (  64 => 15,  56 => 9,  49 => 7,  45 => 6,  39 => 2,  37 => 1,);
     }
 
     public function getSourceContext()

@@ -4,16 +4,19 @@ let random_img;
 let this_file_name = location.href.split('/');
 let img_folder = this_file_name[0] + '/image/eye/';
 let search_img = img_folder + img_file;
+let random_img_answer;
 const image_answer = img_file;
 let only = 0;
+let count = 0;
 let n = 0;
+let startTime = 0;
+let score = 0;
 $(function () {
-
 	$("select").on('change', function () {
-		var count = $(this).val();
+		count = $(this).val();
 		only = only + Number(count);
 		document.getElementById("only").innerHTML =
-			'<p>残り　' + only;
+			'<p style="font-color:red;">残り　' + only + '</p>';
 		$.ajax({
 			type: "POST",
 			url: "/eye.php",
@@ -27,12 +30,12 @@ $(function () {
 		}).done(function (data) {
 			for (let i = 0; i < count; i++) {
 				document.getElementById("img_search").innerHTML =
-					'<img src=' + search_img + '  style=' + 'width="75rem" height="75rem" float:left;>';
+					'<img src=' + search_img + ' style=' + 'width="75rem" height="75rem" float:left;>';
 				var search_img_file = $(this)[0]['data'];
 				var search_img_file = (search_img_file.substr(search_img_file.indexOf('&img=') + 5)); //検索する画像ファイル名
 				random_img_count =
 					document.getElementById("description").innerHTML =
-					'<p>同じ画像を下の画像群から探してください</p>';
+					'<h4 class="text-center">同じ画像を画像群から探してください</h4>';
 
 				random_img = img_files.sort(() => Math.random() - 0.5);
 				random_img.forEach(function (element) {
@@ -54,7 +57,6 @@ $(function () {
 			console.log("URL            : " + url);
 		});
 	});
-	score = 0;
 	$(document).on('click', 'img', function () {
 		random_img_answer = ($(this).attr('id')); //探す画像のID取得
 		d = random_img_answer.indexOf('g');
@@ -62,82 +64,44 @@ $(function () {
 		if (image_answer == r_i_a_c) {
 			score += 1;
 			only -= 1;
+			console.log(score);
+			console.log(only);
 			document.getElementById("score").innerHTML =
-				'<p>正解数：' + score + '</p>';
+				'<h3 class="text-center" style="color:green;">正解数：' + score + '個</h3></div>';
 			document.getElementById("only").style.display = "";
-			document.getElementById("only").innerHTML =
-				'<p>残り　' + only;
-			// Number(only) - 1;
-			//  + '個あります</p>';
+			if (only == 0) {
+				document.getElementById("only").innerHTML =
+					'<h2 style="color:green;">お疲れ様でした！<br>全て見つけました！</h2>';
+			} else {
+				document.getElementById("only").innerHTML =
+					'<p class="text-center" >残り　<span style="color:red;">' + only + '</span>　個あります</p>';
+			}
 			document.getElementById(random_img_answer).style.display = "none";
+			document.getElementById(random_img_answer).addClass = "fluffy";
 		}
 	});
-
-	// 	var time_up = 180;
-	// 	var time_max = 180;
-	// 	var intervalid;
-	// 	var start_flag = false;
-
-	// 	function count_start() {
-	// 		console.log("count_start");
-	// 		if (start_flag === false) {
-	// 			intervalid = setInterval(count_down, 1000);
-	// 			start_flag = true;
-	// 		}
-	// 	}
-
-	// 	function count_down() {
-	// 		console.log("count_down");
-	// 		var timer = document.getElementById("timer");
-	// 		if (to_timeup === 0) {
-	// 			timer.innerHTML = 'お疲れ様でした！'
-	// 			timer.style.color = "red";
-	// 			count_stop();
-	// 		} else {
-	// 			to_timeup--;
-	// 			padding();
-	// 		}
-	// 	}
-
-	// 	function padding() {
-	// 		var timer = document.getElementById("timer");
-	// 		var min = 0;
-	// 		var sec = 0;
-	// 		min = Math.floor(to_timeup / 60);
-	// 		sec = (to_timeup % 60);
-	// 		min = ("0" + min).slice(-2);
-	// 		sec = ("0" + sec).slice(-2);
-	// 		timer.innerHTML = min + ":" + sec;
-	// 	}
-
-	// 	function count_stop() {
-	// 		console.log(count_stop);
-	// 		clearInterval(intervalid);
-	// 		start_flag = false;
-	// 	}
-
-	// 	function count_reset() {
-	// 		console.log(count_reset);
-	// 		var timer = document.getElementById("timer");
-	// 		clearInterval(intervalid);
-	// 		start_flag = false;
-	// 		to_timeup = max;
-	// 		padding();
-	// 		timer.style.color = "black";
-	// 	}
-
-	// 	window.onload = function () {
-	// 		// console.log("mumei");
-	// 		padding();
-	// 		var startbutton = document.getElementById("startbutton");
-	// 		startbutton.addEventListener("click", count_start, false);
-	// 		var stopbutton = document.getElementById("stopbutton");
-	// 		stopbutton.addEventListener("click", count_stop, false);
-	// 		var resetbutton = document.getElementById("resetbutton");
-	// 		resetbutton.addEventListener("click", count_reset, false);
-
-	// 	}
-
-	// }
-
+	// $(document).on('click', 'button', function () {
+	// 	document.getElementById(random_img_answer).addClass('fluffy');
+	// 	console.log(document.getElementById(random_img_answer).addClass('fluffy'));
+	// });
 });
+
+
+//タイマー作成
+
+
+// const min = document.getElementById("min");
+// const sec = document.getElementById("sec");
+
+// function countdown() {
+// 	const now = new Date();
+// 	const tomorrow = new Date(now.getFullYear(), now.getMonth(), now.getDate() + 1);
+// 	const diff = tomorrow.getTime() - now.getTime();
+// 	const calcMin = Math.floor(diff / 1000 / 60) % 60;
+// 	const calcSec = Math.floor(diff / 1000) % 60;
+
+// 	min.innerHTML = calcMin < 10 ? '0' + calcMin : calcMin;
+// 	sec.innerHTML = calcSec < 10 ? '0' + calcSec : calcSec;
+// }
+// countdown();
+// setInterval(countdown, 1000);

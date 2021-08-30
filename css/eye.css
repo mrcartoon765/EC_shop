@@ -1,0 +1,47 @@
+html, body{
+	font-family: serif;
+	font-size: 16px;
+}
+
+.countdown-container {
+	margin: 5rem;
+}
+
+.timer-container {
+	display: flex;
+}
+
+.time {
+	margin: .2rem;
+	background-color: lightpink;
+	border-radius: 1rem;
+	padding: 2rem;
+}
+
+#min,#sec {
+	font-size: 3rem;
+	margin-right: 1rem;
+}
+
+html[theme='dark-mode'] {
+    filter: invert(1) hue-rotate(180deg);
+}
+
+.fluffy {
+	background: #000;
+	width: 100px;
+	height: 100px;
+	margin: 100px;
+	animation: fluffy1 3s ease infinite;
+      }
+
+      @keyframes fluffy1 {
+	0% { transform:translateY(0) }
+	5% { transform:translateY(0) }
+	10% { transform:translateY(0) }
+	20% { transform:translateY(-15px) }
+	25% { transform:translateY(0) }
+	30% { transform:translateY(-15px) }
+	50% { transform:translateY(0) }
+	100% { transform:translateY(0) }
+      }

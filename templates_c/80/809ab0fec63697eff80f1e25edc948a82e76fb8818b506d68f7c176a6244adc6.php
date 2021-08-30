@@ -79,14 +79,18 @@ class __TwigTemplate_786736784cc0f96530fa722aa1e2bf560f5846441a4e79509ad81bc542a
 \t<link rel=\"stylesheet\" href=\"";
         // line 25
         echo twig_escape_filter($this->env, ($context["css"] ?? null), "html", null, true);
-        echo "admin/styles.css\">
+        echo "eye.css\">
 \t<link rel=\"stylesheet\" href=\"";
         // line 26
+        echo twig_escape_filter($this->env, ($context["css"] ?? null), "html", null, true);
+        echo "admin/styles.css\">
+\t<link rel=\"stylesheet\" href=\"";
+        // line 27
         echo twig_escape_filter($this->env, ($context["css"] ?? null), "html", null, true);
         echo "css-buttons-master/styles/bootstrap.min.css\">
 \t<link
 \trel=\"stylesheet\" href=\"";
-        // line 28
+        // line 29
         echo twig_escape_filter($this->env, ($context["css"] ?? null), "html", null, true);
         echo "css-buttons-master/styles/buttons.css\">
 
@@ -95,47 +99,42 @@ class __TwigTemplate_786736784cc0f96530fa722aa1e2bf560f5846441a4e79509ad81bc542a
 \t<link href=\"https://use.fontawesome.com/releases/v5.15.2/css/all.css\" rel=\"stylesheet\">
 
 \t<link rel=\"manifest\" href=\"";
-        // line 34
+        // line 35
         echo twig_escape_filter($this->env, ($context["APP_URL"] ?? null), "html", null, true);
         echo "manifest.json\">
-\t<nav class=\"navbar navbar-expand-xl navbar-dark bg-dark\">
+\t<nav class=\"navbar navbar-expand-xl navbar-dark bg-dark fixed-top\">
 \t\t<a class=\"navbar-brand mx-auto\" href=\"";
-        // line 36
+        // line 37
         echo twig_escape_filter($this->env, ($context["APP_URL"] ?? null), "html", null, true);
         echo "\"><img src=\"";
         echo twig_escape_filter($this->env, ($context["APP_URL"] ?? null), "html", null, true);
         echo "/image/square_logo-1024x192.webp\" id=\"logo\" style=\"width:200px;\" alt=\"logo_image\"></a>
-\t\t<h4 class=\"navbar-brand mx-auto\" href=\"";
-        // line 37
+\t\t<h3 class=\"mx-auto text-center\" nowrap href=\"";
+        // line 38
         echo twig_escape_filter($this->env, ($context["APP_URL"] ?? null), "html", null, true);
-        echo "\">眼精疲労軽減ゲーム</h4>
+        echo "\">眼精疲労軽減ゲーム</h3>
 \t\t<div class=\"container\">
 \t\t\t<div class=\"row\">
 \t\t\t\t<div class=\"col\">
-\t\t\t\t\t<div id=\"img_search\"></div>
-\t\t\t\t</div>
-\t\t\t\t<div class=\"col\">
+\t\t\t\t\t<div class=\"text-center\" id=\"img_search\"></div>
 \t\t\t\t\t<div id=\"description\"></div>
 \t\t\t\t</div>
 \t\t\t\t<div class=\"row\">
-\t\t\t\t\t<div
-\t\t\t\t\t\tclass=\"col\">
-\t\t\t\t\t\t";
-        // line 50
-        echo "\t\t\t\t\t\t<p id=\"score\"></p>
+\t\t\t\t\t<div class=\"col\">
+\t\t\t\t\t\t<p id=\"score\"></p>
 \t\t\t\t\t</div>
 \t\t\t\t\t<div class=\"col\">
-\t\t\t\t\t\t<p>探す個数
+\t\t\t\t\t\t<p class=\"text-center\">探す個数
 \t\t\t\t\t\t\t<select class=\"count\" name=\"count\">
 \t\t\t\t\t\t\t\t";
-        // line 55
+        // line 52
         $context['_parent'] = $context;
         $context['_seq'] = twig_ensure_traversable(range(0, 19));
         foreach ($context['_seq'] as $context["_key"] => $context["a"]) {
-            // line 56
+            // line 53
             echo "\t\t\t\t\t\t\t\t\t<option hidden>0</option>
 \t\t\t\t\t\t\t\t\t<option value=";
-            // line 57
+            // line 54
             echo twig_escape_filter($this->env, ($context["a"] + 1), "html", null, true);
             echo ">";
             echo twig_escape_filter($this->env, ($context["a"] + 1), "html", null, true);
@@ -146,15 +145,20 @@ class __TwigTemplate_786736784cc0f96530fa722aa1e2bf560f5846441a4e79509ad81bc542a
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['a'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 60
+        // line 57
         echo "\t\t\t\t\t\t\t</select>個増やす</p>
 \t\t\t\t\t\t<p id=\"only\" style=\"display:none\"></p>
-\t\t\t\t\t</div>
+\t\t\t\t\t\t";
+        // line 60
+        echo "\t\t\t\t\t</div>
 \t\t\t\t</div>
 \t\t\t</div>
 \t\t</div>
-\t</nav>
-</html></body></html>
+\t</div>
+\t<div class=\"timerbody\">
+\t\t<div id=\"timer\"></div>
+\t</div>
+</html></nav></html>
 ";
     }
 
@@ -170,7 +174,7 @@ class __TwigTemplate_786736784cc0f96530fa722aa1e2bf560f5846441a4e79509ad81bc542a
 
     public function getDebugInfo()
     {
-        return array (  150 => 60,  139 => 57,  136 => 56,  132 => 55,  125 => 50,  110 => 37,  104 => 36,  99 => 34,  90 => 28,  85 => 26,  81 => 25,  77 => 24,  73 => 23,  63 => 16,  59 => 15,  55 => 14,  42 => 4,  37 => 1,);
+        return array (  153 => 60,  149 => 57,  138 => 54,  135 => 53,  131 => 52,  114 => 38,  108 => 37,  103 => 35,  94 => 29,  89 => 27,  85 => 26,  81 => 25,  77 => 24,  73 => 23,  63 => 16,  59 => 15,  55 => 14,  42 => 4,  37 => 1,);
     }
 
     public function getSourceContext()

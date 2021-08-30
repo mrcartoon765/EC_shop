@@ -22,6 +22,7 @@
 
 	<link rel="stylesheet" href="{{css}}responsive.css">
 	<link rel="stylesheet" href="{{css}}styles.css">
+	<link rel="stylesheet" href="{{css}}eye.css">
 	<link rel="stylesheet" href="{{css}}admin/styles.css">
 	<link rel="stylesheet" href="{{css}}css-buttons-master/styles/bootstrap.min.css">
 	<link
@@ -32,25 +33,21 @@
 	<link href="https://use.fontawesome.com/releases/v5.15.2/css/all.css" rel="stylesheet">
 
 	<link rel="manifest" href="{{APP_URL}}manifest.json">
-	<nav class="navbar navbar-expand-xl navbar-dark bg-dark">
+	<nav class="navbar navbar-expand-xl navbar-dark bg-dark fixed-top">
 		<a class="navbar-brand mx-auto" href="{{APP_URL}}"><img src="{{APP_URL}}/image/square_logo-1024x192.webp" id="logo" style="width:200px;" alt="logo_image"></a>
-		<h4 class="navbar-brand mx-auto" href="{{APP_URL}}">眼精疲労軽減ゲーム</h4>
+		<h3 class="mx-auto text-center" nowrap href="{{APP_URL}}">眼精疲労軽減ゲーム</h3>
 		<div class="container">
 			<div class="row">
 				<div class="col">
-					<div id="img_search"></div>
-				</div>
-				<div class="col">
+					<div class="text-center" id="img_search"></div>
 					<div id="description"></div>
 				</div>
 				<div class="row">
-					<div
-						class="col">
-						{# <p id="score">正解数:<span id="score"></span></p> #}
+					<div class="col">
 						<p id="score"></p>
 					</div>
 					<div class="col">
-						<p>探す個数
+						<p class="text-center">探す個数
 							<select class="count" name="count">
 								{% for a in 0..19 %}
 									<option hidden>0</option>
@@ -59,9 +56,13 @@
 								{% endfor %}
 							</select>個増やす</p>
 						<p id="only" style="display:none"></p>
+						{# <button id="hint">ヒント</button> #}
 					</div>
 				</div>
 			</div>
 		</div>
-	</nav>
-</html></body></html>
+	</div>
+	<div class="timerbody">
+		<div id="timer"></div>
+	</div>
+</html></nav></html>
